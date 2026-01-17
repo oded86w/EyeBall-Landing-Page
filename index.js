@@ -15,18 +15,14 @@ const Logo = ({ className = "h-10 w-auto" }) => html`
         <stop offset="100%" style="stop-color:#00B4D8;stop-opacity:1" />
       </linearGradient>
     </defs>
-    <!-- Outer Shield / Browser Frame -->
     <path d="M60 40H290V130C290 230 175 300 175 300C175 300 60 230 60 130V40Z" stroke="url(#logoGradient)" stroke-width="12" fill="none" stroke-linejoin="round"/>
-    <!-- Top Bar with Dots -->
     <path d="M66 46H284V80H66V46Z" fill="url(#logoGradient)"/>
     <circle cx="90" cy="63" r="6" fill="white"/>
     <circle cx="115" cy="63" r="6" fill="white"/>
     <circle cx="140" cy="63" r="6" fill="white"/>
-    <!-- The Eye -->
     <circle cx="175" cy="170" r="60" stroke="url(#innerGradient)" stroke-width="15" fill="none"/>
     <circle cx="175" cy="170" r="30" fill="url(#logoGradient)"/>
     <circle cx="190" cy="155" r="10" fill="white"/>
-    <!-- Orbital Swoosh with Arrow -->
     <path d="M85 210C100 240 180 270 240 200" stroke="url(#logoGradient)" stroke-width="12" fill="none" stroke-linecap="round"/>
     <path d="M230 215L245 195L265 215" stroke="url(#logoGradient)" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>
@@ -81,22 +77,16 @@ const PrivacyPolicyView = () => html`
     <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-8 text-center">Privacy Policy</h1>
     <div class="prose prose-invert prose-brand-blue max-w-none text-brand-light-secondary leading-relaxed space-y-6">
       <p class="text-sm italic">Last Updated: May 2025</p>
-      
       <p>EyeBall ("we", "us", or "our") values your privacy. This policy explains how we handle information across our security platform and browser technology.</p>
-
       <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">1. Data Collection</h2>
-      <p>We collect minimal personal data (e.g., email for accounts). Our technology primarily processes <strong>Usage Data</strong> and <strong>Security Events</strong> to protect your browsing environment. This data is used to identify threats and is handled with high security.</p>
-
+      <p>We collect minimal personal data. Our technology primarily processes <strong>Usage Data</strong> and <strong>Security Events</strong> to protect your browsing environment. This data is handled with high-grade security protocols.</p>
       <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">2. Processing Purpose</h2>
-      <p>Data processing is conducted to provide threat detection, DLP services, and platform maintenance. We do not sell your data to third parties.</p>
-
-      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">3. Security Measures</h2>
-      <p>We implement technical and organizational measures to ensure a level of security appropriate to the risk, including encryption and strict access controls.</p>
-
+      <p>Data processing is conducted solely to provide threat detection, DLP services, and platform maintenance. We do not sell your data.</p>
+      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">3. Security</h2>
+      <p>We implement technical and organizational measures including encryption and strict access controls. No electronic storage is 100% secure.</p>
       <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">4. Contact</h2>
-      <p>Reach out at <a href="mailto:info@eyeballsec.com" class="text-brand-blue hover:underline">info@eyeballsec.com</a> for any privacy concerns.</p>
+      <p>Reach out at <a href="mailto:info@eyeballsec.com" class="text-brand-blue hover:underline">info@eyeballsec.com</a> for any concerns.</p>
     </div>
-    
     <div class="mt-16 text-center">
       <button onClick=${() => window.scrollTo(0,0)} class="text-brand-blue hover:text-brand-cyan font-bold transition">Back to Top</button>
     </div>
@@ -107,51 +97,53 @@ const TermsOfServiceView = () => html`
   <section class="max-w-4xl mx-auto py-24 px-6 animate-fade-in-up">
     <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-8 text-center">Terms of Service & EULA</h1>
     <div class="bg-brand-dark-secondary border border-white/5 p-4 rounded-lg mb-8 text-sm italic text-center text-brand-light-secondary">
-      This Agreement governs your access and use of the EyeBall security platform and browser engine. PLEASE READ CAREFULLY.
+      IMPORTANT: THIS IS A LEGALLY BINDING AGREEMENT. BY USING EYEBALL, YOU AGREE TO THESE TERMS IN THEIR ENTIRETY.
     </div>
     
     <div class="prose prose-invert prose-brand-blue max-w-none text-brand-light-secondary leading-relaxed space-y-6">
       <p class="text-sm italic">Last Updated: May 2025</p>
       
-      <p>By using the EyeBall Services, you acknowledge that you have read, understood, and agree to be bound by these Terms. If you are entering into this agreement on behalf of a company, you represent that you have the authority to bind such entity.</p>
+      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">1. Scope of Agreement</h2>
+      <p>These Terms of Service & End User License Agreement ("Agreement") govern your access to and use of the EyeBall security engine, browser extensions, and management console (the "Services"). By accessing the Services, you represent that you are authorized to bind yourself or your organization to this Agreement.</p>
 
-      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">1. License and Access</h2>
-      <p>EyeBall grants you a non-exclusive, non-transferable, revocable license to use the Services. You may not: (a) reverse engineer or decompile the software; (b) use the Services for any illegal or unauthorized purpose; (c) bypass any security measures; or (d) use the Services to build a competitive product.</p>
-
-      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">2. Freemium Model & Support Policy</h2>
+      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">2. Freemium (Free Tier) Disclaimer</h2>
       <div class="bg-brand-blue/5 border-l-4 border-brand-blue p-6 my-6 rounded-r-xl">
-        <h3 class="text-lg font-bold text-white mb-2 uppercase tracking-wider">Critical Limitations for Free Users</h3>
-        <p class="mb-4 text-brand-light">The EyeBall Freemium Tier is provided strictly under the following terms:</p>
+        <h3 class="text-lg font-bold text-white mb-2 uppercase tracking-wider">Absolute Protection for EyeBall (Free Users)</h3>
+        <p class="mb-4 text-brand-light">The EyeBall Freemium Tier is provided as a courtesy. Your use of the Free Tier is subject to the following absolute conditions:</p>
         <ul class="list-disc pl-6 space-y-3 text-brand-light">
-          <li><strong>BEST EFFORT BASIS:</strong> The service is provided "as-is". EyeBall makes no warranties regarding the availability, effectiveness, or reliability of threat detection for Freemium accounts.</li>
-          <li><strong>EMAIL-ONLY SUPPORT:</strong> Support is limited exclusively to <span class="text-brand-blue font-bold underline">info@eyeballsec.com</span>. Response times are not guaranteed.</li>
-          <li><strong>ABSOLUTE USER RISK:</strong> You assume <strong>all responsibility and risk</strong> for any security incidents, data loss, or system issues. EyeBall is not liable for any damages resulting from the use of the Freemium Tier.</li>
+          <li><strong>NO WARRANTIES (BEST EFFORT):</strong> The Freemium Service is provided "AS-IS" without any warranty of any kind. We do not guarantee the prevention of any specific security breach or the accuracy of threat detection.</li>
+          <li><strong>SUPPORT LIMITATION:</strong> Support for Freemium users is provided solely via email (<span class="text-brand-blue font-bold">info@eyeballsec.com</span>) on a non-priority basis. No response time guarantees apply.</li>
+          <li><strong>USER ASSUMPTION OF RISK:</strong> You acknowledge that browser security is a complex field. You assume <strong>all risk and responsibility</strong> for any data loss, compromise, or system failure.</li>
+          <li><strong>LIMITATION OF LIABILITY:</strong> EyeBall's total liability to any Freemium user, for any claim whatsoever, is strictly limited to <strong>$0.00</strong>.</li>
         </ul>
       </div>
 
-      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">3. Intellectual Property</h2>
-      <p>All intellectual property rights in and to the Services (including software, algorithms, and logos) are owned solely by EyeBall. No ownership is transferred to you.</p>
+      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">3. Intellectual Property Rights</h2>
+      <p>EyeBall and its licensors retain all rights, title, and interest in and to the Services, including all source code, algorithms, visual interfaces, and security logic. You are granted a limited, revocable license; no ownership rights are transferred. Any feedback you provide may be used by us without restriction.</p>
 
-      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">4. Data and Confidentiality</h2>
-      <p>You grant EyeBall the right to collect and analyze anonymized usage data to improve our security database. Each party agrees to maintain the confidentiality of any non-public information received from the other party.</p>
+      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">4. Prohibited Conduct</h2>
+      <p>You agree NOT to: (a) decompile, reverse engineer, or attempt to derive the source code of EyeBall; (b) use EyeBall to build a competitive product; (c) bypass any technological protection measures; (d) use the Services in any way that violates applicable laws or third-party rights.</p>
 
       <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">5. Indemnification</h2>
-      <p>You agree to indemnify, defend, and hold harmless EyeBall and its officers from and against any and all claims, damages, obligations, losses, liabilities, costs, or debt, and expenses (including attorney's fees) arising from your use of the Services or your violation of these Terms.</p>
+      <p>You agree to indemnify, defend, and hold harmless EyeBall and its affiliates from and against any and all claims, liabilities, damages, and expenses (including legal fees) arising out of your use of the Services, your violation of these Terms, or your infringement of any third-party rights.</p>
 
-      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">6. Limitation of Liability</h2>
-      <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL EYEBALL BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS OR REVENUES. FOR FREEMIUM USERS, OUR TOTAL LIABILITY IS EXPRESSLY LIMITED TO <strong>$0.00</strong>.</p>
+      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">6. Class Action Waiver</h2>
+      <p>TO THE EXTENT PERMITTED BY LAW, ALL CLAIMS MUST BE BROUGHT IN THE PARTIES' INDIVIDUAL CAPACITY, AND NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY PURPORTED CLASS OR REPRESENTATIVE PROCEEDING.</p>
 
-      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">7. Disclaimer of Warranties</h2>
-      <p>EYEBALL DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING ANY WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. WE DO NOT WARRANT THAT THE SERVICES WILL BE SECURE, UNINTERRUPTED, OR ERROR-FREE.</p>
+      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">7. Data Privacy & Confidentiality</h2>
+      <p>Our use of data is governed by our Privacy Policy. Each party agrees to maintain the strict confidentiality of any proprietary information shared during the performance of the Services. We may process anonymized security metadata to improve the global EyeBall threat intelligence network.</p>
 
-      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">8. Termination</h2>
-      <p>EyeBall reserves the right to terminate or suspend your access to the Services at any time, without prior notice or liability, for any reason, including breach of these Terms.</p>
+      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">8. Force Majeure</h2>
+      <p>EyeBall shall not be liable for any failure or delay in performance due to circumstances beyond our reasonable control, including acts of God, cyber-attacks by state actors, or widespread internet outages.</p>
 
-      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">9. Governing Law</h2>
-      <p>These Terms shall be governed and construed in accordance with the laws of the applicable jurisdiction, without regard to its conflict of law provisions.</p>
+      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">9. Termination</h2>
+      <p>We reserve the right to suspend or terminate your access to the Services at our sole discretion, without notice, if we believe you have violated this Agreement or pose a risk to the security of other users.</p>
 
-      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">10. Contact Us</h2>
-      <p>For any legal inquiries, please contact <a href="mailto:info@eyeballsec.com" class="text-brand-blue hover:underline">info@eyeballsec.com</a>.</p>
+      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">10. Governing Law</h2>
+      <p>This Agreement shall be governed by the laws of the applicable jurisdiction, without regard to conflict of law principles. Any disputes shall be resolved through binding arbitration or the appropriate legal channels.</p>
+
+      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">11. Contact Us</h2>
+      <p>Questions regarding this EULA? Email: <a href="mailto:info@eyeballsec.com" class="text-brand-blue hover:underline">info@eyeballsec.com</a>.</p>
     </div>
     
     <div class="mt-16 text-center">
@@ -173,9 +165,7 @@ const FreemiumView = () => {
                         We believe that enterprise-grade security should be accessible. With our <strong>Freemium</strong> model, you can experience the power of EyeBall immediately, at no cost.
                     </p>
                 </div>
-
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Free Plan -->
                     <div class="bg-white/5 border-2 border-brand-blue/30 rounded-3xl p-8 relative overflow-hidden group">
                         <div class="absolute top-0 right-0 p-4">
                             <span class="text-brand-blue font-bold text-xs uppercase tracking-widest bg-brand-blue/10 px-3 py-1 rounded-full">Freemium</span>
@@ -183,7 +173,6 @@ const FreemiumView = () => {
                         <h3 class="text-2xl font-bold text-white mb-2">Free Tier</h3>
                         <p class="text-brand-light-secondary text-sm mb-6">Essential protection for small teams and individuals.</p>
                         <div class="text-4xl font-extrabold text-white mb-8">$0<span class="text-lg text-brand-light-secondary font-normal">/mo</span></div>
-                        
                         <ul class="space-y-4 mb-10">
                             <li class="flex items-center text-brand-light text-sm">
                                 <svg class="w-5 h-5 mr-3 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
@@ -195,37 +184,21 @@ const FreemiumView = () => {
                             </li>
                             <li class="flex items-center text-brand-light text-sm">
                                 <svg class="w-5 h-5 mr-3 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                File Scanning (limit daily usage)
-                            </li>
-                            <li class="flex items-center text-brand-light text-sm">
-                                <svg class="w-5 h-5 mr-3 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Content Blocking
-                            </li>
-                            <li class="flex items-center text-brand-light text-sm">
-                                <svg class="w-5 h-5 mr-3 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Download & Upload Management
-                            </li>
-                            <li class="flex items-center text-brand-light text-sm">
-                                <svg class="w-5 h-5 mr-3 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Extension Management
-                            </li>
-                            <li class="flex items-center text-brand-light text-sm">
-                                <svg class="w-5 h-5 mr-3 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                 DLP in GenAI web
                             </li>
+                            <li class="flex items-center text-brand-light text-sm">
+                                <svg class="w-5 h-5 mr-3 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Content & Extension Management
+                            </li>
                         </ul>
-
                         <button class="w-full bg-brand-blue hover:bg-brand-cyan text-brand-dark font-bold py-4 rounded-xl transition-all shadow-lg shadow-brand-blue/20">
                             Get Started Now
                         </button>
                     </div>
-
-                    <!-- Pro Plan Preview -->
                     <div class="bg-white/5 border border-white/10 rounded-3xl p-8 flex flex-col opacity-80 hover:opacity-100 transition-opacity">
                         <h3 class="text-2xl font-bold text-white mb-2">Pro</h3>
                         <p class="text-brand-light-secondary text-sm mb-6">Advanced controls for growing organizations.</p>
                         <div class="text-4xl font-extrabold text-white mb-8">Contact Sales</div>
-                        
                         <ul class="space-y-4 mb-10 flex-grow">
                             <li class="flex items-center text-brand-light text-sm">
                                 <svg class="w-5 h-5 mr-3 text-brand-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
@@ -233,24 +206,18 @@ const FreemiumView = () => {
                             </li>
                             <li class="flex items-center text-brand-light text-sm">
                                 <svg class="w-5 h-5 mr-3 text-brand-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Tenant Restriction
+                                Tenant Restriction & Watermarking
                             </li>
                             <li class="flex items-center text-brand-light text-sm">
                                 <svg class="w-5 h-5 mr-3 text-brand-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Company Websites Protection
-                            </li>
-                            <li class="flex items-center text-brand-light text-sm">
-                                <svg class="w-5 h-5 mr-3 text-brand-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                AI Protection
+                                AI Advanced Protection
                             </li>
                         </ul>
-
                         <a href="mailto:info@eyeballsec.com" class="w-full border border-white/20 hover:border-white/50 text-white font-bold py-4 rounded-xl transition-all text-center">
                             Contact Us
                         </a>
                     </div>
                 </div>
-
                 <div class="mt-16 bg-brand-blue/5 border border-brand-blue/10 rounded-2xl p-6 text-center">
                     <p class="text-brand-light-secondary text-sm">
                         No credit card required to start. Experience the future of browser security in under 60 seconds.
@@ -270,8 +237,7 @@ const BusinessFeatures = ({ onStartFree }) => {
             points: [
                 'Instant phishing & malware detection.',
                 'Intelligent Zero-Day exploit isolation.',
-                'Granular control over file movements.',
-                '<strong>Zero-Blind-Spots:</strong> No need for full decryption of web traffic for security analysis.'
+                '<strong>Zero-Blind-Spots:</strong> No decryption required for deep traffic analysis.'
             ]
         },
         {
@@ -280,9 +246,8 @@ const BusinessFeatures = ({ onStartFree }) => {
             description: 'Context-aware data protection that sees what users see.',
             points: [
                 'Detect and redact PII in real-time.',
-                'Block sensitive data leakage to GenAI/LLMs.',
-                'Apply dynamic watermarking to web apps.',
-                'Prevent copy/paste and screenshot exfiltration.'
+                'Block sensitive leakage to GenAI/LLMs.',
+                'Apply user-specific watermarks to critical web pages.'
             ]
         },
         {
@@ -292,43 +257,37 @@ const BusinessFeatures = ({ onStartFree }) => {
             points: [
                 'Auto-discovery of unmanaged web apps.',
                 'Enforce tenant restrictions (M365/Google).',
-                'Hardened browser session persistence.',
-                'Credential theft prevention.'
+                'Hardened browser session persistence.'
             ]
         },
         {
             icon: html`<${WebProtectIcon} />`,
-            title: 'Enterprise App Hardening',
-            description: 'Apply zero-trust principles directly to your most sensitive web applications.',
+            title: 'Enterprise Hardening',
+            description: 'Apply zero-trust principles directly to your sensitive applications.',
             points: [
-                '<strong>Credential Isolation:</strong> Automatically block the use of corporate passwords on personal or unauthorized websites.',
-                'Contextual safeguards: restrict printing, downloads, and uploads per app.',
-                'Prevent data theft via copy/paste or malicious extensions.',
-                'Browser environment hardening: disable dev tools and secure session cookies.',
-                'Apply dynamic, user-specific watermarks to critical screens.'
+                '<strong>Credential Isolation:</strong> Prevent corporate password reuse.',
+                'Restrict printing, downloads, and copy/paste per-app.',
+                'Environment hardening against malicious extensions.'
             ]
         },
         {
             icon: html`<${AttackDefenseIcon} />`,
-            title: 'Advanced Exploitation Defense',
-            description: 'Stop sophisticated browser attacks and UI redressing before they bypass your OS security.',
+            title: 'Advanced Exploit Defense',
+            description: 'Stop sophisticated attacks before they bypass OS security.',
             points: [
-                'Industry-leading <strong>AntiFix Protection</strong> to defeat CLICKFIX social engineering.',
-                'Block cross-domain script execution and unauthorized form manipulation.',
-                'Real-time DOM monitoring to stop script injection and session hijacking.',
-                'Native UI protection against clickjacking and frame-sniffing.',
-                'AI-driven behavioral analysis of malicious web components.'
+                '<strong>AntiFix Protection</strong> against social engineering.',
+                'Block cross-domain scripts and unauthorized form manipulation.',
+                'Real-time DOM monitoring for script injection.'
             ]
         },
         {
             icon: html`<${FastDeploymentIcon} />`,
             title: 'Frictionless Deployment',
-            description: 'Deploy across your entire fleet in minutes with zero impact on user productivity.',
+            description: 'Deploy across your fleet in minutes with zero habits disruption.',
             points: [
-                '<strong>5-Minute Setup:</strong> Lightning-fast rollout that gets your organization protected instantly.',
-                '<strong>Universal Harmony:</strong> Full native support for Chrome, Edge, Brave, and all Chromium browsers.',
-                '<strong>Zero Habit Disruption:</strong> Security that works silently without changing how your users browse.',
-                '<strong>User-Centric Adoption:</strong> No training required; employees keep their native browser experience.'
+                '<strong>5-Minute Setup:</strong> Lightning-fast rollout.',
+                'Support for Chrome, Edge, Brave, and Chromium browsers.',
+                '<strong>Zero Habit Disruption:</strong> Security that works silently.'
             ]
         }
     ];
@@ -346,7 +305,6 @@ const BusinessFeatures = ({ onStartFree }) => {
                     </div>
                 </div>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
                 <div class="bg-white/5 border border-white/10 rounded-3xl p-10 hover:border-brand-blue/50 transition-all duration-500 group animate-fade-in-up">
                     <div class="flex flex-col h-full">
@@ -354,18 +312,16 @@ const BusinessFeatures = ({ onStartFree }) => {
                              <${Logo} className="h-10 w-auto" />
                         </div>
                         <h3 class="text-2xl font-bold text-white mb-4">Eliminate Visibility Gaps</h3>
-                        <p class="text-brand-light-secondary leading-relaxed mb-6">Legacy EDRs can't see what happens inside the encrypted browser session. EyeBall provides deep visibility into every DOM event, every API call, and every user action—closing the gap legacy tools leave open.</p>
+                        <p class="text-brand-light-secondary leading-relaxed mb-6">Legacy EDRs can't see inside the encrypted browser session. EyeBall provides deep visibility into every DOM event, closing the gap legacy tools leave open.</p>
                     </div>
                 </div>
-
                 <div class="bg-white/5 border border-white/10 rounded-3xl p-10 hover:border-brand-cyan/50 transition-all duration-500 group animate-fade-in-up">
                     <div class="flex flex-col h-full">
                         <div class="w-14 h-14 bg-brand-cyan/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
                              <${LatencyIcon} />
                         </div>
                         <h3 class="text-2xl font-bold text-white mb-4">Performance-First Security</h3>
-                        <p class="text-brand-light-secondary leading-relaxed mb-4">Traditional SASE proxies route your traffic through slow cloud hubs. EyeBall's engine runs on-device, providing instant security with 0ms of network overhead.</p>
-                        
+                        <p class="text-brand-light-secondary leading-relaxed mb-4">EyeBall's engine runs on-device, providing instant security with 0ms of network overhead. No traffic rerouting, no lag.</p>
                         <div class="mt-auto pt-6 h-36 relative">
                             <svg class="w-full h-full" viewBox="0 0 200 70">
                                 <text x="10" y="8" fill="#00B4D8" font-size="7" font-weight="bold">EyeBall (Direct - 0ms)</text>
@@ -373,27 +329,18 @@ const BusinessFeatures = ({ onStartFree }) => {
                                 <circle cx="0" cy="0" r="3.5" fill="#00B4D8">
                                     <animateMotion dur="1.2s" repeatCount="indefinite" path="M 10 20 H 190" />
                                 </circle>
-                                
                                 <text x="10" y="66" fill="#D1D5DB" font-size="7">Traditional Proxy (Delayed Hubs)</text>
                                 <path id="proxyPath" d="M 10 45 C 50 45, 50 25, 80 25 H 120 C 150 25, 150 45, 190 45" stroke="#6B7280" stroke-width="1.5" stroke-dasharray="2 2" />
                                 <circle cx="80" cy="25" r="2.5" fill="#6B7280" />
                                 <circle cx="120" cy="25" r="2.5" fill="#6B7280" />
                                 <circle cx="0" cy="0" r="3" fill="#6B7280">
-                                    <animateMotion 
-                                        dur="6s" 
-                                        repeatCount="indefinite" 
-                                        path="M 10 45 C 50 45, 50 25, 80 25 H 120 C 150 25, 150 45, 190 45"
-                                        keyPoints="0; 0.35; 0.35; 0.65; 0.65; 1"
-                                        keyTimes="0; 0.25; 0.4; 0.6; 0.75; 1"
-                                        calcMode="linear"
-                                    />
+                                    <animateMotion dur="6s" repeatCount="indefinite" path="M 10 45 C 50 45, 50 25, 80 25 H 120 C 150 25, 150 45, 190 45" keyPoints="0; 0.35; 0.35; 0.65; 0.65; 1" keyTimes="0; 0.25; 0.4; 0.6; 0.75; 1" calcMode="linear" />
                                 </circle>
                             </svg>
                         </div>
                     </div>
                 </div>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
                 ${features.map((feature, index) => html`
                     <div class="bg-white/5 border border-white/10 rounded-2xl p-8 flex flex-col hover:bg-white/[0.08] transition-all animate-fade-in-up" style=${{animationDelay: `${index * 0.1}s`}}>
@@ -418,14 +365,8 @@ const BusinessFeatures = ({ onStartFree }) => {
 
 const App = () => {
   const [view, setView] = useState('landing');
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [view]);
-
-  const handleNavigate = (newView) => {
-    setView(newView);
-  };
+  useEffect(() => { window.scrollTo(0, 0); }, [view]);
+  const handleNavigate = (newView) => { setView(newView); };
 
   return html`
     <div class="flex flex-col min-h-screen">
@@ -439,16 +380,12 @@ const App = () => {
               </div>
               <span class="text-2xl font-bold text-white tracking-tight">EyeBall</span>
             </button>
-            
             <div class="flex items-center space-x-6">
               <nav class="hidden md:flex space-x-6 text-sm font-medium text-brand-light-secondary">
                 <button onClick=${() => handleNavigate('landing')} class="hover:text-white transition-colors">Features</button>
                 <a href="mailto:info@eyeballsec.com" class="hover:text-white transition-colors">Demo</a>
               </nav>
-              <button 
-                onClick=${() => handleNavigate('freemium')} 
-                class="bg-brand-blue hover:bg-brand-cyan text-brand-dark px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 shadow-lg shadow-brand-blue/20"
-              >
+              <button onClick=${() => handleNavigate('freemium')} class="bg-brand-blue hover:bg-brand-cyan text-brand-dark px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 shadow-lg shadow-brand-blue/20">
                 Start for free
               </button>
             </div>
@@ -464,19 +401,16 @@ const App = () => {
              <div class="absolute inset-0 bg-gradient-to-br from-brand-dark via-brand-dark-secondary to-brand-dark bg-300% animate-gradient-bg -z-10"></div>
              <div class="absolute inset-0 bg-grid-pattern opacity-10 -z-10"></div>
              <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-blue/10 rounded-full blur-[120px] -z-10"></div>
-             
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center animate-fade-in-up">
               <span class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-widest text-brand-blue uppercase bg-brand-blue/10 rounded-full border border-brand-blue/20">
-                 Secure the Web. Full visibility, Zero blind spots.
+                 Secure the Web. Zero blind spots.
               </span>
               <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight tracking-tighter mb-4">
                 The Browser is Your Perimeter.
               </h1>
-              <h2 class="text-2xl md:text-3xl font-medium text-brand-cyan mb-8">
-                 Secure it with EyeBall.
-              </h2>
+              <h2 class="text-2xl md:text-3xl font-medium text-brand-cyan mb-8">Secure it with EyeBall.</h2>
               <p class="max-w-3xl mx-auto text-lg md:text-xl text-brand-light-secondary mb-12 leading-relaxed">
-                Stop flying blind. EyeBall transforms the enterprise browser into a fully visible, secure environment. Protect your data, manage SaaS adoption, and eliminate zero-day threats before they reach the endpoint.
+                EyeBall transforms the enterprise browser into a fully visible, secure environment. Protect your data, manage SaaS, and eliminate zero-day threats.
               </p>
               <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
                 <a href="mailto:info@eyeballsec.com" class="w-full sm:w-auto bg-brand-blue hover:bg-brand-cyan text-brand-dark font-bold py-4 px-10 rounded-full transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-xl shadow-brand-blue/20">
@@ -496,7 +430,6 @@ const App = () => {
               </div>
             </div>
           </section>
-
           <div id="features">
              <${BusinessFeatures} onStartFree=${() => handleNavigate('freemium')} />
           </div>
