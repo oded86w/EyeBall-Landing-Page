@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -69,8 +70,8 @@
     "preact": "https://esm.sh/preact@10.22.1",
     "preact/hooks": "https://esm.sh/preact@10.22.1/hooks",
     "htm/preact": "https://esm.sh/htm@3.1.1/preact",
-    "preact/": "https://aistudiocdn.com/preact@^10.27.2/",
-    "htm/": "https://aistudiocdn.com/htm@^3.1.1/"
+    "preact/": "https://esm.sh/preact@^10.28.2/",
+    "htm/": "https://esm.sh/htm@^3.1.1/"
   }
 }
 </script>
@@ -78,7 +79,8 @@
 </head>
   <body class="bg-brand-dark text-brand-light font-sans antialiased">
     <div id="root"></div>
-    <script type="module" src="/index.js"></script>
+    <!-- Change: Removed leading slash for GitHub Pages compatibility -->
+    <script type="module" src="index.js"></script>
   <script type="module" src="/index.tsx"></script>
 </body>
 </html>

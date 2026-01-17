@@ -97,53 +97,49 @@ const TermsOfServiceView = () => html`
   <section class="max-w-4xl mx-auto py-24 px-6 animate-fade-in-up">
     <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-8 text-center">Terms of Service & EULA</h1>
     <div class="bg-brand-dark-secondary border border-white/5 p-4 rounded-lg mb-8 text-sm italic text-center text-brand-light-secondary">
-      IMPORTANT: THIS IS A LEGALLY BINDING AGREEMENT. BY USING EYEBALL, YOU AGREE TO THESE TERMS IN THEIR ENTIRETY.
+      IMPORTANT: THIS IS A LEGALLY BINDING AGREEMENT. BY ACCESSING OR USING EYEBALL, YOU AGREE TO THESE TERMS. IF YOU DO NOT AGREE, DISCONTINUE USE IMMEDIATELY.
     </div>
     
     <div class="prose prose-invert prose-brand-blue max-w-none text-brand-light-secondary leading-relaxed space-y-6">
       <p class="text-sm italic">Last Updated: May 2025</p>
       
-      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">1. Scope of Agreement</h2>
-      <p>These Terms of Service & End User License Agreement ("Agreement") govern your access to and use of the EyeBall security engine, browser extensions, and management console (the "Services"). By accessing the Services, you represent that you are authorized to bind yourself or your organization to this Agreement.</p>
+      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">1. The Service</h2>
+      <p>EyeBall provides a browser security engine and management platform designed to protect endpoints from web-based threats. Use of the service is permitted only for lawful purposes and in accordance with this Agreement.</p>
 
-      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">2. Freemium (Free Tier) Disclaimer</h2>
+      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">2. Freemium & Support Policies</h2>
       <div class="bg-brand-blue/5 border-l-4 border-brand-blue p-6 my-6 rounded-r-xl">
-        <h3 class="text-lg font-bold text-white mb-2 uppercase tracking-wider">Absolute Protection for EyeBall (Free Users)</h3>
-        <p class="mb-4 text-brand-light">The EyeBall Freemium Tier is provided as a courtesy. Your use of the Free Tier is subject to the following absolute conditions:</p>
+        <h3 class="text-lg font-bold text-white mb-2 uppercase tracking-wider">Specific Terms for Free Tier Users</h3>
+        <p class="mb-4 text-brand-light">The Freemium Tier is offered as a "Best Effort" security tool. By using the Free Tier, you explicitly agree to:</p>
         <ul class="list-disc pl-6 space-y-3 text-brand-light">
-          <li><strong>NO WARRANTIES (BEST EFFORT):</strong> The Freemium Service is provided "AS-IS" without any warranty of any kind. We do not guarantee the prevention of any specific security breach or the accuracy of threat detection.</li>
-          <li><strong>SUPPORT LIMITATION:</strong> Support for Freemium users is provided solely via email (<span class="text-brand-blue font-bold">info@eyeballsec.com</span>) on a non-priority basis. No response time guarantees apply.</li>
-          <li><strong>USER ASSUMPTION OF RISK:</strong> You acknowledge that browser security is a complex field. You assume <strong>all risk and responsibility</strong> for any data loss, compromise, or system failure.</li>
-          <li><strong>LIMITATION OF LIABILITY:</strong> EyeBall's total liability to any Freemium user, for any claim whatsoever, is strictly limited to <strong>$0.00</strong>.</li>
+          <li><strong>NO GUARANTEES (AS-IS):</strong> EyeBall makes no warranties of any kind regarding the availability, reliability, or effectiveness of the Free Tier in preventing any specific security incident.</li>
+          <li><strong>SUPPORT:</strong> Support for Freemium users is provided exclusively via email (<span class="text-brand-blue font-bold">info@eyeballsec.com</span>) on an as-available basis. No Service Level Agreement (SLA) applies.</li>
+          <li><strong>ABSOLUTE LIMITATION:</strong> EyeBall's total liability to any Free Tier user for any reason is <strong>$0.00</strong>. You use the service at your <strong>sole risk</strong>.</li>
         </ul>
       </div>
 
-      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">3. Intellectual Property Rights</h2>
-      <p>EyeBall and its licensors retain all rights, title, and interest in and to the Services, including all source code, algorithms, visual interfaces, and security logic. You are granted a limited, revocable license; no ownership rights are transferred. Any feedback you provide may be used by us without restriction.</p>
+      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">3. Intellectual Property</h2>
+      <p>All software, technology, trademarks, and intellectual property associated with the Services are the sole property of EyeBall. You are granted a non-transferable, revocable license to use the service; no ownership rights are transferred. Any attempt to reverse-engineer, decompile, or bypass the security logic of EyeBall is a material breach of this Agreement.</p>
 
-      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">4. Prohibited Conduct</h2>
-      <p>You agree NOT to: (a) decompile, reverse engineer, or attempt to derive the source code of EyeBall; (b) use EyeBall to build a competitive product; (c) bypass any technological protection measures; (d) use the Services in any way that violates applicable laws or third-party rights.</p>
+      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">4. User Responsibilities & Compliance</h2>
+      <p>You are responsible for all activity occurring under your account. You must comply with all local, state, and international laws, including data privacy and export control laws. You represent that you have the right to install EyeBall in the environments where it is deployed.</p>
 
       <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">5. Indemnification</h2>
-      <p>You agree to indemnify, defend, and hold harmless EyeBall and its affiliates from and against any and all claims, liabilities, damages, and expenses (including legal fees) arising out of your use of the Services, your violation of these Terms, or your infringement of any third-party rights.</p>
+      <p>You agree to indemnify, defend, and hold harmless EyeBall, its officers, and affiliates from and against any and all claims, damages, liabilities, and expenses (including attorney fees) arising from: (i) your use of the Services; (ii) your violation of this Agreement; or (iii) your violation of any third-party right, including intellectual property or privacy rights.</p>
 
-      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">6. Class Action Waiver</h2>
-      <p>TO THE EXTENT PERMITTED BY LAW, ALL CLAIMS MUST BE BROUGHT IN THE PARTIES' INDIVIDUAL CAPACITY, AND NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY PURPORTED CLASS OR REPRESENTATIVE PROCEEDING.</p>
+      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">6. Limitation of Liability & Warranty Disclaimer</h2>
+      <p>EYEBALL PROVIDES THE SERVICES "AS IS" AND DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING ANY WARRANTY OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL EYEBALL BE LIABLE FOR INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES (INCLUDING DATA LOSS OR INTERRUPTION OF BUSINESS).</p>
 
-      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">7. Data Privacy & Confidentiality</h2>
-      <p>Our use of data is governed by our Privacy Policy. Each party agrees to maintain the strict confidentiality of any proprietary information shared during the performance of the Services. We may process anonymized security metadata to improve the global EyeBall threat intelligence network.</p>
+      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">7. No Class Action</h2>
+      <p>ALL CLAIMS MUST BE BROUGHT IN THE PARTIES' INDIVIDUAL CAPACITY, AND NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY PURPORTED CLASS OR REPRESENTATIVE PROCEEDING.</p>
 
-      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">8. Force Majeure</h2>
-      <p>EyeBall shall not be liable for any failure or delay in performance due to circumstances beyond our reasonable control, including acts of God, cyber-attacks by state actors, or widespread internet outages.</p>
+      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">8. Governing Law</h2>
+      <p>This Agreement shall be governed by the laws of the applicable jurisdiction, excluding its conflict of law rules. Any dispute arising from this Agreement shall be settled via binding arbitration or in the courts of competent jurisdiction.</p>
 
       <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">9. Termination</h2>
-      <p>We reserve the right to suspend or terminate your access to the Services at our sole discretion, without notice, if we believe you have violated this Agreement or pose a risk to the security of other users.</p>
+      <p>We may terminate or suspend your access immediately, without prior notice or liability, for any reason, including without limitation if you breach the Terms.</p>
 
-      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">10. Governing Law</h2>
-      <p>This Agreement shall be governed by the laws of the applicable jurisdiction, without regard to conflict of law principles. Any disputes shall be resolved through binding arbitration or the appropriate legal channels.</p>
-
-      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">11. Contact Us</h2>
-      <p>Questions regarding this EULA? Email: <a href="mailto:info@eyeballsec.com" class="text-brand-blue hover:underline">info@eyeballsec.com</a>.</p>
+      <h2 class="text-2xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">10. Contact</h2>
+      <p>For legal or support inquiries: <a href="mailto:info@eyeballsec.com" class="text-brand-blue hover:underline">info@eyeballsec.com</a>.</p>
     </div>
     
     <div class="mt-16 text-center">
