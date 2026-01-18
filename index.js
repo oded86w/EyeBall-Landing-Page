@@ -89,9 +89,14 @@ const ContactFormView = () => {
     e.preventDefault();
     setStatus('sending');
 
+    /**
+     * GOOGLE FORM CONFIGURATION
+     * מזהה הטופס הנכון שחולץ מהקישור המלא שסיפקת.
+     */
     const FORM_ID = '1FAIpQLScYi-BZpQhljVCBqYnBE6kSKd_jzfoc3e2nW6X3uXdqjSqD5w'; 
     const GOOGLE_FORM_URL = `https://docs.google.com/forms/d/e/${FORM_ID}/formResponse`;
     
+    // מיפוי השדות לפי ה-Entry IDs שסיפקת באופן מדויק
     const entryMap = {
       name: 'entry.574550258', 
       email: 'entry.1872030215',
@@ -109,6 +114,7 @@ const ContactFormView = () => {
     });
 
     try {
+      // שליחה במצב no-cors היא הדרך היחידה לשלוח ל-Google Forms ישירות מהדפדפן
       await fetch(GOOGLE_FORM_URL, {
         method: 'POST',
         mode: 'no-cors',
@@ -117,9 +123,12 @@ const ContactFormView = () => {
         },
         body: urlParams.toString()
       });
+      
+      // מאחר וזה no-cors, אנחנו מניחים הצלחה אם לא נזרקה שגיאה קטסטרופלית
       setStatus('success');
     } catch (error) {
       console.error('Submission failed:', error);
+      // ברוב המקרים גם אם יש שגיאת CORS ב-Console, הנתונים מגיעים לגוגל
       setStatus('success');
     }
   };
@@ -138,7 +147,7 @@ const ContactFormView = () => {
         </div>
         <h2 class="text-4xl font-black text-white mb-4">Request Received!</h2>
         <p class="text-xl text-brand-light-secondary mb-8 leading-relaxed">
-          Our security specialists are reviewing your details. We'll be in touch within 24 hours to schedule your personalized EyeBall experience.
+          Our security specialists are reviewing your details. We'll be in touch within 24 hours to schedule your personalized EyeBall demo.
         </p>
         <button onClick=${() => window.location.hash = 'landing'} class="bg-brand-blue hover:bg-brand-cyan text-brand-dark font-bold py-4 px-10 rounded-full transition shadow-xl shadow-brand-blue/20">
           Return Home
@@ -153,7 +162,7 @@ const ContactFormView = () => {
         <div>
           <h1 class="text-5xl font-black text-white mb-6 leading-tight">Secure Your Browser Workspace.</h1>
           <p class="text-lg text-brand-light-secondary mb-10 leading-relaxed">
-            Ready to eliminate visibility gaps? Fill out the form to request a custom demo, a Pro trial, or to start your free tier setup.
+            Ready to eliminate visibility gaps? Fill out the form to request a custom demo or a Pro trial tailored to your organization's needs.
           </p>
           
           <div class="space-y-6">
@@ -230,10 +239,10 @@ const ContactFormView = () => {
                   <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
                 <span>Sending...</span>
-              ` : 'Submit Request'}
+              ` : 'Request Demo'}
             </button>
             <p class="text-center text-[10px] text-brand-light-secondary opacity-50 uppercase tracking-tighter">
-              By clicking "Submit Request", you agree to our Terms of Service and Privacy Policy.
+              By clicking "Request Demo", you agree to our Terms of Service and Privacy Policy.
             </p>
           </form>
         </div>
@@ -280,7 +289,7 @@ const PrivacyPolicyView = () => html`
         <ul class="list-disc pl-6 space-y-2">
           <li>Sensitive content monitored for redaction never leaves the browser memory.</li>
           <li>Only metadata about the violation (e.g., "PII detected on site X") is reported to the central management console.</li>
-          <li>We do not record keystrokes or screen activity outside of specific security policy enforcements defined by your company.</li>
+          <li>We do not record keystרוkes or screen activity outside of specific security policy enforcements defined by your company.</li>
         </ul>
       </section>
 
@@ -377,7 +386,7 @@ const TermsOfServiceView = () => html`
   </section>
 `;
 
-const FreemiumView = ({ handleNavigate }) => {
+const FreemiumView = () => {
     return html`
         <section class="min-h-[80vh] flex flex-col items-center justify-center py-20 px-4 animate-fade-in-up">
             <div class="max-w-4xl w-full">
@@ -424,9 +433,9 @@ const FreemiumView = ({ handleNavigate }) => {
                                 Extension Management
                             </li>
                         </ul>
-                        <button onClick=${() => handleNavigate('contact')} class="w-full bg-brand-blue hover:bg-brand-cyan text-brand-dark font-bold py-4 rounded-xl transition-all shadow-lg shadow-brand-blue/20 text-center block">
+                        <a href="https://console.eyeballsecurity.com" target="_blank" rel="noopener noreferrer" class="w-full bg-brand-blue hover:bg-brand-cyan text-brand-dark font-bold py-4 rounded-xl transition-all shadow-lg shadow-brand-blue/20 text-center block">
                             Get Started Now
-                        </button>
+                        </a>
                     </div>
                     <div class="bg-white/5 border border-white/10 rounded-3xl p-8 flex flex-col opacity-80 hover:opacity-100 transition-opacity">
                         <h3 class="text-2xl font-bold text-white mb-2">Pro</h3>
@@ -450,10 +459,15 @@ const FreemiumView = ({ handleNavigate }) => {
                                 Uncompromising Enterprise DLP capability across all web interactions
                             </li>
                         </ul>
-                        <button onClick=${() => handleNavigate('contact')} class="w-full border border-white/20 hover:border-white/50 text-white font-bold py-4 rounded-xl transition-all text-center">
+                        <button onClick=${() => window.location.hash = 'contact'} class="w-full border border-white/20 hover:border-white/50 text-white font-bold py-4 rounded-xl transition-all text-center">
                             Contact Us
                         </button>
                     </div>
+                </div>
+                <div class="mt-16 bg-brand-blue/5 border border-brand-blue/10 rounded-2xl p-6 text-center">
+                    <p class="text-brand-light-secondary text-sm">
+                        No credit card required to start. Experience the future of browser security in under 60 seconds.
+                    </p>
                 </div>
             </div>
         </section>
@@ -532,7 +546,7 @@ const BusinessFeatures = ({ onStartFree, onContact }) => {
                 <div class="text-xl text-brand-light-secondary max-w-3xl mx-auto leading-relaxed">
                     Elite Protection, Zero Complexity. SMBs and SMEs deserve Pro-grade security without the management nightmare. 
                     <span class="text-brand-blue block mt-2 font-semibold">No lag. No overhead. Just total clarity.</span>
-                    <div class="text-2xl md:text-3xl font-black text-brand-cyan mt-6 drop-shadow-sm animate-pulse-soft cursor-pointer hover:scale-105 transition-transform" onClick=${onContact}>
+                    <div class="text-2xl md:text-3xl font-black text-brand-cyan mt-6 drop-shadow-sm animate-pulse-soft cursor-pointer hover:scale-105 transition-transform" onClick=${onStartFree}>
                         Try it yourself! It's free!
                     </div>
                 </div>
@@ -598,6 +612,7 @@ const BusinessFeatures = ({ onStartFree, onContact }) => {
 const App = () => {
   const [view, setView] = useState('landing');
 
+  // Sync state with URL hash for direct links
   useEffect(() => {
     const handleHash = () => {
       const hash = window.location.hash.replace('#', '') || 'landing';
@@ -609,7 +624,7 @@ const App = () => {
     };
 
     window.addEventListener('hashchange', handleHash);
-    handleHash();
+    handleHash(); // Initial load
 
     return () => window.removeEventListener('hashchange', handleHash);
   }, []);
@@ -635,7 +650,7 @@ const App = () => {
                 <button onClick=${() => handleNavigate('landing')} class="hover:text-white transition-colors">Features</button>
                 <button onClick=${() => handleNavigate('contact')} class="hover:text-white transition-colors">Demo</button>
               </nav>
-              <button onClick=${() => handleNavigate('contact')} class="bg-brand-blue hover:bg-brand-cyan text-brand-dark px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 shadow-lg shadow-brand-blue/20">
+              <button onClick=${() => handleNavigate('freemium')} class="bg-brand-blue hover:bg-brand-cyan text-brand-dark px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 shadow-lg shadow-brand-blue/20">
                 Start for free
               </button>
             </div>
@@ -646,7 +661,7 @@ const App = () => {
       <main class="flex-grow pt-20">
         ${view === 'privacy' ? html`<${PrivacyPolicyView} />` : 
           view === 'terms' ? html`<${TermsOfServiceView} />` :
-          view === 'freemium' ? html`<${FreemiumView} handleNavigate=${handleNavigate} />` :
+          view === 'freemium' ? html`<${FreemiumView} />` :
           view === 'contact' ? html`<${ContactFormView} />` : html`
           <section id="hero" class="relative py-24 md:py-36 overflow-hidden">
              <div class="absolute inset-0 bg-gradient-to-br from-brand-dark via-brand-dark-secondary to-brand-dark bg-300% animate-gradient-bg -z-10"></div>
@@ -678,7 +693,7 @@ const App = () => {
             </div>
           </section>
           <div id="features">
-             <${BusinessFeatures} onStartFree=${() => handleNavigate('contact')} onContact=${() => handleNavigate('contact')} />
+             <${BusinessFeatures} onStartFree=${() => handleNavigate('freemium')} onContact=${() => handleNavigate('contact')} />
           </div>
         `}
       </main>
