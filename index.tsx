@@ -98,7 +98,7 @@ const App = () => {
               ${content.intro}
             </p>
             <div class="flex justify-center space-x-4">
-              <a href="mailto:info@privsurf.com" class="bg-brand-blue hover:bg-opacity-90 text-white font-bold py-3 px-8 rounded-full transition duration-300">
+              <a href="mailto:info@eyeballsecurity.com" class="bg-brand-blue hover:bg-opacity-90 text-white font-bold py-3 px-8 rounded-full transition duration-300">
                 Request a Demo
               </a>
             </div>
@@ -112,7 +112,7 @@ const App = () => {
       <footer class="bg-brand-dark-secondary border-t border-brand-dark-secondary/50">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-brand-light-secondary">
           <p>PrivSurf 2025. All rights reserved.</p>
-          <p class="mt-2">Contact us: <a href="mailto:info@privsurf.com" class="text-brand-blue hover:underline">info@privsurf.com</a></p>
+          <p class="mt-2">Contact us: <a href="mailto:info@eyeballsecurity.com" class="text-brand-blue hover:underline"info@eyeballsecurity.com</a></p>
         </div>
       </footer>
     </div>
