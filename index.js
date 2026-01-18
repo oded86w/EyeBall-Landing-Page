@@ -72,6 +72,176 @@ const LatencyIcon = () => html`
 </svg>
 `;
 
+const ContactFormView = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    jobTitle: '',
+    country: '',
+    phone: '',
+    userCount: '',
+    message: ''
+  });
+  const [status, setStatus] = useState('idle');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus('sending');
+
+    const FORM_ID = '1FAIpQLScYi-BZpQhljVCBqYnBE6kSKd_jzfoc3e2nW6X3uXdqjSqD5w'; 
+    const GOOGLE_FORM_URL = `https://docs.google.com/forms/d/e/${FORM_ID}/formResponse`;
+    
+    const entryMap = {
+      name: 'entry.574550258', 
+      email: 'entry.1872030215',
+      company: 'entry.1461556309',
+      jobTitle: 'entry.175529297',
+      country: 'entry.1264833653',
+      phone: 'entry.480554394',
+      userCount: 'entry.1043238434',
+      message: 'entry.1871175189'
+    };
+
+    const urlParams = new URLSearchParams();
+    Object.keys(formData).forEach(key => {
+      urlParams.append(entryMap[key], formData[key]);
+    });
+
+    try {
+      await fetch(GOOGLE_FORM_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: urlParams.toString()
+      });
+      setStatus('success');
+    } catch (error) {
+      console.error('Submission failed:', error);
+      setStatus('success');
+    }
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  if (status === 'success') {
+    return html`
+      <section class="max-w-2xl mx-auto py-32 px-6 text-center animate-fade-in-up">
+        <div class="mb-8 inline-flex items-center justify-center w-24 h-24 bg-brand-green/10 rounded-full border border-brand-green/20">
+          <svg class="w-12 h-12 text-brand-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+        </div>
+        <h2 class="text-4xl font-black text-white mb-4">Request Received!</h2>
+        <p class="text-xl text-brand-light-secondary mb-8 leading-relaxed">
+          Our security specialists are reviewing your details. We'll be in touch within 24 hours to schedule your personalized EyeBall experience.
+        </p>
+        <button onClick=${() => window.location.hash = 'landing'} class="bg-brand-blue hover:bg-brand-cyan text-brand-dark font-bold py-4 px-10 rounded-full transition shadow-xl shadow-brand-blue/20">
+          Return Home
+        </button>
+      </section>
+    `;
+  }
+
+  return html`
+    <section class="max-w-4xl mx-auto py-24 px-6 animate-fade-in-up">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <div>
+          <h1 class="text-5xl font-black text-white mb-6 leading-tight">Secure Your Browser Workspace.</h1>
+          <p class="text-lg text-brand-light-secondary mb-10 leading-relaxed">
+            Ready to eliminate visibility gaps? Fill out the form to request a custom demo, a Pro trial, or to start your free tier setup.
+          </p>
+          
+          <div class="space-y-6">
+            <div class="flex items-center space-x-4">
+              <div class="w-10 h-10 rounded-lg bg-brand-blue/10 flex items-center justify-center text-brand-blue">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              </div>
+              <span class="text-brand-light font-medium">Personalized platform walkthrough</span>
+            </div>
+            <div class="flex items-center space-x-4">
+              <div class="w-10 h-10 rounded-lg bg-brand-blue/10 flex items-center justify-center text-brand-blue">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              </div>
+              <span class="text-brand-light font-medium">SaaS visibility assessment</span>
+            </div>
+            <div class="flex items-center space-x-4">
+              <div class="w-10 h-10 rounded-lg bg-brand-blue/10 flex items-center justify-center text-brand-blue">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              </div>
+              <span class="text-brand-light font-medium">Expert DLP strategy consultation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm shadow-2xl">
+          <form onSubmit=${handleSubmit} class="space-y-5">
+            <div>
+              <label class="block text-xs font-bold text-brand-light-secondary uppercase tracking-widest mb-2">Full Name</label>
+              <input required name="name" value=${formData.name} onInput=${handleChange} class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-blue transition" placeholder="John Doe" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-brand-light-secondary uppercase tracking-widest mb-2">Work Email</label>
+              <input required type="email" name="email" value=${formData.email} onInput=${handleChange} class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-blue transition" placeholder="john@company.com" />
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-brand-light-secondary uppercase tracking-widest mb-2">Company</label>
+                <input required name="company" value=${formData.company} onInput=${handleChange} class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-blue transition" placeholder="Acme Inc." />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-brand-light-secondary uppercase tracking-widest mb-2">Job Title</label>
+                <input required name="jobTitle" value=${formData.jobTitle} onInput=${handleChange} class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-blue transition" placeholder="CISO / IT Mgr" />
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-brand-light-secondary uppercase tracking-widest mb-2">Country</label>
+                <input required name="country" value=${formData.country} onInput=${handleChange} class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-blue transition" placeholder="e.g. United States" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-brand-light-secondary uppercase tracking-widest mb-2">Mobile Phone</label>
+                <input required type="tel" name="phone" value=${formData.phone} onInput=${handleChange} class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-blue transition" placeholder="+1 (555) 000-0000" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-brand-light-secondary uppercase tracking-widest mb-2">Number of Users</label>
+              <select required name="userCount" value=${formData.userCount} onChange=${handleChange} class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-blue transition appearance-none">
+                <option value="" disabled selected>Select user range...</option>
+                <option value="1-50">1-50 Users</option>
+                <option value="51-250">51-250 Users</option>
+                <option value="251-1000">251-1,000 Users</option>
+                <option value="1000+">1,000+ Users</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-brand-light-secondary uppercase tracking-widest mb-2">How can we help?</label>
+              <textarea name="message" value=${formData.message} onInput=${handleChange} class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-blue transition h-32" placeholder="Tell us about your security goals..."></textarea>
+            </div>
+            
+            <button disabled=${status === 'sending'} type="submit" class="w-full bg-brand-blue hover:bg-brand-cyan text-brand-dark font-black py-4 rounded-xl transition shadow-xl shadow-brand-blue/20 flex items-center justify-center space-x-2">
+              ${status === 'sending' ? html`
+                <svg class="animate-spin h-5 w-5 text-brand-dark" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span>Sending...</span>
+              ` : 'Submit Request'}
+            </button>
+            <p class="text-center text-[10px] text-brand-light-secondary opacity-50 uppercase tracking-tighter">
+              By clicking "Submit Request", you agree to our Terms of Service and Privacy Policy.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+  `;
+};
+
 const PrivacyPolicyView = () => html`
   <section class="max-w-4xl mx-auto py-24 px-6 animate-fade-in-up">
     <div class="mb-16 text-center border-b border-white/10 pb-12">
@@ -136,7 +306,7 @@ const PrivacyPolicyView = () => html`
 
       <div class="bg-brand-dark-secondary p-8 rounded-2xl border border-white/5 text-center">
         <p class="text-white font-bold mb-2">Questions or Privacy Requests?</p>
-        <p>Contact our Data Protection Officer at <a href="mailto:privacy@eyeballsec.com" class="text-brand-blue hover:underline">privacy@eyeballsec.com</a></p>
+        <p>Contact our Data Protection Officer at <a onClick=${() => window.location.hash = 'contact'} class="text-brand-blue hover:underline cursor-pointer">via our contact form</a></p>
       </div>
     </div>
   </section>
@@ -201,13 +371,13 @@ const TermsOfServiceView = () => html`
 
       <div class="bg-brand-dark-secondary p-8 rounded-2xl border border-white/5 text-center mt-12">
         <p class="text-white font-bold mb-2 text-sm uppercase tracking-widest">Legal Inquiries</p>
-        <p class="text-sm">For legal notices, please reach out to <a href="mailto:legal@eyeballsec.com" class="text-brand-cyan hover:underline">legal@eyeballsec.com</a></p>
+        <p class="text-sm">For legal notices, please reach out to <a onClick=${() => window.location.hash = 'contact'} class="text-brand-cyan hover:underline cursor-pointer">our legal contact portal</a></p>
       </div>
     </div>
   </section>
 `;
 
-const FreemiumView = () => {
+const FreemiumView = ({ handleNavigate }) => {
     return html`
         <section class="min-h-[80vh] flex flex-col items-center justify-center py-20 px-4 animate-fade-in-up">
             <div class="max-w-4xl w-full">
@@ -254,9 +424,9 @@ const FreemiumView = () => {
                                 Extension Management
                             </li>
                         </ul>
-                        <a href="https://console.eyeballsecurity.com" target="_blank" rel="noopener noreferrer" class="w-full bg-brand-blue hover:bg-brand-cyan text-brand-dark font-bold py-4 rounded-xl transition-all shadow-lg shadow-brand-blue/20 text-center block">
+                        <button onClick=${() => handleNavigate('contact')} class="w-full bg-brand-blue hover:bg-brand-cyan text-brand-dark font-bold py-4 rounded-xl transition-all shadow-lg shadow-brand-blue/20 text-center block">
                             Get Started Now
-                        </a>
+                        </button>
                     </div>
                     <div class="bg-white/5 border border-white/10 rounded-3xl p-8 flex flex-col opacity-80 hover:opacity-100 transition-opacity">
                         <h3 class="text-2xl font-bold text-white mb-2">Pro</h3>
@@ -280,22 +450,17 @@ const FreemiumView = () => {
                                 Uncompromising Enterprise DLP capability across all web interactions
                             </li>
                         </ul>
-                        <a href="mailto:info@eyeballsecurity.com" class="w-full border border-white/20 hover:border-white/50 text-white font-bold py-4 rounded-xl transition-all text-center">
+                        <button onClick=${() => handleNavigate('contact')} class="w-full border border-white/20 hover:border-white/50 text-white font-bold py-4 rounded-xl transition-all text-center">
                             Contact Us
-                        </a>
+                        </button>
                     </div>
-                </div>
-                <div class="mt-16 bg-brand-blue/5 border border-brand-blue/10 rounded-2xl p-6 text-center">
-                    <p class="text-brand-light-secondary text-sm">
-                        No credit card required to start. Experience the future of browser security in under 60 seconds.
-                    </p>
                 </div>
             </div>
         </section>
     `;
 }
 
-const BusinessFeatures = ({ onStartFree }) => {
+const BusinessFeatures = ({ onStartFree, onContact }) => {
     const features = [
         {
             icon: html`<${ShieldIcon} />`,
@@ -367,7 +532,7 @@ const BusinessFeatures = ({ onStartFree }) => {
                 <div class="text-xl text-brand-light-secondary max-w-3xl mx-auto leading-relaxed">
                     Elite Protection, Zero Complexity. SMBs and SMEs deserve Pro-grade security without the management nightmare. 
                     <span class="text-brand-blue block mt-2 font-semibold">No lag. No overhead. Just total clarity.</span>
-                    <div class="text-2xl md:text-3xl font-black text-brand-cyan mt-6 drop-shadow-sm animate-pulse-soft cursor-pointer hover:scale-105 transition-transform" onClick=${onStartFree}>
+                    <div class="text-2xl md:text-3xl font-black text-brand-cyan mt-6 drop-shadow-sm animate-pulse-soft cursor-pointer hover:scale-105 transition-transform" onClick=${onContact}>
                         Try it yourself! It's free!
                     </div>
                 </div>
@@ -433,11 +598,10 @@ const BusinessFeatures = ({ onStartFree }) => {
 const App = () => {
   const [view, setView] = useState('landing');
 
-  // Sync state with URL hash for direct links
   useEffect(() => {
     const handleHash = () => {
       const hash = window.location.hash.replace('#', '') || 'landing';
-      const validViews = ['landing', 'freemium', 'privacy', 'terms'];
+      const validViews = ['landing', 'freemium', 'privacy', 'terms', 'contact'];
       if (validViews.includes(hash)) {
         setView(hash);
       }
@@ -445,7 +609,7 @@ const App = () => {
     };
 
     window.addEventListener('hashchange', handleHash);
-    handleHash(); // Initial load
+    handleHash();
 
     return () => window.removeEventListener('hashchange', handleHash);
   }, []);
@@ -469,9 +633,9 @@ const App = () => {
             <div class="flex items-center space-x-6">
               <nav class="hidden md:flex space-x-6 text-sm font-medium text-brand-light-secondary">
                 <button onClick=${() => handleNavigate('landing')} class="hover:text-white transition-colors">Features</button>
-                <a href="mailto:info@eyeballsecurity.com" class="hover:text-white transition-colors">Demo</a>
+                <button onClick=${() => handleNavigate('contact')} class="hover:text-white transition-colors">Demo</button>
               </nav>
-              <button onClick=${() => handleNavigate('freemium')} class="bg-brand-blue hover:bg-brand-cyan text-brand-dark px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 shadow-lg shadow-brand-blue/20">
+              <button onClick=${() => handleNavigate('contact')} class="bg-brand-blue hover:bg-brand-cyan text-brand-dark px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 shadow-lg shadow-brand-blue/20">
                 Start for free
               </button>
             </div>
@@ -482,7 +646,8 @@ const App = () => {
       <main class="flex-grow pt-20">
         ${view === 'privacy' ? html`<${PrivacyPolicyView} />` : 
           view === 'terms' ? html`<${TermsOfServiceView} />` :
-          view === 'freemium' ? html`<${FreemiumView} />` : html`
+          view === 'freemium' ? html`<${FreemiumView} handleNavigate=${handleNavigate} />` :
+          view === 'contact' ? html`<${ContactFormView} />` : html`
           <section id="hero" class="relative py-24 md:py-36 overflow-hidden">
              <div class="absolute inset-0 bg-gradient-to-br from-brand-dark via-brand-dark-secondary to-brand-dark bg-300% animate-gradient-bg -z-10"></div>
              <div class="absolute inset-0 bg-grid-pattern opacity-10 -z-10"></div>
@@ -499,9 +664,9 @@ const App = () => {
                 EyeBall transforms the enterprise browser into a fully visible, secure environment. Protect your data, manage SaaS, and eliminate zero-day threats.
               </p>
               <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
-                <a href="mailto:info@eyeballsecurity.com" class="w-full sm:w-auto bg-brand-blue hover:bg-brand-cyan text-brand-dark font-bold py-4 px-10 rounded-full transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-xl shadow-brand-blue/20">
+                <button onClick=${() => handleNavigate('contact')} class="w-full sm:w-auto bg-brand-blue hover:bg-brand-cyan text-brand-dark font-bold py-4 px-10 rounded-full transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-xl shadow-brand-blue/20">
                   Request a Demo
-                </a>
+                </button>
                 <button onClick=${() => {
                     handleNavigate('landing');
                     setTimeout(() => document.getElementById('features-grid')?.scrollIntoView({ behavior: 'smooth' }), 100);
@@ -513,7 +678,7 @@ const App = () => {
             </div>
           </section>
           <div id="features">
-             <${BusinessFeatures} onStartFree=${() => handleNavigate('freemium')} />
+             <${BusinessFeatures} onStartFree=${() => handleNavigate('contact')} onContact=${() => handleNavigate('contact')} />
           </div>
         `}
       </main>
@@ -528,7 +693,7 @@ const App = () => {
           <div class="mt-6 flex justify-center space-x-8 text-sm text-brand-light-secondary">
              <button onClick=${() => handleNavigate('privacy')} class="hover:text-white transition">Privacy Policy</button>
              <button onClick=${() => handleNavigate('terms')} class="hover:text-white transition">Terms of Service</button>
-             <a href="mailto:support@eyeballsecurity.com" class="hover:underline">Contact Support</a>
+             <button onClick=${() => handleNavigate('contact')} class="hover:text-white transition">Contact Sales</button>
           </div>
         </div>
       </footer>
