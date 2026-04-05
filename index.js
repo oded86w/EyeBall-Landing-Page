@@ -775,11 +775,75 @@ const CaseStudies = () => {
   `;
 };
 
+const VerticalLandingPages = () => html`
+  <section id="verticals" class="py-24 bg-brand-dark-secondary border-y border-white/5">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="bg-white/5 border border-white/10 rounded-3xl p-10 hover:bg-white/[0.08] transition-all">
+          <h2 class="text-3xl font-bold text-white mb-6">DLP for ChatGPT & GenAI</h2>
+          <p class="text-brand-light-secondary mb-8 leading-relaxed">
+            The rise of Generative AI brings new risks. EyeBall provides specialized Data Loss Prevention for ChatGPT, Claude, Gemini, and other LLMs. Prevent sensitive source code, PII, and corporate secrets from being leaked to public AI models in real-time.
+          </p>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-center text-brand-light">
+              <svg class="w-5 h-5 mr-3 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              Real-time prompt redaction
+            </li>
+            <li class="flex items-center text-brand-light">
+              <svg class="w-5 h-5 mr-3 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              Block unauthorized file uploads to LLMs
+            </li>
+            <li class="flex items-center text-brand-light">
+              <svg class="w-5 h-5 mr-3 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              Audit logs for all GenAI interactions
+            </li>
+          </ul>
+          <button onClick=${() => window.location.hash = 'contact'} class="text-brand-blue font-bold hover:underline">Learn more about GenAI protection →</button>
+        </div>
+        
+        <div class="bg-white/5 border border-white/10 rounded-3xl p-10 hover:bg-white/[0.08] transition-all">
+          <h2 class="text-3xl font-bold text-white mb-6">Security for Finance & Healthcare</h2>
+          <p class="text-brand-light-secondary mb-8 leading-relaxed">
+            High-compliance industries require zero-compromise security. EyeBall helps Finance and Healthcare organizations meet strict regulatory requirements (HIPAA, SOC2, GDPR) by securing the primary workspace: the browser.
+          </p>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-center text-brand-light">
+              <svg class="w-5 h-5 mr-3 text-brand-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              HIPAA-compliant data handling
+            </li>
+            <li class="flex items-center text-brand-light">
+              <svg class="w-5 h-5 mr-3 text-brand-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              Prevent PII/PHI leaks in web apps
+            </li>
+            <li class="flex items-center text-brand-light">
+              <svg class="w-5 h-5 mr-3 text-brand-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              Enforce strict tenant restrictions
+            </li>
+          </ul>
+          <button onClick=${() => window.location.hash = 'contact'} class="text-brand-cyan font-bold hover:underline">Explore compliance solutions →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+`;
+
 const FAQ = () => {
   const faqs = [
     {
       question: "What is EyeBall?",
       answer: "EyeBall is a next-generation browser security platform that transforms the enterprise browser into a fully visible, secure environment. It provides full visibility and zero blind spots, protecting your data, managing SaaS usage, and eliminating zero-day threats directly at the browser level."
+    },
+    {
+      question: "What is Browser-Based DLP?",
+      answer: "Browser-Based Data Loss Prevention (DLP) is a security technology that monitors and controls the transfer of sensitive information directly within the web browser. Unlike traditional network-based DLP, it can inspect encrypted traffic and user interactions (like copy-pasting into ChatGPT) without needing complex SSL decryption proxies."
+    },
+    {
+      question: "How does EYEBALL protect against phishing?",
+      answer: "EyeBall uses real-time DOM monitoring and behavioral analysis to detect phishing sites as they load. It can identify unauthorized form manipulation, credential harvesting patterns, and 'ClickFix' social engineering attempts, neutralizing the threat before the user can submit sensitive information."
+    },
+    {
+      question: "Is EYEBALL better than a standard VPN?",
+      answer: "Yes, for browser security. A VPN only encrypts the 'tunnel' between the user and the network; it doesn't see what's happening inside the browser. EyeBall provides deep visibility into web applications, SaaS usage, and data movement, filling the security gaps that VPNs and EDRs leave open."
     },
     {
       question: "How does EyeBall differ from traditional EDR?",
@@ -857,12 +921,10 @@ const App = () => {
             </button>
             <div class="flex items-center space-x-6">
               <nav class="hidden md:flex space-x-6 text-sm font-medium text-brand-light-secondary">
-                <button onClick=${() => handleNavigate('landing')} class="hover:text-white transition-colors">Features</button>
-                <button onClick=${() => {
-                    handleNavigate('landing');
-                    setTimeout(() => document.getElementById('case-studies')?.scrollIntoView({ behavior: 'smooth' }), 100);
-                }} class="hover:text-white transition-colors">Case Studies</button>
-                <button onClick=${() => handleNavigate('contact')} class="hover:text-white transition-colors">Demo</button>
+                <a href="#features" class="hover:text-white transition-colors">Features</a>
+                <a href="#case-studies" class="hover:text-white transition-colors">Case Studies</a>
+                <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+                <a href="#contact" onClick=${(e) => { e.preventDefault(); handleNavigate('contact'); }} class="hover:text-white transition-colors">Demo</a>
               </nav>
               <button onClick=${() => handleNavigate('freemium')} class="bg-brand-blue hover:bg-brand-cyan text-brand-dark px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 shadow-lg shadow-brand-blue/20">
                 Start for free
@@ -885,12 +947,12 @@ const App = () => {
               <span class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-widest text-brand-blue uppercase bg-brand-blue/10 rounded-full border border-brand-blue/20">
                  Secure the Web. Zero blind spots.
               </span>
-              <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight tracking-tighter mb-4">
+              <span class="text-5xl md:text-7xl font-extrabold text-white leading-tight tracking-tighter mb-4 block">
                 EyeBall
-              </h1>
-              <h2 class="text-3xl md:text-5xl font-bold text-brand-cyan mb-8">
+              </span>
+              <h1 class="text-3xl md:text-5xl font-bold text-brand-cyan mb-8">
                 The Browser is Your Perimeter. Secure It.
-              </h2>
+              </h1>
               <p class="max-w-3xl mx-auto text-lg md:text-xl text-brand-light-secondary mb-12 leading-relaxed">
                 EyeBall is a next-generation browser security platform that transforms the enterprise browser into a fully visible, secure environment. By providing full visibility and zero blind spots, EyeBall protects your data, manages SaaS usage, and eliminates zero-day threats directly at the browser level.
               </p>
@@ -911,6 +973,7 @@ const App = () => {
           <div id="features">
              <${BusinessFeatures} onStartFree=${() => handleNavigate('freemium')} onContact=${() => handleNavigate('contact')} />
           </div>
+          <${VerticalLandingPages} />
           <${CaseStudies} />
           <${FAQ} />
         `}
