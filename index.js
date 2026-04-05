@@ -165,26 +165,7 @@ const ContactFormView = () => {
             Ready to eliminate visibility gaps? Fill out the form to request a custom demo or a Pro trial tailored to your organization's needs.
           </p>
           
-          <div class="space-y-6">
-            <div class="flex items-center space-x-4">
-              <div class="w-10 h-10 rounded-lg bg-brand-blue/10 flex items-center justify-center text-brand-blue">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-              </div>
-              <span class="text-brand-light font-medium">Personalized platform walkthrough</span>
-            </div>
-            <div class="flex items-center space-x-4">
-              <div class="w-10 h-10 rounded-lg bg-brand-blue/10 flex items-center justify-center text-brand-blue">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-              </div>
-              <span class="text-brand-light font-medium">SaaS visibility assessment</span>
-            </div>
-            <div class="flex items-center space-x-4">
-              <div class="w-10 h-10 rounded-lg bg-brand-blue/10 flex items-center justify-center text-brand-blue">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-              </div>
-              <span class="text-brand-light font-medium">Expert DLP strategy consultation</span>
-            </div>
-          </div>
+
         </div>
 
         <div class="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm shadow-2xl">
@@ -239,10 +220,10 @@ const ContactFormView = () => {
                   <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
                 <span>Sending...</span>
-              ` : 'Request Demo'}
+              ` : 'Submit Request'}
             </button>
             <p class="text-center text-[10px] text-brand-light-secondary opacity-50 uppercase tracking-tighter">
-              By clicking "Request Demo", you agree to our Terms of Service and Privacy Policy.
+              By clicking "Submit Request", you agree to our Terms of Service and Privacy Policy.
             </p>
           </form>
         </div>
@@ -449,7 +430,7 @@ const TermsOfServiceView = () => html`
 
       <div class="bg-brand-dark-secondary p-8 rounded-2xl border border-white/5 text-center mt-12">
         <p class="text-white font-bold mb-2 text-sm uppercase tracking-widest">LEGAL CONTACT</p>
-        <p class="text-xs">For legal inquiries or formal notices, please contact <a onClick=${() => window.location.hash = 'contact'} class="text-brand-cyan hover:underline cursor-pointer">legal@eyeballsecurity.com</a></p>
+        <p class="text-xs">For legal inquiries or formal notices, please contact <a onClick=${() => window.location.hash = 'freemium'} class="text-brand-cyan hover:underline cursor-pointer">legal@eyeballsecurity.com</a></p>
       </div>
     </div>
   </section>
@@ -529,7 +510,7 @@ const FreemiumView = () => {
                             </li>
                         </ul>
                         <button onClick=${() => window.location.hash = 'contact'} class="w-full border border-white/20 hover:border-white/50 text-white font-bold py-4 rounded-xl transition-all text-center">
-                            Contact Us
+                            Get Started
                         </button>
                     </div>
                 </div>
@@ -543,7 +524,7 @@ const FreemiumView = () => {
     `;
 }
 
-const BusinessFeatures = ({ onStartFree, onContact }) => {
+const BusinessFeatures = ({ onStartFree }) => {
     const features = [
         {
             icon: html`<${ShieldIcon} />`,
@@ -798,7 +779,7 @@ const VerticalLandingPages = () => html`
               Audit logs for all GenAI interactions
             </li>
           </ul>
-          <button onClick=${() => window.location.hash = 'contact'} class="text-brand-blue font-bold hover:underline">Learn more about GenAI protection →</button>
+          <button onClick=${() => window.location.hash = 'freemium'} class="text-brand-blue font-bold hover:underline">Learn more about GenAI protection →</button>
         </div>
         
         <div class="bg-white/5 border border-white/10 rounded-3xl p-10 hover:bg-white/[0.08] transition-all">
@@ -820,7 +801,7 @@ const VerticalLandingPages = () => html`
               Enforce strict tenant restrictions
             </li>
           </ul>
-          <button onClick=${() => window.location.hash = 'contact'} class="text-brand-cyan font-bold hover:underline">Explore compliance solutions →</button>
+          <button onClick=${() => window.location.hash = 'freemium'} class="text-brand-cyan font-bold hover:underline">Explore compliance solutions →</button>
         </div>
       </div>
     </div>
@@ -937,7 +918,6 @@ const App = () => {
                 <a href="#features" class="hover:text-white transition-colors">Features</a>
                 <a href="#case-studies" class="hover:text-white transition-colors">Case Studies</a>
                 <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
-                <a href="#contact" onClick=${(e) => { e.preventDefault(); handleNavigate('contact'); }} class="hover:text-white transition-colors">Demo</a>
               </nav>
               <a href="#freemium" onClick=${(e) => { e.preventDefault(); handleNavigate('freemium'); }} class="bg-brand-blue hover:bg-brand-cyan text-brand-dark px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 shadow-lg shadow-brand-blue/20">
                 Start for free
@@ -966,12 +946,13 @@ const App = () => {
               <h1 class="text-3xl md:text-5xl font-bold text-brand-cyan mb-8">
                 The Browser is Your Perimeter. Secure It.
               </h1>
-              <p class="max-w-3xl mx-auto text-lg md:text-xl text-brand-light-secondary mb-12 leading-relaxed">
+              <p class="max-w-3xl mx-auto text-lg md:text-xl text-brand-light-secondary mb-4 leading-relaxed">
                 EyeBall is a next-generation browser security platform that transforms the enterprise browser into a fully visible, secure environment. By providing full visibility and zero blind spots, EyeBall protects your data, manages SaaS usage, and eliminates zero-day threats directly at the browser level.
               </p>
+              <p class="mt-4 text-brand-blue font-bold text-xl mb-12">Up-To 200 seats Totally Free!</p>
               <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
-                <a href="#contact" onClick=${(e) => { e.preventDefault(); handleNavigate('contact'); }} class="w-full sm:w-auto bg-brand-blue hover:bg-brand-cyan text-brand-dark font-bold py-4 px-10 rounded-full transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-xl shadow-brand-blue/20 text-center">
-                  Request a Demo
+                <a href="#freemium" onClick=${(e) => { e.preventDefault(); handleNavigate('freemium'); }} class="w-full sm:w-auto bg-brand-blue hover:bg-brand-cyan text-brand-dark font-bold py-4 px-10 rounded-full transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-xl shadow-brand-blue/20 text-center">
+                  Easy to deploy - Try now
                 </a>
                 <a href="#features" class="text-white hover:text-brand-blue font-semibold transition-colors flex items-center group">
                   Explore Technology
@@ -981,7 +962,7 @@ const App = () => {
             </div>
           </section>
           <div id="features">
-             <${BusinessFeatures} onStartFree=${() => handleNavigate('freemium')} onContact=${() => handleNavigate('contact')} />
+             <${BusinessFeatures} onStartFree=${() => handleNavigate('freemium')} />
           </div>
           <${VerticalLandingPages} />
           <${CaseStudies} />
@@ -999,7 +980,6 @@ const App = () => {
           <div class="mt-6 flex justify-center space-x-8 text-sm text-brand-light-secondary">
              <a href="#privacy" onClick=${(e) => { e.preventDefault(); handleNavigate('privacy'); }} class="hover:text-white transition">Privacy Policy</a>
              <a href="#terms" onClick=${(e) => { e.preventDefault(); handleNavigate('terms'); }} class="hover:text-white transition">Terms of Service</a>
-             <a href="#contact" onClick=${(e) => { e.preventDefault(); handleNavigate('contact'); }} class="hover:text-white transition">Contact Sales</a>
           </div>
         </div>
       </footer>
