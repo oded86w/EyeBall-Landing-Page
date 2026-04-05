@@ -891,17 +891,30 @@ const App = () => {
     const handleHash = () => {
       const hash = window.location.hash.replace('#', '') || 'landing';
       const validViews = ['landing', 'freemium', 'privacy', 'terms', 'contact'];
+      const landingSections = ['features', 'case-studies', 'faq', 'verticals', 'hero'];
+
       if (validViews.includes(hash)) {
         setView(hash);
+        window.scrollTo(0, 0);
+      } else if (landingSections.includes(hash)) {
+        if (view !== 'landing') {
+          setView('landing');
+        }
+        // Allow time for the view to switch before scrolling
+        setTimeout(() => {
+          const element = document.getElementById(hash === 'features' ? 'features-grid' : hash);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
       }
-      window.scrollTo(0, 0);
     };
 
     window.addEventListener('hashchange', handleHash);
     handleHash(); // Initial load
 
     return () => window.removeEventListener('hashchange', handleHash);
-  }, []);
+  }, [view]);
 
   const handleNavigate = (newView) => {
     window.location.hash = newView;
@@ -912,13 +925,13 @@ const App = () => {
       <header class="bg-brand-dark/90 backdrop-blur-xl fixed top-0 left-0 right-0 z-50 border-b border-white/5">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex items-center justify-between h-20">
-            <button onClick=${() => handleNavigate('landing')} class="flex items-center space-x-3 focus:outline-none group">
+            <a href="#landing" onClick=${(e) => { e.preventDefault(); handleNavigate('landing'); }} class="flex items-center space-x-3 focus:outline-none group">
               <div class="relative">
                  <div class="absolute -inset-1 bg-brand-blue rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
                  <${Logo} className="relative h-12 w-auto" />
               </div>
               <span class="text-2xl font-bold text-white tracking-tight">EyeBall</span>
-            </button>
+            </a>
             <div class="flex items-center space-x-6">
               <nav class="hidden md:flex space-x-6 text-sm font-medium text-brand-light-secondary">
                 <a href="#features" class="hover:text-white transition-colors">Features</a>
@@ -926,9 +939,9 @@ const App = () => {
                 <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
                 <a href="#contact" onClick=${(e) => { e.preventDefault(); handleNavigate('contact'); }} class="hover:text-white transition-colors">Demo</a>
               </nav>
-              <button onClick=${() => handleNavigate('freemium')} class="bg-brand-blue hover:bg-brand-cyan text-brand-dark px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 shadow-lg shadow-brand-blue/20">
+              <a href="#freemium" onClick=${(e) => { e.preventDefault(); handleNavigate('freemium'); }} class="bg-brand-blue hover:bg-brand-cyan text-brand-dark px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 shadow-lg shadow-brand-blue/20">
                 Start for free
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -957,16 +970,13 @@ const App = () => {
                 EyeBall is a next-generation browser security platform that transforms the enterprise browser into a fully visible, secure environment. By providing full visibility and zero blind spots, EyeBall protects your data, manages SaaS usage, and eliminates zero-day threats directly at the browser level.
               </p>
               <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
-                <button onClick=${() => handleNavigate('contact')} class="w-full sm:w-auto bg-brand-blue hover:bg-brand-cyan text-brand-dark font-bold py-4 px-10 rounded-full transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-xl shadow-brand-blue/20">
+                <a href="#contact" onClick=${(e) => { e.preventDefault(); handleNavigate('contact'); }} class="w-full sm:w-auto bg-brand-blue hover:bg-brand-cyan text-brand-dark font-bold py-4 px-10 rounded-full transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-xl shadow-brand-blue/20 text-center">
                   Request a Demo
-                </button>
-                <button onClick=${() => {
-                    handleNavigate('landing');
-                    setTimeout(() => document.getElementById('features-grid')?.scrollIntoView({ behavior: 'smooth' }), 100);
-                }} class="text-white hover:text-brand-blue font-semibold transition-colors flex items-center group">
+                </a>
+                <a href="#features" class="text-white hover:text-brand-blue font-semibold transition-colors flex items-center group">
                   Explore Technology
                   <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                </button>
+                </a>
               </div>
             </div>
           </section>
@@ -987,9 +997,9 @@ const App = () => {
           </div>
           <p class="text-brand-light-secondary">EyeBall 2025. Secure the Web. All rights reserved.</p>
           <div class="mt-6 flex justify-center space-x-8 text-sm text-brand-light-secondary">
-             <button onClick=${() => handleNavigate('privacy')} class="hover:text-white transition">Privacy Policy</button>
-             <button onClick=${() => handleNavigate('terms')} class="hover:text-white transition">Terms of Service</button>
-             <button onClick=${() => handleNavigate('contact')} class="hover:text-white transition">Contact Sales</button>
+             <a href="#privacy" onClick=${(e) => { e.preventDefault(); handleNavigate('privacy'); }} class="hover:text-white transition">Privacy Policy</a>
+             <a href="#terms" onClick=${(e) => { e.preventDefault(); handleNavigate('terms'); }} class="hover:text-white transition">Terms of Service</a>
+             <a href="#contact" onClick=${(e) => { e.preventDefault(); handleNavigate('contact'); }} class="hover:text-white transition">Contact Sales</a>
           </div>
         </div>
       </footer>
