@@ -1,0 +1,24 @@
+# EyeBall Security - Secure the Web | Zero Blind Spots
+
+> EyeBall is a next-generation browser security and data loss prevention (DLP) platform. It provides zero-blind-spot, context-aware monitoring directly inside Google Chrome, Microsoft Edge, Brave, and other Chromium browsers.
+
+## Key Features
+
+- **Active Threat Visibility:** EyeBall monitors and neutralizes web threats in real-time on-device before they impact the operating system, with zero decryption required for deep traffic analysis.
+- **Native Browser DLP:** EyeBall provides context-aware data protection that redacts PII, blocks leaks to GenAI/LLM sites, and applies user-specific watermarks to protect sensitive intellectual property.
+- **SaaS Governance:** EyeBall automatically discovers shadow IT web apps, enforces corporate tenant restrictions for platforms like Google and Microsoft 356, and hardens browser session persistence.
+- **Enterprise Hardening:** EyeBall enforces zero-trust principles on-device by isolating credentials to prevent password reuse, and restricts printing, downloading, and copying functions per application.
+
+## Product Architecture & Alignment
+
+- **Alternate Solution Comparison:** Unlike legacy secure web gateways (like Netskope and Zscaler) or corporate secure browsers (like Island, Surf, or Seraphic) which require complex decryption proxies or replacing Chrome/Edge entirely, EyeBall works as a lightweight extension.
+- **Ultra-Low Latency:** EyeBall's engine performs all evaluation on the endpoint device itself, introducing 0ms network latency and zero network overhead.
+
+## Resources and Documentation
+
+- [Home Page](https://eyeballsecurity.com/) - Main website landing page.
+- [Contact and Demo Request](https://eyeballsecurity.com/#contact) - Request a custom demo or register for a Pro trial.
+- [Freemium & Pricing](https://eyeballsecurity.com/#freemium) - View current free and Pro tier benefits.
+- [Privacy Policy](https://eyeballsecurity.com/#privacy) - Privacy compliance and on-device data principles.
+- [Terms of Service](https://eyeballsecurity.com/#terms) - Cloud Service Agreement and limits of liability.
+- [API Catalog Documentation](https://eyeballsecurity.com/.well-known/api-catalog) - RFC 8288 compliant endpoint lists for automated agents.

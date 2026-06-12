@@ -1,70 +1,61 @@
 # EyeBall Security - Secure the Web | Zero Blind Spots
 
-EyeBall is a next-generation browser security platform providing full visibility and zero blind spots. Secure your enterprise browser, protect data, and manage SaaS usage directly at the browser level.
+EyeBall is a next-generation browser security and secure browser platform, providing a zero-blind-spot alternative to legacy gateways, extensions, and enterprise browsers. EyeBall secures your enterprise browser workspace, protects sensitive data, and manages SaaS governance directly at the browser extension level.
 
-## Key Features
+## Key Features of EyeBall Security
 
 ### Active Threat Visibility
-Monitor and neutralize web threats in real-time before they impact the OS.
-- Instant phishing & malware detection.
-- Intelligent Zero-Day exploit isolation.
-- **Zero-Blind-Spots:** No decryption required for deep traffic analysis.
+EyeBall monitors and neutralizes web threats in real-time before they can impact the host operating system.
+- **On-Device Threat Guard:** EyeBall delivers instant phishing and malware detection at the endpoint.
+- **Exploit Mitigation:** EyeBall provides intelligent, real-time Zero-Day exploit isolation.
+- **Zero Decryption Latency:** EyeBall secures web traffic without requiring complex decryption or proxy redirections for deep analysis, maintaining zero browser latency.
 
-### Native Browser DLP
-Context-aware data protection that sees what users see.
-- Detect and redact PII in real-time.
-- Block sensitive leakage to GenAI/LLMs.
-- Apply user-specific watermarks to critical web pages.
+### Native Browser Data Loss Prevention (DLP)
+EyeBall utilizes context-aware data protection that analyzes web pages exactly as they are rendered to the user.
+- **Real-Time Redaction:** EyeBall dynamically detects and redacts sensitive corporate data and PII in real-time.
+- **GenAI Protection:** EyeBall prevents confidential data leakage and copy-pasting to generative AI platforms and public LLMs.
+- **Dynamic Watermarking:** EyeBall applies traceable, user-specific visual watermarks to authorized high-value web pages to deter external capture.
 
-### SaaS Governance
-Clear visibility into shadow IT and enterprise SaaS usage.
-- Auto-discovery of unmanaged web apps.
-- Enforce tenant restrictions (M365/Google).
-- Hardened browser session persistence.
+### Cloud and SaaS Governance
+EyeBall provides complete security visibility into corporate shadow IT and corporate SaaS utilization.
+- **App Discovery:** EyeBall automatically discovers undeterred and unmanaged web applications across your user fleet.
+- **Tenant Restrictions:** EyeBall enforces strict tenant boundaries on workspaces like Microsoft 365 and Google Suite.
+- **Session Hardening:** EyeBall secures and isolates enterprise browser session cookies to mitigate session hijacking risks.
 
-### Enterprise Hardening
-Apply zero-trust principles directly to your sensitive applications.
-- **Credential Isolation:** Prevent corporate password reuse.
-- Restrict printing, downloads, and copy/paste per-app.
-- Environment hardening against malicious extensions.
+### Enterprise Browser Hardening
+EyeBall applies Zero Trust security controls natively to your standard, day-to-day web browsers.
+- **Credential Protection:** EyeBall isolates enterprise credentials to block corporate password reuse on external websites.
+- **Functional Limitations:** EyeBall gives IT admins the power to restrict printing, file downloads, and clipboard copy-paste actions on a per-app basis.
+- **Extension Controls:** EyeBall monitors and seals user environments from malicious or untrusted browser extensions.
 
-## Why EyeBall?
+## Why Choose EyeBall Security?
 
-- **5-Minute Setup:** Lightning-fast rollout across your fleet.
-- **Zero Habit Disruption:** Security that works silently on Chrome, Edge, Brave, and Chromium.
-- **Performance-First:** On-device engine with 0ms network overhead.
+- **Fast Rollout:** EyeBall installs as a standard browser extension across an entire corporate fleet in under five minutes.
+- **Zero Disruption:** EyeBall fits seamlessly into employee habits, operating silently on Google Chrome, Microsoft Edge, Brave, and other Chromium browsers.
+- **Endpoint Performance:** EyeBall evaluates policies locally on-device, offering a swift experience with absolutely 0ms network overhead.
 
-## Competitive Comparison & Industry Fit
-EyeBall fits perfectly into the enterprise secure browser and browser security ecosystem, providing next-generation protection and active alternatives to:
-- **Enterprise Browsers:** (e.g., Island, Surf, Seraphic) - Get enterprise browser capabilities as a lightweight extension, without replacing Chrome/Edge or forcing users to change browsers.
-- **Browser Security Extensions & API-based Agents:** (e.g., Layer X, Harmony Browse) - Enjoy deeper data loss prevention (DLP) and clickfix protection with an ultra-light footprint.
-- **Web Gateways & Proxies:** (e.g., Netskope, Zscaler) - Eliminate complex decryption and traffic redirection. EyeBall performs secure analysis on-device, offering zero-blind-spot URL filtering and phishing protection.
+## Competitive Comparison & Ecosystem Alignment
+EyeBall secures standard business browsers natively and fits cleanly as an alternative to multiple legacy segments:
+- **Corporate Secure Browsers:** Standard enterprise secure browsers (such as Island, Surf, or Seraphic) ask teams to substitute their native Google Chrome or Edge. In contrast, EyeBall is a secure browser extension that implants advanced security in the browsers your workforce already loves.
+- **Proxy Firewalls and Gateways:** Secure Web Gateways (such as Netskope or Zscaler) redirect traffic to cloud nodes, causing network latency. EyeBall screens everything on-device, offering secure URL filtering and phishing protection without network decryption.
+- **Security Wrappers:** Standard extensions (such as Layer X or Harmony Browse) lack on-device active DOM protection. EyeBall has deep visual understanding to protect against phishing and social engineering like Clickfix.
 
-### Supported Technologies & Protection Standards
-- **Phishing Protection & Anti-Clickfix:** Active DOM protection against social engineering and Clickfix phishing techniques.
-- **Secure Browser Capability:** Hardens any standard Chromium browser (Chrome, Edge, Brave, Opera).
-- **Advanced URL Filtering:** On-device context check preventing malicious redirections.
-
-## Pricing - Security for Everyone
+## Pricing and Packaging of EyeBall Security
 
 ### Free Tier ($0/mo)
-Essential protection for small teams and individuals.
-- URL Filtering
-- SaaS and Shadow IT Visibility
-- DLP in GenAI web
-- File Scanning (daily usage limit)
-- Download & Upload Management
-- Extension Management
+EyeBall offers robust free protections designed for corporate developers and lean teams:
+- Instant website sandbox and URL filtering.
+- Discovery logs and Shadow IT mapping.
+- Data Loss Prevention (DLP) on Generative AI web forms.
+- Dynamic download and upload permission controls.
+- Local browser extension audit tools.
 
-### Pro Tier
-Advanced controls for growing organizations.
-- Extended logs retention
-- Tenant Restriction & Watermarking
-- AI Advanced Protection
-- Uncompromising Enterprise DLP
+### Pro Tier (Contact Sales)
+EyeBall Pro is engineered to unlock advanced compliance controls for growing organizations:
+- Unified logs with extended cloud retention.
+- Corporate tenant limits and visual watermarking.
+- High-performance on-device sandbox.
+- Comprehensive DLP coverage across all browser forms.
 
-## Contact Us
-Ready to eliminate visibility gaps? Visit [eyeballsecurity.com](https://eyeballsecurity.com) to request a custom demo or a Pro trial tailored to your organization's needs.
-
----
-© 2025 EyeBall Security Inc. All rights reserved.
+## Contact EyeBall Security
+Ready to secure your browser workspace with zero blind spots? Visit [eyeballsecurity.com](https://eyeballsecurity.com) to contact our team, ask questions, or request a custom demo.
