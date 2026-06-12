@@ -9,11 +9,20 @@
     <meta name="description" content="EyeBall is a next-generation browser security and secure browser platform, providing a zero-blind-spot alternative to legacy gateways, extensions, and enterprise browsers like Netskope, Zscaler, Harmony Browse, Surf, Seraphic, Island, and Layer X with advanced URL filtering, Clickfix protection, and phishing protection." />
     <meta name="keywords" content="Netskope, Zscaler, Harmony browse, Surf, Seraphic, Island security, Layer X, URL filtering, Browser security, Clickfix, Phishing protection, Secure browser, Enterprise Browser, DLP, Browser Isolation" />
     
-    <!-- Open Graph / SEO -->
+    <!-- Open Graph & Freshness Metadata -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="EyeBall - Secure the Web | Zero Blind Spots" />
     <meta property="og:description" content="Zero-blind-spot secure browser extension and platform. Next-gen DLP and security alternative to Netskope, Zscaler, Harmony Browse, Surf, Seraphic, Island, and Layer X." />
     <meta property="og:url" content="https://eyeballsecurity.com" />
+    <meta property="og:updated_time" content="2026-06-12T12:31:26-07:00" />
+    <meta name="revised" content="Thursday, June 12th, 2026, 12:31 pm" />
+    <meta name="last-modified" content="2026-06-12T12:31:26-07:00" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="EyeBall - Secure the Web | Zero Blind Spots" />
+    <meta name="twitter:description" content="Next-generation context-aware browser security and secure browser platform. Advanced DLP, URL filtering, and Clickfix protection as an ultra-light browser extension." />
+    <meta name="twitter:image" content="https://eyeballsecurity.com/favicon-96x96.png" />
     
     <!-- Agent Discovery Links (RFC 8288 fallback for GitHub Pages) -->
     <link rel="api-catalog" href="/.well-known/api-catalog" />
@@ -23,27 +32,52 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "EYEBALL",
-      "url": "https://eyeballsecurity.com",
-      "applicationCategory": "SecurityApplication",
-      "operatingSystem": "Windows, macOS, Linux, Chrome, Edge, Brave, Opera",
-      "description": "Zero-blind-spot secure browser extension and security platform. Offers context-aware browser security, DLP, URL filtering, and Clickfix protection as an alternative to Netskope, Zscaler, Harmony Browse, Surf, Seraphic, Island, and Layer X.",
-      "keywords": "Netskope, Zscaler, Harmony browse, Surf, Seraphic, Island security, Layer X, URL filtering, Browser security, Clickfix, Phishing protection, Secure browser, Enterprise Browser, DLP, Browser Isolation",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "featureList": [
-        "DLP (Data Loss Prevention)",
-        "GenAI Protection",
-        "Clickfix Protection",
-        "Phishing Protection",
-        "Extension Security",
-        "URL filtering",
-        "Secure browser",
-        "Enterprise Browser alternatives"
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://eyeballsecurity.com/#software",
+          "name": "EYEBALL",
+          "url": "https://eyeballsecurity.com",
+          "applicationCategory": "SecurityApplication",
+          "operatingSystem": "Windows, macOS, Linux, Chrome, Edge, Brave, Opera",
+          "description": "Zero-blind-spot secure browser extension and security platform. Offers context-aware browser security, DLP, URL filtering, and Clickfix protection as an alternative to Netskope, Zscaler, Harmony Browse, Surf, Seraphic, Island, and Layer X.",
+          "keywords": "Netskope, Zscaler, Harmony browse, Surf, Seraphic, Island security, Layer X, URL filtering, Browser security, Clickfix, Phishing protection, Secure browser, Enterprise Browser, DLP, Browser Isolation",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "featureList": [
+            "DLP (Data Loss Prevention)",
+            "GenAI Protection",
+            "Clickfix Protection",
+            "Phishing Protection",
+            "Extension Security",
+            "URL filtering",
+            "Secure browser",
+            "Enterprise Browser alternatives"
+          ]
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://eyeballsecurity.com/#organization",
+          "name": "EyeBall Security Inc.",
+          "url": "https://eyeballsecurity.com",
+          "logo": "https://eyeballsecurity.com/logo.svg",
+          "sameAs": []
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://eyeballsecurity.com/#website",
+          "name": "EyeBall Security",
+          "url": "https://eyeballsecurity.com",
+          "description": "Zero-blind-spot secure browser extension and platform.",
+          "publisher": {
+            "@id": "https://eyeballsecurity.com/#organization"
+          },
+          "datePublished": "2025-05-10T08:00:00+00:00",
+          "dateModified": "2026-06-12T12:31:26+00:00"
+        }
       ]
     }
     </script>
@@ -119,8 +153,125 @@
 <link rel="stylesheet" href="/index.css">
 </head>
   <body class="bg-brand-dark text-brand-light font-sans antialiased">
-    <div id="root"></div>
+    <div id="root">
+      <!-- Semantic HTML5 pre-rendered fallback layout (enables SSR/SEO compatibility for plain crawlers and GitHub Pages) -->
+      <header id="site-header" class="py-6 border-b border-white/10 bg-brand-dark/95 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+          <div class="flex items-center space-x-3">
+            <img id="header-logo" src="/logo.svg" class="h-10 w-auto" alt="EyeBall Logo" />
+            <span id="header-brand-name" class="text-xl font-bold text-white tracking-wider">EYEBALL</span>
+          </div>
+          <nav id="header-nav" class="hidden md:flex space-x-8 text-sm font-semibold text-brand-light-secondary">
+            <a id="nav-features" href="#features" class="hover:text-white transition">Features</a>
+            <a id="nav-why" href="#why-eyeball" class="hover:text-white transition">Why EyeBall</a>
+            <a id="nav-pricing" href="#pricing" class="hover:text-white transition">Pricing</a>
+            <a id="nav-faq" href="#faq" class="hover:text-white transition">FAQ</a>
+          </nav>
+          <a id="header-cta-button" href="#contact" class="bg-brand-blue hover:bg-brand-cyan text-brand-dark px-5 py-2.5 rounded-full text-sm font-bold transition">Request Demo</a>
+        </div>
+      </header>
+
+      <main id="main-content">
+        <!-- Hero Section -->
+        <section id="hero" class="relative py-20 overflow-hidden bg-grid-pattern">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <span id="hero-badge" class="px-4 py-1.5 mb-6 inline-block text-xs font-bold text-brand-blue uppercase bg-brand-blue/10 rounded-full border border-brand-blue/20">The Secure Browser Alternative</span>
+            <h1 id="hero-title" class="text-5xl md:text-7xl font-black text-white mb-6 leading-tight max-w-5xl mx-auto">Secure the Web with <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-cyan">Zero Blind Spots</span></h1>
+            <p id="hero-description" class="text-xl text-brand-light-secondary max-w-3xl mx-auto mb-10 leading-relaxed">EyeBall is a next-generation browser security and DLP solution. Get enterprise secure browser controls inside standard Chrome or Microsoft Edge, with zero latency and absolute safety.</p>
+            <div id="hero-cta-group" class="flex flex-col sm:flex-row justify-center items-center gap-4">
+              <a id="hero-cta-primary" href="#contact" class="w-full sm:w-auto bg-brand-blue hover:bg-brand-cyan text-brand-dark font-bold px-8 py-4 rounded-full text-lg transition shadow-lg shadow-brand-blue/20 text-center">Get Pro Session</a>
+              <a id="hero-cta-secondary" href="#features-grid" class="w-full sm:w-auto border border-white/20 hover:border-white/50 text-white font-bold px-8 py-4 rounded-full text-lg transition text-center">Explore Capabilities</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-20 border-t border-white/5 bg-brand-dark-secondary">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+              <h2 id="features-title" class="text-3xl md:text-4xl font-extrabold text-white mb-4">Pro Security for Every Scale</h2>
+              <p id="features-subtitle" class="text-lg text-brand-light-secondary">Elite Protection with Zero Complexity.</p>
+            </div>
+            <div id="features-cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <article id="feature-card-threat" class="bg-white/5 border border-white/10 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-white mb-3">Active Threat Visibility</h3>
+                <p class="text-brand-light-secondary text-sm">Monitor and neutralize advanced web threats in real-time, built natively on-device for total privacy.</p>
+              </article>
+              <article id="feature-card-dlp" class="bg-white/5 border border-white/10 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-white mb-3">Native Browser DLP</h3>
+                <p class="text-brand-light-secondary text-sm">Context-aware data prevention that redacts PII and checks forms before submission to public AI environments.</p>
+              </article>
+              <article id="feature-card-saas" class="bg-white/5 border border-white/10 rounded-2xl p-6">
+                <h3 class="text-xl font-bold text-white mb-3">SaaS Governance</h3>
+                <p class="text-brand-light-secondary text-sm">Clear administrative control into unmanaged corporate applications, restricting shadow IT leaks.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- Why Choose Us -->
+        <section id="why-eyeball" class="py-20 bg-brand-dark text-center">
+          <div class="max-w-5xl mx-auto px-4">
+            <h2 id="why-title" class="text-3xl md:text-4xl font-extrabold text-white mb-6">Built For Native Security Flow</h2>
+            <p id="why-description" class="text-lg text-brand-light-secondary mb-8">Deploy seamlessly across thousands of workstations via centralized GPO. Enjoy robust defense mechanisms without shifting browser environments from Chrome or Microsoft Edge.</p>
+          </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="py-20 bg-brand-dark-secondary border-t border-white/10">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+              <h2 id="pricing-title" class="text-3xl md:text-4xl font-extrabold text-white mb-4">Flexible Pricing Tiers</h2>
+              <p id="pricing-subtitle" class="text-lg text-brand-light-secondary">Start with Freemium, scale up dynamically.</p>
+            </div>
+            <div id="pricing-tiers-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              <article id="price-card-free" class="border border-brand-blue/30 rounded-3xl p-8 bg-brand-dark text-left">
+                <h3 class="text-2xl font-bold text-white mb-2">Free Tier</h3>
+                <p class="text-4xl font-extrabold text-white mb-6">$0 <span class="text-sm font-normal text-brand-light-secondary">/ month</span></p>
+                <ul class="space-y-3 text-sm text-brand-light-secondary mb-8">
+                  <li>✓ URL Filtering Protection</li>
+                  <li>✓ SaaS discovery indicators</li>
+                  <li>✓ Data Loss Prevention in GenAI forms</li>
+                </ul>
+              </article>
+              <article id="price-card-pro" class="border border-white/10 rounded-3xl p-8 bg-brand-dark text-left">
+                <h3 class="text-2xl font-bold text-white mb-2">Pro Tier</h3>
+                <p class="text-4xl font-extrabold text-white mb-6">Contact Us</p>
+                <ul class="space-y-3 text-sm text-brand-light-secondary mb-8">
+                  <li>✓ Tenant bounds limit safeguards</li>
+                  <li>✓ Visible and active watermarks on corporate web portals</li>
+                  <li>✓ Unlimited context-aware form protections</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="py-20 bg-brand-dark">
+          <div class="max-w-4xl mx-auto px-4">
+            <h2 id="faq-title" class="text-3xl font-extrabold text-white text-center mb-12">Frequently Asked Questions</h2>
+            <div id="faq-accordion-group" class="space-y-6 text-left">
+              <details id="faq-item-deployment" class="bg-white/5 border border-white/10 rounded-xl p-5 cursor-pointer">
+                <summary class="font-bold text-white text-lg">How is EyeBall deployed?</summary>
+                <p class="mt-3 text-brand-light-secondary text-sm">EyeBall deploys within minutes as an extension across Google Chrome, Edge, and other popular corporate browsers. You do not need to reboot systems or redirect user habits.</p>
+              </details>
+              <details id="faq-item-privacy" class="bg-white/5 border border-white/10 rounded-xl p-5 cursor-pointer">
+                <summary class="font-bold text-white text-lg">How does EyeBall manage privacy?</summary>
+                <p class="mt-3 text-brand-light-secondary text-sm">Most metadata analysis is handled locally on-device. Sensitive information stays secure, and corporate activity reports do not index personalized context data.</p>
+              </details>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer id="site-footer" class="py-12 bg-black border-t border-white/10 text-center">
+        <div class="max-w-7xl mx-auto px-4">
+          <p id="footer-copyright" class="text-xs text-brand-light-secondary">&copy; 2026 EyeBall Security Inc. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
     <!-- Change: Removed leading slash for GitHub Pages compatibility -->
     <script type="module" src="index.js"></script>
-</body>
+  </body>
 </html>

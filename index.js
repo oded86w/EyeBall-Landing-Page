@@ -4,28 +4,7 @@ import { useState, useEffect } from 'preact/hooks';
 import { html } from 'htm/preact';
 
 const Logo = ({ className = "h-10 w-auto" }) => html`
-  <svg class=${className} viewBox="0 0 350 350" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style="stop-color:#00B4D8;stop-opacity:1" />
-        <stop offset="100%" style="stop-color:#0077B6;stop-opacity:1" />
-      </linearGradient>
-      <linearGradient id="innerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style="stop-color:#48CAE4;stop-opacity:1" />
-        <stop offset="100%" style="stop-color:#00B4D8;stop-opacity:1" />
-      </linearGradient>
-    </defs>
-    <path d="M60 40H290V130C290 230 175 300 175 300C175 300 60 230 60 130V40Z" stroke="url(#logoGradient)" stroke-width="12" fill="none" stroke-linejoin="round"/>
-    <path d="M66 46H284V80H66V46Z" fill="url(#logoGradient)"/>
-    <circle cx="90" cy="63" r="6" fill="white"/>
-    <circle cx="115" cy="63" r="6" fill="white"/>
-    <circle cx="140" cy="63" r="6" fill="white"/>
-    <circle cx="175" cy="170" r="60" stroke="url(#innerGradient)" stroke-width="15" fill="none"/>
-    <circle cx="175" cy="170" r="30" fill="url(#logoGradient)"/>
-    <circle cx="190" cy="155" r="10" fill="white"/>
-    <path d="M85 210C100 240 180 270 240 200" stroke="url(#logoGradient)" stroke-width="12" fill="none" stroke-linecap="round"/>
-    <path d="M230 215L245 195L265 215" stroke="url(#logoGradient)" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
+  <img src="/logo.svg" class=${className} alt="EyeBall Logo" />
 `;
 
 const ShieldIcon = () => html`
@@ -987,4 +966,8 @@ const App = () => {
   `;
 };
 
-render(html`<${App} />`, document.getElementById('root'));
+const container = document.getElementById('root');
+if (container) {
+  container.innerHTML = '';
+}
+render(html`<${App} />`, container);
