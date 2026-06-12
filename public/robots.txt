@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# AI Content Usage Preferences (Content Signals)
+# Declaring preferences for training, search, and input usage.
+Content-Signal: ai-train=no, search=yes, ai-input=no
+
+Sitemap: https://eyeballsecurity.com/sitemap.xml
