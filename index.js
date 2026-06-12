@@ -3,9 +3,16 @@ import { render } from 'preact';
 import { useState, useEffect } from 'preact/hooks';
 import { html } from 'htm/preact';
 
-const Logo = ({ className = "h-10 w-auto" }) => html`
-  <img src="logo.svg" class=${className} alt="EyeBall Logo" />
-`;
+const Logo = ({ className = "h-10 w-auto" }) => {
+  const handleError = (e) => {
+    if (e.target && e.target.src && !e.target.src.includes('public/')) {
+      e.target.src = 'public/logo.svg';
+    }
+  };
+  return html`
+    <img src="logo.svg" onError=${handleError} class=${className} alt="EyeBall Logo" />
+  `;
+};
 
 const ShieldIcon = () => html`
   <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-4 text-brand-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor">
