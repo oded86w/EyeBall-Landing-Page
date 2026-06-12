@@ -4,7 +4,7 @@ import { useState, useEffect } from 'preact/hooks';
 import { html } from 'htm/preact';
 
 const Logo = ({ className = "h-10 w-auto" }) => html`
-  <img src="/logo.svg" class=${className} alt="EyeBall Logo" />
+  <img src="logo.svg" class=${className} alt="EyeBall Logo" />
 `;
 
 const ShieldIcon = () => html`
