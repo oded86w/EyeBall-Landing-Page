@@ -426,83 +426,78 @@ const FreemiumView = () => {
     return html`
         <section class="min-h-[80vh] flex flex-col items-center justify-center py-20 px-4 animate-fade-in-up">
             <div class="max-w-4xl w-full">
-                <div class="text-center mb-16">
-                    <span class="inline-block px-4 py-1 mb-4 text-xs font-bold text-brand-green uppercase bg-brand-green/10 rounded-full border border-brand-green/20">
-                        Freemium Model
+                <div class="text-center mb-12">
+                    <span class="inline-block px-4 py-1.5 mb-4 text-xs font-bold text-brand-blue uppercase bg-brand-blue/10 rounded-full border border-brand-blue/20">
+                        EyeBall Platform
                     </span>
-                    <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-6">Security for Everyone</h2>
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-6">Complete Browser Enterprise Protection</h2>
                     <p class="text-xl text-brand-light-secondary max-w-2xl mx-auto leading-relaxed">
-                        We believe that enterprise-grade security should be accessible. With our <strong>Freemium</strong> model, you can experience the power of EyeBall immediately, at no cost.
+                        Unifying state-of-the-art data loss prevention and zero-day threat defense into a single, cohesive, enterprise-grade plan.
                     </p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-white/5 border-2 border-brand-blue/30 rounded-3xl p-8 relative overflow-hidden group">
-                        <div class="absolute top-0 right-0 p-4">
-                            <span class="text-brand-blue font-bold text-xs uppercase tracking-widest bg-brand-blue/10 px-3 py-1 rounded-full">Freemium</span>
+                <div class="max-w-3xl mx-auto bg-gradient-to-b from-white/10 to-white/5 border border-brand-blue/30 rounded-3xl p-8 md:p-12 relative overflow-hidden group shadow-2xl shadow-brand-blue/5">
+                    <div class="absolute top-0 right-0 p-4">
+                        <span class="text-brand-blue font-bold text-xs uppercase tracking-widest bg-brand-blue/10 px-3 py-1 rounded-full">Enterprise Pro</span>
+                    </div>
+                    <div class="mb-8">
+                        <h3 class="text-3xl font-bold text-white mb-3">Enterprise Suite</h3>
+                        <p class="text-brand-light-secondary text-sm">Full client-side monitoring, zero-trust controls, and absolute visibility. Zero blind spots.</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10 text-left">
+                        <div class="flex items-start text-brand-light text-sm">
+                            <svg class="w-5 h-5 mr-3 text-brand-blue flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <span>URL Filtering</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Free Tier</h3>
-                        <p class="text-brand-light-secondary text-sm mb-6">Essential protection for small teams and individuals.</p>
-                        <div class="text-4xl font-extrabold text-white mb-8">$0<span class="text-lg text-brand-light-secondary font-normal">/mo</span></div>
-                        <ul class="space-y-4 mb-10">
-                            <li class="flex items-center text-brand-light text-sm">
-                                <svg class="w-5 h-5 mr-3 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                URL Filtering
-                            </li>
-                            <li class="flex items-center text-brand-light text-sm">
-                                <svg class="w-5 h-5 mr-3 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                SaaS and Shadow IT Visibility
-                            </li>
-                            <li class="flex items-center text-brand-light text-sm">
-                                <svg class="w-5 h-5 mr-3 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                DLP in GenAI web
-                            </li>
-                            <li class="flex items-center text-brand-light text-sm">
-                                <svg class="w-5 h-5 mr-3 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                File Scanning (limit daily usage)
-                            </li>
-                            <li class="flex items-center text-brand-light text-sm">
-                                <svg class="w-5 h-5 mr-3 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Download & Upload Management
-                            </li>
-                            <li class="flex items-center text-brand-light text-sm">
-                                <svg class="w-5 h-5 mr-3 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Extension Management
-                            </li>
-                        </ul>
-                        <a href="https://console.eyeballsecurity.com" target="_blank" rel="noopener noreferrer" class="w-full bg-brand-blue hover:bg-brand-cyan text-brand-dark font-bold py-4 rounded-xl transition-all shadow-lg shadow-brand-blue/20 text-center block">
-                            Get Started Now
-                        </a>
+                        <div class="flex items-start text-brand-light text-sm">
+                            <svg class="w-5 h-5 mr-3 text-brand-blue flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <span>SaaS and Shadow IT Visibility</span>
+                        </div>
+                        <div class="flex items-start text-brand-light text-sm">
+                            <svg class="w-5 h-5 mr-3 text-brand-blue flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <span>DLP in GenAI web</span>
+                        </div>
+                        <div class="flex items-start text-brand-light text-sm">
+                            <svg class="w-5 h-5 mr-3 text-brand-blue flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <span>File Scanning (limit daily usage)</span>
+                        </div>
+                        <div class="flex items-start text-brand-light text-sm">
+                            <svg class="w-5 h-5 mr-3 text-brand-blue flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Download & Upload Management</span>
+                        </div>
+                        <div class="flex items-start text-brand-light text-sm">
+                            <svg class="w-5 h-5 mr-3 text-brand-blue flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Extension Management</span>
+                        </div>
+                        <div class="flex items-start text-brand-light text-sm md:col-span-2">
+                            <svg class="w-5 h-5 mr-3 text-brand-blue flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Protection from browser-based attacks like ClickFix and ClickHijacking</span>
+                        </div>
+                        <div class="flex items-start text-brand-light text-sm">
+                            <svg class="w-5 h-5 mr-3 text-brand-blue flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Tenant Restriction</span>
+                        </div>
+                        <div class="flex items-start text-brand-light text-sm">
+                            <svg class="w-5 h-5 mr-3 text-brand-blue flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Protection on company website and SaaS</span>
+                        </div>
+                        <div class="flex items-start text-brand-light text-sm">
+                            <svg class="w-5 h-5 mr-3 text-brand-blue flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Password Protection</span>
+                        </div>
+                        <div class="flex items-start text-brand-light text-sm md:col-span-2">
+                            <svg class="w-5 h-5 mr-3 text-brand-blue flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Uncompromising Enterprise DLP capability across all web interactions</span>
+                        </div>
                     </div>
-                    <div class="bg-white/5 border border-white/10 rounded-3xl p-8 flex flex-col opacity-80 hover:opacity-100 transition-opacity">
-                        <h3 class="text-2xl font-bold text-white mb-2">Pro</h3>
-                        <p class="text-brand-light-secondary text-sm mb-6">Advanced controls for growing organizations.</p>
-                        <div class="text-4xl font-extrabold text-white mb-8">Contact Sales</div>
-                        <ul class="space-y-4 mb-10 flex-grow">
-                            <li class="flex items-center text-brand-light text-sm">
-                                <svg class="w-5 h-5 mr-3 text-brand-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Extended logs retention
-                            </li>
-                            <li class="flex items-center text-brand-light text-sm">
-                                <svg class="w-5 h-5 mr-3 text-brand-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Tenant Restriction & Watermarking
-                            </li>
-                            <li class="flex items-center text-brand-light text-sm">
-                                <svg class="w-5 h-5 mr-3 text-brand-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                AI Advanced Protection
-                            </li>
-                            <li class="flex items-center text-brand-light text-sm">
-                                <svg class="w-5 h-5 mr-3 text-brand-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Uncompromising Enterprise DLP capability across all web interactions
-                            </li>
-                        </ul>
-                        <button onClick=${() => window.location.hash = 'contact'} class="w-full border border-white/20 hover:border-white/50 text-white font-bold py-4 rounded-xl transition-all text-center">
-                            Get Started
-                        </button>
-                    </div>
+                    
+                    <button onClick=${() => window.location.hash = 'contact'} class="w-full bg-brand-blue hover:bg-brand-cyan text-brand-dark font-bold py-4 rounded-xl transition-all shadow-lg shadow-brand-blue/20 text-center block text-lg transform hover:scale-[1.01] active:scale-95 duration-200">
+                        START NOW
+                    </button>
                 </div>
-                <div class="mt-16 bg-brand-blue/5 border border-brand-blue/10 rounded-2xl p-6 text-center">
+                <div class="mt-12 text-center">
                     <p class="text-brand-light-secondary text-sm">
-                        No credit card required to start. Experience the future of browser security in under 60 seconds.
+                        Securing corporate perimeters and unmanaged devices instantly.
                     </p>
                 </div>
             </div>
@@ -582,8 +577,8 @@ const BusinessFeatures = ({ onStartFree }) => {
                 <div class="text-xl text-brand-light-secondary max-w-3xl mx-auto leading-relaxed">
                     Elite Protection, Zero Complexity. SMBs and SMEs deserve Pro-grade security without the management nightmare. 
                     <span class="text-brand-blue block mt-2 font-semibold">No lag. No overhead. Just total clarity.</span>
-                    <div class="text-2xl md:text-3xl font-black text-brand-cyan mt-6 drop-shadow-sm animate-pulse-soft cursor-pointer hover:scale-105 transition-transform" onClick=${onStartFree}>
-                        Try it yourself! It's free!
+                    <div class="text-2xl md:text-3xl font-black text-brand-blue mt-6 drop-shadow-sm animate-pulse-soft cursor-pointer hover:scale-105 transition-transform" onClick=${onStartFree}>
+                        START NOW →
                     </div>
                 </div>
             </div>
@@ -893,10 +888,7 @@ const App = () => {
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex items-center justify-between h-20">
             <a href="#landing" onClick=${(e) => { e.preventDefault(); handleNavigate('landing'); }} class="flex items-center space-x-3 focus:outline-none group">
-              <div class="relative">
-                 <div class="absolute -inset-1 bg-brand-blue rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-                 <${Logo} className="relative h-12 w-auto" />
-              </div>
+              <${Logo} className="h-12 w-auto transition-transform duration-300 group-hover:scale-105" />
               <span class="text-2xl font-bold text-white tracking-tight">EyeBall</span>
             </a>
             <div class="flex items-center space-x-6">
@@ -906,7 +898,7 @@ const App = () => {
                 <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
               </nav>
               <a href="#freemium" onClick=${(e) => { e.preventDefault(); handleNavigate('freemium'); }} class="bg-brand-blue hover:bg-brand-cyan text-brand-dark px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 shadow-lg shadow-brand-blue/20">
-                Start for free
+                START NOW
               </a>
             </div>
           </div>
@@ -926,19 +918,21 @@ const App = () => {
               <span class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-widest text-brand-blue uppercase bg-brand-blue/10 rounded-full border border-brand-blue/20">
                  Secure the Web. Zero blind spots.
               </span>
-              <span class="text-5xl md:text-7xl font-extrabold text-white leading-tight tracking-tighter mb-4 block">
-                EyeBall
-              </span>
+              <div class="flex items-center justify-center space-x-4 mb-4">
+                <${Logo} className="h-14 sm:h-20 md:h-24 w-auto" />
+                <span class="text-5xl sm:text-6xl md:text-7xl font-extrabold text-white leading-none tracking-tighter">
+                  EyeBall
+                </span>
+              </div>
               <h1 class="text-3xl md:text-5xl font-bold text-brand-cyan mb-8">
                 The Browser is Your Perimeter. Secure It.
               </h1>
-              <p class="max-w-3xl mx-auto text-lg md:text-xl text-brand-light-secondary mb-4 leading-relaxed">
+              <p class="max-w-3xl mx-auto text-lg md:text-xl text-brand-light-secondary mb-12 leading-relaxed">
                 EyeBall is a next-generation browser security platform that transforms the enterprise browser into a fully visible, secure environment. By providing full visibility and zero blind spots, EyeBall protects your data, manages SaaS usage, and eliminates zero-day threats directly at the browser level.
               </p>
-              <p class="mt-4 text-brand-blue font-bold text-xl mb-12">Up-To 200 seats Totally Free!</p>
               <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
                 <a href="#freemium" onClick=${(e) => { e.preventDefault(); handleNavigate('freemium'); }} class="w-full sm:w-auto bg-brand-blue hover:bg-brand-cyan text-brand-dark font-bold py-4 px-10 rounded-full transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-xl shadow-brand-blue/20 text-center">
-                  Easy to deploy - Try now
+                  START NOW
                 </a>
                 <a href="#features" class="text-white hover:text-brand-blue font-semibold transition-colors flex items-center group">
                   Explore Technology
