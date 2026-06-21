@@ -328,95 +328,183 @@ const TermsOfServiceView = () => html`
   <section class="max-w-4xl mx-auto py-24 px-6 animate-fade-in-up">
     <div class="mb-16 text-center border-b border-white/10 pb-12">
       <h1 class="text-5xl font-black text-white mb-4">Terms of Service</h1>
-      <p class="text-brand-cyan font-mono text-sm tracking-widest uppercase">Cloud Service Agreement | Version 3.0 | May 2025</p>
+      <p class="text-brand-cyan font-mono text-sm tracking-widest uppercase">Global Cloud Service Agreement | Version 5.0 | June 2026</p>
+      <p class="text-red-400 font-mono text-xs mt-3 bg-red-950/40 border border-red-500/20 px-4 py-2 rounded-xl inline-block">
+        IMPORTANT LEGAL NOTICE: THIS AGREEMENT CONTAINS A BINDING ARBITRATION PROVISION, CLASS ACTION WAIVER, COVENANT NOT TO SUE, AND ABSOLUTE WARRANTY AND LIABILITY LIMITATIONS.
+      </p>
     </div>
 
     <div class="prose prose-invert prose-brand-blue max-w-none text-brand-light-secondary leading-relaxed space-y-12 text-sm">
+      
+      <div class="bg-white/5 border-l-4 border-brand-blue p-6 rounded-r-2xl border border-white/5 space-y-3">
+        <span class="text-xs font-mono font-bold text-brand-blue uppercase tracking-widest block">LEGAL AGREEMENT</span>
+        <p class="text-xs text-brand-light leading-relaxed">
+          THE TERMS OF SERVICE SET FORTH BELOW (THESE “TERMS”) GOVERN YOUR USE OF EYEBALL SECURITY'S SERVICES (AS DEFINED BELOW) AND ARE A LEGAL AGREEMENT BETWEEN THE INDIVIDUAL USING THE SERVICES AND ANY LEGAL ENTITY ON WHOSE BEHALF SUCH INDIVIDUAL IS ACTING (“YOU” OR “YOUR”) AND EYEBALL SECURITY LTD. (“EYEBALL”). PLEASE READ THESE TERMS CAREFULLY BEFORE USING THE SERVICES.
+        </p>
+        <p class="text-xs text-brand-light leading-relaxed font-bold">
+          BY YOUR USE OF SERVICE PROVIDED OR YOUR CLICKING TO ACCEPT OR AGREE THESE TERMS, YOU AGREE TO BE BOUND BY THESE TERMS. IF YOU DO NOT AGREE WITH ANY OF THESE TERMS, DO NOT ACCESS OR OTHERWISE USE ANY INFORMATION CONTAINED IN THE SERVICE. YOUR CONTINUED USE OF SERVICE PROVIDED SHALL BE DEEMED TO BE YOUR CONTINUED AGREEMENT TO ABIDE BY EACH OF THE TERMS SET FORTH BELOW.
+        </p>
+      </div>
+
       <section>
-        <h2 class="text-2xl font-bold text-white mb-6">1. DEFINITIONS</h2>
-        <p><strong>"Service"</strong> means the EyeBall cloud-based browser security platform, including the management portal, APIs, and associated documentation. <strong>"Software"</strong> means the EyeBall browser extension and any other downloadable components provided by EyeBall. <strong>"Customer Data"</strong> means all data, text, images, or other content submitted by Customer or its Users to the Service. <strong>"Users"</strong> means individuals authorized by Customer to access and use the Service.</p>
+        <h2 class="text-xl font-bold text-white mb-4 border-b border-white/5 pb-2">1. SERVICES</h2>
+        <p><strong>"Services"</strong> shall mean any products, SaaS applications, secure browser extensions, web management portals, client virtualization modules, telemetry pipelines, local client engines, and services provided by EyeBall, including but not limited to the cloud dashboard, browser extension registry, database rules, APIs, and associated defense software provided in connection therewith.</p>
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-white mb-6">2. LICENSE GRANT AND RESTRICTIONS</h2>
+        <h2 class="text-xl font-bold text-white mb-4 border-b border-white/5 pb-2">2. RIGHT TO USE AND RESTRICTIONS</h2>
         <ul class="list-none space-y-4">
           <li class="pl-4 border-l-2 border-brand-cyan">
-            <strong class="text-white block mb-1">2.1 License Grant</strong>
-            Subject to the terms of this Agreement, EyeBall grants Customer a non-exclusive, non-transferable, non-sublicensable, limited-term license to: (a) install and use the Software on managed endpoints; and (b) access and use the Service solely for Customer's internal business security purposes.
+            <strong class="text-white block mb-1">2.1 Right to Use the Services</strong>
+            If You purchased a valid subscription license to a Service, subject to these Terms and the terms specified in Your order for Services (including from an EyeBall authorized reseller or distributor), as approved by EyeBall, at its sole discretion (“Service Order”), and payment of the applicable fees, EyeBall hereby grants only to You, a non-exclusive, non-sublicensable, non-transferable license for the service term specified in your Service Order (“Service Term”) to access and use the Services in accordance with the relevant documentation provided by EyeBall. Except as otherwise specified herein or as agreed in writing, during the Service Term, the subscription license and payment of the applicable fees shall be non-cancellable and non-refundable. You shall not be entitled to a refund of any fees paid for Services that are terminated before the end of the applicable Service term.
           </li>
           <li class="pl-4 border-l-2 border-brand-cyan">
-            <strong class="text-white block mb-1">2.2 Authorized Use Only</strong>
-            Customer agrees to use the Service and Software <strong>ONLY</strong> for the specific security and privacy purposes for which they were created and provided. Any use of the Service for purposes not expressly authorized in this Agreement is strictly prohibited.
+            <strong class="text-white block mb-1">2.2 Permitted Use, Restrictions, and Anti-Reverse Engineering</strong>
+            <p class="mb-2"><strong>Reasonable and Original Intended Purpose:</strong> You hereby expressly represent, warrant, and covenant that You and Your authorized Users shall use the Services and Technology solely and exclusively in a reasonable, lawful manner for their original, intended corporate browser security, threat defense, and data protection purposes as explicitly documented. Any use of the Services for any unintended, excessive, abusive, or unauthorized purposes, or in any manner that impairs or disrupts the hosting infrastructure of EyeBall, is strictly prohibited and constitutes a material, non-curable breach of these Terms.</p>
+            <p class="mb-2"><strong>Absolute Anti-Reverse Engineering, Dismantling, and Deconstruction Bar:</strong> You are strictly and absolutely prohibited from under any circumstances, directly or indirectly: (i) copying, extracts, or replicating any part of the Technology; (ii) reverse engineering, reverse-translating, decompiling, disassembling, tracing, debugging, decrypting, or otherwise attempting to discover or reconstruct the source code, proprietary algorithms, threat signatures, blocklists, internal rules, or database structures of the software, extension, or hosted platform; (iii) investigating, parsing, analyzing, or probing the service architecture to perform comparative analysis, test coverage bypasses, or discover security vulnerabilities without the absolute expressed, notarized written approval of EyeBall's Chief Executive; and (iv) utilizing the software or any output therefrom to develop or train any competitive web security solution or enterprise browser extension.</p>
+            <p>No Service, nor any portion or output of the Technology, may be sold, resold, leased, rented, or distributed to any unauthorized party.</p>
           </li>
           <li class="pl-4 border-l-2 border-brand-cyan">
-            <strong class="text-white block mb-1">2.3 Prohibited Conduct and Anti-Reverse Engineering</strong>
-            Customer shall not, and shall not permit any third party to: (i) copy, modify, or create derivative works of the Service or Software; (ii) <strong>reverse engineer, decompile, disassemble, or otherwise attempt to discover the source code, underlying algorithms, or proprietary logic</strong> of the Software or Service; (iii) <strong>conduct any security research, penetration testing, vulnerability scanning, or competitive analysis</strong> without EyeBall's express prior written consent; (iv) <strong>extract, scrape, harvest, or otherwise "steal" any data, intellectual property, or proprietary information</strong> from the Service; (v) rent, lease, sell, or use the Service for timesharing or service bureau purposes; (vi) remove any proprietary notices or labels; (vii) use the Service to upload or transmit malicious code; (viii) interfere with or disrupt the integrity or performance of the Service; or (ix) attempt to gain unauthorized access to the Service or its related systems.
+            <strong class="text-white block mb-1">2.3 Managed Service Provider</strong>
+            If it is indicated in Your Service Order that You provide the Services to Your customers as a managed service provider (MSP), the Services are licensed to You only for the operations of Your customers. You are responsible for: (i) compliance with these Terms by Your customers; (ii) obtaining the express consent of each Customer to these Terms; and (iii) maintaining evidence of such consent.
+          </li>
+          <li class="pl-4 border-l-2 border-brand-cyan">
+            <strong class="text-white block mb-1">2.4 Trial or Evaluation License</strong>
+            If You use the Services for an initial trial, beta, or evaluation period, the right to use the Services is valid only for the designated period determined by EyeBall, at its sole discretion, and is designed to allow You to evaluate the Services during such period. EyeBall may, in its sole discretion, at any time prior to or during such period, discontinue provision of the Services and terminate the right to use the Services with immediate effect, creating zero liability.
+          </li>
+          <li class="pl-4 border-l-2 border-brand-cyan">
+            <strong class="text-white block mb-1">2.5 Third Party Applications</strong>
+            Certain Services are linked and connected to Third Party Applications or LLMs. You agree that EyeBall has no control over Third Party Applications nor the content or information posted therein. EyeBall shall have no responsibility or liability whatsoever in connection with any Third Party Application.
+          </li>
+          <li class="pl-4 border-l-2 border-brand-cyan">
+            <strong class="text-white block mb-1">2.6 Excess Usage</strong>
+            Without derogating from the above, if Your usage of the Services exceeds the Permitted Scope, EyeBall shall be entitled to: (i) charge You per its list price for such additional Service subscription licenses as required; and (ii) upon notice, limit, suspend or terminate Your license to use the Service.
           </li>
         </ul>
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-white mb-6">3. PROPRIETARY RIGHTS</h2>
-        <p>EyeBall and its licensors own and retain all right, title, and interest in and to the Service, Software, and all intellectual property rights therein. No rights are granted to Customer hereunder other than as expressly set forth in this Agreement. Customer grants EyeBall a worldwide, royalty-free license to use and incorporate into the Service any suggestions, enhancement requests, or other feedback provided by Customer.</p>
+        <h2 class="text-xl font-bold text-white mb-4 border-b border-white/5 pb-2">3. MAINTENANCE AND SUPPORT</h2>
+        <p class="mb-4">Subject to Your purchase of support and maintenance as described in Your Service Order and to payment of the applicable fees, You shall be provided with support and maintenance per the applicable service level indicated in your Service Order.</p>
+        <p><strong>Freemium and Trial Support:</strong> Users on the "Freemium" or "Free" tier acknowledge that support is limited strictly to bug reporting via web. Support is provided on a <strong>"BEST EFFORT"</strong> basis only. EyeBall makes no guarantees regarding response times, resolution, or the availability of support personnel for Freemium or promotional accounts.</p>
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-white mb-6">4. CUSTOMER DATA AND PRIVACY</h2>
-        <p>Customer is solely responsible for the accuracy, quality, and legality of Customer Data. Customer represents and warrants that it has all necessary rights and consents to provide Customer Data to EyeBall. EyeBall will maintain administrative, physical, and technical safeguards for protection of the security, confidentiality, and integrity of Customer Data as described in the Privacy Policy. Customer acknowledges that the Service is a "local-first" architecture where sensitive data analysis occurs on the endpoint; however, metadata and security telemetry are transmitted to EyeBall's cloud for management and reporting.</p>
-      </section>
-
-      <section>
-        <h2 class="text-2xl font-bold text-white mb-6">5. SUPPORT AND MAINTENANCE</h2>
+        <h2 class="text-xl font-bold text-white mb-4 border-b border-white/5 pb-2">4. SERVICE LEVEL & SERVICE CREDITS</h2>
         <ul class="list-none space-y-4">
           <li class="pl-4 border-l-2 border-brand-cyan">
-            <strong class="text-white block mb-1">5.1 Enterprise Support</strong>
-            Paid "Pro" and "Enterprise" subscriptions include support services as specified in the applicable Order Form and EyeBall's standard Support Policy.
+            <strong class="text-white block mb-1">4.1 Service Availability</strong>
+            EyeBall will use commercially reasonable efforts to ensure that each hosting service remains available at a Monthly Service Availability target of 99.9% for paid accounts.
           </li>
           <li class="pl-4 border-l-2 border-brand-cyan">
-            <strong class="text-white block mb-1">5.2 Freemium Support Disclaimer</strong>
-            Users on the "Freemium" or "Free" tier acknowledge that support is limited strictly to bug reports submitted via the portal. Support for Freemium users is provided on a <strong>"BEST EFFORT"</strong> basis only. EyeBall makes no guarantees regarding response times, resolution, or the availability of support personnel for Freemium accounts.
+            <strong class="text-white block mb-1">4.2 Service Credits as Sole Remedy</strong>
+            If Availability falls below the designated threshold, You may request EyeBall to extend Your current Service Term by additional days at no extra charge (3 days credit for monthly availability below 99.9%, 10 days credit for monthly availability below 99%).
+            <p class="mt-2 text-white font-bold">YOU AGREE THAT THE GRANT OF SERVICE CREDITS IN ACCORDANCE WITH THIS SECTION IS YOUR SOLE AND EXCLUSIVE REMEDY IN CONNECTION WITH THE AVAILABILITY, PERFORMANCES, LATENCY, AND FUNCTIONALITY OF THE SERVICES OR A FAILURE BY EYEBALL TO COMPLY WITH CONTROLS.</p>
           </li>
         </ul>
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-white mb-6">6. NO WARRANTY; DISCLAIMER</h2>
-        <p class="uppercase font-bold">THE SERVICE AND SOFTWARE ARE PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, EYEBALL AND ITS SUPPLIERS EXPRESSLY DISCLAIM ALL WARRANTIES OF ANY KIND, WHETHER EXPRESS, IMPLIED, OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT. EYEBALL DOES NOT WARRANT THAT THE SERVICE WILL BE UNINTERRUPTED, ERROR-FREE, OR COMPLETELY SECURE, OR THAT THE SERVICE WILL DETECT OR PREVENT ALL SECURITY THREATS, MALWARE, OR DATA LEAKS.</p>
+        <h2 class="text-xl font-bold text-white mb-4 border-b border-white/5 pb-2">5. PRIVACY, DATA USE & AUTHORIZATIONS</h2>
+        <p class="mb-4">You acknowledge and agree that use of Services is subject to the processing of information pursuant to EyeBall’s Privacy Policy. You represent and warrant that You have obtained all necessary authorizations, approvals, consents and permits per the applicable law for (i) providing the telemetry and metadata You share with EyeBall; and (ii) EyeBall’s processing and storing of such data in accordance with its policies.</p>
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-white mb-6">7. INDEMNIFICATION</h2>
-        <p>Customer shall defend, indemnify, and hold harmless EyeBall and its officers, directors, and employees from and against any and all claims, costs, damages, losses, liabilities, and expenses (including reasonable attorneys' fees) arising out of or in connection with: (i) Customer's use of the Service in violation of this Agreement; (ii) Customer Data; or (iii) Customer's violation of any third-party rights, including intellectual property or privacy rights.</p>
+        <h2 class="text-xl font-bold text-white mb-4 border-b border-white/5 pb-2">6. TITLE AND INTELLECTUAL PROPERTY</h2>
+        <p>All right, title, and interest in and to the Services, including, without limitation, any technologies, products, database schemas, extension code, proprietary algorithms and intellectual property rights in connection with the Services, and any improvement or derivative work in connection therewith shall remain exclusively with EyeBall and its licensors. The Services are protected under international copyright, trademark, trade secret and patent laws. The license granted herein does not constitute a sale of the Services or any portion thereof. You grant EyeBall a worldwide, royalty-free, perpetual license to use any suggestions, enhancement requests, or feedback without any restriction or compensation.</p>
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-white mb-6">8. LIMITATION OF LIABILITY</h2>
-        <p class="uppercase font-bold">IN NO EVENT SHALL EYEBALL OR ITS SUPPLIERS BE LIABLE FOR ANY INDIRECT, PUNITIVE, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR EXEMPLARY DAMAGES, INCLUDING WITHOUT LIMITATION DAMAGES FOR LOSS OF PROFITS, GOODWILL, USE, DATA, OR OTHER INTANGIBLE LOSSES, ARISING OUT OF OR RELATING TO THE USE OF, OR INABILITY TO USE, THE SERVICE. UNDER NO CIRCUMSTANCES WILL EYEBALL BE RESPONSIBLE FOR ANY DAMAGE, LOSS, OR INJURY RESULTING FROM HACKING, TAMPERING, OR OTHER UNAUTHORIZED ACCESS OR USE OF THE SERVICE OR YOUR ACCOUNT. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, EYEBALL'S TOTAL AGGREGATE LIABILITY FOR ANY CLAIMS UNDER THIS AGREEMENT IS LIMITED TO THE AMOUNT ACTUALLY PAID BY CUSTOMER TO EYEBALL IN THE TWELVE (12) MONTHS IMMEDIATELY PRECEDING THE EVENT GIVING RISE TO THE CLAIM. FOR FREEMIUM USERS, EYEBALL'S TOTAL LIABILITY SHALL NOT EXCEED ONE HUNDRED U.S. DOLLARS ($100.00).</p>
+        <h2 class="text-xl font-bold text-white mb-4 border-b border-white/5 pb-2">7. TERM AND TERMINATION</h2>
+        <p>These Terms are effective for the Service Term. EyeBall may terminate these Terms immediately upon Your breach of any of the provisions hereof. These Terms will terminate immediately without notice from EyeBall if You fail to comply with any material provision. Upon termination of Your right to use the Services under these Terms, You agree to cease all use of the Services, remove the browser extension software, and certify such deletion to EyeBall.</p>
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-white mb-6">9. TERM AND TERMINATION</h2>
-        <p>This Agreement commences on the date Customer first accesses the Service and continues until all subscriptions hereunder have expired or have been terminated. Either party may terminate this Agreement for cause: (i) upon 30 days' written notice of a material breach; or (ii) if the other party becomes the subject of a petition in bankruptcy. Upon termination, Customer's right to access or use the Service and Software terminates immediately, and Customer must delete all copies of the Software.</p>
+        <h2 class="text-xl font-bold text-white mb-4 border-b border-white/5 pb-2">8. INDEMNIFICATION</h2>
+        <ul class="list-none space-y-4">
+          <li class="pl-4 border-l-2 border-brand-cyan">
+            <strong class="text-white block mb-1">8.1 EyeBall Limited Indemnity</strong>
+            EyeBall shall defend or settle third-party claims asserting that commercial, paid Services directly infringe a valid patent or copyright, up to the maximum liability cap. EyeBall's indemnification is conditional on You promptly notifying EyeBall of the claim, presenting sole control of defense to EyeBall, and offering reasonable assistance. If infringement occurs, EyeBall may replace the Service or terminate and refund depreciated subscription fees.
+            <p class="text-xs uppercase mt-2 font-bold text-white">THE FOREGOING PROVISIONS STATE THE ENTIRE LIABILITY AND OBLIGATIONS OF EYEBALL WITH RESPECT TO ANY ACTUAL OR ALLEGED INFRINGEMENT OF ANY INTELLECTUAL PROPERTY RIGHTS BY THE SERVICES AND IS IN LIEU OF ANY WARRANTIES OF NONINFRINGEMENT.</p>
+          </li>
+          <li class="pl-4 border-l-2 border-brand-cyan">
+            <strong class="text-white block mb-1">8.2 Broad Customer Indemnity</strong>
+            <p class="text-xs text-brand-light-secondary leading-relaxed">
+              You agree to defend, indemnify and hold harmless EyeBall, its vendors, officers, directors, employees, affiliates, subsidiaries, licensors, agents and suppliers from and against any and all claims, damages, obligations, losses, liabilities, costs, debts, and expenses (including but not limited to attorney’s fees) arising from: (i) Your unauthorized use of the Services; (ii) Your violation of any applicable laws, regulations or third party rights in connection with Your browser fleet; and (iii) Your breach or violation of Your representations, any of these Terms, or the applicable terms of a Third Party Application.
+            </p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="border-t border-b border-white/10 py-8 space-y-6">
+        <h2 class="text-2xl font-black text-rose-400 uppercase tracking-widest">9. WARRANTIES DISCLAIMER & ABSOLUTE LIMITATION OF LIABILITY</h2>
+        
+        <div>
+          <h3 class="text-xs font-mono font-bold text-brand-cyan uppercase tracking-wider mb-2">9.1 Limited Limited Warranty & "As Is" Disclaimer</h3>
+          <p class="uppercase font-mono text-xs leading-relaxed text-white">
+            TO THE FULLEST EXTENT ALLOWED UNDER APPLICABLE LAW, THE SERVICES ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED. EYEBALL DOES NOT WARRANT THAT THE SERVICES WILL MEET YOUR REQUIREMENTS OR THAT THE RUNTIME USE WILL BE UNINTERRUPTED OR ERROR FREE. EYEBALL DISCLAIMS ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. CYBERSECURITY IS A DYNAMIC FIELD; EYEBALL DOES NOT AND CANNOT GUARANTY THAT ALL BRIDGES, DATA EXFILTRATIONS, CRITICAL ZERO-DAYS, AND PHISHING INCIDENTS WILL BE DETECTED OR PREVENTED.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-xs font-mono font-bold text-brand-cyan uppercase tracking-wider mb-2">9.2 Complete Damages Waiver & Strict Liability Cap</h3>
+          <p class="uppercase font-mono text-xs leading-relaxed text-brand-light">
+            TO THE FULLEST EXTENT ALLOWED UNDER APPLICABLE LAW, IN NO EVENT WILL EYEBALL, ITS FOUNDERS, DIRECTORS, OR PARTNERS BE LIABLE TO YOU OR ANY THIRD PARTY FOR ANY INDIRECT, SPECIAL, PUNITIVE, INCIDENTAL, OR CONSEQUENTIAL DAMAGES (INCLUDING LOST PROFITS, REPUTATIONAL DAMAGE, SECURITY RE-BUILD CHARGES, OR FOR LOSS OF OR CORRUPTION OF DATA, OR FOR COST OF PROCUREMENT OF SUBSTITUTE GOODS OR SECURED ENGINES), IRRESPECTIVE OF THEORY, EVEN IF EYEBALL HAS BEEN ADVISED OF SUCH POTENTIAL DAMAGE.
+          </p>
+          <div class="mt-4 bg-black/50 p-6 rounded-xl border border-rose-500/30">
+            <p class="text-xs font-mono uppercase text-rose-400 font-bold leading-normal mb-2">
+              EYEBALL’S MAXIMUM ACCUMULATIVE SYSTEM LIABILITY IN CONNECTION WITH THESE TERMS AND THE ASSOCIATED DEFENSE SUITE IS STRICTLY LIMITED TO:
+            </p>
+            <ul class="list-disc pl-5 text-xs font-mono text-white space-y-1.5">
+              <li>FOR PAID SUBSCRIPTION ACCOUNTS: THE ACTUAL NET LICENSE FEES RECEIVED BY EYEBALL IN THE EXACT ONE (1) MONTH IMMEDIATELY PRECEDING THE RELEVANT INCIDENT GIVING RISE TO LIABILITY.</li>
+              <li>FOR FREE, IN-APP DEMO, SUBSCRIPTION TRIAL, OR FREEMIUM ACCOUNTS: EXACTLY $0.00 USD (ZERO DOLLARS).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="bg-red-950/20 p-5 rounded-xl border border-red-500/20">
+          <h3 class="text-xs font-mono font-bold text-white uppercase tracking-wider mb-1">9.3 ABSOLUTE RELEASE AND COVENANT NOT TO SUE</h3>
+          <p class="text-xs text-brand-light-secondary leading-relaxed">
+            CUSTOMER AND ITS REPRESENTATIVES IRREVOCABLY RELEASE, ACQUIT, AND FOREVER DISCHARGE EYEBALL AND ITS OFFICERS FROM ANY CLAIMS, OR LIABILITY IN CONNECTION WITH BREACHES, OUTAGES, CYBER EXPLOITS, TELEMETRY ACCURACY, AND LLM PROMPT DISCLOSURES. CUSTOMER PROMISES COVENANT NEVER TO SUE EYEBALL OR COMMENCE LEGAL LITIGATIONS FOR COMPROMISES OCCURRING ON ITS BROWSER FLEET.
+          </p>
+        </div>
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-white mb-6">10. GOVERNING LAW AND ARBITRATION</h2>
-        <p>This Agreement shall be governed by the laws of the State of Delaware, without regard to its conflict of laws principles. Any dispute arising out of or relating to this Agreement shall be finally settled by binding arbitration in Wilmington, Delaware, in accordance with the rules of the American Arbitration Association. <strong>YOU AGREE THAT ANY CLAIMS WILL BE BROUGHT IN YOUR INDIVIDUAL CAPACITY AND NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY PURPORTED CLASS OR REPRESENTATIVE PROCEEDING.</strong></p>
+        <h2 class="text-xl font-bold text-white mb-4 border-b border-white/5 pb-2">10. PRE-RELEASE AND BETA VERSIONS</h2>
+        <p>With respect to any pre-release version of a Service, including beta features or early access threat modules, EyeBall grants You a license strictly for internal evaluation. Beta services are experimental. IN NO EVENT WILL EYEBALL BE LIABLE TO YOU OR ANY OTHER PERSON FOR DAMAGES, EXPENSES, OR OUTAGES ENCOUNTERED BY YOU IN CONNECTION WITH BETA SECURITY SERVICES. YOUR SOLE REMEDY IS TO TERMINATE THE BETA EVALUATION.</p>
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-white mb-6">11. EXPORT COMPLIANCE</h2>
-        <p>The Service and Software may be subject to export laws and regulations of the United States and other jurisdictions. Customer represents that it is not named on any U.S. government denied-party list. Customer shall not permit Users to access or use the Service in a U.S.-embargoed country or in violation of any U.S. export law or regulation.</p>
+        <h2 class="text-xl font-bold text-white mb-4 border-b border-white/5 pb-2">11. COMPLIANCE WITH LAW & SANCTIONS</h2>
+        <p>You agree to use the Services only as permitted by and in compliance with all applicable regional and international regulations. You represent and warrant that You are not: (i) designated or controlled by any person designated under sanctions administered by the United States, European Union, United Kingdom, Switzerland, or Israel, including the OFAC Specially Designated Nationals (SDN) or Commerce blocklists, or (ii) located in an embargoed region. EyeBall holds the absolute unilateral right to immediately suspend or terminate access without notice if any compliance breach occurs.</p>
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-white mb-6">12. MISCELLANEOUS</h2>
-        <p>This Agreement constitutes the entire agreement between the parties and supersedes all prior agreements. If any provision of this Agreement is held by a court of competent jurisdiction to be contrary to law, the provision will be deemed null and void, and the remaining provisions of this Agreement will remain in effect. No failure or delay by either party in exercising any right under this Agreement will constitute a waiver of that right.</p>
+        <h2 class="text-xl font-bold text-white mb-4 border-b border-white/5 pb-2">12. GENERAL & BINDING INDIVIDUAL ARBITRATION</h2>
+        <ul class="list-none space-y-4">
+          <li class="pl-4 border-l-2 border-brand-cyan">
+            <strong class="text-white block mb-1">12.1 Governing Law</strong>
+            The laws of the State of Delaware, USA, shall govern all issues arising under or relating to these Terms, giving zero effect to conflict of laws principles thereof.
+          </li>
+          <li class="pl-4 border-l-2 border-brand-cyan">
+            <strong class="text-white block mb-1">12.2 Binding Individual Arbitration only</strong>
+            All disputes arising under or relating to these Terms shall be resolved exclusively in confidential, binding individual arbitration administered by JAMS/AAA sitting in Wilmington, Delaware. 
+          </li>
+          <li class="pl-4 border-l-2 border-brand-cyan font-bold text-brand-cyan">
+            <strong class="text-brand-cyan block mb-1 uppercase">12.3 Class Action Waiver Death-Valve</strong>
+            ANY DISPUTE, LITIGATION, OR ARBITRATION SHALL ONLY OCCUR IN YOUR INDIVIDUAL CAPACITY, AND NOT AS A CLASS REPRESENTATIVE, MEMBER, OR PLAINTIFF IN ANY CLASS, COLLECTIVE, OR CONSOLIDATED PROCEEDING. CLASS ARBITRATIONS, CLASS LAWSUITS, AND CONSOLIDATED CLAIMS ARE FOREVER WAIVED.
+          </li>
+          <li class="pl-4 border-l-2 border-brand-cyan">
+            <strong class="text-white block mb-1">12.4 Severability and Integration</strong>
+            This Agreement represents the entire agreement between the parties relative to the secure browser operations. If any section is ruled invalid or unenforceable, that part will be minimally reformed, and all remaining clauses shall survive fully intact.
+          </li>
+        </ul>
       </section>
 
       <div class="bg-brand-dark-secondary p-8 rounded-2xl border border-white/5 text-center mt-12">
-        <p class="text-white font-bold mb-2 text-sm uppercase tracking-widest">LEGAL CONTACT</p>
-        <p class="text-xs">For legal inquiries or formal notices, please contact <a onClick=${() => window.location.hash = 'freemium'} class="text-brand-cyan hover:underline cursor-pointer">legal@eyeballsecurity.com</a></p>
+        <p class="text-white font-bold mb-2 text-sm uppercase tracking-widest font-mono text-brand-cyan">EYEBALL SECURITY SYSTEM - LEGAL TRUST GROUP</p>
+        <p class="text-xs">For official corporate inquiries or formal corporate notices, reach us exclusively via <a onClick=${() => window.location.hash = 'freemium'} class="text-brand-cyan hover:underline cursor-pointer">legal@eyeballsecurity.com</a></p>
       </div>
     </div>
   </section>
@@ -487,6 +575,10 @@ const FreemiumView = () => {
                         </div>
                         <div class="flex items-start text-brand-light text-sm md:col-span-2">
                             <svg class="w-5 h-5 mr-3 text-brand-blue flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <span>AI Usage Monitoring & Analytics (Prompt Analyzer) - Full organizational visibility into user AI queries and prompts</span>
+                        </div>
+                        <div class="flex items-start text-brand-light text-sm md:col-span-2">
+                            <svg class="w-5 h-5 mr-3 text-brand-blue flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
                             <span>Uncompromising Enterprise DLP capability across all web interactions</span>
                         </div>
                     </div>
@@ -524,6 +616,7 @@ const BusinessFeatures = ({ onStartFree }) => {
             points: [
                 'Detect and redact PII in real-time.',
                 'Block sensitive leakage to GenAI/LLMs.',
+                '<strong>Prompt Analyzer:</strong> Comprehensive monitoring and full analytics of all corporate AI usage.',
                 'Apply user-specific watermarks to critical web pages.'
             ]
         },
@@ -845,6 +938,467 @@ const FAQ = () => {
   `;
 };
 
+const DEFAULT_POSTS = [
+  {
+    id: "1",
+    slug: "clickfix-threat-campaigns",
+    title: "The Rise of ClickFix Campaigns: How Threat Actors Bypass Enterprise Sandbox Gateways",
+    excerpt: "Threat actors are shifting away from traditional attachments towards highly interactive browser social engineering, notably through fake update popups that exploit clipboard buffers.",
+    content: "## The Evolution of Social Engineering: ClickFix Campaigns\n\nIn recent months, cybersecurity research groups have observed a massive surge in a highly sophisticated browser-based cyberattack technique known as **ClickFix** or **ClickHijacking**.\n\nUnlike conventional phishing campaigns that rely on social engineering to trick users into downloading malicious executables (`.exe`), or supplying credentials on lookalike forms, ClickFix leverages the user\'s ultimate trust in their native browser interface.\n\n### How Does it Work?\n1. **Compromised Portals**: Users landing on otherwise benign websites, which have been compromised by attackers, suddenly encounter a popup claiming a critical component is missing (e.g., \"Google Chrome update failed,\" \"Microsoft OneDrive certificate expired,\" or \"PDF Viewer plugin missing\").\n2. **The Paste Exploitation**: The prompt instructs the user to copy a line of code and execute it using the Windows Command Prompt or PowerShell (via a keyboard shortcut such as `Win + R`, copy-paste and Enter).\n3. **Sandbox Gateways Bypass**: Because the actual file was not downloaded over HTTP, traditional Secure Web Gateways (SWG) and email security sandboxes see nothing suspicious in transit. The execution is driven entirely by human interaction within the local operating system, initiating malware deployment (like Lumma Stealer or RedLine).\n\n---\n\n### Mitigating ClickFix in the Modern Enterprise\n\nSecuring the modern enterprise perimeter requires intercepting the attack chain *before* the user acts. Legacy secure web gateways cannot inspect the on-screen rendering structure to detect malicious instructions.\n\n* **Context-Aware Content Analysis**: Security systems must analyze real-time DOM elements to identify fraudulent prompts.\n* **Behavioral Clipboard Auditing**: Restricting dynamic script copy-pasting from unauthorized websites prevents users from copying malicious operational scripts.\n* **Active Defense Hooks**: Dynamic client-side extensions can immediately block overlay injection scripts on compromised SaaS portals and external URLs.\n\nWith EyeBall, zero-day social engineering vectors like ClickFix and ClickHijacking are neutralized immediately. Code injections are rendered harmless before the browser even gets to execute them.",
+    author: "EyeBall Threat Intelligence",
+    authorTitle: "Research & Analysis Group",
+    category: "Threat Intel",
+    readTime: "5 min read",
+    date: "June 18, 2026",
+    coverPattern: "linear-gradient(135deg, #0d1b2a 0%, #172554 100%)",
+    tags: ["ClickFix", "Social Engineering", "Zero-Day"]
+  },
+  {
+    id: "2",
+    slug: "prompt-analyzer-security-compliance",
+    title: "Prompt Analyzer: Total Security and Visibility for Enterprise Generative AI",
+    excerpt: "Enterprise usage of GenAI tools like ChatGPT, Claude, and Gemini has doubled, raising massive compliance and intellectual property leakage threats. Here is how EyeBall resolves it.",
+    content: "## Data Loss Prevention (DLP) Meets Generative AI\n\nThe exponential integration of custom GenAI applications across corporate roles brings unimaginable productivity gains — along with record-high compliance, intellectual property, and PII leakage risks.\n\nWhen an employee asks an AI model to \"debug this proprietary authentication script\" or \"summarize these user transaction records,\" that intellectual asset is sent directly to external vendor infrastructures. This constitutes a severe, unauthorized data breach under GDPR, CCPA, and general enterprise compliance frameworks.\n\n### Enter the Prompt Analyzer\nLegacy firewalls face a binary constraint: they can either block Claude/ChatGPT entirely (stifling innovation) or allow it wide open (exposing the enterprise).\n\nThe **EyeBall Prompt Analyzer** introduces a third alternative: **real-time local prompt evaluation, redaction, and total visibility**.\n\n---\n\n### Core Capabilities of the Prompt Analyzer\n\n1. **Contextual Token Auditing**: The analyzer intercepts queries in real-time as they are inputted, searching for structural signatures (e.g., programmatic passwords, proprietary API keys, internal source code, and customer records).\n2. **On-the-Fly Redaction**: PII, credit card details, and secret tokens are sanitized and redacted instantly *before* they leave the local perimeter.\n3. **Anonymized Processing**: Keeps the conversation fully private. Analytics databases show top aggregate concepts, queries, and risks—giving security leadership 100% visibility without reading safe private exchanges.\n\nWith EyeBall, you can empower your workforce to leverage LLMs safely while maintaining flawless telemetry and airtight defense boundaries.",
+    author: "EyeBall Threat Intelligence",
+    authorTitle: "Research & Analysis Group",
+    category: "Generative AI",
+    readTime: "4 min read",
+    date: "June 15, 2026",
+    coverPattern: "linear-gradient(135deg, #1e1b4b 0%, #4338ca 100%)",
+    tags: ["Generative AI", "DLP", "Compliance"]
+  },
+  {
+    id: "3",
+    slug: "modern-browser-isolation-vs-swg",
+    title: "Why Modern Browser Isolation Outperforms Legacy Secure Web Gateways (SWG)",
+    excerpt: "Legacy network-level security proxies introduce crippling latency and break modern complex web applications. Endpoint browser security is the breakthrough alternative.",
+    content: "## Network Security is Too Slow for the Fast Web\n\nThe corporate network perimeter is dead. With 90% of office applications operating directly on cloud SaaS models, funneling all organizational traffic through heavy, remote Secure Web Gateways (SWG) or Virtual Private Networks (VPN) creates severe structural friction.\n\nStandard network security proxies operate by decrypted-packet inspection. This technique:\n* Degrades browser responsiveness and bandwidth efficiency.\n* Breaks dynamic JavaScript elements on state-of-the-art SaaS sites.\n* Fails to detect client-side DOM exploitations, malicious extensions, and data theft inside unmanaged browser workspaces.\n\n### The Lightweight Alternative: Endpoint Browser Security\nRather than routing gigabytes of traffic to remote proxy servers, next-generation browser security integrates as a **lightweight, native extension boundary** within your browser of choice.\n\n---\n\n### Key Advantages of Endpoint Browser Isolation\n\n* **Zero-Latency Performance**: By running processing natively inside the endpoint browser sandbox, pages load instantly at wire speed.\n* **Total Local Context**: The protection layer sits within the browser DOM. It reads extension authorizations, download/upload file schemas, and prompt transfers directly without payload decryption overhead.\n* **Frictionless Fleet Integration**: Deploys instantly to thousands of workstations in 60 seconds.\n\nBy ensuring 100% visible perimeters with zero lag, EyeBall represents the future of corporate web security.",
+    author: "EyeBall Threat Intelligence",
+    authorTitle: "Research & Analysis Group",
+    category: "Browser Security",
+    readTime: "6 min read",
+    date: "June 10, 2026",
+    coverPattern: "linear-gradient(135deg, #022c22 0%, #065f46 100%)",
+    tags: ["Secure Browsers", "SWG", "Network Security"]
+  },
+  {
+    id: "4",
+    slug: "critical-need-browser-extension-management",
+    title: "The Critical Need for Browser Extension Management",
+    excerpt: "Browser extensions are the quietest threat vectors inside corporate environments. Learn how EyeBall handles blocklists, proactive whitelist controls, and auto-blocks malicious extensions.",
+    content: "## The Untamed Frontier: Browser Extensions as Threat Vectors\n\nWeb browsers are the standard OS for the modern enterprise worker. However, while extensive resources are spent securing physical endpoints, network firewalls, and cloud access, one massive back-door remains dangerously unregulated: **Browser Extensions**.\n\nExtensions operate with immense permissions. Many require permission to \"read and change all your data on the websites you visit.\" In practice, this means an extension can intercept keystrokes, hijack authentication cookies, read incoming PII, and redirect browser requests.\n\n### The Real Risks of Unmanaged Extensions\n* **SaaS Supply Chain Hijacking**: Legitimate extensions with large user bases are frequently sold to suspicious third-party operators, who silently update them with secondary components to collect corporate metadata.\n* **Malware Delivery Systems**: Threat actors actively publish extensions mimicking genuine business products like PDF converters, screen recorders, or ad blockers to act as localized payloads.\n* **Severe Compliance Violations**: Data collected by rogue extensions is exfiltrated to offshore storage clusters, creating immediate compliance breaches under ISO 27001, CCPA, and GDPR.\n\n---\n\n### Dual-Topology Extension Management with EyeBall\n\nTo address this massive security gap without hamstringing employee productivity, **EyeBall** introduces **proactive Browser Extension Management**. Rather than a static, configuration-heavy network block, EyeBall integrates directly with the web client runtime, giving administrators comprehensive command through two central topologies:\n\n1. **Selective Blocklisting (Granular Denial)**:\n   Enterprises can identify, review, and block specific high-risk browser extensions across the entire fleet immediately. If a known extension exhibits suspicious API requests or changes ownership, it is restricted instantly.\n\n2. **Strict Whitelisting (Default-Deny Workspace)**:\n   For zero-trust environments, EyeBall enables automatic blocking of all browser extensions by default. Employees can run only specific, approved extensions that security teams have thoroughly audited and certified for production. This stops shadow IT cold.\n\n---\n\n### The Malicious Extension Shield: Automated Native Defense\n\nBeyond standard administrative lists, human-led verification struggles to scale with daily web application updates.\n\nThis is why EyeBall is armed with an automated **Malicious Extension Shield**. Running locally at the browser level, this feature proactively analyzes dynamic extension behavior, evaluates extension permission anomalies, and matches known malware hashes against threat databases.\n\nWhen a malicious extension is detected:\n* It is **quarantined and deactivated automatically** in real-time.\n* Detailed diagnostic details are instantly logged for SOC review.\n* The end-user is safely notified without interruption to active web sessions.\n\nWith EyeBall, browser extensions transition from insecure back-doors to a fully monitored, fully protected, and perfectly compliant operational asset.",
+    author: "EyeBall Threat Intelligence",
+    authorTitle: "Research & Analysis Group",
+    category: "Browser Security",
+    readTime: "5 min read",
+    date: "June 20, 2026",
+    coverPattern: "linear-gradient(135deg, #022c22 0%, #0d1b2a 100%)",
+    tags: ["Browser Security", "Extensions", "Zero-Trust"]
+  }
+];
+
+const BlogView = () => {
+  const [posts, setPosts] = useState(() => {
+    const stored = localStorage.getItem('eyeball_posts');
+    if (stored) {
+      try {
+        const parsed = JSON.parse(stored);
+        let postsList = parsed.map(post => {
+          if (["Sharon Cohen", "Daniel Levi", "Maya Green", "Security Expert"].includes(post.author)) {
+            return {
+              ...post,
+              author: "EyeBall Threat Intelligence",
+              authorTitle: post.authorTitle === "Head of Threat Intelligence" || post.authorTitle === "Chief Information Security Officer" || post.authorTitle === "VP of Enterprise Architecture" || post.authorTitle === "Senior Security Analyst" ? "Research & Analysis Group" : post.authorTitle
+            };
+          }
+          return post;
+        });
+
+        // Ensure newly pre-seeded default posts are auto-injected if not present
+        DEFAULT_POSTS.forEach(defaultPost => {
+          if (!postsList.some(p => p.slug === defaultPost.slug || p.id === defaultPost.id)) {
+            postsList.push(defaultPost);
+          }
+        });
+
+        return postsList;
+      } catch (e) {
+        return DEFAULT_POSTS;
+      }
+    }
+    return DEFAULT_POSTS;
+  });
+
+  const [activePost, setActivePost] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('All');
+
+  useEffect(() => {
+    localStorage.setItem('eyeball_posts', JSON.stringify(posts));
+  }, [posts]);
+
+  // Sync active post with URL hash for search engine deep linking and direct crawling (e.g. #blog/clickfix-threat-campaigns)
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '');
+      if (hash.startsWith('blog/')) {
+        const slug = hash.substring(5);
+        const matched = posts.find(p => p.slug === slug);
+        if (matched) {
+          setActivePost(matched);
+        } else {
+          setActivePost(null);
+        }
+      } else if (hash === 'blog') {
+        setActivePost(null);
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    handleHashChange(); // Run on mount
+
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, [posts]);
+
+  // Dynamic SEO meta tags, social preview parameters, and JSON-LD structured schema.org injection for AI scrapers/Google Bot
+  useEffect(() => {
+    if (activePost) {
+      document.title = `${activePost.title} | EyeBall Threat Intel Blog`;
+
+      const updateMeta = (name, attr, value) => {
+        let el = document.querySelector(`meta[${attr}="${name}"]`);
+        if (!el) {
+          el = document.createElement('meta');
+          el.setAttribute(attr, name);
+          document.head.appendChild(el);
+        }
+        el.setAttribute('content', value);
+      };
+
+      updateMeta('description', 'name', activePost.excerpt);
+      updateMeta('keywords', 'name', `${activePost.tags ? activePost.tags.join(', ') : ''}, ${activePost.category}, Browser Security, DLP, EyeBall Threat Intelligence`);
+      updateMeta('og:title', 'property', activePost.title);
+      updateMeta('og:description', 'property', activePost.excerpt);
+      updateMeta('og:type', 'property', 'article');
+      updateMeta('og:url', 'property', window.location.href);
+
+      let ldJsonScript = document.getElementById('eyeball-blog-ld-json');
+      if (!ldJsonScript) {
+        ldJsonScript = document.createElement('script');
+        ldJsonScript.id = 'eyeball-blog-ld-json';
+        ldJsonScript.type = 'application/ld+json';
+        document.head.appendChild(ldJsonScript);
+      }
+
+      const schema = {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": activePost.title,
+        "description": activePost.excerpt,
+        "datePublished": "2026-06-21T00:00:00+00:00",
+        "author": {
+          "@type": "Organization",
+          "name": activePost.author,
+          "title": activePost.authorTitle
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "EyeBall Security Inc.",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://eyeballsecurity.com/logo.svg"
+          }
+        },
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": window.location.href
+        },
+        "about": [
+          {
+            "@type": "Thing",
+            "name": activePost.category
+          }
+        ],
+        "keywords": activePost.tags ? activePost.tags.join(', ') : '',
+        "articleBody": activePost.content
+      };
+
+      ldJsonScript.textContent = JSON.stringify(schema);
+    } else {
+      document.title = "EyeBall - Secure the Web | Zero Blind Spots";
+      
+      const restoreMeta = (name, attr, value) => {
+        const el = document.querySelector(`meta[${attr}="${name}"]`);
+        if (el) el.setAttribute('content', value);
+      };
+
+      restoreMeta('description', 'name', "EyeBall is a next-generation browser security and secure browser platform, providing a zero-blind-spot alternative to legacy gateways, extensions, and enterprise browsers like Netskope, Zscaler, Harmony Browse, Surf, Seraphic, Island, and Layer X with advanced URL filtering, Clickfix protection, and phishing protection.");
+      restoreMeta('keywords', 'name', "Netskope, Zscaler, Harmony browse, Surf, Seraphic, Island security, Layer X, URL filtering, Browser security, Clickfix, Phishing protection, Secure browser, Enterprise Browser, DLP, Browser Isolation");
+      restoreMeta('og:title', 'property', "EyeBall - Secure the Web | Zero Blind Spots");
+      restoreMeta('og:description', 'property', "Zero-blind-spot secure browser extension and platform. Next-gen DLP and security alternative to Netskope, Zscaler, Harmony Browse, Surf, Seraphic, Island, and Layer X.");
+      restoreMeta('og:type', 'property', 'website');
+      restoreMeta('og:url', 'property', 'https://eyeballsecurity.com');
+
+      const ldJsonScript = document.getElementById('eyeball-blog-ld-json');
+      if (ldJsonScript) {
+        ldJsonScript.remove();
+      }
+    }
+  }, [activePost]);
+
+  // Safe inner markdown inline helper
+  const renderInlineHTML = (text) => {
+    let escaped = text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+    
+    // Replace daring bold **
+    escaped = escaped.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white font-bold">$1</strong>');
+    // Replace markup code `
+    escaped = escaped.replace(/`(.*?)`/g, '<code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">$1</code>');
+    return escaped;
+  };
+
+  // Safe custom paragraph line-by-line render
+  const renderRichMarkdown = (text) => {
+    if (!text) return '';
+    const lines = text.split('\n');
+    return lines.map((line, idx) => {
+      const trimmed = line.trim();
+      if (trimmed.startsWith('## ')) {
+        return html`<h2 key=${idx} class="text-2xl md:text-3xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">${trimmed.replace('## ', '')}</h2>`;
+      }
+      if (trimmed.startsWith('### ')) {
+        return html`<h3 key=${idx} class="text-xl md:text-2xl font-bold text-brand-blue mt-8 mb-3">${trimmed.replace('### ', '')}</h3>`;
+      }
+      if (trimmed.startsWith('* ') || trimmed.startsWith('- ')) {
+        const cleanLine = trimmed.replace(/^[\*\-]\s+/, '');
+        return html`
+          <li key=${idx} class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span dangerouslySetInnerHTML=${{ __html: renderInlineHTML(cleanLine) }}></span>
+          </li>
+        `;
+      }
+      if (trimmed === '---') {
+        return html`<hr key=${idx} class="border-t border-white/10 my-10" />`;
+      }
+      if (trimmed === '') {
+        return html`<div key=${idx} class="h-4"></div>`;
+      }
+      return html`
+        <p key=${idx} class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg" 
+           dangerouslySetInnerHTML=${{ __html: renderInlineHTML(trimmed) }}>
+        </p>
+      `;
+    });
+  };
+
+  const categories = ['All', 'Threat Intel', 'Generative AI', 'Browser Security', 'DLP'];
+
+  // Filter Posts
+  const filteredPosts = posts.filter(post => {
+    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                          post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          post.content.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesCategory = selectedCategory === 'All' || post.category === selectedCategory;
+    return matchesSearch && matchesCategory;
+  });
+
+  // Hot category tag color builders
+  const getCategoryThemeClass = (cat) => {
+    switch (cat) {
+      case 'Threat Intel': return 'bg-brand-cyan/10 text-brand-cyan border-brand-cyan/25';
+      case 'Generative AI': return 'bg-brand-purple/10 text-brand-purple border-brand-purple/25';
+      case 'Browser Security': return 'bg-brand-green/10 text-brand-green border-brand-green/25';
+      default: return 'bg-brand-blue/10 text-brand-blue border-brand-blue/25';
+    }
+  };
+
+  // Pre-configured Cyber gradients
+  const gradients = [
+    { name: 'Midnight Deep Blue', code: 'linear-gradient(135deg, #0d1b2a 0%, #172554 100%)' },
+    { name: 'Plasma Void Indigo', code: 'linear-gradient(135deg, #1e1b4b 0%, #4338ca 100%)' },
+    { name: 'Emerald Sentinel', code: 'linear-gradient(135deg, #022c22 0%, #065f46 100%)' },
+    { name: 'Obsidian Crimson', code: 'linear-gradient(135deg, #180202 0%, #7f1d1d 100%)' },
+    { name: 'Solaris Flare Decay', code: 'linear-gradient(135deg, #3b0764 0%, #a21caf 100%)' }
+  ];
+
+  return html`
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 max-w-7xl">
+      
+      <!-- HEADER DIRECTORY BRANDING -->
+      <div class="mb-12 text-center relative py-10 bg-white/5 border border-white/5 rounded-3xl overflow-hidden shadow-2xl shadow-brand-blue/5">
+        <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+        <div class="absolute top-0 right-0 w-36 h-36 bg-brand-blue/5 rounded-full blur-3xl -z-10"></div>
+        
+        <span class="inline-flex select-none items-center space-x-1.5 px-3.5 py-1.5 mb-3 text-xs font-mono font-bold tracking-widest text-brand-cyan uppercase bg-brand-cyan/10 rounded-full border border-brand-cyan/20">
+          <span>Intelligence Research Center</span>
+        </span>
+        <h1 class="text-4xl md:text-5xl font-black text-white leading-tight tracking-tight mb-4 animate-pulse-soft">
+          EyeBall Threat Intel Blog
+        </h1>
+        <p class="text-brand-light-secondary max-w-2xl mx-auto text-base md:text-lg">
+          Expert analysis, zero-day research bulletins, and data protection strategies for the modern enterprise browser footprint.
+        </p>
+      </div>
+
+      <!-- VIEW RENDER CONDITIONALS -->
+      ${activePost ? html`
+        <!-- DETAILED SINGLE BULLETIN RENDER -->
+        <article class="max-w-4xl mx-auto py-4 animate-fade-in-up">
+          
+          <!-- Sticky Back Nav -->
+          <button onClick=${() => { window.location.hash = 'blog'; window.scrollTo(0,0); }} class="flex items-center space-x-2 text-sm font-mono text-brand-blue hover:text-brand-cyan mb-8 transition group pb-2">
+            <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            <span>BACK TO RESOURCE DIRECTORY</span>
+          </button>
+
+          <!-- Headline Banner Cover -->
+          <div style="background: ${activePost.coverPattern || 'linear-gradient(135deg, #0d1b2a 0%, #172554 100%)'}" class="h-64 sm:h-80 w-full rounded-3xl relative overflow-hidden flex flex-col justify-end p-6 sm:p-10 border border-white/15 shadow-2xl">
+            <div class="absolute inset-0 bg-brand-dark/30 backdrop-blur-[1px]"></div>
+            
+            <div class="relative z-10">
+              <span class="inline-block px-3 py-1 mb-4 text-xs font-mono font-bold tracking-wider uppercase rounded border ${getCategoryThemeClass(activePost.category)}">
+                ${activePost.category}
+              </span>
+              <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight tracking-tight drop-shadow-md">
+                ${activePost.title}
+              </h1>
+            </div>
+          </div>
+
+          <!-- Metadata Grid Line -->
+          <div class="flex flex-wrap items-center justify-between py-6 border-b border-white/10 mb-10 text-sm gap-4 text-brand-light-secondary font-mono">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-full bg-brand-blue/10 border border-brand-blue/30 flex items-center justify-center text-brand-blue font-bold">
+                ${activePost.author.charAt(0)}
+              </div>
+              <div>
+                <p class="text-white font-semibold">${activePost.author}</p>
+                <p class="text-xs text-brand-light-secondary">${activePost.authorTitle || 'Security Researcher'}</p>
+              </div>
+            </div>
+            
+            <div class="flex items-center space-x-6 text-xs text-brand-light-secondary font-mono">
+              <span>Published: <strong>${activePost.date}</strong></span>
+              <span>•</span>
+              <span>Read Time: <strong>${activePost.readTime}</strong></span>
+            </div>
+          </div>
+
+          <!-- Article Post Body Content -->
+          <div class="prose prose-invert prose-brand max-w-none text-brand-light-secondary leading-relaxed font-sans mb-16 space-y-4">
+            ${renderRichMarkdown(activePost.content)}
+          </div>
+
+          <!-- Meta Tag Badges -->
+          ${activePost.tags && activePost.tags.length > 0 && html`
+            <div class="border-t border-white/10 pt-6 flex flex-wrap gap-2 items-center mb-16">
+              <span class="text-xs font-mono text-brand-light-secondary uppercase tracking-widest mr-2">Tags:</span>
+              ${activePost.tags.map((tag, i) => html`
+                <span key=${i} class="bg-white/5 border border-white/10 text-brand-light-secondary text-xs px-3 py-1 rounded-full font-mono">
+                  #${tag}
+                </span>
+              `)}
+            </div>
+          `}
+
+          <!-- Elegant Footer CTAs -->
+          <div class="bg-gradient-to-r from-brand-blue/10 via-brand-dark-secondary to-brand-dark border border-brand-blue/20 rounded-3xl p-8 text-center relative overflow-hidden mb-16">
+            <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+            <h3 class="text-2xl font-bold text-white mb-2 relative z-10">Deploy Zero-Blind-Spot Browser Security</h3>
+            <p class="text-brand-light-secondary text-sm max-w-xl mx-auto mb-6 relative z-10">
+              Need to actively neutralize threats like ClickFix or monitor employee GenAI usage with Prompt Analyzer? Secure up into EyeBall Enterprise Suite today.
+            </p>
+            <a href="#contact" class="inline-block relative z-10 bg-brand-blue hover:bg-brand-cyan text-brand-dark font-bold px-8 py-3 rounded-xl transition shadow-lg shadow-brand-blue/25 text-sm uppercase tracking-wider">
+              START NOW
+            </a>
+          </div>
+
+        </article>
+      ` : html`
+        
+        <!-- INTELLIGENCE HUB DIRECTORY VIEW -->
+        <div class="mb-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          
+          <!-- Category Filter Ribbon -->
+          <div class="flex flex-wrap gap-2">
+            ${categories.map(cat => html`
+              <button key=${cat} onClick=${() => setSelectedCategory(cat)} class="px-4 py-2 rounded-full font-mono text-xs uppercase tracking-wider transition ${selectedCategory === cat ? 'bg-brand-blue text-brand-dark font-bold' : 'bg-white/5 text-brand-light-secondary hover:bg-white/10 hover:text-white border border-white/5'}">
+                ${cat}
+              </button>
+            `)}
+          </div>
+
+          <!-- Live Search Input -->
+          <div class="relative w-full md:max-w-xs">
+            <input type="text" value=${searchQuery} onInput=${e => setSearchQuery(e.target.value)} placeholder="Search threat database..." class="w-full bg-white/5 border border-white/10 focus:border-brand-blue rounded-full px-5 py-2.5 text-white text-xs font-mono focus:outline-none transition" />
+            <svg class="w-4 h-4 text-brand-light-secondary absolute right-4 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.1" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          </div>
+
+        </div>
+
+        <!-- Featured / Standard Grid Cards Layout -->
+        ${filteredPosts.length === 0 ? html`
+          <div class="text-center py-20 bg-white/5 border border-white/5 rounded-3xl">
+            <svg class="w-12 h-12 text-brand-light-secondary mx-auto mb-4 opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 0115.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <p class="font-mono text-sm tracking-wider uppercase text-brand-light-secondary">No matching security research bulletins found.</p>
+            <button onClick=${() => { setSearchQuery(''); setSelectedCategory('All'); }} class="mt-4 text-xs font-mono text-brand-blue hover:underline">Reset Filters</button>
+          </div>
+        ` : html`
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            ${filteredPosts.map(post => html`
+              <article key=${post.id} onClick=${() => { window.location.hash = `blog/${post.slug}`; window.scrollTo(0,0); }} class="group bg-brand-dark-secondary rounded-3xl border border-white/5 hover:border-brand-blue/30 overflow-hidden cursor-pointer transition-all duration-300 hover:translate-y-[-4px] flex flex-col shadow-xl hover:shadow-brand-blue/5">
+                
+                <!-- Card Header Visual Gradient -->
+                <div style="background: ${post.coverPattern || 'linear-gradient(135deg, #0d1b2a 0%, #172554 100%)'}" class="h-44 w-full relative overflow-hidden transition-all duration-300 group-hover:scale-[1.01] flex items-end p-5">
+                  <div class="absolute inset-0 bg-gradient-to-t from-brand-dark-secondary to-transparent"></div>
+                  
+                  <span class="relative z-10 px-2.5 py-1 text-[10px] font-mono font-bold tracking-widest uppercase rounded border ${getCategoryThemeClass(post.category)}">
+                    ${post.category}
+                  </span>
+                </div>
+
+                <!-- Card Info -->
+                <div class="p-6 flex flex-col flex-grow">
+                  <div class="flex items-center justify-between text-xs font-mono text-brand-light-secondary mb-3">
+                    <span>${post.date}</span>
+                    <span>${post.readTime}</span>
+                  </div>
+                  
+                  <h3 class="text-xl font-bold text-white mb-3 group-hover:text-brand-blue transition line-clamp-2 tracking-tight leading-snug">
+                    ${post.title}
+                  </h3>
+                  
+                  <p class="text-brand-light-secondary text-sm leading-relaxed mb-6 line-clamp-3">
+                    ${post.excerpt}
+                  </p>
+
+                  <div class="mt-auto pt-4 border-t border-white/5 flex items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                      <div class="w-6 h-6 rounded-full bg-brand-blue/10 border border-brand-blue/30 text-[10px] text-brand-blue font-bold flex items-center justify-center font-mono">
+                        ${post.author.charAt(0)}
+                      </div>
+                      <span class="text-xs font-semibold text-brand-light">${post.author}</span>
+                    </div>
+                    
+                    <span class="text-xs font-mono font-bold text-brand-blue group-hover:text-brand-cyan transition flex items-center">
+                      <span>READ BULLETIN</span>
+                      <svg class="w-3.5 h-3.5 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </span>
+                  </div>
+                </div>
+              </article>
+            `)}
+          </div>
+        `}
+      `}
+    </div>
+  `;
+};
+
 const App = () => {
   const [view, setView] = useState('landing');
 
@@ -852,10 +1406,13 @@ const App = () => {
   useEffect(() => {
     const handleHash = () => {
       const hash = window.location.hash.replace('#', '') || 'landing';
-      const validViews = ['landing', 'freemium', 'privacy', 'terms', 'contact'];
+      const validViews = ['landing', 'freemium', 'privacy', 'terms', 'contact', 'blog'];
       const landingSections = ['features', 'case-studies', 'faq', 'verticals', 'hero'];
 
-      if (validViews.includes(hash)) {
+      if (hash.startsWith('blog')) {
+        setView('blog');
+        window.scrollTo(0, 0);
+      } else if (validViews.includes(hash)) {
         setView(hash);
         window.scrollTo(0, 0);
       } else if (landingSections.includes(hash)) {
@@ -896,6 +1453,7 @@ const App = () => {
                 <a href="#features" class="hover:text-white transition-colors">Features</a>
                 <a href="#case-studies" class="hover:text-white transition-colors">Case Studies</a>
                 <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+                <a href="#blog" onClick=${(e) => { e.preventDefault(); handleNavigate('blog'); }} class="hover:text-white transition-colors ${view === 'blog' ? 'text-brand-blue font-bold border-b-2 border-brand-blue pb-1' : ''}">Blog</a>
               </nav>
               <a href="#freemium" onClick=${(e) => { e.preventDefault(); handleNavigate('freemium'); }} class="bg-brand-blue hover:bg-brand-cyan text-brand-dark px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 shadow-lg shadow-brand-blue/20">
                 START NOW
@@ -909,7 +1467,8 @@ const App = () => {
         ${view === 'privacy' ? html`<${PrivacyPolicyView} />` : 
           view === 'terms' ? html`<${TermsOfServiceView} />` :
           view === 'freemium' ? html`<${FreemiumView} />` :
-          view === 'contact' ? html`<${ContactFormView} />` : html`
+          view === 'contact' ? html`<${ContactFormView} />` :
+          view === 'blog' ? html`<${BlogView} />` : html`
           <section id="hero" class="relative py-24 md:py-36 overflow-hidden">
              <div class="absolute inset-0 bg-gradient-to-br from-brand-dark via-brand-dark-secondary to-brand-dark bg-300% animate-gradient-bg -z-10"></div>
              <div class="absolute inset-0 bg-grid-pattern opacity-10 -z-10"></div>
@@ -957,7 +1516,8 @@ const App = () => {
              <span class="text-xl font-bold text-brand-light-secondary">EyeBall</span>
           </div>
           <p class="text-brand-light-secondary">EyeBall 2025. Secure the Web. All rights reserved.</p>
-          <div class="mt-6 flex justify-center space-x-8 text-sm text-brand-light-secondary">
+          <div class="mt-6 flex justify-center space-x-8 text-sm text-brand-light-secondary font-mono">
+             <a href="#blog" onClick=${(e) => { e.preventDefault(); handleNavigate('blog'); }} class="hover:text-white transition">Blog</a>
              <a href="#privacy" onClick=${(e) => { e.preventDefault(); handleNavigate('privacy'); }} class="hover:text-white transition">Privacy Policy</a>
              <a href="#terms" onClick=${(e) => { e.preventDefault(); handleNavigate('terms'); }} class="hover:text-white transition">Terms of Service</a>
           </div>
