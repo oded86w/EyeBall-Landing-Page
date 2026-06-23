@@ -48,8 +48,10 @@ const DlpIcon = () => html`
 `;
 
 const GenAIIcon = () => html`
-  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-4 text-emerald-400" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M19.5 8L19 5L16 4.5L19 4L19.5 1L20 4L23 4.5L20 5L19.5 8Z"/>
+    <path d="M9 21L8.1 15.9L3 15L8.1 14.1L9 9L9.9 14.1L15 15L9.9 15.9L9 21Z"/>
+    <path d="M19 19L18.6 16.6L16.2 16.2L18.6 15.8L19 13.4L19.4 15.8L21.8 16.2L19.4 16.6L19 19Z"/>
   </svg>
 `;
 
@@ -89,6 +91,12 @@ const LatencyIcon = () => html`
 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-4 text-brand-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
 </svg>
+`;
+
+const ExtensionIcon = () => html`
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+  </svg>
 `;
 
 const ContactFormView = () => {
@@ -621,14 +629,14 @@ const FreemiumView = () => {
                     </button>
                 </div>
                 <div class="mt-12 text-center">
-                    <p class="text-brand-light-secondary text-sm">
+                    <p class="text-brand-light-secondary text-sm font-sans">
                         Securing corporate perimeters and unmanaged devices instantly.
                     </p>
                 </div>
             </div>
         </section>
     `;
-}
+};
 
 const BusinessFeatures = ({ onStartFree }) => {
     const features = [
@@ -640,18 +648,24 @@ const BusinessFeatures = ({ onStartFree }) => {
                 'Instant phishing & malware detection.',
                 'Intelligent Zero-Day exploit isolation.',
                 '<strong>Zero-Blind-Spots:</strong> No decryption required for deep traffic analysis.'
-            ]
+            ],
+            gridClass: 'col-span-1'
         },
         {
             icon: html`<${DlpIcon} />`,
             title: 'Native Browser DLP',
-            description: 'Context-aware data protection that sees what users see.',
+            description: 'Context-aware data protection that sees what users see in real-time.',
             points: [
                 'Detect and redact PII, HIPAA, and PCI data in real-time.',
                 'Block unapproved browser downloads, clipboard copies, and printing.',
                 'Apply user-specific, tamper-proof watermarks to critical SaaS platforms.',
                 'Deep contextual scanning: Sees raw text before it is copied or submitted.'
-            ]
+            ],
+            hasDemo: true,
+            badgeText: 'eyeball://dlp-shield-active',
+            imageSrc: '/EyeBallDLSITEVID-optimize.gif',
+            bulletColor: 'text-brand-blue',
+            gridClass: 'col-span-1 md:col-span-2 lg:col-span-2 shadow-xl'
         },
         {
             icon: html`<${GenAIIcon} />`,
@@ -662,7 +676,23 @@ const BusinessFeatures = ({ onStartFree }) => {
                 '<strong>Real-Time Redact & Masking:</strong> Automatically strip passwords, API keys, source code, and PII before requests reach LLM servers.',
                 '<strong>Shadow AI Discovery:</strong> Map every AI service in use across the enterprise, safeguarding authorized tools and blocking risky unmanaged ones.',
                 '<strong>GenAI Tenant Restrictions:</strong> Enforce organization-level restrictions on ChatGPT and Claude, ensuring employees use sanctioned enterprise accounts.'
-            ]
+            ],
+            hasDemo: true,
+            badgeText: 'eyeball://ai-blocking-shield',
+            imageSrc: '/Eyeball-AIREDACToptimize.gif',
+            bulletColor: 'text-emerald-400',
+            gridClass: 'col-span-1 md:col-span-2 lg:col-span-2 shadow-xl'
+        },
+        {
+            icon: html`<${SaasIcon} />`,
+            title: 'SaaS Governance',
+            description: 'Clear visibility into shadow IT and enterprise SaaS usage.',
+            points: [
+                '<strong>Shadow IT Auto-Discovery:</strong> Detect and catalog unmanaged SaaS platforms, rogue web applications, and active user profiles on unauthorized sites.',
+                '<strong>Tenant Restrictions Enforcement:</strong> Instantly restrict logins to pre-approved Microsoft 365, Google Workspace, GitHub, Slack, and ChatGPT organizational tenants.',
+                '<strong>Session Shielding & Persistence:</strong> Lock down session tokens and browser cookie caches to prevent lateral session hijacking attacks.'
+            ],
+            gridClass: 'col-span-1'
         },
         {
             icon: html`<${WebFilterIcon} />`,
@@ -673,28 +703,36 @@ const BusinessFeatures = ({ onStartFree }) => {
                 '<strong>No Network Proxies or SSL Inspection:</strong> Runs natively in the client browser with zero network interruption, completely bypassing the need for complex, heavy SSL/TLS decryption tunnels.',
                 '<strong>File Upload Restrictions:</strong> Block file uploads on specific channels like <strong>WhatsApp Web</strong> or applications protected by <strong>Certificate Pinning</strong> where legacy network decryption is completely blind.',
                 '<strong>Granular Download Controls:</strong> Regulate downloads block-by-block, prevent risky extensions (.exe, .scr, .zip), and inspect objects dynamically before they touch the host storage.',
-                '<strong>Instant Rules Deployment:</strong> Deploy and propagation policy updates globally in under 10 seconds across your entire fleet, retaining pure wire-speed browsing.'
-            ]
-        },
-        {
-            icon: html`<${SaasIcon} />`,
-            title: 'SaaS Governance',
-            description: 'Clear visibility into shadow IT and enterprise SaaS usage.',
-            points: [
-                'Auto-discovery of unmanaged web apps.',
-                'Enforce tenant restrictions (M365/Google).',
-                'Hardened browser session persistence.'
-            ]
+                '<strong>Instant Rules Deployment:</strong> Deploy and propagate policy updates globally in under 10 seconds across your entire fleet, retaining pure wire-speed browsing.'
+            ],
+            hasDemo: true,
+            badgeText: 'eyeball://url-compliance-gate',
+            imageSrc: '/Eyeball-DemoURLF-optimize-1.gif',
+            bulletColor: 'text-sky-400',
+            gridClass: 'col-span-1 md:col-span-2 lg:col-span-2 shadow-xl'
         },
         {
             icon: html`<${WebProtectIcon} />`,
             title: 'Enterprise Hardening',
             description: 'Apply zero-trust principles directly to your sensitive applications.',
             points: [
-                '<strong>Credential Isolation:</strong> Prevent corporate password reuse.',
-                'Restrict printing, downloads, and copy/paste per-app.',
-                'Environment hardening against malicious extensions.'
-            ]
+                '<strong>Anti-Screen Exfiltration (Watermarking):</strong> Inject dynamically generated, user-specific watermarks onto corporate web pages to prevent photo-taking and printscreen exploits.',
+                '<strong>Credential Isolation:</strong> Actively monitor and block reuse of company credentials on personal and non-work-related public domains.',
+                '<strong>Contextual Copy/Block Polices:</strong> Block printing, untrusted downloads, and copy-paste clipboard events selectively for designated sensitive URLs.'
+            ],
+            gridClass: 'col-span-1'
+        },
+        {
+            icon: html`<${ExtensionIcon} />`,
+            title: 'Browser Extension Control',
+            description: 'Govern and secure browser extensions to eliminate browser-based threat vectors.',
+            points: [
+                '<strong>Full Extension Visibility:</strong> Gain deep, continuous visibility and a unified inventory of all browser extensions installed across all organization endpoints.',
+                '<strong>Comprehensive Allowlists:</strong> Enforce strict, role-based allowlists to ensure endpoints only run pre-vetted, licensed corporate extensions.',
+                '<strong>Custom Blocklist Management:</strong> Easily ban specific browsers add-ons and enforce centralized blocklists instantly across your fleet.',
+                '<strong>Active Threat Intelligence Blocking:</strong> Automatically block dangerous, unvetted, or malicious extensions powered by real-time EyeBall Defense Research.'
+            ],
+            gridClass: 'col-span-1'
         },
         {
             icon: html`<${AttackDefenseIcon} />`,
@@ -704,7 +742,12 @@ const BusinessFeatures = ({ onStartFree }) => {
                 '<strong>AntiFix Protection:</strong> Resilient armor against deceptive malware, clickjacking, and browser compromises.',
                 'Block cross-domain malicious code and unauthorized forms injection.',
                 'Real-time behavioral DOM monitoring for malicious content.'
-            ]
+            ],
+            hasDemo: true,
+            badgeText: 'eyeball://exploit-shield-anti-fix',
+            imageSrc: '/Eyeball-DemoANTIFIX-optimize.gif',
+            bulletColor: 'text-rose-400',
+            gridClass: 'col-span-1 md:col-span-2 lg:col-span-2 shadow-xl'
         },
         {
             icon: html`<${FastDeploymentIcon} />`,
@@ -714,7 +757,8 @@ const BusinessFeatures = ({ onStartFree }) => {
                 '<strong>5-Minute Setup:</strong> Lightning-fast rollout.',
                 'Support for Chrome, Edge, Brave, and Chromium browsers.',
                 '<strong>Zero Habit Disruption:</strong> Security that works silently.'
-            ]
+            ],
+            gridClass: 'col-span-1 md:col-span-2 lg:col-span-3'
         }
     ];
 
@@ -731,7 +775,8 @@ const BusinessFeatures = ({ onStartFree }) => {
                     </div>
                 </div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-24">
                 <div class="bg-white/5 border border-white/10 rounded-3xl p-10 hover:border-brand-blue/50 transition-all duration-500 group animate-fade-in-up">
                     <div class="flex flex-col h-full">
                         <div class="w-14 h-14 bg-brand-blue/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
@@ -767,27 +812,23 @@ const BusinessFeatures = ({ onStartFree }) => {
                     </div>
                 </div>
             </div>
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
                 ${features.map((feature, index) => {
-                    const isDLP = feature.title === 'Native Browser DLP';
-                    const isGenAI = feature.title === 'Adaptive GenAI Security';
-                    const isURLF = feature.title === 'Web Filtering & Browsing Control';
-                    const isExploit = feature.title === 'Advanced Exploit Defense';
-                    
-                    if (isDLP) {
+                    if (feature.hasDemo) {
                         return html`
-                            <div class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/[0.08] transition-all animate-fade-in-up md:col-span-2 lg:col-span-2" style=${{animationDelay: `${index * 0.1}s`}}>
+                            <div class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/[0.08] transition-all animate-fade-in-up ${feature.gridClass}" style=${{animationDelay: `${index * 0.1}s`}}>
                                 <div class="grid grid-cols-1 md:grid-cols-12 gap-8 h-full items-center">
                                     <div class="md:col-span-6 flex flex-col h-full justify-between">
                                         <div>
                                             <div class="mb-6">${feature.icon}</div>
                                             <h3 class="text-xl font-bold text-white mb-3">${feature.title}</h3>
-                                            <p class="text-brand-light-secondary mb-6 leading-relaxed">${feature.description}</p>
+                                            <p class="text-brand-light-secondary mb-6 leading-relaxed text-sm md:text-base">${feature.description}</p>
                                         </div>
                                         <ul class="space-y-4 text-sm text-brand-light">
                                             ${feature.points.map(point => html`
                                                 <li class="flex items-start">
-                                                    <svg class="w-4 h-4 mr-3 mt-0.5 text-brand-blue flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                                                    <svg class="w-4 h-4 mr-3 mt-0.5 ${feature.bulletColor} flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                                                     <span dangerouslySetInnerHTML=${{__html: point}}></span>
                                                 </li>
                                             `)}
@@ -796,145 +837,19 @@ const BusinessFeatures = ({ onStartFree }) => {
                                     <div class="md:col-span-6 flex items-center justify-center">
                                         <div class="w-full relative rounded-xl overflow-hidden border border-white/10 bg-black/40 shadow-2xl">
                                             <div class="flex items-center space-x-2 px-4 py-3 bg-white/5 border-b border-white/15">
-                                                <div class="flex space-x-1.5">
-                                                    <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80 inline-block"></span>
-                                                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80 inline-block"></span>
-                                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block"></span>
+                                                <div class="flex space-x-1.5 flex-shrink-0">
+                                                    <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80 inline-block pointer-events-none"></span>
+                                                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80 inline-block pointer-events-none"></span>
+                                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block pointer-events-none"></span>
                                                 </div>
-                                                <div class="flex-grow text-center">
-                                                    <div class="bg-black/20 text-white/50 text-[10px] font-mono py-1 px-3 rounded-md inline-block max-w-[180px] lg:max-w-full truncate">
-                                                        eyeball://dlp-shield-active
+                                                <div class="flex-grow text-center min-w-0">
+                                                    <div class="bg-black/20 text-white/50 text-[10px] font-mono py-1 px-3 rounded-md inline-block max-w-[185px] truncate">
+                                                        ${feature.badgeText}
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="p-1 bg-gradient-to-b from-brand-dark to-brand-dark-secondary">
-                                                <img src="/EyeBallDLSITEVID-optimize.gif" onError=${handleImageFallback} alt="Native Browser DLP Demo" class="w-full h-auto object-cover rounded-b-lg" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-                    }
-                    if (isGenAI) {
-                        return html`
-                            <div class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/[0.08] transition-all animate-fade-in-up md:col-span-2 lg:col-span-2 shadow-xl" style=${{animationDelay: `${index * 0.1}s`}}>
-                                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 h-full items-center">
-                                    <div class="md:col-span-6 flex flex-col h-full justify-between">
-                                        <div>
-                                            <div class="mb-6">${feature.icon}</div>
-                                            <h3 class="text-xl font-bold text-white mb-3">${feature.title}</h3>
-                                            <p class="text-brand-light-secondary mb-6 leading-relaxed">${feature.description}</p>
-                                        </div>
-                                        <ul class="space-y-4 text-sm text-brand-light">
-                                            ${feature.points.map(point => html`
-                                                <li class="flex items-start">
-                                                    <svg class="w-4 h-4 mr-3 mt-0.5 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                                                    <span dangerouslySetInnerHTML=${{__html: point}}></span>
-                                                </li>
-                                            `)}
-                                        </ul>
-                                    </div>
-                                    <div class="md:col-span-6 flex items-center justify-center">
-                                        <div class="w-full relative rounded-xl overflow-hidden border border-white/10 bg-black/40 shadow-2xl">
-                                            <div class="flex items-center space-x-2 px-4 py-3 bg-white/5 border-b border-white/15">
-                                                <div class="flex space-x-1.5">
-                                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block"></span>
-                                                    <span class="w-2.5 h-2.5 rounded-full bg-blue-500/80 inline-block"></span>
-                                                    <span class="w-2.5 h-2.5 rounded-full bg-purple-500/80 inline-block"></span>
-                                                </div>
-                                                <div class="flex-grow text-center">
-                                                    <div class="bg-black/20 text-white/50 text-[10px] font-mono py-1 px-3 rounded-md inline-block max-w-[180px] lg:max-w-full truncate">
-                                                        eyeball://ai-blocking-shield
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="p-1 bg-gradient-to-b from-brand-dark to-brand-dark-secondary">
-                                                <img src="/Eyeball-AIREDACToptimize.gif" onError=${handleImageFallback} alt="Adaptive GenAI Security Demo" class="w-full h-auto object-cover rounded-b-lg" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-                    }
-                    if (isURLF) {
-                        return html`
-                            <div class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/[0.08] transition-all animate-fade-in-up md:col-span-2 lg:col-span-2 shadow-xl" style=${{animationDelay: `${index * 0.1}s`}}>
-                                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 h-full items-center">
-                                    <div class="md:col-span-6 flex flex-col h-full justify-between">
-                                        <div>
-                                            <div class="mb-6">${feature.icon}</div>
-                                            <h3 class="text-xl font-bold text-white mb-3">${feature.title}</h3>
-                                            <p class="text-brand-light-secondary mb-6 leading-relaxed">${feature.description}</p>
-                                        </div>
-                                        <ul class="space-y-4 text-sm text-brand-light">
-                                            ${feature.points.map(point => html`
-                                                <li class="flex items-start">
-                                                    <svg class="w-4 h-4 mr-3 mt-0.5 text-sky-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                                                    <span dangerouslySetInnerHTML=${{__html: point}}></span>
-                                                </li>
-                                            `)}
-                                        </ul>
-                                    </div>
-                                    <div class="md:col-span-6 flex items-center justify-center">
-                                        <div class="w-full relative rounded-xl overflow-hidden border border-white/10 bg-black/40 shadow-2xl">
-                                            <div class="flex items-center space-x-2 px-4 py-3 bg-white/5 border-b border-white/15">
-                                                <div class="flex space-x-1.5">
-                                                    <span class="w-2.5 h-2.5 rounded-full bg-sky-500/80 inline-block"></span>
-                                                    <span class="w-2.5 h-2.5 rounded-full bg-blue-500/80 inline-block"></span>
-                                                    <span class="w-2.5 h-2.5 rounded-full bg-teal-500/80 inline-block"></span>
-                                                </div>
-                                                <div class="flex-grow text-center">
-                                                    <div class="bg-black/20 text-white/50 text-[10px] font-mono py-1 px-3 rounded-md inline-block max-w-[180px] lg:max-w-full truncate">
-                                                        eyeball://url-compliance-gate
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="p-1 bg-gradient-to-b from-brand-dark to-brand-dark-secondary">
-                                                <img src="/Eyeball-DemoURLF-optimize-1.gif" onError=${handleImageFallback} alt="Web Filtering & Browsing Control" class="w-full h-auto object-cover rounded-b-lg" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-                    }
-                    if (isExploit) {
-                        return html`
-                            <div class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/[0.08] transition-all animate-fade-in-up md:col-span-2 lg:col-span-2 shadow-xl" style=${{animationDelay: `${index * 0.1}s`}}>
-                                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 h-full items-center">
-                                    <div class="md:col-span-6 flex flex-col h-full justify-between">
-                                        <div>
-                                            <div class="mb-6">${feature.icon}</div>
-                                            <h3 class="text-xl font-bold text-white mb-3">${feature.title}</h3>
-                                            <p class="text-brand-light-secondary mb-6 leading-relaxed">${feature.description}</p>
-                                        </div>
-                                        <ul class="space-y-4 text-sm text-brand-light">
-                                            ${feature.points.map(point => html`
-                                                <li class="flex items-start">
-                                                    <svg class="w-4 h-4 mr-3 mt-0.5 text-rose-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                                                    <span dangerouslySetInnerHTML=${{__html: point}}></span>
-                                                </li>
-                                            `)}
-                                        </ul>
-                                    </div>
-                                    <div class="md:col-span-6 flex items-center justify-center">
-                                        <div class="w-full relative rounded-xl overflow-hidden border border-white/10 bg-black/40 shadow-2xl">
-                                            <div class="flex items-center space-x-2 px-4 py-3 bg-white/5 border-b border-white/15">
-                                                <div class="flex space-x-1.5">
-                                                    <span class="w-2.5 h-2.5 rounded-full bg-red-500/80 inline-block"></span>
-                                                    <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80 inline-block"></span>
-                                                    <span class="w-2.5 h-2.5 rounded-full bg-orange-400/80 inline-block"></span>
-                                                </div>
-                                                <div class="flex-grow text-center">
-                                                    <div class="bg-black/20 text-white/50 text-[10px] font-mono py-1 px-3 rounded-md inline-block max-w-[180px] lg:max-w-full truncate">
-                                                        eyeball://exploit-shield-anti-fix
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="p-1 bg-gradient-to-b from-brand-dark to-brand-dark-secondary">
-                                                <img src="/Eyeball-DemoANTIFIX-optimize.gif" onError=${handleImageFallback} alt="Advanced Exploit Defense (AntiFix)" class="w-full h-auto object-cover rounded-b-lg" />
+                                                <img src=${feature.imageSrc} onError=${handleImageFallback} alt="${feature.title} Demo" class="w-full h-auto object-cover rounded-b-lg" />
                                             </div>
                                         </div>
                                     </div>
@@ -943,11 +858,13 @@ const BusinessFeatures = ({ onStartFree }) => {
                         `;
                     }
                     return html`
-                        <div class="bg-white/5 border border-white/10 rounded-2xl p-8 flex flex-col hover:bg-white/[0.08] transition-all animate-fade-in-up" style=${{animationDelay: `${index * 0.1}s`}}>
-                            <div class="mb-6">${feature.icon}</div>
-                            <h3 class="text-xl font-bold text-white mb-3">${feature.title}</h3>
-                            <p class="text-brand-light-secondary mb-6 flex-grow leading-relaxed">${feature.description}</p>
-                            <ul class="space-y-3 text-sm text-brand-light font-sans">
+                        <div class="bg-white/5 border border-white/10 rounded-2xl p-8 flex flex-col justify-between hover:bg-white/[0.08] hover:border-white/20 transition-all animate-fade-in-up ${feature.gridClass}" style=${{animationDelay: `${index * 0.1}s`}}>
+                            <div>
+                                <div class="mb-6">${feature.icon}</div>
+                                <h3 class="text-xl font-bold text-white mb-3">${feature.title}</h3>
+                                <p class="text-brand-light-secondary mb-6 leading-relaxed text-sm md:text-base">${feature.description}</p>
+                            </div>
+                            <ul class="space-y-3.5 text-sm text-brand-light font-sans">
                                 ${feature.points.map(point => html`
                                     <li class="flex items-start">
                                         <svg class="w-4 h-4 mr-3 mt-0.5 text-brand-blue flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
@@ -1751,7 +1668,6 @@ const App = () => {
           <div id="features">
              <${BusinessFeatures} onStartFree=${() => handleNavigate('freemium')} />
           </div>
-          <${VerticalLandingPages} />
           <${CaseStudies} />
           <${FAQ} />
         `}
