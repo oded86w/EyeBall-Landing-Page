@@ -1566,6 +1566,7 @@ const BlogView = () => {
 
 const App = () => {
   const [view, setView] = useState('landing');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Sync state with URL hash for direct links
   useEffect(() => {
@@ -1573,6 +1574,8 @@ const App = () => {
       const hash = window.location.hash.replace('#', '') || 'landing';
       const validViews = ['landing', 'freemium', 'privacy', 'terms', 'contact', 'blog'];
       const landingSections = ['features', 'case-studies', 'faq', 'verticals', 'hero'];
+
+      setMobileMenuOpen(false); // Close mobile menu on hash/view change
 
       if (hash.startsWith('blog')) {
         setView('blog');
@@ -1626,6 +1629,7 @@ const App = () => {
 
   const handleNavigate = (newView) => {
     window.location.hash = newView;
+    setMobileMenuOpen(false);
   };
 
   return html`
@@ -1637,19 +1641,49 @@ const App = () => {
               <${Logo} className="h-12 w-auto transition-transform duration-300 group-hover:scale-105" variant="blue" />
               <span class="text-2xl font-bold text-white tracking-tight">EyeBall</span>
             </a>
-            <div class="flex items-center space-x-6">
+            <div class="flex items-center space-x-4 md:space-x-6">
               <nav class="hidden md:flex space-x-6 text-sm font-medium text-brand-light-secondary">
                 <a href="#features" class="hover:text-white transition-colors">Features</a>
                 <a href="#case-studies" class="hover:text-white transition-colors">Case Studies</a>
                 <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
                 <a href="#blog" onClick=${(e) => { e.preventDefault(); handleNavigate('blog'); }} class="hover:text-white transition-colors ${view === 'blog' ? 'text-brand-blue font-bold border-b-2 border-brand-blue pb-1' : ''}">Blog</a>
               </nav>
-              <a href="#freemium" onClick=${(e) => { e.preventDefault(); handleNavigate('freemium'); }} class="bg-brand-blue hover:bg-brand-cyan text-brand-dark px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 shadow-lg shadow-brand-blue/20">
+              <a href="#freemium" onClick=${(e) => { e.preventDefault(); handleNavigate('freemium'); }} class="bg-brand-blue hover:bg-brand-cyan text-brand-dark px-4 py-2 sm:px-6 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 shadow-lg shadow-brand-blue/20">
                 START NOW
               </a>
+              
+              <!-- Mobile menu button -->
+              <button onClick=${() => setMobileMenuOpen(!mobileMenuOpen)} class="md:hidden flex items-center justify-center p-2 rounded-xl text-brand-light-secondary hover:text-white hover:bg-white/5 transition-colors focus:outline-none" aria-label="Toggle Menu">
+                ${mobileMenuOpen ? html`
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+                  </svg>
+                ` : html`
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path>
+                  </svg>
+                `}
+              </button>
             </div>
           </div>
         </div>
+
+        <!-- Mobile Navigation Dropdown Panel -->
+        ${mobileMenuOpen && html`
+          <div class="md:hidden bg-brand-dark/95 border-b border-white/10 backdrop-blur-2xl transition-all duration-300 animate-fade-in-down">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+              <a href="#features" onClick=${() => setMobileMenuOpen(false)} class="block px-4 py-3 rounded-xl text-brand-light-secondary hover:text-white hover:bg-white/5 transition-all font-medium text-base">Features</a>
+              <a href="#case-studies" onClick=${() => setMobileMenuOpen(false)} class="block px-4 py-3 rounded-xl text-brand-light-secondary hover:text-white hover:bg-white/5 transition-all font-medium text-base">Case Studies</a>
+              <a href="#faq" onClick=${() => setMobileMenuOpen(false)} class="block px-4 py-3 rounded-xl text-brand-light-secondary hover:text-white hover:bg-white/5 transition-all font-medium text-base">FAQ</a>
+              <a href="#blog" onClick=${(e) => { e.preventDefault(); handleNavigate('blog'); }} class="block px-4 py-3 rounded-xl hover:text-white hover:bg-white/5 transition-all font-medium text-base ${view === 'blog' ? 'text-brand-blue bg-white/5 font-bold' : 'text-brand-light-secondary'}">Blog</a>
+              <div class="pt-4 border-t border-white/5 px-4">
+                <a href="#freemium" onClick=${(e) => { e.preventDefault(); handleNavigate('freemium'); }} class="block w-full text-center bg-brand-blue hover:bg-brand-cyan text-brand-dark py-3.5 rounded-xl text-base font-bold transition-all shadow-lg shadow-brand-blue/20">
+                  START NOW
+                </a>
+              </div>
+            </div>
+          </div>
+        `}
       </header>
       
       <main class="flex-grow pt-20">
