@@ -3,15 +3,35 @@ import { render } from 'preact';
 import { useState, useEffect } from 'preact/hooks';
 import { html } from 'htm/preact';
 
+const handleImageFallback = (e) => {
+  if (e.target && e.target.src) {
+    const currentSrc = e.target.src;
+    
+    if (e.target.dataset.fallbackAttempted) {
+      if (!currentSrc.includes('logo.svg') && !e.target.dataset.finalFallback) {
+        e.target.dataset.finalFallback = 'true';
+        e.target.src = 'public/logo.svg';
+      }
+      return;
+    }
+    
+    e.target.dataset.fallbackAttempted = 'true';
+    const match = currentSrc.match(/\/([^\/]+\.(gif|png|svg|jpg|jpeg|webp))$/i);
+    if (match && match[1]) {
+      const filename = match[1];
+      if (currentSrc.includes('/public/')) {
+        e.target.src = filename;
+      } else {
+        e.target.src = 'public/' + filename;
+      }
+    }
+  }
+};
+
 const Logo = ({ className = "h-10 w-auto", variant = "blue" }) => {
   const src = variant === "white" ? "white.png" : "blue.png";
-  const handleError = (e) => {
-    if (e.target && e.target.src && !e.target.src.includes('logo.svg')) {
-      e.target.src = 'logo.svg';
-    }
-  };
   return html`
-    <img src=${src} onError=${handleError} class=${className} alt="EyeBall Logo" />
+    <img src=${src} onError=${handleImageFallback} class=${className} alt="EyeBall Logo" />
   `;
 };
 
@@ -788,7 +808,7 @@ const BusinessFeatures = ({ onStartFree }) => {
                                                 </div>
                                             </div>
                                             <div class="p-1 bg-gradient-to-b from-brand-dark to-brand-dark-secondary">
-                                                <img src="/EyeBallDLSITEVID-optimize.gif" alt="Native Browser DLP Demo" class="w-full h-auto object-cover rounded-b-lg" />
+                                                <img src="/EyeBallDLSITEVID-optimize.gif" onError=${handleImageFallback} alt="Native Browser DLP Demo" class="w-full h-auto object-cover rounded-b-lg" />
                                             </div>
                                         </div>
                                     </div>
@@ -830,7 +850,7 @@ const BusinessFeatures = ({ onStartFree }) => {
                                                 </div>
                                             </div>
                                             <div class="p-1 bg-gradient-to-b from-brand-dark to-brand-dark-secondary">
-                                                <img src="/Eyeball-AIREDACToptimize.gif" alt="Adaptive GenAI Security Demo" class="w-full h-auto object-cover rounded-b-lg" />
+                                                <img src="/Eyeball-AIREDACToptimize.gif" onError=${handleImageFallback} alt="Adaptive GenAI Security Demo" class="w-full h-auto object-cover rounded-b-lg" />
                                             </div>
                                         </div>
                                     </div>
@@ -872,7 +892,7 @@ const BusinessFeatures = ({ onStartFree }) => {
                                                 </div>
                                             </div>
                                             <div class="p-1 bg-gradient-to-b from-brand-dark to-brand-dark-secondary">
-                                                <img src="/Eyeball-DemoURLF-optimize-1.gif" alt="Web Filtering & Browsing Control" class="w-full h-auto object-cover rounded-b-lg" />
+                                                <img src="/Eyeball-DemoURLF-optimize-1.gif" onError=${handleImageFallback} alt="Web Filtering & Browsing Control" class="w-full h-auto object-cover rounded-b-lg" />
                                             </div>
                                         </div>
                                     </div>
@@ -914,7 +934,7 @@ const BusinessFeatures = ({ onStartFree }) => {
                                                 </div>
                                             </div>
                                             <div class="p-1 bg-gradient-to-b from-brand-dark to-brand-dark-secondary">
-                                                <img src="/Eyeball-DemoANTIFIX-optimize.gif" alt="Advanced Exploit Defense (AntiFix)" class="w-full h-auto object-cover rounded-b-lg" />
+                                                <img src="/Eyeball-DemoANTIFIX-optimize.gif" onError=${handleImageFallback} alt="Advanced Exploit Defense (AntiFix)" class="w-full h-auto object-cover rounded-b-lg" />
                                             </div>
                                         </div>
                                     </div>
