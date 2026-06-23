@@ -1592,6 +1592,30 @@ const App = () => {
           }
         }, 100);
       }
+
+      // Track page views in Umami Cloud for all SPA hash-based routing views & blog articles
+      const trackPage = () => {
+        if (window.umami && typeof window.umami.track === 'function') {
+          const customUrl = window.location.pathname + (window.location.hash || '#landing');
+          window.umami.track((props) => ({
+            ...props,
+            url: customUrl
+          }));
+          return true;
+        }
+        return false;
+      };
+
+      if (!trackPage()) {
+        // If Umami is still loading, wait for it to be ready
+        const umamiRetry = setInterval(() => {
+          if (trackPage()) {
+            clearInterval(umamiRetry);
+          }
+        }, 150);
+        // Timeout after 5 seconds to prevent endless polling
+        setTimeout(() => clearInterval(umamiRetry), 5000);
+      }
     };
 
     window.addEventListener('hashchange', handleHash);
