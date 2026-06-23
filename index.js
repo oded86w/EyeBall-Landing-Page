@@ -3,14 +3,15 @@ import { render } from 'preact';
 import { useState, useEffect } from 'preact/hooks';
 import { html } from 'htm/preact';
 
-const Logo = ({ className = "h-10 w-auto" }) => {
+const Logo = ({ className = "h-10 w-auto", variant = "blue" }) => {
+  const src = variant === "white" ? "white.png" : "blue.png";
   const handleError = (e) => {
-    if (e.target && e.target.src && !e.target.src.includes('public/')) {
-      e.target.src = 'public/logo.svg';
+    if (e.target && e.target.src && !e.target.src.includes('logo.svg')) {
+      e.target.src = 'logo.svg';
     }
   };
   return html`
-    <img src="logo.svg" onError=${handleError} class=${className} alt="EyeBall Logo" />
+    <img src=${src} onError=${handleError} class=${className} alt="EyeBall Logo" />
   `;
 };
 
@@ -26,9 +27,21 @@ const DlpIcon = () => html`
   </svg>
 `;
 
+const GenAIIcon = () => html`
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+  </svg>
+`;
+
 const SaasIcon = () => html`
   <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-4 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2m18-10a4 4 0 00-4-4H9a4 4 0 00-4 4v2m14-2a4 4 0 004 4v2m-4-4h-2m-4-4h-2m8-4H9" />
+  </svg>
+`;
+
+const WebFilterIcon = () => html`
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-4 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
   </svg>
 `;
 
@@ -614,10 +627,33 @@ const BusinessFeatures = ({ onStartFree }) => {
             title: 'Native Browser DLP',
             description: 'Context-aware data protection that sees what users see.',
             points: [
-                'Detect and redact PII in real-time.',
-                'Block sensitive leakage to GenAI/LLMs.',
-                '<strong>Prompt Analyzer:</strong> Comprehensive monitoring and full analytics of all corporate AI usage.',
-                'Apply user-specific watermarks to critical web pages.'
+                'Detect and redact PII, HIPAA, and PCI data in real-time.',
+                'Block unapproved browser downloads, clipboard copies, and printing.',
+                'Apply user-specific, tamper-proof watermarks to critical SaaS platforms.',
+                'Deep contextual scanning: Sees raw text before it is copied or submitted.'
+            ]
+        },
+        {
+            icon: html`<${GenAIIcon} />`,
+            title: 'Adaptive GenAI Security',
+            description: 'Enable safe adoption of AI tools while preventing corporate intellectual property exposure.',
+            points: [
+                '<strong>Prompt Analyzer:</strong> Gain complete visibility and full compliance analytics of all corporate AI usage.',
+                '<strong>Real-Time Redact & Masking:</strong> Automatically strip passwords, API keys, source code, and PII before requests reach LLM servers.',
+                '<strong>Shadow AI Discovery:</strong> Map every AI service in use across the enterprise, safeguarding authorized tools and blocking risky unmanaged ones.',
+                '<strong>GenAI Tenant Restrictions:</strong> Enforce organization-level restrictions on ChatGPT and Claude, ensuring employees use sanctioned enterprise accounts.'
+            ]
+        },
+        {
+            icon: html`<${WebFilterIcon} />`,
+            title: 'Web Filtering & Browsing Control',
+            description: 'Granular website policies and browsing compliance rules enforced locally at the endpoint.',
+            points: [
+                '<strong>Website Blocklist & Filtering:</strong> Instantly block or monitor access to specific websites, IP addresses, and custom URL categories.',
+                '<strong>No Network Proxies or SSL Inspection:</strong> Runs natively in the client browser with zero network interruption, completely bypassing the need for complex, heavy SSL/TLS decryption tunnels.',
+                '<strong>File Upload Restrictions:</strong> Block file uploads on specific channels like <strong>WhatsApp Web</strong> or applications protected by <strong>Certificate Pinning</strong> where legacy network decryption is completely blind.',
+                '<strong>Granular Download Controls:</strong> Regulate downloads block-by-block, prevent risky extensions (.exe, .scr, .zip), and inspect objects dynamically before they touch the host storage.',
+                '<strong>Instant Rules Deployment:</strong> Deploy and propagation policy updates globally in under 10 seconds across your entire fleet, retaining pure wire-speed browsing.'
             ]
         },
         {
@@ -643,11 +679,11 @@ const BusinessFeatures = ({ onStartFree }) => {
         {
             icon: html`<${AttackDefenseIcon} />`,
             title: 'Advanced Exploit Defense',
-            description: 'Stop sophisticated attacks before they bypass OS security.',
+            description: 'Stop sophisticated web exploits and client-level attacks before they run.',
             points: [
-                '<strong>AntiFix Protection</strong> against social engineering.',
-                'Block cross-domain scripts and unauthorized form manipulation.',
-                'Real-time DOM monitoring for script injection.'
+                '<strong>AntiFix Protection:</strong> Resilient armor against deceptive malware, clickjacking, and browser compromises.',
+                'Block cross-domain malicious code and unauthorized forms injection.',
+                'Real-time behavioral DOM monitoring for malicious content.'
             ]
         },
         {
@@ -679,7 +715,7 @@ const BusinessFeatures = ({ onStartFree }) => {
                 <div class="bg-white/5 border border-white/10 rounded-3xl p-10 hover:border-brand-blue/50 transition-all duration-500 group animate-fade-in-up">
                     <div class="flex flex-col h-full">
                         <div class="w-14 h-14 bg-brand-blue/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
-                             <${Logo} className="h-10 w-auto" />
+                             <${Logo} className="h-10 w-auto" variant="blue" />
                         </div>
                         <h3 class="text-2xl font-bold text-white mb-4">Eliminate Visibility Gaps</h3>
                         <p class="text-brand-light-secondary leading-relaxed mb-6">Legacy EDRs can't see inside the encrypted browser session. EyeBall provides deep visibility into every DOM event, closing the gap legacy tools leave open.</p>
@@ -712,21 +748,196 @@ const BusinessFeatures = ({ onStartFree }) => {
                 </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
-                ${features.map((feature, index) => html`
-                    <div class="bg-white/5 border border-white/10 rounded-2xl p-8 flex flex-col hover:bg-white/[0.08] transition-all animate-fade-in-up" style=${{animationDelay: `${index * 0.1}s`}}>
-                        <div class="mb-6">${feature.icon}</div>
-                        <h3 class="text-xl font-bold text-white mb-3">${feature.title}</h3>
-                        <p class="text-brand-light-secondary mb-6 flex-grow leading-relaxed">${feature.description}</p>
-                        <ul class="space-y-3 text-sm text-brand-light">
-                            ${feature.points.map(point => html`
-                                <li class="flex items-start">
-                                    <svg class="w-4 h-4 mr-3 mt-0.5 text-brand-blue flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                                    <span dangerouslySetInnerHTML=${{__html: point}}></span>
-                                </li>
-                            `)}
-                        </ul>
-                    </div>
-                `)}
+                ${features.map((feature, index) => {
+                    const isDLP = feature.title === 'Native Browser DLP';
+                    const isGenAI = feature.title === 'Adaptive GenAI Security';
+                    const isURLF = feature.title === 'Web Filtering & Browsing Control';
+                    const isExploit = feature.title === 'Advanced Exploit Defense';
+                    
+                    if (isDLP) {
+                        return html`
+                            <div class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/[0.08] transition-all animate-fade-in-up md:col-span-2 lg:col-span-2" style=${{animationDelay: `${index * 0.1}s`}}>
+                                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 h-full items-center">
+                                    <div class="md:col-span-6 flex flex-col h-full justify-between">
+                                        <div>
+                                            <div class="mb-6">${feature.icon}</div>
+                                            <h3 class="text-xl font-bold text-white mb-3">${feature.title}</h3>
+                                            <p class="text-brand-light-secondary mb-6 leading-relaxed">${feature.description}</p>
+                                        </div>
+                                        <ul class="space-y-4 text-sm text-brand-light">
+                                            ${feature.points.map(point => html`
+                                                <li class="flex items-start">
+                                                    <svg class="w-4 h-4 mr-3 mt-0.5 text-brand-blue flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                                                    <span dangerouslySetInnerHTML=${{__html: point}}></span>
+                                                </li>
+                                            `)}
+                                        </ul>
+                                    </div>
+                                    <div class="md:col-span-6 flex items-center justify-center">
+                                        <div class="w-full relative rounded-xl overflow-hidden border border-white/10 bg-black/40 shadow-2xl">
+                                            <div class="flex items-center space-x-2 px-4 py-3 bg-white/5 border-b border-white/15">
+                                                <div class="flex space-x-1.5">
+                                                    <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80 inline-block"></span>
+                                                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80 inline-block"></span>
+                                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block"></span>
+                                                </div>
+                                                <div class="flex-grow text-center">
+                                                    <div class="bg-black/20 text-white/50 text-[10px] font-mono py-1 px-3 rounded-md inline-block max-w-[180px] lg:max-w-full truncate">
+                                                        eyeball://dlp-shield-active
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="p-1 bg-gradient-to-b from-brand-dark to-brand-dark-secondary">
+                                                <img src="/EyeBallDLSITEVID-optimize.gif" alt="Native Browser DLP Demo" class="w-full h-auto object-cover rounded-b-lg" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }
+                    if (isGenAI) {
+                        return html`
+                            <div class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/[0.08] transition-all animate-fade-in-up md:col-span-2 lg:col-span-2 shadow-xl" style=${{animationDelay: `${index * 0.1}s`}}>
+                                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 h-full items-center">
+                                    <div class="md:col-span-6 flex flex-col h-full justify-between">
+                                        <div>
+                                            <div class="mb-6">${feature.icon}</div>
+                                            <h3 class="text-xl font-bold text-white mb-3">${feature.title}</h3>
+                                            <p class="text-brand-light-secondary mb-6 leading-relaxed">${feature.description}</p>
+                                        </div>
+                                        <ul class="space-y-4 text-sm text-brand-light">
+                                            ${feature.points.map(point => html`
+                                                <li class="flex items-start">
+                                                    <svg class="w-4 h-4 mr-3 mt-0.5 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                                                    <span dangerouslySetInnerHTML=${{__html: point}}></span>
+                                                </li>
+                                            `)}
+                                        </ul>
+                                    </div>
+                                    <div class="md:col-span-6 flex items-center justify-center">
+                                        <div class="w-full relative rounded-xl overflow-hidden border border-white/10 bg-black/40 shadow-2xl">
+                                            <div class="flex items-center space-x-2 px-4 py-3 bg-white/5 border-b border-white/15">
+                                                <div class="flex space-x-1.5">
+                                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block"></span>
+                                                    <span class="w-2.5 h-2.5 rounded-full bg-blue-500/80 inline-block"></span>
+                                                    <span class="w-2.5 h-2.5 rounded-full bg-purple-500/80 inline-block"></span>
+                                                </div>
+                                                <div class="flex-grow text-center">
+                                                    <div class="bg-black/20 text-white/50 text-[10px] font-mono py-1 px-3 rounded-md inline-block max-w-[180px] lg:max-w-full truncate">
+                                                        eyeball://ai-blocking-shield
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="p-1 bg-gradient-to-b from-brand-dark to-brand-dark-secondary">
+                                                <img src="/Eyeball-AIREDACToptimize.gif" alt="Adaptive GenAI Security Demo" class="w-full h-auto object-cover rounded-b-lg" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }
+                    if (isURLF) {
+                        return html`
+                            <div class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/[0.08] transition-all animate-fade-in-up md:col-span-2 lg:col-span-2 shadow-xl" style=${{animationDelay: `${index * 0.1}s`}}>
+                                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 h-full items-center">
+                                    <div class="md:col-span-6 flex flex-col h-full justify-between">
+                                        <div>
+                                            <div class="mb-6">${feature.icon}</div>
+                                            <h3 class="text-xl font-bold text-white mb-3">${feature.title}</h3>
+                                            <p class="text-brand-light-secondary mb-6 leading-relaxed">${feature.description}</p>
+                                        </div>
+                                        <ul class="space-y-4 text-sm text-brand-light">
+                                            ${feature.points.map(point => html`
+                                                <li class="flex items-start">
+                                                    <svg class="w-4 h-4 mr-3 mt-0.5 text-sky-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                                                    <span dangerouslySetInnerHTML=${{__html: point}}></span>
+                                                </li>
+                                            `)}
+                                        </ul>
+                                    </div>
+                                    <div class="md:col-span-6 flex items-center justify-center">
+                                        <div class="w-full relative rounded-xl overflow-hidden border border-white/10 bg-black/40 shadow-2xl">
+                                            <div class="flex items-center space-x-2 px-4 py-3 bg-white/5 border-b border-white/15">
+                                                <div class="flex space-x-1.5">
+                                                    <span class="w-2.5 h-2.5 rounded-full bg-sky-500/80 inline-block"></span>
+                                                    <span class="w-2.5 h-2.5 rounded-full bg-blue-500/80 inline-block"></span>
+                                                    <span class="w-2.5 h-2.5 rounded-full bg-teal-500/80 inline-block"></span>
+                                                </div>
+                                                <div class="flex-grow text-center">
+                                                    <div class="bg-black/20 text-white/50 text-[10px] font-mono py-1 px-3 rounded-md inline-block max-w-[180px] lg:max-w-full truncate">
+                                                        eyeball://url-compliance-gate
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="p-1 bg-gradient-to-b from-brand-dark to-brand-dark-secondary">
+                                                <img src="/Eyeball-DemoURLF-optimize-1.gif" alt="Web Filtering & Browsing Control" class="w-full h-auto object-cover rounded-b-lg" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }
+                    if (isExploit) {
+                        return html`
+                            <div class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/[0.08] transition-all animate-fade-in-up md:col-span-2 lg:col-span-2 shadow-xl" style=${{animationDelay: `${index * 0.1}s`}}>
+                                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 h-full items-center">
+                                    <div class="md:col-span-6 flex flex-col h-full justify-between">
+                                        <div>
+                                            <div class="mb-6">${feature.icon}</div>
+                                            <h3 class="text-xl font-bold text-white mb-3">${feature.title}</h3>
+                                            <p class="text-brand-light-secondary mb-6 leading-relaxed">${feature.description}</p>
+                                        </div>
+                                        <ul class="space-y-4 text-sm text-brand-light">
+                                            ${feature.points.map(point => html`
+                                                <li class="flex items-start">
+                                                    <svg class="w-4 h-4 mr-3 mt-0.5 text-rose-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                                                    <span dangerouslySetInnerHTML=${{__html: point}}></span>
+                                                </li>
+                                            `)}
+                                        </ul>
+                                    </div>
+                                    <div class="md:col-span-6 flex items-center justify-center">
+                                        <div class="w-full relative rounded-xl overflow-hidden border border-white/10 bg-black/40 shadow-2xl">
+                                            <div class="flex items-center space-x-2 px-4 py-3 bg-white/5 border-b border-white/15">
+                                                <div class="flex space-x-1.5">
+                                                    <span class="w-2.5 h-2.5 rounded-full bg-red-500/80 inline-block"></span>
+                                                    <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80 inline-block"></span>
+                                                    <span class="w-2.5 h-2.5 rounded-full bg-orange-400/80 inline-block"></span>
+                                                </div>
+                                                <div class="flex-grow text-center">
+                                                    <div class="bg-black/20 text-white/50 text-[10px] font-mono py-1 px-3 rounded-md inline-block max-w-[180px] lg:max-w-full truncate">
+                                                        eyeball://exploit-shield-anti-fix
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="p-1 bg-gradient-to-b from-brand-dark to-brand-dark-secondary">
+                                                <img src="/Eyeball-DemoANTIFIX-optimize.gif" alt="Advanced Exploit Defense (AntiFix)" class="w-full h-auto object-cover rounded-b-lg" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }
+                    return html`
+                        <div class="bg-white/5 border border-white/10 rounded-2xl p-8 flex flex-col hover:bg-white/[0.08] transition-all animate-fade-in-up" style=${{animationDelay: `${index * 0.1}s`}}>
+                            <div class="mb-6">${feature.icon}</div>
+                            <h3 class="text-xl font-bold text-white mb-3">${feature.title}</h3>
+                            <p class="text-brand-light-secondary mb-6 flex-grow leading-relaxed">${feature.description}</p>
+                            <ul class="space-y-3 text-sm text-brand-light font-sans">
+                                ${feature.points.map(point => html`
+                                    <li class="flex items-start">
+                                        <svg class="w-4 h-4 mr-3 mt-0.5 text-brand-blue flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                                        <span dangerouslySetInnerHTML=${{__html: point}}></span>
+                                    </li>
+                                `)}
+                            </ul>
+                        </div>
+                    `;
+                })}
             </div>
         </div>
     </section>
@@ -999,15 +1210,15 @@ const DEFAULT_POSTS = [
     id: "5",
     slug: "demystifying-tenant-restrictions-endpoint-browser",
     title: "Demystifying Tenant Restrictions: Securing the Multi-Tenant SaaS Workspace",
-    excerpt: "SaaS multi-tenant environments introduce a major compliance blind spot: unregulated switching between personal and corporate accounts. Learn what Tenant Restriction is, why it is essential, what threats it prevents, and how EyeBall enables complete enforcement across Microsoft 365, Google Workspace, GitHub, Slack, OpenAI, and Claude with just a few clicks.",
-    content: "## The SaaS Blind Spot: Multi-Tenant Access Risks\n\nAs modern enterprises transition heavily to cloud-native SaaS ecosystems, security operations face a crucial data loss prevention (DLP) challenge: **unregulated tenant switching**.\n\nWhile an organization may securely manage and audit its own official, sanctioned enterprise subscriptions, employees can easily open a new browser window and authenticate into their *personal or external third-party accounts* on the exact same SaaS platforms. Because these services are hosted on the identical, trusted vendor domains (e.g., `login.microsoftonline.com` or `accounts.google.com`), firewall and network boundary systems view the traffic as legitimate and safe.\n\nThis gap creates a wide-open vulnerability for several critical threat vectors:\n\n*   **Unsanctioned Corporate Data Exfiltration:** Employees can easily exfiltrate proprietary source code, internal spreadsheets, financial forecasts, or core customer records by copy-pasting them from corporate workspaces directly into personal OneDrive folders, consumer Gmail accounts, personal GitHub repositories, or untracked Slack channels.\n*   **Unregulated Generative AI Data Leaks:** Workers frequently paste sensitive intellectual property, patent details, or customer telemetry into personal **ChatGPT** or **Claude** accounts to expedite their workflows. These personal tiers routinely ingest user inputs to train public LLM models, leading to severe regulatory and compliance violations (e.g., GDPR, HIPAA, SOC 2).\n*   **Malware & Phishing Delivery Channels:** Free, personal browser sessions bypass standard enterprise inspection limits, enabling users to download rogue payloads, unverified scripts, or command-and-control templates directly from their personal cloud drives.\n*   **Insiders and Credential Theft:** Attackers utilize social engineering or malicious session cookies to log into unsanctioned external instances, bypassing corporate multi-factor authentication (MFA) parameters.\n\n---\n\n## What is Tenant Restriction and Why is It Important?\n\n**Tenant Restriction** is a sophisticated access-control technology that restricts corporate endpoints from accessing unsanctioned tenants or domains within multi-tenant cloud platforms. \n\nBy intercepting and parsing authentication handshakes, the enforcement layer appends custom, cryptographically validated HTTP headers to outbound connections. Major SaaS platforms read these headers and dynamically enforce the restriction on the server side—rejecting any authentication attempt that does not belong to the sanctioned corporate account list.\n\nImplementing this dynamic defense used to require massive network proxies, decryption appliances, backhauled VPN tunnels, and extensive IT maintenance. With **EyeBall**, Tenant Restriction is brought directly to the endpoint browser engine—enabling enterprise-wide protection across leading services with just a few simple clicks.\n\n---\n\n## Enforcing Tenant Restrictions in EyeBall: Supported Settings\n\nEyeBall consolidates complex network architectural engineering into a single unified settings console. Administrators can enforce airtight cross-tenant policies across their entire fleet immediately using the following built-in configuration fields:\n\n### 1. Microsoft 365: Allowed Tenant IDs (GUIDs)\n*   **The Threat:** Employees logging into personal `@outlook.com` credentials or secondary external company directories from company-managed laptops, bypassing OneDrive DLP policies.\n*   **Enforcement in EyeBall:** Admins input their approved Active Directory Directory IDs under **Allowed Tenant IDs (GUIDs)**. EyeBall automatically injects `Restrict-Access-To-Tenants` and `Restrict-Access-Context` headers directly within the browser's raw network request channel. Microsoft's servers instantly block all unauthorized personal and external tenant logins, while allowing sanction-tier corporate access without latency.\n\n### 2. Google Workspace: Allowed Domains\n*   **The Threat:** Users writing sensitive customer emails or uploading files using private G-Suite domains or standard consumer `@gmail.com` accounts.\n*   **Enforcement in EyeBall:** By defining your corporate domains on the central console under **Allowed Domains**, EyeBall appends the secure `X-Goog-Allowed-Domains` header to every authorization handshake. Google restricts logins strictly to the pre-approved domains, ensuring consumer Google profiles are entirely unavailable on enterprise assets.\n\n### 3. GitHub: Allowed Organizations\n*   **The Threat:** Software developers cloning or uploading confidential source code and API keys directly to their personal, untracked public GitHub repositories from corporate laptops.\n*   **Enforcement in EyeBall:** Admins input authorized corporate GitHub profiles under **Allowed Organizations**. EyeBall intercepts the session request to restrict user association exclusively to compliant organizational handles, rendering personal code pushes impossible.\n\n### 4. Slack: Allowed Workspaces\n*   **The Threat:** Insiders joining unmanaged external Slack workspaces or public community channels where chat logs, files, and intellectual properties are shared outside corporate oversight.\n*   **Enforcement in EyeBall:** Defining sanctioned team environments under **Allowed Workspaces** injects specialized workspace routing headers, blocking authentication attempts to any external Slack Enterprise Grid instance or consumer workspace.\n\n### 5. OpenAI - ChatGPT: Allowed Workspace IDs\n*   **The Threat:** Engineers passing proprietary computer code or marketing strategies to personal ChatGPT tiers, checking corporate assets into public OpenAI training buffers.\n*   **Enforcement in EyeBall:** Inputting designated business identity keys in the **Allowed Workspace IDs** field restricts access exclusively to your sanctioned corporate ChatGPT Enterprise dashboard. All consumer ChatGPT logins are blocked automatically, safeguarding proprietary information.\n\n### 6. Claude (Requires Enterprise License)\n*   **The Threat:** Under-the-radar usage of Anthropic Claude on unmonitored consumer tiers where data-retention rules do not apply.\n*   **Enforcement in EyeBall:** Enforcing workspace restrictions across Anthropic's Claude platform restricts access strictly to authorized business-licensed scopes, providing airtight safety. Note: This advanced feature requires an active EyeBall Enterprise License.\n\n---\n\n## Why EyeBall is the Ultimate Solution for Modern IT Teams\n\nTraditional approaches to Tenant Restriction are incredibly fragile and complex, requiring full performance-degrading SSL/TLS decryption proxies. **EyeBall redefines SaaS security by injecting policies natively inside the local web-request lifecycle:**\n\n*   **Zero-Decryption Proxy-Less Architecture:** No physical or virtual network proxy required. EyeBall runs natively on the client browser engine, eliminating SSL/TLS blind spots, performance-degrading network bottlenecks, and high infrastructure computing costs.\n*   **Instant Globewide Propagation:** Simply type your GUIDs, Domains, Organizations, and Workspace IDs, then hit **Deploy**. Policies propagate across millions of active browser instances worldwide within 10 seconds.\n*   **Unbreakable Local Enforcement:** Self-protection and tamper-defense loops ensure that employees cannot bypass, freeze, or disable EyeBall protections, regardless of whether they are working in a corporate office, a home office, or connecting to an public airport Wi-Fi network.\n*   **Airtight Security + Lightning Speed:** Page speed and SaaS capabilities remain unaffected, delivering world-class Zero-Trust compliance with zero impact on employee productivity.\n\nSecure your SaaS landscape today. Activate Tenant Restrictions in EyeBall with just a couple of clicks and eliminate cross-tenant data loss once and for all.",
+    excerpt: "SaaS multi-tenant environments introduce a major security leak: unregulated switching between personal and corporate accounts. Learn why Tenant Restriction is critical for SMBs and SMEs, and how EyeBall delivers robust enterprise-grade security with absolute operational simplicity and zero configuration overhead.",
+    content: "## The SaaS Blind Spot: Multi-Tenant Access Risks in SMBs & SMEs\n\nAs growing businesses, particularly agile mid-market SMEs and SMBs, transition heavily to cloud-native SaaS environments, security teams face a critical data loss prevention (DLP) challenge: **unregulated tenant switching**.\n\nWhile a company may securely manage and audit its own official, sanctioned business accounts, employees can easily open a secondary browser tab and authenticate into their *personal or external third-party accounts* on the exact same SaaS platforms. Because these services are hosted on the identical, trusted vendor domains (e.g., `login.microsoftonline.com` or `accounts.google.com`), legacy firewalls and DNS-level network security filters view the traffic as legitimate and safe.\n\nThis gap creates an immediate risk for several critical threat vectors:\n\n*   **Unsanctioned Data Exfiltration:** Employees can easily exfiltrate proprietary source code, internal budgets, or customer details by copying them from corporate workspaces and pasting them into personal OneDrive folders, consumer Gmail accounts, or personal GitHub repositories.\n*   **Unregulated GenAI Data Leaks:** Teams often paste sensitive company IP or code snippets into personal **ChatGPT** or **Claude** accounts to work faster, inadvertently allowing public engines to ingest proprietary data for future training models.\n*   **Shadow IT Channels:** Unmonitored personal accounts completely bypass corporate compliance audits, causing immediate breaches under SOC 2, ISO 27001, and GDPR.\n\n---\n\n### Why Tenant Restrictions Matter Beyond the Enterprise Sector (SME & SMB Focus)\n\nThere is a common misconception that Tenant Restrictions are only needed by Fortune 500 corporations with mammoth security teams. In reality, SMBs and mid-market SMEs face identical core risks, but with distinct challenges:\n\n*   **No Multi-Million Dollar Security budgets:** Setting up Tenant Restrictions traditionally required expensive net-decryption proxies, dedicated key-management authorities, backhauled VPN tunnels, and manual maintenance.\n*   **Identical Compliance Demands:** Modern SMBs/SMEs must answer the same grueling enterprise security questionnaires to close contracts and win customers.\n*   **Agile Environments Need Modern Controls:** Restricting employees' digital workflows with laggy VPNs or intrusive lockouts hurts speed and productivity. SMBs require solutions that work seamlessly behind the scenes.\n\n---\n\n## What is Tenant Restriction and Why is It Important?\n\n**Tenant Restriction** is an access-control capability that restricts company-owned endpoints from accessing unsanctioned, external tenants or private domains within multi-tenant cloud platforms. \n\nBy parsing and intercepting authorization handshakes at the client layer, custom, validated HTTP headers are injected into outbound traffic. The SaaS vendor's servers read these headers and dynamically deny any login attempt that doesn't match the company's approved list.\n\nHistorically, this involved massive infrastructure complexity. **With EyeBall, Tenant Restriction is brought directly to the local browser engine.** Growing businesses can now deploy elite enterprise-grade protections with **absolute operational simplicity and maximum convenience**.\n\n---\n\n## Deploying Tenant Restrictions in EyeBall: 1-Click Operations\n\nEyeBall consolidates complex enterprise engineering into a simple, single-page settings dashboard. Admins can enforce airtight policies across their entire landscape using standard configurations:\n\n### 1. Microsoft 365: Allowed Tenant IDs (GUIDs)\n*   **The Problem:** Staff logging into personal Outlook or OneDrive accounts on company-owned PCs, leaking corporate documents.\n*   **The EyeBall Solution:** Admins input sanctioned tenant GUIDs. EyeBall automatically inserts `Restrict-Access-To-Tenants` headers within the raw browser-request channel. Microsoft instantly blocks personal profile logins while corporate directories run continuously with zero lag.\n\n### 2. Google Workspace: Allowed Domains\n*   **The Problem:** Writing and sending confidential drafts from private consumer `@gmail.com` accounts.\n*   **The EyeBall Solution:** Enter approved business domains. EyeBall appends the `X-Goog-Allowed-Domains` header to every authorization handshake. Google restricts logins strictly to the defined company addresses, ensuring personal accounts are entirely inaccessible.\n\n### 3. GitHub: Allowed Organizations\n*   **The Problem:** Developers cloning, editing, or uploading code to personal, unmonitored GitHub repos from business hardware.\n*   **The EyeBall Solution:** Input approved organization handles. EyeBall restricts association exclusively to compliant enterprise workspaces, making unauthorized code pushes impossible.\n\n### 4. Slack: Allowed Workspaces\n*   **The Problem:** Employees joining unsanctioned Slack workspace environments where business ideas and files escape logging boundaries.\n*   **The EyeBall Solution:** Define approved channels. EyeBall prevents authentication attempts to any Slack directory outside the designated workspace set.\n\n### 5. OpenAI - ChatGPT: Allowed Workspace IDs\n*   **The Problem:** Feeding corporate code and design plans into unmanaged consumer ChatGPT channels.\n*   **The EyeBall Solution:** Restrict access to designated corporate workspaces only. Consumer logins are automatically closed off, safeguarding corporate intelligence from training libraries.\n\n### 6. Claude (Requires Policy Configuration)\n*   **The Problem:** Under-the-radar AI queries on private Claude tiers where business-grade retention agreements do not apply.\n*   **The EyeBall Solution:** Enforce workspace boundaries strictly on Anthropic's Claude instances, blocking personal logins that lack compliant security policies.\n\n---\n\n## Why EyeBall is the Perfect Match for Growing Businesses (SMEs & SMBs)\n\nTraditional approaches to tenant enforcement are incredibly fragile and complex, requiring full performance-degrading network proxies. **EyeBall redefines SaaS security by executing policies natively inside the client's local web-request cycle:**\n\n*   **Zero-Proxy, Zero-Decryption Architecture:** No physical routing proxy required. EyeBall executes policies directly inside the endpoint browser, eliminating SSL/TLS blind spots and heavy cloud computing fees.\n*   **Instant Fleet-wide Propagation:** Type your approved domains or IDs, click **Deploy**, and watch policies update globally within 10 seconds across all active browser instances.\n*   **Airtight Security with Maximum Convenience:** SaaS performance is completely unaffected. Employees enjoy high-speed browsing, while business assets receive multi-million dollar defense structures.\n\nGain full control over your SaaS landscape today. Activate Tenant Restrictions in EyeBall with just a couple of clicks, bring enterprise-grade protection to your business effortlessly, and eliminate cross-tenant data leaks once and for all.",
     author: "EyeBall Threat Intelligence",
     authorTitle: "Research & Analysis Group",
     category: "Browser Security",
     readTime: "5 min read",
     date: "June 23, 2026",
     coverPattern: "linear-gradient(135deg, #1e1b4b 0%, #0d1b2a 100%)",
-    tags: ["Tenant Restriction", "Microsoft 365 Tenant Restrictions", "Google Workspace Allowed Domains", "Slack Allowed Workspaces", "GitHub Allowed Organizations", "ChatGPT Allowed Workspace IDs", "Claude Enterprise License", "SaaS Security", "DLP", "Zero-Trust", "Enterprise Browser Extension", "SaaS Access Control"]
+    tags: ["Tenant Restriction", "SaaS Security", "DLP", "SME Security", "SMB Security", "Zero-Trust", "SaaS Access Control"]
   }
 ];
 
@@ -1028,9 +1239,12 @@ const BlogView = () => {
           return post;
         });
 
-        // Ensure newly pre-seeded default posts are auto-injected if not present
+        // Ensure newly pre-seeded default posts are auto-injected or updated if present
         DEFAULT_POSTS.forEach(defaultPost => {
-          if (!postsList.some(p => p.slug === defaultPost.slug || p.id === defaultPost.id)) {
+          const idx = postsList.findIndex(p => p.id === defaultPost.id || p.slug === defaultPost.slug);
+          if (idx !== -1) {
+            postsList[idx] = { ...postsList[idx], ...defaultPost };
+          } else {
             postsList.push(defaultPost);
           }
         });
@@ -1211,14 +1425,14 @@ const BlogView = () => {
 
   const categories = ['All', 'Threat Intel', 'Generative AI', 'Browser Security', 'DLP'];
 
-  // Filter Posts
+  // Filter & Sort Posts from newest to oldest
   const filteredPosts = posts.filter(post => {
     const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
                           post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
                           post.content.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = selectedCategory === 'All' || post.category === selectedCategory;
     return matchesSearch && matchesCategory;
-  });
+  }).sort((a, b) => new Date(b.date) - new Date(a.date));
 
   // Hot category tag color builders
   const getCategoryThemeClass = (cat) => {
@@ -1459,7 +1673,7 @@ const App = () => {
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex items-center justify-between h-20">
             <a href="#landing" onClick=${(e) => { e.preventDefault(); handleNavigate('landing'); }} class="flex items-center space-x-3 focus:outline-none group">
-              <${Logo} className="h-12 w-auto transition-transform duration-300 group-hover:scale-105" />
+              <${Logo} className="h-12 w-auto transition-transform duration-300 group-hover:scale-105" variant="blue" />
               <span class="text-2xl font-bold text-white tracking-tight">EyeBall</span>
             </a>
             <div class="flex items-center space-x-6">
@@ -1492,7 +1706,7 @@ const App = () => {
                  Secure the Web. Zero blind spots.
               </span>
               <div class="flex items-center justify-center space-x-4 mb-4">
-                <${Logo} className="h-14 sm:h-20 md:h-24 w-auto" />
+                <${Logo} className="h-14 sm:h-20 md:h-24 w-auto" variant="blue" />
                 <span class="text-5xl sm:text-6xl md:text-7xl font-extrabold text-white leading-none tracking-tighter">
                   EyeBall
                 </span>
@@ -1526,7 +1740,7 @@ const App = () => {
       <footer class="bg-brand-dark-secondary border-t border-white/5">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
           <div class="flex items-center justify-center space-x-3 mb-6">
-             <${Logo} className="h-10 w-auto grayscale opacity-50" />
+             <${Logo} className="h-10 w-auto opacity-50 hover:opacity-80 transition-opacity" variant="white" />
              <span class="text-xl font-bold text-brand-light-secondary">EyeBall</span>
           </div>
           <p class="text-brand-light-secondary">EyeBall 2025. Secure the Web. All rights reserved.</p>
