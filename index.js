@@ -708,6 +708,18 @@ const BusinessFeatures = ({ onStartFree }) => {
             hasDemo: true,
             badgeText: 'eyeball://url-compliance-gate',
             imageSrc: '/Eyeball-DemoURLF-optimize-1.gif',
+            demos: [
+                {
+                    label: 'URL Filtering',
+                    badgeText: 'eyeball://url-compliance-gate',
+                    imageSrc: '/Eyeball-DemoURLF-optimize-1.gif'
+                },
+                {
+                    label: 'Upload file blocking',
+                    badgeText: 'eyeball://upload-blocker-gate',
+                    imageSrc: '/Eyeball-WhatsappBlock-optimize.gif'
+                }
+            ],
             bulletColor: 'text-sky-400',
             gridClass: 'col-span-1 md:col-span-2 lg:col-span-2 shadow-xl'
         },
@@ -761,6 +773,26 @@ const BusinessFeatures = ({ onStartFree }) => {
             gridClass: 'col-span-1 md:col-span-2 lg:col-span-3'
         }
     ];
+
+    const [activeDemoIndices, setActiveDemoIndices] = useState({});
+
+    // Auto-cycle effect for features with multiple demos
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setActiveDemoIndices(prev => {
+                const nextIndices = { ...prev };
+                features.forEach(f => {
+                    if (f.demos) {
+                        const currentIdx = prev[f.title] || 0;
+                        const nextIdx = (currentIdx + 1) % f.demos.length;
+                        nextIndices[f.title] = nextIdx;
+                    }
+                });
+                return nextIndices;
+            });
+        }, 7500);
+        return () => clearInterval(interval);
+    }, []);
 
   return html`
     <section id="features-grid" class="py-24 bg-brand-dark relative overflow-hidden">
@@ -816,6 +848,11 @@ const BusinessFeatures = ({ onStartFree }) => {
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
                 ${features.map((feature, index) => {
                     if (feature.hasDemo) {
+                        const activeIndex = activeDemoIndices[feature.title] || 0;
+                        const currentDemo = feature.demos ? feature.demos[activeIndex] : null;
+                        const currentImage = currentDemo ? currentDemo.imageSrc : feature.imageSrc;
+                        const currentBadge = currentDemo ? currentDemo.badgeText : feature.badgeText;
+
                         return html`
                             <div class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/[0.08] transition-all animate-fade-in-up ${feature.gridClass}" style=${{animationDelay: `${index * 0.1}s`}}>
                                 <div class="grid grid-cols-1 md:grid-cols-12 gap-8 h-full items-center">
@@ -836,6 +873,35 @@ const BusinessFeatures = ({ onStartFree }) => {
                                     </div>
                                     <div class="md:col-span-6 flex items-center justify-center">
                                         <div class="w-full relative rounded-xl overflow-hidden border border-white/10 bg-black/40 shadow-2xl">
+                                            
+                                            <!-- Browser Tabs (if multi-demo) -->
+                                            ${feature.demos ? html`
+                                                <div class="flex items-center bg-white/[0.02] border-b border-white/10 px-3 pt-2">
+                                                    <div class="flex space-x-1">
+                                                        ${feature.demos.map((demo, dIdx) => {
+                                                            const isActive = dIdx === activeIndex;
+                                                            return html`
+                                                                <button 
+                                                                    onClick=${() => {
+                                                                        setActiveDemoIndices({
+                                                                            ...activeDemoIndices,
+                                                                            [feature.title]: dIdx
+                                                                        });
+                                                                    }}
+                                                                    class="px-3 py-1.5 text-[10px] sm:text-[11px] font-semibold rounded-t-lg border-t border-x transition-all duration-200 ${
+                                                                        isActive 
+                                                                            ? 'bg-brand-dark border-white/10 text-brand-blue' 
+                                                                            : 'border-transparent text-white/40 hover:text-white/70 hover:bg-white/5'
+                                                                    }"
+                                                                >
+                                                                    ${demo.label}
+                                                                </button>
+                                                            `;
+                                                        })}
+                                                    </div>
+                                                </div>
+                                            ` : null}
+
                                             <div class="flex items-center space-x-2 px-4 py-3 bg-white/5 border-b border-white/15">
                                                 <div class="flex space-x-1.5 flex-shrink-0">
                                                     <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80 inline-block pointer-events-none"></span>
@@ -844,12 +910,12 @@ const BusinessFeatures = ({ onStartFree }) => {
                                                 </div>
                                                 <div class="flex-grow text-center min-w-0">
                                                     <div class="bg-black/20 text-white/50 text-[10px] font-mono py-1 px-3 rounded-md inline-block max-w-[185px] truncate">
-                                                        ${feature.badgeText}
+                                                        ${currentBadge}
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="p-1 bg-gradient-to-b from-brand-dark to-brand-dark-secondary">
-                                                <img src=${feature.imageSrc} onError=${handleImageFallback} alt="${feature.title} Demo" class="w-full h-auto object-cover rounded-b-lg" />
+                                                <img src=${currentImage} onError=${handleImageFallback} alt="${feature.title} Demo" class="w-full h-auto object-cover rounded-b-lg" />
                                             </div>
                                         </div>
                                     </div>
