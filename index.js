@@ -10,7 +10,7 @@ const handleImageFallback = (e) => {
     if (e.target.dataset.fallbackAttempted) {
       if (!currentSrc.includes('logo.svg') && !e.target.dataset.finalFallback) {
         e.target.dataset.finalFallback = 'true';
-        e.target.src = 'public/logo.svg';
+        e.target.src = 'logo.svg';
       }
       return;
     }
@@ -19,11 +19,7 @@ const handleImageFallback = (e) => {
     const match = currentSrc.match(/\/([^\/]+\.(gif|png|svg|jpg|jpeg|webp))$/i);
     if (match && match[1]) {
       const filename = match[1];
-      if (currentSrc.includes('/public/')) {
-        e.target.src = filename;
-      } else {
-        e.target.src = 'public/' + filename;
-      }
+      e.target.src = filename;
     }
   }
 };
@@ -663,7 +659,7 @@ const BusinessFeatures = ({ onStartFree }) => {
             ],
             hasDemo: true,
             badgeText: 'eyeball://dlp-shield-active',
-            imageSrc: '/EyeBallDLSITEVID-optimize.gif',
+            imageSrc: './EyeBallDLSITEVID-optimize.gif',
             bulletColor: 'text-brand-blue',
             gridClass: 'col-span-1 md:col-span-2 lg:col-span-2 shadow-xl'
         },
@@ -679,7 +675,7 @@ const BusinessFeatures = ({ onStartFree }) => {
             ],
             hasDemo: true,
             badgeText: 'eyeball://ai-blocking-shield',
-            imageSrc: '/Eyeball-AIREDACToptimize.gif',
+            imageSrc: './Eyeball-AIREDACToptimize.gif',
             bulletColor: 'text-emerald-400',
             gridClass: 'col-span-1 md:col-span-2 lg:col-span-2 shadow-xl'
         },
@@ -707,17 +703,17 @@ const BusinessFeatures = ({ onStartFree }) => {
             ],
             hasDemo: true,
             badgeText: 'eyeball://url-compliance-gate',
-            imageSrc: '/Eyeball-DemoURLF-optimize-1.gif',
+            imageSrc: './Eyeball-DemoURLF-optimize-1.gif',
             demos: [
                 {
                     label: 'URL Filtering',
                     badgeText: 'eyeball://url-compliance-gate',
-                    imageSrc: '/Eyeball-DemoURLF-optimize-1.gif'
+                    imageSrc: './Eyeball-DemoURLF-optimize-1.gif'
                 },
                 {
                     label: 'Upload file blocking',
                     badgeText: 'eyeball://upload-blocker-gate',
-                    imageSrc: '/Eyeball-WhatsappBlock-optimize.gif'
+                    imageSrc: './Eyeball-WhatsappBlock-optimize.gif'
                 }
             ],
             bulletColor: 'text-sky-400',
@@ -757,7 +753,7 @@ const BusinessFeatures = ({ onStartFree }) => {
             ],
             hasDemo: true,
             badgeText: 'eyeball://exploit-shield-anti-fix',
-            imageSrc: '/Eyeball-DemoANTIFIX-optimize.gif',
+            imageSrc: './Eyeball-DemoANTIFIX-optimize.gif',
             bulletColor: 'text-rose-400',
             gridClass: 'col-span-1 md:col-span-2 lg:col-span-2 shadow-xl'
         },
@@ -915,7 +911,7 @@ const BusinessFeatures = ({ onStartFree }) => {
                                                 </div>
                                             </div>
                                             <div class="p-1 bg-gradient-to-b from-brand-dark to-brand-dark-secondary">
-                                                <img src=${currentImage} onError=${handleImageFallback} alt="${feature.title} Demo" class="w-full h-auto object-cover rounded-b-lg" />
+                                                <img key=${currentImage} src=${currentImage} onError=${handleImageFallback} alt="${feature.title} Demo" class="w-full h-auto object-cover rounded-b-lg" />
                                             </div>
                                         </div>
                                     </div>
