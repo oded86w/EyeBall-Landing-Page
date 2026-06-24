@@ -3,23 +3,45 @@ import { render } from 'preact';
 import { useState, useEffect } from 'preact/hooks';
 import { html } from 'htm/preact';
 
+const getFilename = (url) => {
+  const match = url.match(/\/([^\/]+\.(gif|png|svg|jpg|jpeg|webp))$/i);
+  return match ? match[1] : '';
+};
+
 const handleImageFallback = (e) => {
   if (e.target && e.target.src) {
     const currentSrc = e.target.src;
+    const currentFilename = getFilename(currentSrc);
+    const lastFilename = e.target.dataset.lastFilename || '';
+    
+    // If the actual filename has changed, it means the user switched tabs (or a different image is being loaded).
+    // In this case, we reset the fallback flags completely so that the fallback flow can run for the new image.
+    if (lastFilename && lastFilename !== currentFilename) {
+      delete e.target.dataset.fallbackAttempted;
+      delete e.target.dataset.finalFallback;
+      delete e.target.dataset.finalFallbackPublicLogo;
+    }
+    
+    e.target.dataset.lastFilename = currentFilename;
     
     if (e.target.dataset.fallbackAttempted) {
       if (!currentSrc.includes('logo.svg') && !e.target.dataset.finalFallback) {
         e.target.dataset.finalFallback = 'true';
         e.target.src = 'logo.svg';
+      } else if (currentSrc.includes('logo.svg') && !currentSrc.includes('public/logo.svg') && !e.target.dataset.finalFallbackPublicLogo) {
+        e.target.dataset.finalFallbackPublicLogo = 'true';
+        e.target.src = 'public/logo.svg';
       }
       return;
     }
     
     e.target.dataset.fallbackAttempted = 'true';
-    const match = currentSrc.match(/\/([^\/]+\.(gif|png|svg|jpg|jpeg|webp))$/i);
-    if (match && match[1]) {
-      const filename = match[1];
-      e.target.src = filename;
+    if (currentFilename) {
+      if (currentSrc.includes('/public/')) {
+        e.target.src = currentFilename;
+      } else {
+        e.target.src = 'public/' + currentFilename;
+      }
     }
   }
 };
@@ -659,7 +681,7 @@ const BusinessFeatures = ({ onStartFree }) => {
             ],
             hasDemo: true,
             badgeText: 'eyeball://dlp-shield-active',
-            imageSrc: './EyeBallDLSITEVID-optimize.gif',
+            imageSrc: '/EyeBallDLSITEVID-optimize.gif',
             bulletColor: 'text-brand-blue',
             gridClass: 'col-span-1 md:col-span-2 lg:col-span-2 shadow-xl'
         },
@@ -675,7 +697,7 @@ const BusinessFeatures = ({ onStartFree }) => {
             ],
             hasDemo: true,
             badgeText: 'eyeball://ai-blocking-shield',
-            imageSrc: './Eyeball-AIREDACToptimize.gif',
+            imageSrc: '/Eyeball-AIREDACToptimize.gif',
             bulletColor: 'text-emerald-400',
             gridClass: 'col-span-1 md:col-span-2 lg:col-span-2 shadow-xl'
         },
@@ -703,17 +725,17 @@ const BusinessFeatures = ({ onStartFree }) => {
             ],
             hasDemo: true,
             badgeText: 'eyeball://url-compliance-gate',
-            imageSrc: './Eyeball-DemoURLF-optimize-1.gif',
+            imageSrc: '/Eyeball-DemoURLF-optimize-1.gif',
             demos: [
                 {
                     label: 'URL Filtering',
                     badgeText: 'eyeball://url-compliance-gate',
-                    imageSrc: './Eyeball-DemoURLF-optimize-1.gif'
+                    imageSrc: '/Eyeball-DemoURLF-optimize-1.gif'
                 },
                 {
                     label: 'Upload file blocking',
                     badgeText: 'eyeball://upload-blocker-gate',
-                    imageSrc: './Eyeball-WhatsappBlock-optimize.gif'
+                    imageSrc: '/Eyeball-WhatsappBlock-optimize.gif'
                 }
             ],
             bulletColor: 'text-sky-400',
@@ -753,7 +775,7 @@ const BusinessFeatures = ({ onStartFree }) => {
             ],
             hasDemo: true,
             badgeText: 'eyeball://exploit-shield-anti-fix',
-            imageSrc: './Eyeball-DemoANTIFIX-optimize.gif',
+            imageSrc: '/Eyeball-DemoANTIFIX-optimize.gif',
             bulletColor: 'text-rose-400',
             gridClass: 'col-span-1 md:col-span-2 lg:col-span-2 shadow-xl'
         },
