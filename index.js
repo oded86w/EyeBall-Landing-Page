@@ -1390,6 +1390,129 @@ By delivering comprehensive, out-of-the-box visibility that operates seamlessly 
     date: "June 27, 2026",
     coverPattern: "linear-gradient(135deg, #172554 0%, #0d1b2a 100%)",
     tags: ["File Auditing", "DLP", "Data Leak Protection", "SMB Security", "SME Security", "Certificate Pinning", "E2E Encryption"]
+  },
+  {
+    id: "8",
+    slug: "how-to-redact-sensitive-data-ai-tools-automatically",
+    title: "How to Redact Sensitive Data in AI Tools — Automatically",
+    excerpt: "Your team is using ChatGPT daily — and leaking sensitive data without realizing it. Learn how Eyeball Security warns them before they send and redacts everything in one click, with zero configuration.",
+    content: `## How to Redact Sensitive Data in AI Tools — Automatically
+
+Your team is using ChatGPT every day — to write emails, answer customer questions, summarize documents. And some of them are pasting in passwords, customer data, and confidential files without even thinking about it. Eyeball Security catches it before it's sent and lets them fix it in one click. No IT team needed.
+
+---
+
+### Your Team Is Using AI Tools. Is Your Data Safe?
+
+If you run or manage a small or medium-sized business, there's a good chance your employees are already using ChatGPT, Copilot, or Gemini — whether you've approved it or not. They use it to write proposals, answer support tickets, clean up spreadsheets, and debug code. It saves them hours. It also creates a risk most SMBs aren't prepared for.
+
+*   **77%** of employees have leaked sensitive data through AI tools like ChatGPT, Copilot, or Gemini. (eSecurity Planet, 2025)
+*   **$4.63M** is the average cost of a breach involving shadow AI usage — $670,000 more than a standard breach. (IBM Cost of a Data Breach Report, 2025)
+
+Think about what that looks like in a real office: an accountant pastes a client's tax details into ChatGPT to format a report. A salesperson copies a customer contact list to "clean up the data." A developer shares an API key to debug an integration. None of them are doing anything malicious — they're just getting work done. But the data they shared is now sitting in a third-party AI system, logged in conversation history, and outside your control.
+
+Large enterprises have full security teams to manage this. Most SMBs don't — and that's exactly who attackers and regulators are starting to target. The good news: you don't need an enterprise security stack to fix this. You need the right tool in the right place.
+
+---
+
+### Why Existing Security Tools Don't Cover This
+
+If your business uses Microsoft 365 or Google Workspace, you already have some security built in — but it wasn't designed for this. Here's the gap:
+
+*   **Email filters** scan attachments and outgoing messages. They don't see text typed into a browser chat window.
+*   **Antivirus and endpoint tools** protect against malware. They don't monitor what your team pastes into ChatGPT.
+*   **Network monitoring** sees traffic patterns. It can't read inside an HTTPS session with an AI tool — everything is encrypted.
+
+AI prompts are a brand-new data channel. Your team types sensitive information directly into a browser text box and hits Enter. Most security tools are blind to this — not because they're bad tools, but because they weren't built for it. Protecting this requires something that operates inside the browser itself, at the exact moment the user is about to send.
+
+---
+
+### How Eyeball Security's DLP Works
+
+The Eyeball Security browser extension operates where the risk actually lives — inside the browser, before the prompt is submitted. Here's the full flow:
+
+- **1. You compose your prompt:** Type or paste content into any AI tool — ChatGPT, Claude, Copilot, Gemini, Perplexity, or any other browser-based assistant.
+- **2. Eyeball scans the prompt in real time:** The extension analyzes the prompt content locally, on-device, against a configurable set of detection patterns. No content leaves your browser for classification.
+- **3. A warning appears — inline, specific, actionable:** If sensitive data is detected, you see exactly what was flagged and why — before you hit Send. No blocked pages. No IT ticket. Just context.
+- **4. One click redacts everything:** Click **Redact All Sensitive Data**. Every flagged value is replaced with a context-preserving placeholder. Your prompt remains coherent.
+- **5. Send the clean prompt:** Submit the redacted prompt to the AI tool. The AI response is unaffected. The sensitive data never left your browser. The detection event is logged for your audit trail.
+
+![See it in action: Eyeball Security detects an API key and email address in a ChatGPT prompt, warns the user inline, and redacts both values in a single click — before the prompt is sent.](/Eyeball-AIREDACToptimize.gif)
+
+---
+
+### What Gets Detected — and How It's Redacted
+
+Eyeball Security detects the following sensitive data types out of the box:
+
+*   **API keys and tokens** — AWS access keys, OpenAI API keys, GitHub tokens, service account credentials
+*   **PII** — names, email addresses, phone numbers, national ID numbers, passport numbers
+*   **Financial data** — credit card numbers, IBAN codes, bank account details
+*   **Custom patterns** — regex or keyword rules defined by your security team (contract numbers, internal project codes, classified domain names)
+
+Here's what automatic redaction looks like in practice:
+
+| Before (in your prompt) | Type | After (sent to AI) |
+| --- | --- | --- |
+| \`sk-abc123xyzABC789...\` | CREDENTIAL | \`[REDACTED: API_KEY]\` |
+| \`john.doe@company.com\` | PII | \`[REDACTED: EMAIL]\` |
+| \`4111 1111 1111 1111\` | FINANCIAL | \`[REDACTED: CREDIT_CARD]\` |
+| \`PROJ-APOLLO-2026-Q3\` | CUSTOM | \`[REDACTED: INTERNAL_REF]\` |
+
+The AI tool receives a prompt that's still useful — the question, context, and structure are intact. Only the sensitive values are gone.
+
+---
+
+### Flexible Group Policies: Enforce Only What Matters
+
+No two roles or departments share the same security profile. A developer needs to share internal database layouts but should never paste raw API credentials. A customer support agent might handle specific billing references but shouldn't share general customer lists or PII.
+
+With Eyeball, admins have absolute policy flexibility:
+*   **Granular Rule Enforcement:** Choose exactly which types of sensitive data are monitored, warning-only, or auto-redacted based on your specific operational needs.
+*   **Tailored Employee Group Policies:** Assign different security profiles to different departments. Ensure that developers, salespeople, and finance specialists can work efficiently with AI tools without unnecessary friction.
+
+---
+
+### Built for Businesses Without a Full Security Team
+
+Most DLP products on the market were designed for enterprises with dedicated security architects, SIEM integrations, and months of tuning time. Eyeball Security was built differently — for businesses where the same person manages IT, HR, and the office coffee machine.
+
+*   **No proxy, no VPN, no server:** The browser extension installs like any other extension. Nothing changes on your network.
+*   **Works out of the box:** Default policies cover the most common sensitive data types — credentials, customer PII, financial data — from day one. No configuration required to get protected.
+*   **Users are guided, not blocked:** Employees see a clear warning and a simple action. They learn what's safe. You don't get a flood of helpdesk tickets.
+*   **Covers every AI tool:** ChatGPT, Copilot, Gemini, Claude, Perplexity — if it runs in a browser, Eyeball Security protects it. Including tools your team is using without telling IT.
+
+---
+
+### For MSSPs: Manage DLP Across All Your Clients from One Place
+
+If you're a managed security service provider, AI data leakage is quickly becoming one of the hardest conversations to have with clients — because it's happening right now, most clients don't know it, and most existing tools can't stop it.
+
+Eyeball Security gives MSSPs a multi-tenant dashboard to manage DLP policies across all client environments from a single pane of glass:
+
+*   **Per-client policy control** — set different detection sensitivity, data types, and enforcement actions per client, based on their industry and compliance requirements
+*   **Centralized detection feed** — see all sensitive data events across clients in real time, with context: which user, which AI tool, which data type, and what action was taken
+*   **Compliance reporting** — generate per-client audit reports for GDPR, HIPAA, or PCI-DSS reviews without manual log-pulling
+*   **Fast deployment at scale** — push the extension to all managed endpoints via your existing RMM or MDM. No site visits, no per-machine setup
+
+Clients get enterprise-grade AI data protection. You get a scalable service to add to your stack without adding operational overhead.
+
+---
+
+### Compliance Doesn't Have to Be Complicated
+
+If your business handles customer data — and most do — you likely have obligations under GDPR, HIPAA, PCI-DSS, or data protection laws. Accidentally sharing customer records with a third-party AI system can turn into a reportable breach, even if nothing was "stolen."
+
+Eyeball Security gives you the audit trail to show regulators that controls were in place: every detection event is logged with a timestamp, data type, the tool it was headed to, and whether it was redacted or sent. Your MSSP can pull these reports for quarterly reviews. And because detection happens entirely on-device, no prompt content ever leaves your browser to reach Eyeball's servers.
+
+Secure your business fleet effortlessly. With Eyeball, AI data loss prevention is seamless, visual, and out of the box.`,
+    author: "EyeBall Threat Intelligence",
+    authorTitle: "Research & Analysis Group",
+    category: "Generative AI",
+    readTime: "7 min read",
+    date: "June 28, 2026",
+    coverPattern: "linear-gradient(135deg, #1e1b4b 0%, #311042 100%)",
+    tags: ["DLP", "AI Security", "Data Loss Prevention", "ChatGPT Security", "Browser Security", "Generative AI", "SMB Security"]
   }
 ];
 
@@ -1563,35 +1686,158 @@ const BlogView = () => {
   const renderRichMarkdown = (text) => {
     if (!text) return '';
     const lines = text.split('\n');
-    return lines.map((line, idx) => {
+    const elements = [];
+    let i = 0;
+    
+    while (i < lines.length) {
+      const line = lines[i];
       const trimmed = line.trim();
+      
+      // 1. Heading 2
       if (trimmed.startsWith('## ')) {
-        return html`<h2 key=${idx} class="text-2xl md:text-3xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">${trimmed.replace('## ', '')}</h2>`;
+        elements.push(html`<h2 key=${i} class="text-2xl md:text-3xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">${trimmed.replace('## ', '')}</h2>`);
+        i++;
+        continue;
       }
+      
+      // 2. Heading 3
       if (trimmed.startsWith('### ')) {
-        return html`<h3 key=${idx} class="text-xl md:text-2xl font-bold text-brand-blue mt-8 mb-3">${trimmed.replace('### ', '')}</h3>`;
+        elements.push(html`<h3 key=${i} class="text-xl md:text-2xl font-bold text-brand-blue mt-8 mb-3">${trimmed.replace('### ', '')}</h3>`);
+        i++;
+        continue;
       }
-      if (trimmed.startsWith('* ') || trimmed.startsWith('- ')) {
-        const cleanLine = trimmed.replace(/^[\*\-]\s+/, '');
-        return html`
-          <li key=${idx} class="flex items-start mb-3 ml-4 text-brand-light-secondary">
-            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
-            <span dangerouslySetInnerHTML=${{ __html: renderInlineHTML(cleanLine) }}></span>
-          </li>
-        `;
-      }
+      
+      // 3. Horizontal Rule
       if (trimmed === '---') {
-        return html`<hr key=${idx} class="border-t border-white/10 my-10" />`;
+        elements.push(html`<hr key=${i} class="border-t border-white/10 my-10" />`);
+        i++;
+        continue;
       }
+      
+      // 4. Bullet List
+      if (trimmed.startsWith('* ') || trimmed.startsWith('- ')) {
+        const listItems = [];
+        while (i < lines.length && (lines[i].trim().startsWith('* ') || lines[i].trim().startsWith('- '))) {
+          const itemTrimmed = lines[i].trim();
+          const cleanLine = itemTrimmed.replace(/^[\*\-]\s+/, '');
+          listItems.push(html`
+            <li key=${i} class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+              <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+              <span dangerouslySetInnerHTML=${{ __html: renderInlineHTML(cleanLine) }}></span>
+            </li>
+          `);
+          i++;
+        }
+        elements.push(html`<ul key="list-${i}" class="my-5 list-none">${listItems}</ul>`);
+        continue;
+      }
+      
+      // 5. Image
+      if (trimmed.startsWith('![') && trimmed.endsWith(')')) {
+        const match = trimmed.match(/^!\[(.*?)\]\((.*?)\)$/);
+        if (match) {
+          const alt = match[1];
+          const src = match[2];
+          elements.push(html`
+            <div key=${i} class="my-8 bg-white/5 border border-white/10 rounded-2xl overflow-hidden shadow-xl max-w-2xl mx-auto">
+              <img src=${src} alt=${alt} onError=${handleImageFallback} class="w-full h-auto object-cover" />
+              ${alt && html`<div class="p-4 bg-white/5 border-t border-white/5 text-center text-xs text-brand-light-secondary font-mono">${alt}</div>`}
+            </div>
+          `);
+        }
+        i++;
+        continue;
+      }
+      
+      // 6. Table
+      if (trimmed.startsWith('|') && trimmed.endsWith('|')) {
+        const tableLines = [];
+        while (i < lines.length && lines[i].trim().startsWith('|') && lines[i].trim().endsWith('|')) {
+          tableLines.push(lines[i].trim());
+          i++;
+        }
+        
+        if (tableLines.length > 0) {
+          // Parse table lines
+          const rows = tableLines.map(rowLine => {
+            const cells = rowLine.split('|').map(c => c.trim());
+            if (cells[0] === '') cells.shift();
+            if (cells[cells.length - 1] === '') cells.pop();
+            return cells;
+          });
+          
+          const hasSeparator = rows.length > 1 && rows[1].every(cell => cell.startsWith('-'));
+          
+          let headerCells = [];
+          let bodyRows = [];
+          
+          if (hasSeparator) {
+            headerCells = rows[0];
+            bodyRows = rows.slice(2);
+          } else {
+            bodyRows = rows;
+          }
+          
+          elements.push(html`
+            <div key="table-${i}" class="overflow-x-auto my-8 border border-white/10 rounded-2xl bg-white/5">
+              <table class="w-full border-collapse text-sm">
+                ${headerCells.length > 0 && html`
+                  <thead>
+                    <tr class="bg-white/5 border-b border-white/10">
+                      ${headerCells.map((cell, idx) => html`
+                        <th key=${idx} class="text-left py-3.5 px-4 font-mono font-bold text-brand-blue uppercase tracking-wider text-xs">${cell}</th>
+                      `)}
+                    </tr>
+                  </thead>
+                `}
+                <tbody>
+                  ${bodyRows.map((row, rIdx) => html`
+                    <tr key=${rIdx} class="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                      ${row.map((cell, cIdx) => {
+                        let cellContent = renderInlineHTML(cell);
+                        const cleanCell = cell.replace(/`/g, '').trim();
+                        if (cleanCell === 'CREDENTIAL') {
+                          cellContent = `<span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-red-950/50 text-red-300 border border-red-900/30">CREDENTIAL</span>`;
+                        } else if (cleanCell === 'PII') {
+                          cellContent = `<span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-purple-950/50 text-purple-300 border border-purple-900/30">PII</span>`;
+                        } else if (cleanCell === 'FINANCIAL') {
+                          cellContent = `<span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-blue-950/50 text-blue-300 border border-blue-900/30">FINANCIAL</span>`;
+                        } else if (cleanCell === 'PHI') {
+                          cellContent = `<span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-950/50 text-emerald-300 border border-emerald-900/30">PHI</span>`;
+                        } else if (cleanCell === 'CUSTOM') {
+                          cellContent = `<span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-zinc-800/50 text-zinc-300 border border-zinc-700/30">CUSTOM</span>`;
+                        }
+                        return html`
+                          <td key=${cIdx} class="py-3.5 px-4 text-brand-light-secondary font-sans" dangerouslySetInnerHTML=${{ __html: cellContent }}></td>
+                        `;
+                      })}
+                    </tr>
+                  `)}
+                </tbody>
+              </table>
+            </div>
+          `);
+        }
+        continue;
+      }
+      
+      // 7. Empty line spacer
       if (trimmed === '') {
-        return html`<div key=${idx} class="h-4"></div>`;
+        elements.push(html`<div key=${i} class="h-4"></div>`);
+        i++;
+        continue;
       }
-      return html`
-        <p key=${idx} class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg" 
+      
+      // 8. Normal Paragraph
+      elements.push(html`
+        <p key=${i} class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg" 
            dangerouslySetInnerHTML=${{ __html: renderInlineHTML(trimmed) }}>
         </p>
-      `;
-    });
+      `);
+      i++;
+    }
+    
+    return elements;
   };
 
   const categories = ['All', 'Threat Intel', 'Generative AI', 'Browser Security', 'DLP'];
