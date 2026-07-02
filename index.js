@@ -1513,6 +1513,91 @@ Secure your business fleet effortlessly. With Eyeball, AI data loss prevention i
     date: "June 28, 2026",
     coverPattern: "linear-gradient(135deg, #1e1b4b 0%, #311042 100%)",
     tags: ["DLP", "AI Security", "Data Loss Prevention", "ChatGPT Security", "Browser Security", "Generative AI", "SMB Security"]
+  },
+  {
+    id: "9",
+    slug: "browser-is-the-new-perimeter-identity-and-data-security",
+    title: "Identity is the New Perimeter — But the Browser is Where it Authenticates",
+    excerpt: "The cybersecurity industry states that identity is the new perimeter. But the web browser is where all identity authenticates and where corporate sessions live. Learn how Eyeball protects your workforce against AiTM, ClickFix, and credential reuse.",
+    content: `## Identity is the New Perimeter — But the Browser is Where it Authenticates
+
+For most of the past two decades, security architecture was organized around a deceptively simple question:
+
+What is inside my network, and what is outside?
+
+The firewall was the perimeter. Trust was determined by geography. The castle-and-moat model worked reasonably well when servers were physical, applications were monolithic, and users authenticated from a fixed location on a corporate network.
+
+That model collapsed gradually. Cloud adoption removed the fixed infrastructure boundary, and SaaS platforms moved critical business applications outside any network that the organization could control. Mobile and remote work eliminated the geographic assumption of trust, and identity federation allowed users and systems to authenticate across organizational and provider boundaries we had never mapped.
+
+The response was the Zero Trust model and its related architectural patterns: SASE, identity-centric access, microsegmentation, and continuous verification. The shift was necessary and directionally correct.
+
+In today's cybersecurity landscape, there is a famous and widely accepted paradigm: **"Identity is the new perimeter."** IAM, MFA, conditional access policies, and RBAC became the primary control surfaces. That paradigm has matured into a legitimate and effective architecture.
+
+But it is not sufficient. Because while identity is the logical perimeter, **the web browser is the physical perimeter where all identity authenticates.**
+
+Think about it: every single-sign-on (SSO) handshake, every Microsoft 365 or Google Workspace login, every privileged access session to production databases happens inside the web browser. The user's identity exists in the cloud, but the *exercise* of that identity is driven entirely through a browser window. If the browser is compromised or unmonitored, the most sophisticated identity controls in the world can be bypassed in seconds.
+
+---
+
+### The Paradigm Shift: From Castle-and-Moat to Browser-First
+
+| ERA | PRIMARY DEFENSE | CORE ASSUMPTION | STRUCTURAL BLIND SPOT |
+|---|---|---|---|
+| **The Network Era** | Firewalls & VPNs | "If it is inside our office network, it is safe." | Fails on SaaS, cloud infrastructure, and remote workers. |
+| **The Identity Era** | IAM, MFA, and SSO | "If we authenticate the user, our data is safe." | Fails against browser session hijacking, clipboard theft, and malicious extensions. |
+| **The Browser Era** | **Eyeball Browser Security** | "Secure the data at the point of interaction and execution." | **None.** Full on-device visibility and real-time client-side protection. |
+
+---
+
+### Why Identity Controls Alone Are Failing
+
+The real target in every significant breach of the past decade was never the network. It was never even the identity itself. The target was the data. Compromised identities were simply the mechanism.
+
+When threat actors compromise an identity today, they don't do it by brute-forcing a 16-character password; they do it by targeting the browser where the authenticated session is active. Once a session cookie is stolen, MFA is completely bypassed. This is the massive gap: identity systems govern *who* is allowed to log in, but they have zero visibility into what happens *after* the login is completed inside the browser.
+
+---
+
+### How Eyeball Protects Corporate Portals and Websites
+
+Because Eyeball operates natively at the browser layer, we do not just watch the network connection—we secure the entire runtime environment. This allows us to protect your corporate applications, administrative portals, and sensitive internal websites from the most advanced client-side attacks.
+
+#### 1. Password Reuse Protection
+One of the most common ways corporate credentials are leaked is through employee negligence. An employee uses their corporate email and corporate password to sign up for an unsecure external forum, a personal shopping site, or a third-party utility. When that external site is breached, attackers harvest the password and use it to log into your corporate portals.
+*   **The Eyeball Shield:** Eyeball proactively monitors corporate password usage. If an employee tries to enter their active corporate password on any external, non-sanctioned website, Eyeball intercepts the action, warns the user, and blocks the submission—preventing credential reuse before it can happen.
+
+#### 2. Advanced Phishing and Brand Protection
+Traditional email filters block known phishing links, but they are blind to zero-day lookalike domains that bypass active blocklists.
+*   **The Eyeball Shield:** Eyeball uses real-time, on-device analysis to inspect web pages as they render. If a site mimics your corporate login portal or exhibits credential-harvesting behavior, Eyeball blocks the input fields instantly, keeping your employees safe even if they clicked a malicious link.
+
+#### 3. DOM Integrity: Defeating Clickjacking and ClickFix
+Threat actors are increasingly using advanced social engineering overlays, such as **ClickFix** campaigns (fake browser or CAPTCHA updates) and **Clickjacking** (hiding invisible buttons over legitimate elements).
+*   **The Eyeball Shield:** Eyeball’s DOM-integrity engine constantly monitors the Document Object Model (DOM) of active tabs. It identifies hidden elements, malicious overlays, and click-hijacking structures, rendering them harmless before a user can be tricked into interacting with them.
+
+#### 4. Adversary-in-the-Middle (AiTM) Phishing Mitigation
+Modern phishing has evolved far beyond fake login screens. Sophisticated threat actors use **Adversary-in-the-Middle (AiTM)** proxy frameworks to intercept active login handshakes. These tools let attackers steal live authentication cookies and session tokens, entirely bypassing MFA.
+*   **The Eyeball Shield:** Eyeball is engineered to detect and neutralize session-hijacking tools and AiTM phishing frameworks in real-time, including:
+    *   **Sneaky2FA** & **Tycoon2FA**
+    *   **Evilginx2** / **EvilProxy**
+    *   **EvilTokens**
+    *   **Kali365**
+    *   **FlowerStorm**
+    *   **Kratos**, **MassBass**, and **Greatness**
+By inspecting the client-side network request lifecycle and validating domain signatures directly inside the browser, Eyeball detects the proxy mid-handshake, terminating the session and alert-logging the attempt before a single session cookie can be stolen.
+
+---
+
+### Secure the True Perimeter
+
+The shift is clear: protecting the systems that hold data is no longer enough; we must protect the execution environment where that data is consumed. 
+
+By treating the browser as the true perimeter, Eyeball closes the massive security gap between identity validation and data interaction. Secure your workforce, protect your credentials, and eliminate the session-hijacking threat with a single, lightweight browser extension.`,
+    author: "EyeBall Threat Intelligence",
+    authorTitle: "Research & Analysis Group",
+    category: "Browser Security",
+    readTime: "6 min read",
+    date: "July 1, 2026",
+    coverPattern: "linear-gradient(135deg, #090d16 0%, #1e1b4b 100%)",
+    tags: ["Browser Security", "Identity Protection", "Zero-Trust", "Password Protection", "Adversary-in-the-Middle (AiTM)", "Phishing Protection"]
   }
 ];
 
