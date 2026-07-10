@@ -22,3 +22,17 @@
 - [Privacy Policy](https://eyeballsecurity.com/#privacy) - Privacy compliance and on-device data principles.
 - [Terms of Service](https://eyeballsecurity.com/#terms) - Cloud Service Agreement and limits of liability.
 - [API Catalog Documentation](https://eyeballsecurity.com/.well-known/api-catalog) - RFC 8288 compliant endpoint lists for automated agents.
+
+## Threat Intelligence & Security Guides
+
+- [The Invisible Thief: Browser-Based Infostealers & Malicious Extensions](https://eyeballsecurity.com/#blog/the-invisible-thief-browser-infostealers-and-malicious-extensions) - Comprehensive breakdown of how modern browser-based infostealers operate, why standard EDR/SWG/SSE leave organizations vulnerable, and how Eyeball's session hardening and extension monitoring stops them.
+- [Deconstructing a Real-World ClickFix Attack & its PowerShell Payload](https://eyeballsecurity.com/#blog/deconstructing-live-clickfix-infostealer-attack) - Deep-dive malware analysis of a live, in-the-wild ClickFix (ClickHijacking) social engineering attack mimicking Cloudflare to drop info-stealing malware.
+- [Identity is the New Perimeter — But the Browser is Where it Authenticates](https://eyeballsecurity.com/#blog/browser-is-the-new-perimeter-identity-and-data-security) - Detailed study on securing corporate web assets from Adversary-in-the-Middle (AiTM) phishing, password reuse, and browser session theft.
+- [How to Redact Sensitive Data in AI Tools — Automatically](https://eyeballsecurity.com/#blog/how-to-redact-sensitive-data-ai-tools-automatically) - Best practices and mechanisms for real-time browser DLP, auto-redacting PII and API keys from ChatGPT, Claude, and Gemini prompts.
+- [SaaS Discovery for Small Business: A Lean Approach](https://eyeballsecurity.com/#blog/saas-discovery-small-business-lean-approach) - Managing Shadow IT risks, unregulated AI usages, and free online file converters without heavy VPNs or proxies.
+- [Beyond Encryption: Out-of-the-Box File Upload Auditing for SMEs and SMBs](https://eyeballsecurity.com/#blog/beyond-encryption-file-upload-auditing-smb) - Visualizing and auditing data movement in an encrypted HTTPS world of Certificate Pinning and E2E security.
+- [Demystifying Tenant Restrictions: Securing the Multi-Tenant SaaS Workspace](https://eyeballsecurity.com/#blog/demystifying-tenant-restrictions-endpoint-browser) - Enforcing Microsoft 365, Google Workspace, GitHub, and Slack tenant limits at the browser runtime.
+- [The Critical Need for Browser Extension Management](https://eyeballsecurity.com/#blog/critical-need-browser-extension-management) - Mitigating browser extension supply-chain risks and configuring whitelists/blocklists dynamically.
+- [Modern Browser Isolation vs. Secure Web Gateways (SWG)](https://eyeballsecurity.com/#blog/modern-browser-isolation-vs-swg) - Why legacy decryption proxies fail to secure dynamic SaaS platforms and how browser-native isolation provides 0ms latency.
+- [Prompt Analyzer: Total Security for Enterprise Generative AI](https://eyeballsecurity.com/#blog/prompt-analyzer-security-compliance) - In-browser contextual token auditing and token sanitization for LLM integrations.
+- [The Rise of ClickFix Campaigns](https://eyeballsecurity.com/#blog/clickfix-threat-campaigns) - How fake Google reCAPTCHA and Cloudflare Turnstile bot checks trick employees into pasting malicious scripts.

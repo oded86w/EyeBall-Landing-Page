@@ -57,5 +57,15 @@ EyeBall Pro is engineered to unlock advanced compliance controls for growing org
 - High-performance on-device sandbox.
 - Comprehensive DLP coverage across all browser forms.
 
+## Threat Intelligence & Security Guides
+
+Keep your team informed and your systems secure with our latest cybersecurity research and defense briefs:
+- **[The Invisible Thief: Browser-Based Infostealers & Malicious Extensions](https://eyeballsecurity.com/#blog/the-invisible-thief-browser-infostealers-and-malicious-extensions):** A deep dive into how infostealers target the browser boundary to steal active session cookies, why network security filters (firewalls, SWG, SSE) remain blind, and how Eyeball protects against these attacks.
+- **[Deconstructing a Real-World ClickFix Attack & its PowerShell Payload](https://eyeballsecurity.com/#blog/deconstructing-live-clickfix-infostealer-attack):** An analysis of an SMS-based open-redirect campaign delivering a malicious PowerShell script under the guise of Cloudflare verification.
+- **[Identity is the New Perimeter — But the Browser is Where it Authenticates](https://eyeballsecurity.com/#blog/browser-is-the-new-perimeter-identity-and-data-security):** Discover how Eyeball secures standard Chromium browsers from Adversary-in-the-Middle (AiTM) phishing and password reuse.
+- **[How to Redact Sensitive Data in AI Tools — Automatically](https://eyeballsecurity.com/#blog/how-to-redact-sensitive-data-ai-tools-automatically):** Stop PII and credential leakage in Generative AI tools like ChatGPT, Claude, and Gemini with automated on-device redactions.
+- **[SaaS Discovery for Small Business: A Lean Approach](https://eyeballsecurity.com/#blog/saas-discovery-small-business-lean-approach):** Proactively audit Shadow IT and SaaS applications to maintain regulatory compliance with SOC 2 and GDPR.
+- **[Beyond Encryption: Out-of-the-Box File Upload Auditing for SMEs and SMBs](https://eyeballsecurity.com/#blog/beyond-encryption-file-upload-auditing-smb):** Capture user data movement and files before browser HTTPS encryption occurs.
+
 ## Contact EyeBall Security
 Ready to secure your browser workspace with zero blind spots? Visit [eyeballsecurity.com](https://eyeballsecurity.com) to contact our team, ask questions, or request a custom demo.

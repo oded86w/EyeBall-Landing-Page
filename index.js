@@ -12,35 +12,35 @@ const handleImageFallback = (e) => {
   if (e.target && e.target.src) {
     const currentSrc = e.target.src;
     const currentFilename = getFilename(currentSrc);
+    if (!currentFilename) return;
+
     const lastFilename = e.target.dataset.lastFilename || '';
-    
-    // If the actual filename has changed, it means the user switched tabs (or a different image is being loaded).
-    // In this case, we reset the fallback flags completely so that the fallback flow can run for the new image.
     if (lastFilename && lastFilename !== currentFilename) {
-      delete e.target.dataset.fallbackAttempted;
-      delete e.target.dataset.finalFallback;
-      delete e.target.dataset.finalFallbackPublicLogo;
+      delete e.target.dataset.fallbackAttempts;
     }
-    
     e.target.dataset.lastFilename = currentFilename;
-    
-    if (e.target.dataset.fallbackAttempted) {
-      if (!currentSrc.includes('logo.svg') && !e.target.dataset.finalFallback) {
-        e.target.dataset.finalFallback = 'true';
-        e.target.src = 'logo.svg';
-      } else if (currentSrc.includes('logo.svg') && !currentSrc.includes('public/logo.svg') && !e.target.dataset.finalFallbackPublicLogo) {
-        e.target.dataset.finalFallbackPublicLogo = 'true';
-        e.target.src = 'public/logo.svg';
-      }
+
+    const attempts = parseInt(e.target.dataset.fallbackAttempts || '0', 10);
+    if (attempts >= 3) {
       return;
     }
-    
-    e.target.dataset.fallbackAttempted = 'true';
-    if (currentFilename) {
+    e.target.dataset.fallbackAttempts = (attempts + 1).toString();
+
+    const isLogo = currentFilename.includes('blue.png') || currentFilename.includes('white.png') || currentFilename.includes('logo.svg');
+
+    if (attempts === 0) {
       if (currentSrc.includes('/public/')) {
         e.target.src = currentFilename;
+      } else if (currentSrc.includes('public/')) {
+        e.target.src = '/' + currentFilename;
       } else {
         e.target.src = 'public/' + currentFilename;
+      }
+    } else if (attempts === 1) {
+      e.target.src = '/' + currentFilename;
+    } else if (attempts === 2) {
+      if (isLogo && !currentFilename.includes('logo.svg')) {
+        e.target.src = 'logo.svg';
       }
     }
   }
@@ -681,7 +681,7 @@ const BusinessFeatures = ({ onStartFree }) => {
             ],
             hasDemo: true,
             badgeText: 'eyeball://dlp-shield-active',
-            imageSrc: '/EyeBallDLSITEVID-optimize.gif',
+            imageSrc: 'EyeBallDLSITEVID-optimize.gif',
             bulletColor: 'text-brand-blue',
             gridClass: 'col-span-1 md:col-span-2 lg:col-span-2 shadow-xl'
         },
@@ -697,7 +697,7 @@ const BusinessFeatures = ({ onStartFree }) => {
             ],
             hasDemo: true,
             badgeText: 'eyeball://ai-blocking-shield',
-            imageSrc: '/Eyeball-AIREDACToptimize.gif',
+            imageSrc: 'Eyeball-AIREDACToptimize.gif',
             bulletColor: 'text-emerald-400',
             gridClass: 'col-span-1 md:col-span-2 lg:col-span-2 shadow-xl'
         },
@@ -725,17 +725,17 @@ const BusinessFeatures = ({ onStartFree }) => {
             ],
             hasDemo: true,
             badgeText: 'eyeball://url-compliance-gate',
-            imageSrc: '/Eyeball-DemoURLF-optimize-1.gif',
+            imageSrc: 'Eyeball-DemoURLF-optimize-1.gif',
             demos: [
                 {
                     label: 'URL Filtering',
                     badgeText: 'eyeball://url-compliance-gate',
-                    imageSrc: '/Eyeball-DemoURLF-optimize-1.gif'
+                    imageSrc: 'Eyeball-DemoURLF-optimize-1.gif'
                 },
                 {
                     label: 'Upload file blocking',
                     badgeText: 'eyeball://upload-blocker-gate',
-                    imageSrc: '/Eyeball-WhatsappBlock-optimize.gif'
+                    imageSrc: 'Eyeball-WhatsappBlock-optimize.gif'
                 }
             ],
             bulletColor: 'text-sky-400',
@@ -775,7 +775,7 @@ const BusinessFeatures = ({ onStartFree }) => {
             ],
             hasDemo: true,
             badgeText: 'eyeball://exploit-shield-anti-fix',
-            imageSrc: '/Eyeball-DemoANTIFIX-optimize.gif',
+            imageSrc: 'Eyeball-DemoANTIFIX-optimize.gif',
             bulletColor: 'text-rose-400',
             gridClass: 'col-span-1 md:col-span-2 lg:col-span-2 shadow-xl'
         },
@@ -1437,7 +1437,7 @@ The Eyeball Security browser extension operates where the risk actually lives �
 - **4. One click redacts everything:** Click **Redact All Sensitive Data**. Every flagged value is replaced with a context-preserving placeholder. Your prompt remains coherent.
 - **5. Send the clean prompt:** Submit the redacted prompt to the AI tool. The AI response is unaffected. The sensitive data never left your browser. The detection event is logged for your audit trail.
 
-![See it in action: Eyeball Security detects an API key and email address in a ChatGPT prompt, warns the user inline, and redacts both values in a single click — before the prompt is sent.](/Eyeball-AIREDACToptimize.gif)
+![See it in action: Eyeball Security detects an API key and email address in a ChatGPT prompt, warns the user inline, and redacts both values in a single click — before the prompt is sent.](Eyeball-AIREDACToptimize.gif)
 
 ---
 
@@ -1610,7 +1610,7 @@ Today, an Eyeball Security customer avoided a potentially devastating corporate 
 
 This case study is a classic illustration of modern social engineering tactics. It demonstrates how threat actors bypass conventional perimeter controls, manipulate user trust in third-party services, and execute highly targeted obfuscated scripts directly on local endpoints.
 
-![See it in action: Eyeball Browser Security identifies and blocks the malicious ClickFix CAPTCHA fake prompt, preventing the user from copying the malicious execution command.](/MaozClickFixOptimize.gif)
+![See it in action: Eyeball Browser Security identifies and blocks the malicious ClickFix CAPTCHA fake prompt, preventing the user from copying the malicious execution command.](MaozClickFixOptimize.gif)
 
 ---
 
@@ -1697,6 +1697,84 @@ To assist fellow defenders, the threat intelligence team has cataloged the indic
     date: "July 2, 2026",
     coverPattern: "linear-gradient(135deg, #1e293b 0%, #0f172a 100%)",
     tags: ["ClickFix", "Threat Intel", "PowerShell Analysis", "Evasion Techniques", "Adware/Infostealer", "In-The-Wild"]
+  },
+  {
+    id: "11",
+    slug: "the-invisible-thief-browser-infostealers-and-malicious-extensions",
+    title: "The Invisible Thief: How Browser-Based Infostealers & Malicious Extensions Hijack Corporate Sessions",
+    excerpt: "Infostealers are targeting the modern browser boundary to steal active session cookies and bypass MFA. We explore how in-tab malicious JS and rogue browser extensions execute stealthy credential theft, and how Eyeball's browser-native shield stops them.",
+    content: `## The Invisible Thief: How Browser-Based Infostealers & Malicious Extensions Hijack Corporate Sessions
+
+The corporate perimeter has evaporated. Today, your employees don't connect to local networks to do their jobs; they open their web browsers and connect directly to cloud-based SaaS portals: Salesforce, Microsoft 365, AWS, and Google Workspace.
+
+But this shift has not gone unnoticed by threat actors. Because your corporate applications live in the browser, **the web browser has become the single most valuable target on the endpoint.** 
+
+Enter the era of the **Infostealer**—a highly sophisticated, stealthy category of malware and malicious code designed to target browser-stored credentials, clipboard buffers, and active session cookies. In this threat brief, we break down how modern browser-based infostealers operate, why they pose an existential risk to your enterprise, and how Eyeball Security stops them in their tracks.
+
+---
+
+### The Two Faces of Browser-Based Infostealer Attacks
+
+Threat actors deploy infostealer capabilities through two primary browser vectors: malicious JavaScript executed in the tab, and compromised or malicious browser extensions installed on the endpoint.
+
+#### 1. Malicious JavaScript (In-Tab Code Execution)
+Attackers inject malicious JavaScript into legitimate or compromised websites that employees visit. This is often achieved through supply-chain attacks on third-party libraries (such as advertising scripts, analytics tools, or chat widgets). Once executed inside the user's active browser session, the malicious code can:
+*   **Form Grabbers & Keyloggers:** Silently hook input elements on login forms, capturing usernames and passwords in real-time as they are typed, before they are encrypted and sent to the legitimate server.
+*   **Session Skimming:** Inject code into checkout, billing, or administration portals to copy sensitive personal data or financial information.
+*   **Clipboard Hijacking:** Monitor the system clipboard to swap cryptocurrency addresses, destination account details, or copy-pasted API keys with attacker-controlled values.
+
+#### 2. Malicious Browser Extensions (The Wolf in Sheep's Clothing)
+Browser extensions are incredibly powerful—they run with high privileges, allowing them to read and modify all data on the web pages a user visits. Attackers exploit this power by:
+*   **Publishing Fake Utilities:** Uploading seemingly innocent extensions (such as PDF converters, ad blockers, or formatting tools) to public extension stores. Once installed, they receive silent background updates that activate infostealer payloads.
+*   **Buying Out Legitimate Extensions:** Acquiring established extensions with large, trusted user bases and pushing malicious updates to compromise existing installs.
+*   **DOM Tampering and Cookie Access:** Legitimate-looking extensions can inject scripts into corporate pages to steal active session cookies (MFA bypass) or read sensitive text fields without triggering any operating system warnings.
+
+---
+
+### The Executive Risk: Why Infostealers are an Existential Enterprise Threat
+
+For an organization, an infostealer infection is not just an individual computer virus; it is the starting point of a major corporate breach.
+
+*   **Bypassing Multi-Factor Authentication (MFA):** Infostealers don't just grab passwords; they harvest active **session cookies**. By stealing a live session token, attackers can clone the employee's active browser state on their own machine. Because the session is already authenticated, the attacker is granted immediate access **without triggering MFA prompts** or conditional access blocklists.
+*   **The Rise of Initial Access Brokers (IABs):** Cybercriminals don't always execute the breach themselves. Instead, they use automated infostealers to gather hundreds of thousands of active corporate credentials and session cookies, then sell these pre-authenticated entry points to ransomware groups and state-sponsored actors on dark-web marketplaces.
+*   **Total Corporate Takeover:** A single compromised administrative session (e.g., an AWS console or identity provider panel) can give an attacker immediate access to your entire cloud infrastructure, source code repositories, and customer databases.
+
+---
+
+### Why Standard EDR, Firewalls, and SSE/SWG Leave You Vulnerable
+
+If your organization relies solely on Endpoint Detection and Response (EDR), Firewalls, Secure Web Gateways (SWG/SSE), or Identity and Access Management (IAM), you remain highly exposed:
+*   **EDR is Blind to Extension Actions:** Standard EDR systems monitor the operating system level (file creations, registry changes, process spawns). They cannot inspect what is happening *inside* the browser's memory space or what actions an extension is taking on a DOM tree.
+*   **Firewalls, SWG, and SSE are Blind to Session Context:** Network security products like Firewalls, SWG, and SSE operate entirely at the network layer. They can inspect external URLs, IPs, and encrypted data streams, but they have absolutely no visibility into what is actually happening *inside* the active browser tab or the session itself. They cannot detect a malicious extension manipulating the local webpage DOM, nor can they prevent an infostealer script from grabbing credentials or stealing session cookies directly from browser memory.
+*   **IAM Cannot See Session Hijacking:** Identity providers (IdPs) only validate the user *during the login flow*. Once the login is successful and the session cookie is saved, the identity system is blind to that cookie being copied and transferred to an attacker's server to bypass MFA.
+
+---
+
+### The Eyeball Shield: Proactive Client-Side Browser Protection
+
+To defeat an enemy that operates entirely inside the browser, you must defend from within the browser itself. **Eyeball Security** provides a robust, real-time client-side protection engine that shields your workforce from both JavaScript and extension-based infostealer threats:
+
+#### 1. Real-Time Session Cookie Hardening
+Eyeball prevents attackers from stealing your active corporate sessions. It monitors the browser's local cookie storage, local storage variables, and memory space, shielding them from unauthorized access. If a malicious script or extension attempts to query or export active session cookies for administrative portals (such as Salesforce, Google Workspace, or Microsoft 365), Eyeball intercepts the access request, blocks the extraction, and alerts your security team.
+
+#### 2. Extension Behavior Monitoring & Blocking
+Eyeball acts as a local gatekeeper for your extensions. It monitors the background activity, API calls, and DOM access patterns of all installed browser extensions. If an extension attempts to inject unauthorized scripts into corporate tabs, read input fields, or communicate with known malicious Command and Control (C2) domains, Eyeball blocks the extension's execution instantly.
+
+#### 3. Monitoring & Protection of Operations (DOM Integrity & Keystroke Protection)
+Eyeball continuously verifies the integrity of the Document Object Model (DOM) and prevents keystroke recording. It detects and neutralizes unapproved script injections, unauthorized event listeners on password fields (form grabbing), and keyloggers, ensuring that credentials can only be processed by the legitimate website engine. By keeping the DOM safe and blocking keyloggers locally inside the active browser page, Eyeball prevents unauthorized activity before any data can be compromised.
+
+### Don't Wait for the Breach Notice
+
+The web browser is your organization's most critical productivity tool—and its biggest security blind spot. By implementing **Eyeball Security**, you gain complete visibility and protection at the point of data interaction, defeating stealthy infostealers and malicious extensions before they can compromise your corporate identity.
+
+**Secure your browser fleet today with Eyeball Security.**`,
+    author: "EyeBall Threat Intelligence",
+    authorTitle: "Research & Analysis Group",
+    category: "Browser Security",
+    readTime: "5 min read",
+    date: "July 9, 2026",
+    coverPattern: "linear-gradient(135deg, #0f172a 0%, #311042 100%)",
+    tags: ["Infostealers", "Browser Security", "Extension Security", "Session Hijacking", "Malicious JavaScript", "Identity Theft"]
   }
 ];
 
