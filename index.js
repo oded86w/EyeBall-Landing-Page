@@ -1775,6 +1775,107 @@ The web browser is your organization's most critical productivity tool—and its
     date: "July 9, 2026",
     coverPattern: "linear-gradient(135deg, #0f172a 0%, #311042 100%)",
     tags: ["Infostealers", "Browser Security", "Extension Security", "Session Hijacking", "Malicious JavaScript", "Identity Theft"]
+  },
+  {
+    id: "12",
+    slug: "the-browser-assembly-line-how-malware-evades-swg-sse",
+    title: "The Browser Assembly Line: How Malware Evades SWG & SSE with Client-Side Reconstruction",
+    excerpt: "Modern malware bypasses traditional Secure Web Gateways (SWG) and SSE platforms by avoiding raw payload downloads. Instead, attackers use WebAssembly, steganography, chunking, and encoding to assemble files locally inside the browser. We explore these evasion techniques and how Eyeball blocks them at the browser runtime.",
+    content: `## The Browser Assembly Line: How Malware Evades SWG & SSE with Client-Side Reconstruction
+
+Security teams have poured millions of dollars into Secure Web Gateways (SWG), Security Service Edge (SSE) platforms, and Next-Generation Firewalls (NGFW). These edge defenses are designed to intercept and scan every single file as it crosses the corporate network perimeter.
+
+But threat actors have discovered a fundamental, structural flaw in this paradigm: **Network filters can only scan what is in transit over the wire.** 
+
+If a malicious executable is never transferred in its complete, compiled form over the network, standard network filters cannot detect it. Instead, attackers are transforming the employee's browser into a local manufacturing plant—transferring seemingly harmless components and using client-side JavaScript to assemble the final malware payload directly inside the browser memory.
+
+In this deep dive, we explore how modern malware campaigns execute client-side reconstruction attacks to bypass SWGs, and how Eyeball Security's native browser shield intercepts and blocks them before they touch the device.
+
+---
+
+### Modern Evasion Techniques: Building Malware inside the Browser
+
+Rather than downloading a traditional, signature-prone executable, threat actors use native browser capabilities and advanced client-side scripts to conceal, transfer, and reconstruct malicious payloads.
+
+#### 1. WebAssembly (WASM) Embed Attacks
+WebAssembly (WASM) is a high-performance binary format supported by all modern browsers to run heavy client-side operations. However, its efficiency and low-level nature make it a perfect hiding spot for malware:
+*   **The Evasion:** Attackers compile and embed encrypted malware payloads directly inside a WASM binary file. Because WASM is a complex, compiled bytecode format, standard network gateways (SWG/SSE) perform neither static nor dynamic analysis on it. The WASM file passes through edge filters completely unhindered.
+*   **The Execution:** Once loaded in the browser, the accompanying JavaScript calls the WASM module to decrypt and reconstruct the payload in-memory, then drops the final compiled file onto the device using browser-native storage or Blob APIs.
+
+#### 2. Image Steg Attacks (Steganography)
+Steganography is the art of hiding data within ordinary files. Image Steg attacks conceal malware payloads inside benign-looking images (such as PNG or JPG) by manipulating the Least Significant Bits (LSB) of the image's pixel data:
+*   **The Evasion:** Because the visual impact is imperceptible, the image looks completely normal to human eyes and standard file checkers. Images are rarely inspected or blocked by SWGs.
+*   **The Execution:** When the employee visits the compromised webpage, client-side JavaScript fetches the image. Using the browser's HTML5 Canvas API, the script extracts the raw pixel data, parses the LSB values to extract the hidden byte array of the malware, and compiles it into a runnable file on the host.
+
+#### 3. JS Embed Attacks (HTML Smuggling / Binary Arrays)
+In a JS Embed attack, the malware payload is encoded as a heavily obfuscated byte array or a giant Base64 string nested directly inside JavaScript files:
+*   **The Evasion:** Network security systems do not perform deep dynamic sandboxing of every line of active JavaScript running on every website in real-time. To the gateway, it looks like standard website scripts.
+*   **The Execution:** On the client side, the JavaScript decodes the binary array in real-time, constructs a local Blob object, and triggers an automatic browser-native download using the HTML5 "download" attribute. This is widely known as **HTML Smuggling**.
+
+#### 4. File Chunking Attacks (Assembly of Split Payloads)
+Network filters often use deep packet inspection (DPI) or stream carving to reconstruct files in transit and scan them for malicious signatures. To defeat this, attackers split their files into separate chunks and send them sequentially:
+*   **Straight Split:** Breaking up the malicious binary into standard consecutive fragments.
+*   **Reverse Split:** Sending the chunks backwards or out of order.
+*   **Mix and Match:** Combining random chunk sequences with non-malicious noise packets.
+*   **The Execution:** On the client side, the page's JavaScript collects these disparate network requests, sorts them correctly, and reconstructs the complete executable. To the SWG, these look like harmless, fragmented REST API responses.
+
+#### 5. Client-Side File Encryption
+To ensure that network-level content filters cannot scan the payload for signatures, attackers encrypt the malicious file at rest on their server:
+*   **Techniques:** Employing AES-CBC/GCM, encrypted Zip archives (AES-256), or legacy zip configurations (PkZip 2.0).
+*   **The Execution:** The encrypted file is downloaded by the browser, and the decryption key is either hardcoded in the JavaScript or dynamically retrieved from an external C2 server. The client-side JavaScript decrypts the file directly inside the browser's sandbox environment.
+
+#### 6. Client-Side File Encoding
+Attackers convert their binaries into highly-encoded formats to obfuscate their true nature:
+*   **Formats:** Base64, Raw Binary Arrays, Hexadecimal strings, or custom substitution ciphers.
+*   **The Execution:** The network gateways see only large streams of encoded ASCII characters, passing them as harmless text strings. Client-side JS effortlessly decodes them back to their original binary format.
+
+---
+
+### Real-World Campaigns: Evasion in Action
+
+These are not theoretical vectors. Some of the most active and dangerous threat groups in the wild leverage these exact techniques:
+*   **Qakbot (Qbot) & Bumblebee:** These massive malware operations frequently use **HTML Smuggling (JS Embed)** to deliver initial payloads. By embedding encrypted ISO or ZIP archives in JavaScript arrays, they successfully bypass the secure gateways of Fortune 500 companies.
+*   **SocGholish (FakeUpdates):** This persistent threat group uses obfuscated JS script architectures to dynamically compile initial access download loops inside the browser, tricking users into running malware disguised as browser updates.
+*   **Lazarus Group (APT38):** The state-sponsored Lazarus Group has repeatedly used **Image Steganography** to bypass network controls, hiding malicious payloads inside corporate-branded PNG logos on compromised forums and phishing sites.
+
+---
+
+### The Eyeball Shield: Eliminating the Gateway Blind Spot
+
+Traditional security fails because it attempts to solve a browser-native problem at the network level. **To block client-side reconstruction, you must enforce security at the browser runtime.**
+
+**Eyeball Security** implements a revolutionary client-side security architecture that operates natively inside the browser context, eliminating the blind spots left by SWGs, SSE, and Firewalls:
+
+#### 1. Runtime File & Blob Auditing
+Eyeball intercepts and inspects every file constructed via browser APIs, including Blob creations, Object URLs (URL.createObjectURL), and File system operations. No matter how many chunks, encodings, or encryptions a script uses to bypass the network, the file *must* eventually be assembled into a unified payload before it can be saved or executed. Eyeball analyzes the file **at the moment of reconstruction**, blocking malicious files before they ever cross the browser boundary to the operating system.
+
+#### 2. WebAssembly (WASM) & JS Execution Monitoring
+Eyeball provides deep visibility into WebAssembly and JavaScript runtimes. It monitors dynamic execution, decoding operations, and script-triggered canvas interactions, blocking scripts that attempt to use LSB steganography or execute suspicious in-browser decryption routines.
+
+#### 3. Client-Side Decryption & Assembly Protection
+Eyeball's native engine tracks data flow from the network stack directly into the DOM and local browser storage. If a script attempts to assemble a file using reverse-splitting, dynamic AES decryption, or out-of-order chunk stitching, Eyeball flags the behavior and terminates the script's execution immediately.
+
+### Secure the True Edge: The Web Browser
+
+The browser is the true edge of your enterprise workspace. Relying on network gateways to scan files is like inspecting the delivery boxes while ignoring the assembly line inside your warehouse.
+
+By deploying **Eyeball Security**, you protect your browser fleet from advanced evasion techniques, ensuring that malicious payloads cannot be smuggled, assembled, or executed under the nose of your security stack.
+
+**Protect your workspace with Eyeball Security.**
+
+---
+
+### Test Your Defenses with a Live Simulation
+Are you curious how your existing Secure Web Gateways (SWG), Firewalls, and endpoint agents handle real-world browser assembly and smuggling techniques? We invite you to contact our team to schedule a **live, customized security demo**. We will run safe, simulated evasion attacks to evaluate your organization's current posture and show you exactly how Eyeball Security provides real-time detection and isolation.
+
+[**Schedule Your Live Security Demo & Posture Assessment**](#contact)`,
+    author: "EyeBall Threat Intelligence",
+    authorTitle: "Research & Analysis Group",
+    category: "Evasion Techniques",
+    readTime: "6 min read",
+    date: "July 12, 2026",
+    coverPattern: "linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)",
+    tags: ["WASM Evasion", "Steganography", "HTML Smuggling", "Browser Security", "SSE Evasion", "File Chunking"]
   }
 ];
 
