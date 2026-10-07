@@ -1887,7 +1887,7 @@ Are you curious how your existing Secure Web Gateways (SWG), Firewalls, and endp
   "authorTitle": "Research & Analysis Group",
   "category": "Browser Security",
   "readTime": "7 min read",
-  "date": "July 15, 2026",
+  "date": "October 7, 2026",
   "coverPattern": "linear-gradient(135deg, #091e3a 0%, #1e1035 100%)",
   "tags": [
     "Token Theft",
