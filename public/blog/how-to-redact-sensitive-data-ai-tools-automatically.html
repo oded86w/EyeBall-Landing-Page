@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="../logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How to Redact Sensitive Data in AI Tools — Automatically | EYEBALL Security</title>
+    <link rel="canonical" href="https://eyeballsecurity.com/blog/how-to-redact-sensitive-data-ai-tools-automatically.html" />
+    <meta name="description" content="Your team is using ChatGPT daily — and leaking sensitive data without realizing it. Learn how Eyeball Security warns them before they send and redacts everything in one click, with zero configuration." />
+    <meta name="keywords" content="DLP, AI Security, Data Loss Prevention, ChatGPT Security, Browser Security, Generative AI, SMB Security, Generative AI, Enterprise Browser Security, Browser DLP, EYEBALL Security" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="EYEBALL Security" />
+    <meta property="og:title" content="How to Redact Sensitive Data in AI Tools — Automatically" />
+    <meta property="og:description" content="Your team is using ChatGPT daily — and leaking sensitive data without realizing it. Learn how Eyeball Security warns them before they send and redacts everything in one click, with zero configuration." />
+    <meta property="og:url" content="https://eyeballsecurity.com/blog/how-to-redact-sensitive-data-ai-tools-automatically.html" />
+    <meta property="og:image" content="https://eyeballsecurity.com/blue.png" />
+    <meta property="article:published_time" content="2026-06-28T08:00:00Z" />
+    <meta property="article:section" content="Generative AI" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="How to Redact Sensitive Data in AI Tools — Automatically" />
+    <meta name="twitter:description" content="Your team is using ChatGPT daily — and leaking sensitive data without realizing it. Learn how Eyeball Security warns them before they send and redacts everything in one click, with zero configuration." />
+    <meta name="twitter:image" content="https://eyeballsecurity.com/blue.png" />
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "@id": "https://eyeballsecurity.com/blog/how-to-redact-sensitive-data-ai-tools-automatically.html#article",
+      "headline": "How to Redact Sensitive Data in AI Tools — Automatically",
+      "description": "Your team is using ChatGPT daily — and leaking sensitive data without realizing it. Learn how Eyeball Security warns them before they send and redacts everything in one click, with zero configuration.",
+      "datePublished": "2026-06-28T08:00:00+00:00",
+      "dateModified": "2026-10-24T10:00:00+00:00",
+      "author": {
+        "@type": "Organization",
+        "name": "EyeBall Threat Intelligence",
+        "url": "https://eyeballsecurity.com/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "EyeBall Security Inc.",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://eyeballsecurity.com/blue.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://eyeballsecurity.com/blog/how-to-redact-sensitive-data-ai-tools-automatically.html"
+      },
+      "articleSection": "Generative AI",
+      "keywords": "DLP, AI Security, Data Loss Prevention, ChatGPT Security, Browser Security, Generative AI, SMB Security"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "EYEBALL Security",
+          "item": "https://eyeballsecurity.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Threat Intel Blog",
+          "item": "https://eyeballsecurity.com/#blog"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "How to Redact Sensitive Data in AI Tools — Automatically",
+          "item": "https://eyeballsecurity.com/blog/how-to-redact-sensitive-data-ai-tools-automatically.html"
+        }
+      ]
+    }
+  ]
+}
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'brand-dark': '#06090E',
+              'brand-dark-secondary': '#0D1117',
+              'brand-blue': '#00B4D8',
+              'brand-cyan': '#48CAE4',
+              'brand-purple': '#9D4EDD',
+              'brand-green': '#06D6A0',
+              'brand-light': '#F8F9FA',
+              'brand-light-secondary': '#ADB5BD',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      html { scroll-behavior: smooth; }
+      .bg-grid-pattern {
+        background-image: linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+                          linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+        background-size: 40px 40px;
+      }
+    </style>
+
+    <!-- Umami Cloud Analytics Integration -->
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="f4b2fa1b-2fcb-439e-b40d-99679f204792"></script>
+    <!-- Leadfeeder Analytics Integration -->
+    <script> (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('lAxoEaKjZxv4OYGd'); </script>
+  </head>
+  <body class="bg-brand-dark text-brand-light font-sans antialiased flex flex-col min-h-screen">
+    <header class="bg-brand-dark/90 backdrop-blur-xl fixed top-0 left-0 right-0 z-50 border-b border-white/5">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+          <a href="../#landing" class="flex items-center space-x-3 focus:outline-none group">
+            <img src="../blue.png" onerror="this.onerror=null; this.src='../logo.svg';" class="h-12 w-auto transition-transform duration-300 group-hover:scale-105" alt="EyeBall Logo" />
+            <span class="text-2xl font-bold text-white tracking-tight">EyeBall</span>
+          </a>
+          <div class="flex items-center space-x-4 md:space-x-6">
+            <nav class="hidden md:flex space-x-6 text-sm font-medium text-brand-light-secondary">
+              <a href="../#features" class="hover:text-white transition-colors">Features</a>
+              <a href="../#case-studies" class="hover:text-white transition-colors">Case Studies</a>
+              <a href="../#faq" class="hover:text-white transition-colors">FAQ</a>
+              <a href="../#blog" class="text-brand-blue font-bold border-b-2 border-brand-blue pb-1">Blog</a>
+            </nav>
+            <a href="../#freemium" class="bg-brand-blue hover:bg-brand-cyan text-brand-dark px-4 py-2 sm:px-6 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 shadow-lg shadow-brand-blue/20">
+              START NOW
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-grow pt-24">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 max-w-7xl">
+        <article class="max-w-4xl mx-auto py-4">
+          <a href="../#blog" class="inline-flex items-center space-x-2 text-sm font-mono text-brand-blue hover:text-brand-cyan mb-8 transition group pb-2">
+            <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            <span>BACK TO RESOURCE DIRECTORY</span>
+          </a>
+
+          <div style="background: linear-gradient(135deg, #1e1b4b 0%, #311042 100%)" class="h-64 sm:h-80 w-full rounded-3xl relative overflow-hidden flex flex-col justify-end p-6 sm:p-10 border border-white/15 shadow-2xl">
+            <div class="absolute inset-0 bg-brand-dark/30 backdrop-blur-[1px]"></div>
+            <div class="relative z-10">
+              <span class="inline-block px-3 py-1 mb-4 text-xs font-mono font-bold tracking-wider uppercase rounded border bg-brand-purple/10 text-brand-purple border-brand-purple/25">
+                Generative AI
+              </span>
+              <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight tracking-tight drop-shadow-md">
+                How to Redact Sensitive Data in AI Tools — Automatically
+              </h1>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between py-6 border-b border-white/10 mb-10 text-sm gap-4 text-brand-light-secondary font-mono">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-full bg-brand-blue/10 border border-brand-blue/30 flex items-center justify-center text-brand-blue font-bold">
+                E
+              </div>
+              <div>
+                <p class="text-white font-semibold">EyeBall Threat Intelligence</p>
+                <p class="text-xs text-brand-light-secondary">Research &amp; Analysis Group</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-6 text-xs text-brand-light-secondary font-mono">
+              <span>Published: <strong>June 28, 2026</strong></span>
+              <span>•</span>
+              <span>Read Time: <strong>7 min read</strong></span>
+            </div>
+          </div>
+
+          <div class="prose prose-invert prose-brand max-w-none text-brand-light-secondary leading-relaxed font-sans mb-16 space-y-4">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">How to Redact Sensitive Data in AI Tools — Automatically</h2>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">Your team is using ChatGPT every day — to write emails, answer customer questions, summarize documents. And some of them are pasting in passwords, customer data, and confidential files without even thinking about it. Eyeball Security catches it before it's sent and lets them fix it in one click. No IT team needed.</p>
+<div class="h-4"></div>
+<hr class="border-t border-white/10 my-10" />
+<div class="h-4"></div>
+<h3 class="text-xl md:text-2xl font-bold text-brand-blue mt-8 mb-3">Your Team Is Using AI Tools. Is Your Data Safe?</h3>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">If you run or manage a small or medium-sized business, there's a good chance your employees are already using ChatGPT, Copilot, or Gemini — whether you've approved it or not. They use it to write proposals, answer support tickets, clean up spreadsheets, and debug code. It saves them hours. It also creates a risk most SMBs aren't prepared for.</p>
+<div class="h-4"></div>
+<ul class="my-5 list-none">
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">77%</strong> of employees have leaked sensitive data through AI tools like ChatGPT, Copilot, or Gemini. (eSecurity Planet, 2025)</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">$4.63M</strong> is the average cost of a breach involving shadow AI usage — $670,000 more than a standard breach. (IBM Cost of a Data Breach Report, 2025)</span>
+          </li>
+        </ul>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">Think about what that looks like in a real office: an accountant pastes a client's tax details into ChatGPT to format a report. A salesperson copies a customer contact list to "clean up the data." A developer shares an API key to debug an integration. None of them are doing anything malicious — they're just getting work done. But the data they shared is now sitting in a third-party AI system, logged in conversation history, and outside your control.</p>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">Large enterprises have full security teams to manage this. Most SMBs don't — and that's exactly who attackers and regulators are starting to target. The good news: you don't need an enterprise security stack to fix this. You need the right tool in the right place.</p>
+<div class="h-4"></div>
+<hr class="border-t border-white/10 my-10" />
+<div class="h-4"></div>
+<h3 class="text-xl md:text-2xl font-bold text-brand-blue mt-8 mb-3">Why Existing Security Tools Don't Cover This</h3>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">If your business uses Microsoft 365 or Google Workspace, you already have some security built in — but it wasn't designed for this. Here's the gap:</p>
+<div class="h-4"></div>
+<ul class="my-5 list-none">
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Email filters</strong> scan attachments and outgoing messages. They don't see text typed into a browser chat window.</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Antivirus and endpoint tools</strong> protect against malware. They don't monitor what your team pastes into ChatGPT.</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Network monitoring</strong> sees traffic patterns. It can't read inside an HTTPS session with an AI tool — everything is encrypted.</span>
+          </li>
+        </ul>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">AI prompts are a brand-new data channel. Your team types sensitive information directly into a browser text box and hits Enter. Most security tools are blind to this — not because they're bad tools, but because they weren't built for it. Protecting this requires something that operates inside the browser itself, at the exact moment the user is about to send.</p>
+<div class="h-4"></div>
+<hr class="border-t border-white/10 my-10" />
+<div class="h-4"></div>
+<h3 class="text-xl md:text-2xl font-bold text-brand-blue mt-8 mb-3">How Eyeball Security's DLP Works</h3>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">The Eyeball Security browser extension operates where the risk actually lives — inside the browser, before the prompt is submitted. Here's the full flow:</p>
+<div class="h-4"></div>
+<ul class="my-5 list-none">
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">1. You compose your prompt:</strong> Type or paste content into any AI tool — ChatGPT, Claude, Copilot, Gemini, Perplexity, or any other browser-based assistant.</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">2. Eyeball scans the prompt in real time:</strong> The extension analyzes the prompt content locally, on-device, against a configurable set of detection patterns. No content leaves your browser for classification.</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">3. A warning appears — inline, specific, actionable:</strong> If sensitive data is detected, you see exactly what was flagged and why — before you hit Send. No blocked pages. No IT ticket. Just context.</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">4. One click redacts everything:</strong> Click <strong class="text-white font-bold">Redact All Sensitive Data</strong>. Every flagged value is replaced with a context-preserving placeholder. Your prompt remains coherent.</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">5. Send the clean prompt:</strong> Submit the redacted prompt to the AI tool. The AI response is unaffected. The sensitive data never left your browser. The detection event is logged for your audit trail.</span>
+          </li>
+        </ul>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">!<a href="Eyeball-AIREDACToptimize.gif" class="text-brand-cyan underline hover:text-brand-blue font-semibold transition">See it in action: Eyeball Security detects an API key and email address in a ChatGPT prompt, warns the user inline, and redacts both values in a single click — before the prompt is sent.</a></p>
+<div class="h-4"></div>
+<hr class="border-t border-white/10 my-10" />
+<div class="h-4"></div>
+<h3 class="text-xl md:text-2xl font-bold text-brand-blue mt-8 mb-3">What Gets Detected — and How It's Redacted</h3>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">Eyeball Security detects the following sensitive data types out of the box:</p>
+<div class="h-4"></div>
+<ul class="my-5 list-none">
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">API keys and tokens</strong> — AWS access keys, OpenAI API keys, GitHub tokens, service account credentials</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">PII</strong> — names, email addresses, phone numbers, national ID numbers, passport numbers</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Financial data</strong> — credit card numbers, IBAN codes, bank account details</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Custom patterns</strong> — regex or keyword rules defined by your security team (contract numbers, internal project codes, classified domain names)</span>
+          </li>
+        </ul>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">Here's what automatic redaction looks like in practice:</p>
+<div class="h-4"></div>
+
+          <div class="my-8 overflow-x-auto rounded-2xl border border-white/10 shadow-xl bg-brand-dark-secondary/80">
+            <table class="w-full text-left border-collapse text-sm">
+              <thead>
+                <tr class="bg-white/5 border-b border-white/10 text-white font-mono text-xs uppercase tracking-wider">
+                  <th class="py-3.5 px-4 font-bold">Before (in your prompt)</th><th class="py-3.5 px-4 font-bold">Type</th><th class="py-3.5 px-4 font-bold">After (sent to AI)</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-white/5">
+                
+                  <tr class="hover:bg-white/[0.03] transition-colors">
+                    <td class="py-3.5 px-4 font-semibold text-white"><code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">sk-abc123xyzABC789...</code></td><td class="py-3.5 px-4 text-brand-light-secondary">CREDENTIAL</td><td class="py-3.5 px-4 text-brand-light-secondary"><code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">[REDACTED: API_KEY]</code></td>
+                  </tr>
+                
+                  <tr class="hover:bg-white/[0.03] transition-colors">
+                    <td class="py-3.5 px-4 font-semibold text-white"><code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">john.doe@company.com</code></td><td class="py-3.5 px-4 text-brand-light-secondary">PII</td><td class="py-3.5 px-4 text-brand-light-secondary"><code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">[REDACTED: EMAIL]</code></td>
+                  </tr>
+                
+                  <tr class="hover:bg-white/[0.03] transition-colors">
+                    <td class="py-3.5 px-4 font-semibold text-white"><code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">4111 1111 1111 1111</code></td><td class="py-3.5 px-4 text-brand-light-secondary">FINANCIAL</td><td class="py-3.5 px-4 text-brand-light-secondary"><code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">[REDACTED: CREDIT_CARD]</code></td>
+                  </tr>
+                
+                  <tr class="hover:bg-white/[0.03] transition-colors">
+                    <td class="py-3.5 px-4 font-semibold text-white"><code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">PROJ-APOLLO-2026-Q3</code></td><td class="py-3.5 px-4 text-brand-light-secondary">CUSTOM</td><td class="py-3.5 px-4 text-brand-light-secondary"><code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">[REDACTED: INTERNAL_REF]</code></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+          </div>
+        
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">The AI tool receives a prompt that's still useful — the question, context, and structure are intact. Only the sensitive values are gone.</p>
+<div class="h-4"></div>
+<hr class="border-t border-white/10 my-10" />
+<div class="h-4"></div>
+<h3 class="text-xl md:text-2xl font-bold text-brand-blue mt-8 mb-3">Flexible Group Policies: Enforce Only What Matters</h3>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">No two roles or departments share the same security profile. A developer needs to share internal database layouts but should never paste raw API credentials. A customer support agent might handle specific billing references but shouldn't share general customer lists or PII.</p>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">With Eyeball, admins have absolute policy flexibility:</p>
+<ul class="my-5 list-none">
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Granular Rule Enforcement:</strong> Choose exactly which types of sensitive data are monitored, warning-only, or auto-redacted based on your specific operational needs.</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Tailored Employee Group Policies:</strong> Assign different security profiles to different departments. Ensure that developers, salespeople, and finance specialists can work efficiently with AI tools without unnecessary friction.</span>
+          </li>
+        </ul>
+<div class="h-4"></div>
+<hr class="border-t border-white/10 my-10" />
+<div class="h-4"></div>
+<h3 class="text-xl md:text-2xl font-bold text-brand-blue mt-8 mb-3">Built for Businesses Without a Full Security Team</h3>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">Most DLP products on the market were designed for enterprises with dedicated security architects, SIEM integrations, and months of tuning time. Eyeball Security was built differently — for businesses where the same person manages IT, HR, and the office coffee machine.</p>
+<div class="h-4"></div>
+<ul class="my-5 list-none">
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">No proxy, no VPN, no server:</strong> The browser extension installs like any other extension. Nothing changes on your network.</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Works out of the box:</strong> Default policies cover the most common sensitive data types — credentials, customer PII, financial data — from day one. No configuration required to get protected.</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Users are guided, not blocked:</strong> Employees see a clear warning and a simple action. They learn what's safe. You don't get a flood of helpdesk tickets.</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Covers every AI tool:</strong> ChatGPT, Copilot, Gemini, Claude, Perplexity — if it runs in a browser, Eyeball Security protects it. Including tools your team is using without telling IT.</span>
+          </li>
+        </ul>
+<div class="h-4"></div>
+<hr class="border-t border-white/10 my-10" />
+<div class="h-4"></div>
+<h3 class="text-xl md:text-2xl font-bold text-brand-blue mt-8 mb-3">For MSSPs: Manage DLP Across All Your Clients from One Place</h3>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">If you're a managed security service provider, AI data leakage is quickly becoming one of the hardest conversations to have with clients — because it's happening right now, most clients don't know it, and most existing tools can't stop it.</p>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">Eyeball Security gives MSSPs a multi-tenant dashboard to manage DLP policies across all client environments from a single pane of glass:</p>
+<div class="h-4"></div>
+<ul class="my-5 list-none">
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Per-client policy control</strong> — set different detection sensitivity, data types, and enforcement actions per client, based on their industry and compliance requirements</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Centralized detection feed</strong> — see all sensitive data events across clients in real time, with context: which user, which AI tool, which data type, and what action was taken</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Compliance reporting</strong> — generate per-client audit reports for GDPR, HIPAA, or PCI-DSS reviews without manual log-pulling</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Fast deployment at scale</strong> — push the extension to all managed endpoints via your existing RMM or MDM. No site visits, no per-machine setup</span>
+          </li>
+        </ul>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">Clients get enterprise-grade AI data protection. You get a scalable service to add to your stack without adding operational overhead.</p>
+<div class="h-4"></div>
+<hr class="border-t border-white/10 my-10" />
+<div class="h-4"></div>
+<h3 class="text-xl md:text-2xl font-bold text-brand-blue mt-8 mb-3">Compliance Doesn't Have to Be Complicated</h3>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">If your business handles customer data — and most do — you likely have obligations under GDPR, HIPAA, PCI-DSS, or data protection laws. Accidentally sharing customer records with a third-party AI system can turn into a reportable breach, even if nothing was "stolen."</p>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">Eyeball Security gives you the audit trail to show regulators that controls were in place: every detection event is logged with a timestamp, data type, the tool it was headed to, and whether it was redacted or sent. Your MSSP can pull these reports for quarterly reviews. And because detection happens entirely on-device, no prompt content ever leaves your browser to reach Eyeball's servers.</p>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">Secure your business fleet effortlessly. With Eyeball, AI data loss prevention is seamless, visual, and out of the box.</p>
+          </div>
+
+          
+            <div class="border-t border-white/10 pt-6 flex flex-wrap gap-2 items-center mb-16">
+              <span class="text-xs font-mono text-brand-light-secondary uppercase tracking-widest mr-2">Tags:</span>
+              
+                <span class="bg-white/5 border border-white/10 text-brand-light-secondary text-xs px-3 py-1 rounded-full font-mono">
+                  #DLP
+                </span>
+              
+                <span class="bg-white/5 border border-white/10 text-brand-light-secondary text-xs px-3 py-1 rounded-full font-mono">
+                  #AI Security
+                </span>
+              
+                <span class="bg-white/5 border border-white/10 text-brand-light-secondary text-xs px-3 py-1 rounded-full font-mono">
+                  #Data Loss Prevention
+                </span>
+              
+                <span class="bg-white/5 border border-white/10 text-brand-light-secondary text-xs px-3 py-1 rounded-full font-mono">
+                  #ChatGPT Security
+                </span>
+              
+                <span class="bg-white/5 border border-white/10 text-brand-light-secondary text-xs px-3 py-1 rounded-full font-mono">
+                  #Browser Security
+                </span>
+              
+                <span class="bg-white/5 border border-white/10 text-brand-light-secondary text-xs px-3 py-1 rounded-full font-mono">
+                  #Generative AI
+                </span>
+              
+                <span class="bg-white/5 border border-white/10 text-brand-light-secondary text-xs px-3 py-1 rounded-full font-mono">
+                  #SMB Security
+                </span>
+              
+            </div>
+          
+
+          <div class="bg-gradient-to-r from-brand-blue/10 via-brand-dark-secondary to-brand-dark border border-brand-blue/20 rounded-3xl p-8 text-center relative overflow-hidden mb-16">
+            <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+            <h3 class="text-2xl font-bold text-white mb-2 relative z-10">Deploy Zero-Blind-Spot Browser Security</h3>
+            <p class="text-brand-light-secondary text-sm max-w-xl mx-auto mb-6 relative z-10">
+              Neutralize session token theft, ClickFix campaigns, and GenAI data leaks natively in Chrome and Edge with EYEBALL Enterprise Suite.
+            </p>
+            <a href="../#contact" class="inline-block relative z-10 bg-brand-blue hover:bg-brand-cyan text-brand-dark font-bold px-8 py-3 rounded-xl transition shadow-lg shadow-brand-blue/25 text-sm uppercase tracking-wider">
+              START NOW
+            </a>
+          </div>
+
+          <section class="border-t border-white/10 pt-12">
+            <h2 class="text-2xl font-bold text-white mb-6">More Threat Intelligence Research</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              
+                <a href="clickfix-threat-campaigns.html" class="block bg-brand-dark-secondary border border-white/10 hover:border-brand-blue/40 rounded-2xl p-5 transition">
+                  <span class="text-[10px] font-mono uppercase text-brand-cyan block mb-2">Threat Intel</span>
+                  <h3 class="text-base font-bold text-white mb-2 line-clamp-2">The Rise of ClickFix Campaigns: How Threat Actors Bypass Enterprise Sandbox Gateways</h3>
+                  <p class="text-xs text-brand-light-secondary line-clamp-3">Threat actors are shifting away from traditional attachments towards highly interactive browser social engineering, notably through fake update popups that exploit clipboard buffers.</p>
+                </a>
+              
+                <a href="prompt-analyzer-security-compliance.html" class="block bg-brand-dark-secondary border border-white/10 hover:border-brand-blue/40 rounded-2xl p-5 transition">
+                  <span class="text-[10px] font-mono uppercase text-brand-cyan block mb-2">Generative AI</span>
+                  <h3 class="text-base font-bold text-white mb-2 line-clamp-2">Prompt Analyzer: Total Security and Visibility for Enterprise Generative AI</h3>
+                  <p class="text-xs text-brand-light-secondary line-clamp-3">Enterprise usage of GenAI tools like ChatGPT, Claude, and Gemini has doubled, raising massive compliance and intellectual property leakage threats. Here is how EyeBall resolves it.</p>
+                </a>
+              
+                <a href="modern-browser-isolation-vs-swg.html" class="block bg-brand-dark-secondary border border-white/10 hover:border-brand-blue/40 rounded-2xl p-5 transition">
+                  <span class="text-[10px] font-mono uppercase text-brand-cyan block mb-2">Browser Security</span>
+                  <h3 class="text-base font-bold text-white mb-2 line-clamp-2">Why Modern Browser Isolation Outperforms Legacy Secure Web Gateways (SWG)</h3>
+                  <p class="text-xs text-brand-light-secondary line-clamp-3">Legacy network-level security proxies introduce crippling latency and break modern complex web applications. Endpoint browser security is the breakthrough alternative.</p>
+                </a>
+              
+            </div>
+          </section>
+        </article>
+      </div>
+    </main>
+
+    <footer class="bg-brand-dark-secondary border-t border-white/5 mt-16">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
+        <p class="text-brand-light-secondary">EyeBall 2026. Secure the Web. All rights reserved.</p>
+        <div class="mt-6 flex justify-center space-x-8 text-sm text-brand-light-secondary font-mono">
+          <a href="../" class="hover:text-white transition">Home</a>
+          <a href="../#blog" class="hover:text-white transition">Blog</a>
+          <a href="../#privacy" class="hover:text-white transition">Privacy Policy</a>
+          <a href="../#terms" class="hover:text-white transition">Terms of Service</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

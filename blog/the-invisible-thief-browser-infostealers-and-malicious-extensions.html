@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="../logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Invisible Thief: How Browser-Based Infostealers &amp; Malicious Extensions Hijack Corporate Sessions | EYEBALL Security</title>
+    <link rel="canonical" href="https://eyeballsecurity.com/blog/the-invisible-thief-browser-infostealers-and-malicious-extensions.html" />
+    <meta name="description" content="Infostealers are targeting the modern browser boundary to steal active session cookies and bypass MFA. We explore how in-tab malicious JS and rogue browser extensions execute stealthy credential theft, and how Eyeball's browser-native shield stops them." />
+    <meta name="keywords" content="Infostealers, Browser Security, Extension Security, Session Hijacking, Malicious JavaScript, Identity Theft, Browser Security, Enterprise Browser Security, Browser DLP, EYEBALL Security" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="EYEBALL Security" />
+    <meta property="og:title" content="The Invisible Thief: How Browser-Based Infostealers &amp; Malicious Extensions Hijack Corporate Sessions" />
+    <meta property="og:description" content="Infostealers are targeting the modern browser boundary to steal active session cookies and bypass MFA. We explore how in-tab malicious JS and rogue browser extensions execute stealthy credential theft, and how Eyeball's browser-native shield stops them." />
+    <meta property="og:url" content="https://eyeballsecurity.com/blog/the-invisible-thief-browser-infostealers-and-malicious-extensions.html" />
+    <meta property="og:image" content="https://eyeballsecurity.com/blue.png" />
+    <meta property="article:published_time" content="2026-07-09T08:00:00Z" />
+    <meta property="article:section" content="Browser Security" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The Invisible Thief: How Browser-Based Infostealers &amp; Malicious Extensions Hijack Corporate Sessions" />
+    <meta name="twitter:description" content="Infostealers are targeting the modern browser boundary to steal active session cookies and bypass MFA. We explore how in-tab malicious JS and rogue browser extensions execute stealthy credential theft, and how Eyeball's browser-native shield stops them." />
+    <meta name="twitter:image" content="https://eyeballsecurity.com/blue.png" />
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "@id": "https://eyeballsecurity.com/blog/the-invisible-thief-browser-infostealers-and-malicious-extensions.html#article",
+      "headline": "The Invisible Thief: How Browser-Based Infostealers & Malicious Extensions Hijack Corporate Sessions",
+      "description": "Infostealers are targeting the modern browser boundary to steal active session cookies and bypass MFA. We explore how in-tab malicious JS and rogue browser extensions execute stealthy credential theft, and how Eyeball's browser-native shield stops them.",
+      "datePublished": "2026-07-09T08:00:00+00:00",
+      "dateModified": "2026-10-24T10:00:00+00:00",
+      "author": {
+        "@type": "Organization",
+        "name": "EyeBall Threat Intelligence",
+        "url": "https://eyeballsecurity.com/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "EyeBall Security Inc.",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://eyeballsecurity.com/blue.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://eyeballsecurity.com/blog/the-invisible-thief-browser-infostealers-and-malicious-extensions.html"
+      },
+      "articleSection": "Browser Security",
+      "keywords": "Infostealers, Browser Security, Extension Security, Session Hijacking, Malicious JavaScript, Identity Theft"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "EYEBALL Security",
+          "item": "https://eyeballsecurity.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Threat Intel Blog",
+          "item": "https://eyeballsecurity.com/#blog"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "The Invisible Thief: How Browser-Based Infostealers & Malicious Extensions Hijack Corporate Sessions",
+          "item": "https://eyeballsecurity.com/blog/the-invisible-thief-browser-infostealers-and-malicious-extensions.html"
+        }
+      ]
+    }
+  ]
+}
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'brand-dark': '#06090E',
+              'brand-dark-secondary': '#0D1117',
+              'brand-blue': '#00B4D8',
+              'brand-cyan': '#48CAE4',
+              'brand-purple': '#9D4EDD',
+              'brand-green': '#06D6A0',
+              'brand-light': '#F8F9FA',
+              'brand-light-secondary': '#ADB5BD',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      html { scroll-behavior: smooth; }
+      .bg-grid-pattern {
+        background-image: linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+                          linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+        background-size: 40px 40px;
+      }
+    </style>
+
+    <!-- Umami Cloud Analytics Integration -->
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="f4b2fa1b-2fcb-439e-b40d-99679f204792"></script>
+    <!-- Leadfeeder Analytics Integration -->
+    <script> (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('lAxoEaKjZxv4OYGd'); </script>
+  </head>
+  <body class="bg-brand-dark text-brand-light font-sans antialiased flex flex-col min-h-screen">
+    <header class="bg-brand-dark/90 backdrop-blur-xl fixed top-0 left-0 right-0 z-50 border-b border-white/5">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+          <a href="../#landing" class="flex items-center space-x-3 focus:outline-none group">
+            <img src="../blue.png" onerror="this.onerror=null; this.src='../logo.svg';" class="h-12 w-auto transition-transform duration-300 group-hover:scale-105" alt="EyeBall Logo" />
+            <span class="text-2xl font-bold text-white tracking-tight">EyeBall</span>
+          </a>
+          <div class="flex items-center space-x-4 md:space-x-6">
+            <nav class="hidden md:flex space-x-6 text-sm font-medium text-brand-light-secondary">
+              <a href="../#features" class="hover:text-white transition-colors">Features</a>
+              <a href="../#case-studies" class="hover:text-white transition-colors">Case Studies</a>
+              <a href="../#faq" class="hover:text-white transition-colors">FAQ</a>
+              <a href="../#blog" class="text-brand-blue font-bold border-b-2 border-brand-blue pb-1">Blog</a>
+            </nav>
+            <a href="../#freemium" class="bg-brand-blue hover:bg-brand-cyan text-brand-dark px-4 py-2 sm:px-6 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 shadow-lg shadow-brand-blue/20">
+              START NOW
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-grow pt-24">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 max-w-7xl">
+        <article class="max-w-4xl mx-auto py-4">
+          <a href="../#blog" class="inline-flex items-center space-x-2 text-sm font-mono text-brand-blue hover:text-brand-cyan mb-8 transition group pb-2">
+            <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            <span>BACK TO RESOURCE DIRECTORY</span>
+          </a>
+
+          <div style="background: linear-gradient(135deg, #0f172a 0%, #311042 100%)" class="h-64 sm:h-80 w-full rounded-3xl relative overflow-hidden flex flex-col justify-end p-6 sm:p-10 border border-white/15 shadow-2xl">
+            <div class="absolute inset-0 bg-brand-dark/30 backdrop-blur-[1px]"></div>
+            <div class="relative z-10">
+              <span class="inline-block px-3 py-1 mb-4 text-xs font-mono font-bold tracking-wider uppercase rounded border bg-brand-green/10 text-brand-green border-brand-green/25">
+                Browser Security
+              </span>
+              <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight tracking-tight drop-shadow-md">
+                The Invisible Thief: How Browser-Based Infostealers &amp; Malicious Extensions Hijack Corporate Sessions
+              </h1>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between py-6 border-b border-white/10 mb-10 text-sm gap-4 text-brand-light-secondary font-mono">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-full bg-brand-blue/10 border border-brand-blue/30 flex items-center justify-center text-brand-blue font-bold">
+                E
+              </div>
+              <div>
+                <p class="text-white font-semibold">EyeBall Threat Intelligence</p>
+                <p class="text-xs text-brand-light-secondary">Research &amp; Analysis Group</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-6 text-xs text-brand-light-secondary font-mono">
+              <span>Published: <strong>July 9, 2026</strong></span>
+              <span>•</span>
+              <span>Read Time: <strong>5 min read</strong></span>
+            </div>
+          </div>
+
+          <div class="prose prose-invert prose-brand max-w-none text-brand-light-secondary leading-relaxed font-sans mb-16 space-y-4">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">The Invisible Thief: How Browser-Based Infostealers &amp; Malicious Extensions Hijack Corporate Sessions</h2>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">The corporate perimeter has evaporated. Today, your employees don't connect to local networks to do their jobs; they open their web browsers and connect directly to cloud-based SaaS portals: Salesforce, Microsoft 365, AWS, and Google Workspace.</p>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">But this shift has not gone unnoticed by threat actors. Because your corporate applications live in the browser, <strong class="text-white font-bold">the web browser has become the single most valuable target on the endpoint.</strong></p>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">Enter the era of the <strong class="text-white font-bold">Infostealer</strong>—a highly sophisticated, stealthy category of malware and malicious code designed to target browser-stored credentials, clipboard buffers, and active session cookies. In this threat brief, we break down how modern browser-based infostealers operate, why they pose an existential risk to your enterprise, and how Eyeball Security stops them in their tracks.</p>
+<div class="h-4"></div>
+<hr class="border-t border-white/10 my-10" />
+<div class="h-4"></div>
+<h3 class="text-xl md:text-2xl font-bold text-brand-blue mt-8 mb-3">The Two Faces of Browser-Based Infostealer Attacks</h3>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">Threat actors deploy infostealer capabilities through two primary browser vectors: malicious JavaScript executed in the tab, and compromised or malicious browser extensions installed on the endpoint.</p>
+<div class="h-4"></div>
+<h4 class="text-lg md:text-xl font-bold text-brand-cyan mt-6 mb-2">1. Malicious JavaScript (In-Tab Code Execution)</h4>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">Attackers inject malicious JavaScript into legitimate or compromised websites that employees visit. This is often achieved through supply-chain attacks on third-party libraries (such as advertising scripts, analytics tools, or chat widgets). Once executed inside the user's active browser session, the malicious code can:</p>
+<ul class="my-5 list-none">
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Form Grabbers &amp; Keyloggers:</strong> Silently hook input elements on login forms, capturing usernames and passwords in real-time as they are typed, before they are encrypted and sent to the legitimate server.</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Session Skimming:</strong> Inject code into checkout, billing, or administration portals to copy sensitive personal data or financial information.</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Clipboard Hijacking:</strong> Monitor the system clipboard to swap cryptocurrency addresses, destination account details, or copy-pasted API keys with attacker-controlled values.</span>
+          </li>
+        </ul>
+<div class="h-4"></div>
+<h4 class="text-lg md:text-xl font-bold text-brand-cyan mt-6 mb-2">2. Malicious Browser Extensions (The Wolf in Sheep's Clothing)</h4>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">Browser extensions are incredibly powerful—they run with high privileges, allowing them to read and modify all data on the web pages a user visits. Attackers exploit this power by:</p>
+<ul class="my-5 list-none">
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Publishing Fake Utilities:</strong> Uploading seemingly innocent extensions (such as PDF converters, ad blockers, or formatting tools) to public extension stores. Once installed, they receive silent background updates that activate infostealer payloads.</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Buying Out Legitimate Extensions:</strong> Acquiring established extensions with large, trusted user bases and pushing malicious updates to compromise existing installs.</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">DOM Tampering and Cookie Access:</strong> Legitimate-looking extensions can inject scripts into corporate pages to steal active session cookies (MFA bypass) or read sensitive text fields without triggering any operating system warnings.</span>
+          </li>
+        </ul>
+<div class="h-4"></div>
+<hr class="border-t border-white/10 my-10" />
+<div class="h-4"></div>
+<h3 class="text-xl md:text-2xl font-bold text-brand-blue mt-8 mb-3">The Executive Risk: Why Infostealers are an Existential Enterprise Threat</h3>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">For an organization, an infostealer infection is not just an individual computer virus; it is the starting point of a major corporate breach.</p>
+<div class="h-4"></div>
+<ul class="my-5 list-none">
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Bypassing Multi-Factor Authentication (MFA):</strong> Infostealers don't just grab passwords; they harvest active <strong class="text-white font-bold">session cookies</strong>. By stealing a live session token, attackers can clone the employee's active browser state on their own machine. Because the session is already authenticated, the attacker is granted immediate access <strong class="text-white font-bold">without triggering MFA prompts</strong> or conditional access blocklists.</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">The Rise of Initial Access Brokers (IABs):</strong> Cybercriminals don't always execute the breach themselves. Instead, they use automated infostealers to gather hundreds of thousands of active corporate credentials and session cookies, then sell these pre-authenticated entry points to ransomware groups and state-sponsored actors on dark-web marketplaces.</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Total Corporate Takeover:</strong> A single compromised administrative session (e.g., an AWS console or identity provider panel) can give an attacker immediate access to your entire cloud infrastructure, source code repositories, and customer databases.</span>
+          </li>
+        </ul>
+<div class="h-4"></div>
+<hr class="border-t border-white/10 my-10" />
+<div class="h-4"></div>
+<h3 class="text-xl md:text-2xl font-bold text-brand-blue mt-8 mb-3">Why Standard EDR, Firewalls, and SSE/SWG Leave You Vulnerable</h3>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">If your organization relies solely on Endpoint Detection and Response (EDR), Firewalls, Secure Web Gateways (SWG/SSE), or Identity and Access Management (IAM), you remain highly exposed:</p>
+<ul class="my-5 list-none">
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">EDR is Blind to Extension Actions:</strong> Standard EDR systems monitor the operating system level (file creations, registry changes, process spawns). They cannot inspect what is happening *inside* the browser's memory space or what actions an extension is taking on a DOM tree.</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Firewalls, SWG, and SSE are Blind to Session Context:</strong> Network security products like Firewalls, SWG, and SSE operate entirely at the network layer. They can inspect external URLs, IPs, and encrypted data streams, but they have absolutely no visibility into what is actually happening *inside* the active browser tab or the session itself. They cannot detect a malicious extension manipulating the local webpage DOM, nor can they prevent an infostealer script from grabbing credentials or stealing session cookies directly from browser memory.</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">IAM Cannot See Session Hijacking:</strong> Identity providers (IdPs) only validate the user *during the login flow*. Once the login is successful and the session cookie is saved, the identity system is blind to that cookie being copied and transferred to an attacker's server to bypass MFA.</span>
+          </li>
+        </ul>
+<div class="h-4"></div>
+<hr class="border-t border-white/10 my-10" />
+<div class="h-4"></div>
+<h3 class="text-xl md:text-2xl font-bold text-brand-blue mt-8 mb-3">The Eyeball Shield: Proactive Client-Side Browser Protection</h3>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">To defeat an enemy that operates entirely inside the browser, you must defend from within the browser itself. <strong class="text-white font-bold">Eyeball Security</strong> provides a robust, real-time client-side protection engine that shields your workforce from both JavaScript and extension-based infostealer threats:</p>
+<div class="h-4"></div>
+<h4 class="text-lg md:text-xl font-bold text-brand-cyan mt-6 mb-2">1. Real-Time Session Cookie Hardening</h4>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">Eyeball prevents attackers from stealing your active corporate sessions. It monitors the browser's local cookie storage, local storage variables, and memory space, shielding them from unauthorized access. If a malicious script or extension attempts to query or export active session cookies for administrative portals (such as Salesforce, Google Workspace, or Microsoft 365), Eyeball intercepts the access request, blocks the extraction, and alerts your security team.</p>
+<div class="h-4"></div>
+<h4 class="text-lg md:text-xl font-bold text-brand-cyan mt-6 mb-2">2. Extension Behavior Monitoring &amp; Blocking</h4>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">Eyeball acts as a local gatekeeper for your extensions. It monitors the background activity, API calls, and DOM access patterns of all installed browser extensions. If an extension attempts to inject unauthorized scripts into corporate tabs, read input fields, or communicate with known malicious Command and Control (C2) domains, Eyeball blocks the extension's execution instantly.</p>
+<div class="h-4"></div>
+<h4 class="text-lg md:text-xl font-bold text-brand-cyan mt-6 mb-2">3. Monitoring &amp; Protection of Operations (DOM Integrity &amp; Keystroke Protection)</h4>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">Eyeball continuously verifies the integrity of the Document Object Model (DOM) and prevents keystroke recording. It detects and neutralizes unapproved script injections, unauthorized event listeners on password fields (form grabbing), and keyloggers, ensuring that credentials can only be processed by the legitimate website engine. By keeping the DOM safe and blocking keyloggers locally inside the active browser page, Eyeball prevents unauthorized activity before any data can be compromised.</p>
+<div class="h-4"></div>
+<h3 class="text-xl md:text-2xl font-bold text-brand-blue mt-8 mb-3">Don't Wait for the Breach Notice</h3>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">The web browser is your organization's most critical productivity tool—and its biggest security blind spot. By implementing <strong class="text-white font-bold">Eyeball Security</strong>, you gain complete visibility and protection at the point of data interaction, defeating stealthy infostealers and malicious extensions before they can compromise your corporate identity.</p>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg"><strong class="text-white font-bold">Secure your browser fleet today with Eyeball Security.</strong></p>
+          </div>
+
+          
+            <div class="border-t border-white/10 pt-6 flex flex-wrap gap-2 items-center mb-16">
+              <span class="text-xs font-mono text-brand-light-secondary uppercase tracking-widest mr-2">Tags:</span>
+              
+                <span class="bg-white/5 border border-white/10 text-brand-light-secondary text-xs px-3 py-1 rounded-full font-mono">
+                  #Infostealers
+                </span>
+              
+                <span class="bg-white/5 border border-white/10 text-brand-light-secondary text-xs px-3 py-1 rounded-full font-mono">
+                  #Browser Security
+                </span>
+              
+                <span class="bg-white/5 border border-white/10 text-brand-light-secondary text-xs px-3 py-1 rounded-full font-mono">
+                  #Extension Security
+                </span>
+              
+                <span class="bg-white/5 border border-white/10 text-brand-light-secondary text-xs px-3 py-1 rounded-full font-mono">
+                  #Session Hijacking
+                </span>
+              
+                <span class="bg-white/5 border border-white/10 text-brand-light-secondary text-xs px-3 py-1 rounded-full font-mono">
+                  #Malicious JavaScript
+                </span>
+              
+                <span class="bg-white/5 border border-white/10 text-brand-light-secondary text-xs px-3 py-1 rounded-full font-mono">
+                  #Identity Theft
+                </span>
+              
+            </div>
+          
+
+          <div class="bg-gradient-to-r from-brand-blue/10 via-brand-dark-secondary to-brand-dark border border-brand-blue/20 rounded-3xl p-8 text-center relative overflow-hidden mb-16">
+            <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+            <h3 class="text-2xl font-bold text-white mb-2 relative z-10">Deploy Zero-Blind-Spot Browser Security</h3>
+            <p class="text-brand-light-secondary text-sm max-w-xl mx-auto mb-6 relative z-10">
+              Neutralize session token theft, ClickFix campaigns, and GenAI data leaks natively in Chrome and Edge with EYEBALL Enterprise Suite.
+            </p>
+            <a href="../#contact" class="inline-block relative z-10 bg-brand-blue hover:bg-brand-cyan text-brand-dark font-bold px-8 py-3 rounded-xl transition shadow-lg shadow-brand-blue/25 text-sm uppercase tracking-wider">
+              START NOW
+            </a>
+          </div>
+
+          <section class="border-t border-white/10 pt-12">
+            <h2 class="text-2xl font-bold text-white mb-6">More Threat Intelligence Research</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              
+                <a href="clickfix-threat-campaigns.html" class="block bg-brand-dark-secondary border border-white/10 hover:border-brand-blue/40 rounded-2xl p-5 transition">
+                  <span class="text-[10px] font-mono uppercase text-brand-cyan block mb-2">Threat Intel</span>
+                  <h3 class="text-base font-bold text-white mb-2 line-clamp-2">The Rise of ClickFix Campaigns: How Threat Actors Bypass Enterprise Sandbox Gateways</h3>
+                  <p class="text-xs text-brand-light-secondary line-clamp-3">Threat actors are shifting away from traditional attachments towards highly interactive browser social engineering, notably through fake update popups that exploit clipboard buffers.</p>
+                </a>
+              
+                <a href="prompt-analyzer-security-compliance.html" class="block bg-brand-dark-secondary border border-white/10 hover:border-brand-blue/40 rounded-2xl p-5 transition">
+                  <span class="text-[10px] font-mono uppercase text-brand-cyan block mb-2">Generative AI</span>
+                  <h3 class="text-base font-bold text-white mb-2 line-clamp-2">Prompt Analyzer: Total Security and Visibility for Enterprise Generative AI</h3>
+                  <p class="text-xs text-brand-light-secondary line-clamp-3">Enterprise usage of GenAI tools like ChatGPT, Claude, and Gemini has doubled, raising massive compliance and intellectual property leakage threats. Here is how EyeBall resolves it.</p>
+                </a>
+              
+                <a href="modern-browser-isolation-vs-swg.html" class="block bg-brand-dark-secondary border border-white/10 hover:border-brand-blue/40 rounded-2xl p-5 transition">
+                  <span class="text-[10px] font-mono uppercase text-brand-cyan block mb-2">Browser Security</span>
+                  <h3 class="text-base font-bold text-white mb-2 line-clamp-2">Why Modern Browser Isolation Outperforms Legacy Secure Web Gateways (SWG)</h3>
+                  <p class="text-xs text-brand-light-secondary line-clamp-3">Legacy network-level security proxies introduce crippling latency and break modern complex web applications. Endpoint browser security is the breakthrough alternative.</p>
+                </a>
+              
+            </div>
+          </section>
+        </article>
+      </div>
+    </main>
+
+    <footer class="bg-brand-dark-secondary border-t border-white/5 mt-16">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
+        <p class="text-brand-light-secondary">EyeBall 2026. Secure the Web. All rights reserved.</p>
+        <div class="mt-6 flex justify-center space-x-8 text-sm text-brand-light-secondary font-mono">
+          <a href="../" class="hover:text-white transition">Home</a>
+          <a href="../#blog" class="hover:text-white transition">Blog</a>
+          <a href="../#privacy" class="hover:text-white transition">Privacy Policy</a>
+          <a href="../#terms" class="hover:text-white transition">Terms of Service</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

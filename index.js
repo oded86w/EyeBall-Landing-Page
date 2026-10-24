@@ -1982,12 +1982,18 @@ const BlogView = () => {
         el.setAttribute('content', value);
       };
 
+      const canonicalUrl = `https://eyeballsecurity.com/blog/${activePost.slug}.html`;
       updateMeta('description', 'name', activePost.excerpt);
       updateMeta('keywords', 'name', `${activePost.tags ? activePost.tags.join(', ') : ''}, ${activePost.category}, Browser Security, DLP, EyeBall Threat Intelligence`);
       updateMeta('og:title', 'property', activePost.title);
       updateMeta('og:description', 'property', activePost.excerpt);
       updateMeta('og:type', 'property', 'article');
-      updateMeta('og:url', 'property', window.location.href);
+      updateMeta('og:url', 'property', canonicalUrl);
+
+      let canonicalLink = document.querySelector('link[rel="canonical"]');
+      if (canonicalLink) {
+        canonicalLink.setAttribute('href', canonicalUrl);
+      }
 
       let ldJsonScript = document.getElementById('eyeball-blog-ld-json');
       if (!ldJsonScript) {
@@ -1997,12 +2003,15 @@ const BlogView = () => {
         document.head.appendChild(ldJsonScript);
       }
 
+      const parsedDate = new Date(activePost.date);
+      const isoDate = !isNaN(parsedDate.getTime()) ? parsedDate.toISOString() : "2026-10-07T00:00:00+00:00";
+
       const schema = {
         "@context": "https://schema.org",
         "@type": "TechArticle",
         "headline": activePost.title,
         "description": activePost.excerpt,
-        "datePublished": "2026-06-21T00:00:00+00:00",
+        "datePublished": isoDate,
         "author": {
           "@type": "Organization",
           "name": activePost.author,
@@ -2013,12 +2022,12 @@ const BlogView = () => {
           "name": "EyeBall Security Inc.",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://eyeballsecurity.com/logo.svg"
+            "url": "https://eyeballsecurity.com/blue.png"
           }
         },
         "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": window.location.href
+          "@id": canonicalUrl
         },
         "about": [
           {
@@ -2032,19 +2041,24 @@ const BlogView = () => {
 
       ldJsonScript.textContent = JSON.stringify(schema);
     } else {
-      document.title = "EyeBall - Secure the Web | Zero Blind Spots";
+      document.title = "EYEBALL Security | Enterprise Browser Security & GenAI DLP";
       
       const restoreMeta = (name, attr, value) => {
         const el = document.querySelector(`meta[${attr}="${name}"]`);
         if (el) el.setAttribute('content', value);
       };
 
-      restoreMeta('description', 'name', "EyeBall is a next-generation browser security and secure browser platform, providing a zero-blind-spot alternative to legacy gateways, extensions, and enterprise browsers like Netskope, Zscaler, Harmony Browse, Surf, Seraphic, Island, and Layer X with advanced URL filtering, Clickfix protection, and phishing protection.");
-      restoreMeta('keywords', 'name', "Netskope, Zscaler, Harmony browse, Surf, Seraphic, Island security, Layer X, URL filtering, Browser security, Clickfix, Phishing protection, Secure browser, Enterprise Browser, DLP, Browser Isolation");
-      restoreMeta('og:title', 'property', "EyeBall - Secure the Web | Zero Blind Spots");
-      restoreMeta('og:description', 'property', "Zero-blind-spot secure browser extension and platform. Next-gen DLP and security alternative to Netskope, Zscaler, Harmony Browse, Surf, Seraphic, Island, and Layer X.");
+      restoreMeta('description', 'name', "Enterprise browser security with zero blind spots. Stop session hijacking, ClickFix attacks, malicious extensions, and GenAI data leaks natively in Chrome & Edge.");
+      restoreMeta('keywords', 'name', "Enterprise Browser Security, Browser DLP, GenAI DLP, Session Hijacking Protection, AiTM Phishing Defense, ClickFix Protection, Browser Extension Security, Browser Isolation, SaaS Governance, Tenant Restrictions, EyeBall Security");
+      restoreMeta('og:title', 'property', "EYEBALL Security | Enterprise Browser Security & GenAI DLP");
+      restoreMeta('og:description', 'property', "Enterprise browser security with zero blind spots. Stop session hijacking, ClickFix attacks, malicious extensions, and GenAI data leaks natively in Chrome & Edge.");
       restoreMeta('og:type', 'property', 'website');
-      restoreMeta('og:url', 'property', 'https://eyeballsecurity.com');
+      restoreMeta('og:url', 'property', 'https://eyeballsecurity.com/');
+
+      const canonicalLink = document.querySelector('link[rel="canonical"]');
+      if (canonicalLink) {
+        canonicalLink.setAttribute('href', 'https://eyeballsecurity.com/');
+      }
 
       const ldJsonScript = document.getElementById('eyeball-blog-ld-json');
       if (ldJsonScript) {

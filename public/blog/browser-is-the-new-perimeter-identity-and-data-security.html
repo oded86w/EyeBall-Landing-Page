@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="../logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Identity is the New Perimeter — But the Browser is Where it Authenticates | EYEBALL Security</title>
+    <link rel="canonical" href="https://eyeballsecurity.com/blog/browser-is-the-new-perimeter-identity-and-data-security.html" />
+    <meta name="description" content="The cybersecurity industry states that identity is the new perimeter. But the web browser is where all identity authenticates and where corporate sessions live. Learn how Eyeball protects your workforce against AiTM, ClickFix, and credential reuse." />
+    <meta name="keywords" content="Browser Security, Identity Protection, Zero-Trust, Password Protection, Adversary-in-the-Middle (AiTM), Phishing Protection, Browser Security, Enterprise Browser Security, Browser DLP, EYEBALL Security" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="EYEBALL Security" />
+    <meta property="og:title" content="Identity is the New Perimeter — But the Browser is Where it Authenticates" />
+    <meta property="og:description" content="The cybersecurity industry states that identity is the new perimeter. But the web browser is where all identity authenticates and where corporate sessions live. Learn how Eyeball protects your workforce against AiTM, ClickFix, and credential reuse." />
+    <meta property="og:url" content="https://eyeballsecurity.com/blog/browser-is-the-new-perimeter-identity-and-data-security.html" />
+    <meta property="og:image" content="https://eyeballsecurity.com/blue.png" />
+    <meta property="article:published_time" content="2026-07-01T08:00:00Z" />
+    <meta property="article:section" content="Browser Security" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Identity is the New Perimeter — But the Browser is Where it Authenticates" />
+    <meta name="twitter:description" content="The cybersecurity industry states that identity is the new perimeter. But the web browser is where all identity authenticates and where corporate sessions live. Learn how Eyeball protects your workforce against AiTM, ClickFix, and credential reuse." />
+    <meta name="twitter:image" content="https://eyeballsecurity.com/blue.png" />
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "@id": "https://eyeballsecurity.com/blog/browser-is-the-new-perimeter-identity-and-data-security.html#article",
+      "headline": "Identity is the New Perimeter — But the Browser is Where it Authenticates",
+      "description": "The cybersecurity industry states that identity is the new perimeter. But the web browser is where all identity authenticates and where corporate sessions live. Learn how Eyeball protects your workforce against AiTM, ClickFix, and credential reuse.",
+      "datePublished": "2026-07-01T08:00:00+00:00",
+      "dateModified": "2026-10-24T10:00:00+00:00",
+      "author": {
+        "@type": "Organization",
+        "name": "EyeBall Threat Intelligence",
+        "url": "https://eyeballsecurity.com/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "EyeBall Security Inc.",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://eyeballsecurity.com/blue.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://eyeballsecurity.com/blog/browser-is-the-new-perimeter-identity-and-data-security.html"
+      },
+      "articleSection": "Browser Security",
+      "keywords": "Browser Security, Identity Protection, Zero-Trust, Password Protection, Adversary-in-the-Middle (AiTM), Phishing Protection"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "EYEBALL Security",
+          "item": "https://eyeballsecurity.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Threat Intel Blog",
+          "item": "https://eyeballsecurity.com/#blog"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Identity is the New Perimeter — But the Browser is Where it Authenticates",
+          "item": "https://eyeballsecurity.com/blog/browser-is-the-new-perimeter-identity-and-data-security.html"
+        }
+      ]
+    }
+  ]
+}
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'brand-dark': '#06090E',
+              'brand-dark-secondary': '#0D1117',
+              'brand-blue': '#00B4D8',
+              'brand-cyan': '#48CAE4',
+              'brand-purple': '#9D4EDD',
+              'brand-green': '#06D6A0',
+              'brand-light': '#F8F9FA',
+              'brand-light-secondary': '#ADB5BD',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      html { scroll-behavior: smooth; }
+      .bg-grid-pattern {
+        background-image: linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+                          linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+        background-size: 40px 40px;
+      }
+    </style>
+
+    <!-- Umami Cloud Analytics Integration -->
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="f4b2fa1b-2fcb-439e-b40d-99679f204792"></script>
+    <!-- Leadfeeder Analytics Integration -->
+    <script> (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('lAxoEaKjZxv4OYGd'); </script>
+  </head>
+  <body class="bg-brand-dark text-brand-light font-sans antialiased flex flex-col min-h-screen">
+    <header class="bg-brand-dark/90 backdrop-blur-xl fixed top-0 left-0 right-0 z-50 border-b border-white/5">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+          <a href="../#landing" class="flex items-center space-x-3 focus:outline-none group">
+            <img src="../blue.png" onerror="this.onerror=null; this.src='../logo.svg';" class="h-12 w-auto transition-transform duration-300 group-hover:scale-105" alt="EyeBall Logo" />
+            <span class="text-2xl font-bold text-white tracking-tight">EyeBall</span>
+          </a>
+          <div class="flex items-center space-x-4 md:space-x-6">
+            <nav class="hidden md:flex space-x-6 text-sm font-medium text-brand-light-secondary">
+              <a href="../#features" class="hover:text-white transition-colors">Features</a>
+              <a href="../#case-studies" class="hover:text-white transition-colors">Case Studies</a>
+              <a href="../#faq" class="hover:text-white transition-colors">FAQ</a>
+              <a href="../#blog" class="text-brand-blue font-bold border-b-2 border-brand-blue pb-1">Blog</a>
+            </nav>
+            <a href="../#freemium" class="bg-brand-blue hover:bg-brand-cyan text-brand-dark px-4 py-2 sm:px-6 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 shadow-lg shadow-brand-blue/20">
+              START NOW
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-grow pt-24">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 max-w-7xl">
+        <article class="max-w-4xl mx-auto py-4">
+          <a href="../#blog" class="inline-flex items-center space-x-2 text-sm font-mono text-brand-blue hover:text-brand-cyan mb-8 transition group pb-2">
+            <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            <span>BACK TO RESOURCE DIRECTORY</span>
+          </a>
+
+          <div style="background: linear-gradient(135deg, #090d16 0%, #1e1b4b 100%)" class="h-64 sm:h-80 w-full rounded-3xl relative overflow-hidden flex flex-col justify-end p-6 sm:p-10 border border-white/15 shadow-2xl">
+            <div class="absolute inset-0 bg-brand-dark/30 backdrop-blur-[1px]"></div>
+            <div class="relative z-10">
+              <span class="inline-block px-3 py-1 mb-4 text-xs font-mono font-bold tracking-wider uppercase rounded border bg-brand-green/10 text-brand-green border-brand-green/25">
+                Browser Security
+              </span>
+              <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight tracking-tight drop-shadow-md">
+                Identity is the New Perimeter — But the Browser is Where it Authenticates
+              </h1>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between py-6 border-b border-white/10 mb-10 text-sm gap-4 text-brand-light-secondary font-mono">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-full bg-brand-blue/10 border border-brand-blue/30 flex items-center justify-center text-brand-blue font-bold">
+                E
+              </div>
+              <div>
+                <p class="text-white font-semibold">EyeBall Threat Intelligence</p>
+                <p class="text-xs text-brand-light-secondary">Research &amp; Analysis Group</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-6 text-xs text-brand-light-secondary font-mono">
+              <span>Published: <strong>July 1, 2026</strong></span>
+              <span>•</span>
+              <span>Read Time: <strong>6 min read</strong></span>
+            </div>
+          </div>
+
+          <div class="prose prose-invert prose-brand max-w-none text-brand-light-secondary leading-relaxed font-sans mb-16 space-y-4">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">Identity is the New Perimeter — But the Browser is Where it Authenticates</h2>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">For most of the past two decades, security architecture was organized around a deceptively simple question:</p>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">What is inside my network, and what is outside?</p>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">The firewall was the perimeter. Trust was determined by geography. The castle-and-moat model worked reasonably well when servers were physical, applications were monolithic, and users authenticated from a fixed location on a corporate network.</p>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">That model collapsed gradually. Cloud adoption removed the fixed infrastructure boundary, and SaaS platforms moved critical business applications outside any network that the organization could control. Mobile and remote work eliminated the geographic assumption of trust, and identity federation allowed users and systems to authenticate across organizational and provider boundaries we had never mapped.</p>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">The response was the Zero Trust model and its related architectural patterns: SASE, identity-centric access, microsegmentation, and continuous verification. The shift was necessary and directionally correct.</p>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">In today's cybersecurity landscape, there is a famous and widely accepted paradigm: <strong class="text-white font-bold">"Identity is the new perimeter."</strong> IAM, MFA, conditional access policies, and RBAC became the primary control surfaces. That paradigm has matured into a legitimate and effective architecture.</p>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">But it is not sufficient. Because while identity is the logical perimeter, <strong class="text-white font-bold">the web browser is the physical perimeter where all identity authenticates.</strong></p>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">Think about it: every single-sign-on (SSO) handshake, every Microsoft 365 or Google Workspace login, every privileged access session to production databases happens inside the web browser. The user's identity exists in the cloud, but the *exercise* of that identity is driven entirely through a browser window. If the browser is compromised or unmonitored, the most sophisticated identity controls in the world can be bypassed in seconds.</p>
+<div class="h-4"></div>
+<hr class="border-t border-white/10 my-10" />
+<div class="h-4"></div>
+<h3 class="text-xl md:text-2xl font-bold text-brand-blue mt-8 mb-3">The Paradigm Shift: From Castle-and-Moat to Browser-First</h3>
+<div class="h-4"></div>
+
+          <div class="my-8 overflow-x-auto rounded-2xl border border-white/10 shadow-xl bg-brand-dark-secondary/80">
+            <table class="w-full text-left border-collapse text-sm">
+              <thead>
+                <tr class="bg-white/5 border-b border-white/10 text-white font-mono text-xs uppercase tracking-wider">
+                  <th class="py-3.5 px-4 font-bold">ERA</th><th class="py-3.5 px-4 font-bold">PRIMARY DEFENSE</th><th class="py-3.5 px-4 font-bold">CORE ASSUMPTION</th><th class="py-3.5 px-4 font-bold">STRUCTURAL BLIND SPOT</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-white/5">
+                
+                  <tr class="hover:bg-white/[0.03] transition-colors">
+                    <td class="py-3.5 px-4 font-semibold text-white"><strong class="text-white font-bold">The Network Era</strong></td><td class="py-3.5 px-4 text-brand-light-secondary">Firewalls &amp; VPNs</td><td class="py-3.5 px-4 text-brand-light-secondary">"If it is inside our office network, it is safe."</td><td class="py-3.5 px-4 text-brand-light-secondary">Fails on SaaS, cloud infrastructure, and remote workers.</td>
+                  </tr>
+                
+                  <tr class="hover:bg-white/[0.03] transition-colors">
+                    <td class="py-3.5 px-4 font-semibold text-white"><strong class="text-white font-bold">The Identity Era</strong></td><td class="py-3.5 px-4 text-brand-light-secondary">IAM, MFA, and SSO</td><td class="py-3.5 px-4 text-brand-light-secondary">"If we authenticate the user, our data is safe."</td><td class="py-3.5 px-4 text-brand-light-secondary">Fails against browser session hijacking, clipboard theft, and malicious extensions.</td>
+                  </tr>
+                
+                  <tr class="hover:bg-white/[0.03] transition-colors">
+                    <td class="py-3.5 px-4 font-semibold text-white"><strong class="text-white font-bold">The Browser Era</strong></td><td class="py-3.5 px-4 text-brand-light-secondary"><strong class="text-white font-bold">Eyeball Browser Security</strong></td><td class="py-3.5 px-4 text-brand-light-secondary">"Secure the data at the point of interaction and execution."</td><td class="py-3.5 px-4 text-brand-light-secondary"><strong class="text-white font-bold">None.</strong> Full on-device visibility and real-time client-side protection.</td>
+                  </tr>
+                
+              </tbody>
+            </table>
+          </div>
+        
+<div class="h-4"></div>
+<hr class="border-t border-white/10 my-10" />
+<div class="h-4"></div>
+<h3 class="text-xl md:text-2xl font-bold text-brand-blue mt-8 mb-3">Why Identity Controls Alone Are Failing</h3>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">The real target in every significant breach of the past decade was never the network. It was never even the identity itself. The target was the data. Compromised identities were simply the mechanism.</p>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">When threat actors compromise an identity today, they don't do it by brute-forcing a 16-character password; they do it by targeting the browser where the authenticated session is active. Once a session cookie is stolen, MFA is completely bypassed. This is the massive gap: identity systems govern *who* is allowed to log in, but they have zero visibility into what happens *after* the login is completed inside the browser.</p>
+<div class="h-4"></div>
+<hr class="border-t border-white/10 my-10" />
+<div class="h-4"></div>
+<h3 class="text-xl md:text-2xl font-bold text-brand-blue mt-8 mb-3">How Eyeball Protects Corporate Portals and Websites</h3>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">Because Eyeball operates natively at the browser layer, we do not just watch the network connection—we secure the entire runtime environment. This allows us to protect your corporate applications, administrative portals, and sensitive internal websites from the most advanced client-side attacks.</p>
+<div class="h-4"></div>
+<h4 class="text-lg md:text-xl font-bold text-brand-cyan mt-6 mb-2">1. Password Reuse Protection</h4>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">One of the most common ways corporate credentials are leaked is through employee negligence. An employee uses their corporate email and corporate password to sign up for an unsecure external forum, a personal shopping site, or a third-party utility. When that external site is breached, attackers harvest the password and use it to log into your corporate portals.</p>
+<ul class="my-5 list-none">
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">The Eyeball Shield:</strong> Eyeball proactively monitors corporate password usage. If an employee tries to enter their active corporate password on any external, non-sanctioned website, Eyeball intercepts the action, warns the user, and blocks the submission—preventing credential reuse before it can happen.</span>
+          </li>
+        </ul>
+<div class="h-4"></div>
+<h4 class="text-lg md:text-xl font-bold text-brand-cyan mt-6 mb-2">2. Advanced Phishing and Brand Protection</h4>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">Traditional email filters block known phishing links, but they are blind to zero-day lookalike domains that bypass active blocklists.</p>
+<ul class="my-5 list-none">
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">The Eyeball Shield:</strong> Eyeball uses real-time, on-device analysis to inspect web pages as they render. If a site mimics your corporate login portal or exhibits credential-harvesting behavior, Eyeball blocks the input fields instantly, keeping your employees safe even if they clicked a malicious link.</span>
+          </li>
+        </ul>
+<div class="h-4"></div>
+<h4 class="text-lg md:text-xl font-bold text-brand-cyan mt-6 mb-2">3. DOM Integrity: Defeating Clickjacking and ClickFix</h4>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">Threat actors are increasingly using advanced social engineering overlays, such as <strong class="text-white font-bold">ClickFix</strong> campaigns (fake browser or CAPTCHA updates) and <strong class="text-white font-bold">Clickjacking</strong> (hiding invisible buttons over legitimate elements).</p>
+<ul class="my-5 list-none">
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">The Eyeball Shield:</strong> Eyeball’s DOM-integrity engine constantly monitors the Document Object Model (DOM) of active tabs. It identifies hidden elements, malicious overlays, and click-hijacking structures, rendering them harmless before a user can be tricked into interacting with them.</span>
+          </li>
+        </ul>
+<div class="h-4"></div>
+<h4 class="text-lg md:text-xl font-bold text-brand-cyan mt-6 mb-2">4. Adversary-in-the-Middle (AiTM) Phishing Mitigation</h4>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">Modern phishing has evolved far beyond fake login screens. Sophisticated threat actors use <strong class="text-white font-bold">Adversary-in-the-Middle (AiTM)</strong> proxy frameworks to intercept active login handshakes. These tools let attackers steal live authentication cookies and session tokens, entirely bypassing MFA.</p>
+<ul class="my-5 list-none">
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">The Eyeball Shield:</strong> Eyeball is engineered to detect and neutralize session-hijacking tools and AiTM phishing frameworks in real-time, including:</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Sneaky2FA</strong> &amp; <strong class="text-white font-bold">Tycoon2FA</strong></span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Evilginx2</strong> / <strong class="text-white font-bold">EvilProxy</strong></span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">EvilTokens</strong></span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Kali365</strong></span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">FlowerStorm</strong></span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Kratos</strong>, <strong class="text-white font-bold">MassBass</strong>, and <strong class="text-white font-bold">Greatness</strong></span>
+          </li>
+        </ul>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">By inspecting the client-side network request lifecycle and validating domain signatures directly inside the browser, Eyeball detects the proxy mid-handshake, terminating the session and alert-logging the attempt before a single session cookie can be stolen.</p>
+<div class="h-4"></div>
+<hr class="border-t border-white/10 my-10" />
+<div class="h-4"></div>
+<h3 class="text-xl md:text-2xl font-bold text-brand-blue mt-8 mb-3">Secure the True Perimeter</h3>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">The shift is clear: protecting the systems that hold data is no longer enough; we must protect the execution environment where that data is consumed.</p>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">By treating the browser as the true perimeter, Eyeball closes the massive security gap between identity validation and data interaction. Secure your workforce, protect your credentials, and eliminate the session-hijacking threat with a single, lightweight browser extension.</p>
+          </div>
+
+          
+            <div class="border-t border-white/10 pt-6 flex flex-wrap gap-2 items-center mb-16">
+              <span class="text-xs font-mono text-brand-light-secondary uppercase tracking-widest mr-2">Tags:</span>
+              
+                <span class="bg-white/5 border border-white/10 text-brand-light-secondary text-xs px-3 py-1 rounded-full font-mono">
+                  #Browser Security
+                </span>
+              
+                <span class="bg-white/5 border border-white/10 text-brand-light-secondary text-xs px-3 py-1 rounded-full font-mono">
+                  #Identity Protection
+                </span>
+              
+                <span class="bg-white/5 border border-white/10 text-brand-light-secondary text-xs px-3 py-1 rounded-full font-mono">
+                  #Zero-Trust
+                </span>
+              
+                <span class="bg-white/5 border border-white/10 text-brand-light-secondary text-xs px-3 py-1 rounded-full font-mono">
+                  #Password Protection
+                </span>
+              
+                <span class="bg-white/5 border border-white/10 text-brand-light-secondary text-xs px-3 py-1 rounded-full font-mono">
+                  #Adversary-in-the-Middle (AiTM)
+                </span>
+              
+                <span class="bg-white/5 border border-white/10 text-brand-light-secondary text-xs px-3 py-1 rounded-full font-mono">
+                  #Phishing Protection
+                </span>
+              
+            </div>
+          
+
+          <div class="bg-gradient-to-r from-brand-blue/10 via-brand-dark-secondary to-brand-dark border border-brand-blue/20 rounded-3xl p-8 text-center relative overflow-hidden mb-16">
+            <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+            <h3 class="text-2xl font-bold text-white mb-2 relative z-10">Deploy Zero-Blind-Spot Browser Security</h3>
+            <p class="text-brand-light-secondary text-sm max-w-xl mx-auto mb-6 relative z-10">
+              Neutralize session token theft, ClickFix campaigns, and GenAI data leaks natively in Chrome and Edge with EYEBALL Enterprise Suite.
+            </p>
+            <a href="../#contact" class="inline-block relative z-10 bg-brand-blue hover:bg-brand-cyan text-brand-dark font-bold px-8 py-3 rounded-xl transition shadow-lg shadow-brand-blue/25 text-sm uppercase tracking-wider">
+              START NOW
+            </a>
+          </div>
+
+          <section class="border-t border-white/10 pt-12">
+            <h2 class="text-2xl font-bold text-white mb-6">More Threat Intelligence Research</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              
+                <a href="clickfix-threat-campaigns.html" class="block bg-brand-dark-secondary border border-white/10 hover:border-brand-blue/40 rounded-2xl p-5 transition">
+                  <span class="text-[10px] font-mono uppercase text-brand-cyan block mb-2">Threat Intel</span>
+                  <h3 class="text-base font-bold text-white mb-2 line-clamp-2">The Rise of ClickFix Campaigns: How Threat Actors Bypass Enterprise Sandbox Gateways</h3>
+                  <p class="text-xs text-brand-light-secondary line-clamp-3">Threat actors are shifting away from traditional attachments towards highly interactive browser social engineering, notably through fake update popups that exploit clipboard buffers.</p>
+                </a>
+              
+                <a href="prompt-analyzer-security-compliance.html" class="block bg-brand-dark-secondary border border-white/10 hover:border-brand-blue/40 rounded-2xl p-5 transition">
+                  <span class="text-[10px] font-mono uppercase text-brand-cyan block mb-2">Generative AI</span>
+                  <h3 class="text-base font-bold text-white mb-2 line-clamp-2">Prompt Analyzer: Total Security and Visibility for Enterprise Generative AI</h3>
+                  <p class="text-xs text-brand-light-secondary line-clamp-3">Enterprise usage of GenAI tools like ChatGPT, Claude, and Gemini has doubled, raising massive compliance and intellectual property leakage threats. Here is how EyeBall resolves it.</p>
+                </a>
+              
+                <a href="modern-browser-isolation-vs-swg.html" class="block bg-brand-dark-secondary border border-white/10 hover:border-brand-blue/40 rounded-2xl p-5 transition">
+                  <span class="text-[10px] font-mono uppercase text-brand-cyan block mb-2">Browser Security</span>
+                  <h3 class="text-base font-bold text-white mb-2 line-clamp-2">Why Modern Browser Isolation Outperforms Legacy Secure Web Gateways (SWG)</h3>
+                  <p class="text-xs text-brand-light-secondary line-clamp-3">Legacy network-level security proxies introduce crippling latency and break modern complex web applications. Endpoint browser security is the breakthrough alternative.</p>
+                </a>
+              
+            </div>
+          </section>
+        </article>
+      </div>
+    </main>
+
+    <footer class="bg-brand-dark-secondary border-t border-white/5 mt-16">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
+        <p class="text-brand-light-secondary">EyeBall 2026. Secure the Web. All rights reserved.</p>
+        <div class="mt-6 flex justify-center space-x-8 text-sm text-brand-light-secondary font-mono">
+          <a href="../" class="hover:text-white transition">Home</a>
+          <a href="../#blog" class="hover:text-white transition">Blog</a>
+          <a href="../#privacy" class="hover:text-white transition">Privacy Policy</a>
+          <a href="../#terms" class="hover:text-white transition">Terms of Service</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

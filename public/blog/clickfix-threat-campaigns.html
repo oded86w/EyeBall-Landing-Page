@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="../logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Rise of ClickFix Campaigns: How Threat Actors Bypass Enterprise Sandbox Gateways | EYEBALL Security</title>
+    <link rel="canonical" href="https://eyeballsecurity.com/blog/clickfix-threat-campaigns.html" />
+    <meta name="description" content="Threat actors are shifting away from traditional attachments towards highly interactive browser social engineering, notably through fake update popups that exploit clipboard buffers." />
+    <meta name="keywords" content="ClickFix, Social Engineering, Zero-Day, Threat Intel, Enterprise Browser Security, Browser DLP, EYEBALL Security" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="EYEBALL Security" />
+    <meta property="og:title" content="The Rise of ClickFix Campaigns: How Threat Actors Bypass Enterprise Sandbox Gateways" />
+    <meta property="og:description" content="Threat actors are shifting away from traditional attachments towards highly interactive browser social engineering, notably through fake update popups that exploit clipboard buffers." />
+    <meta property="og:url" content="https://eyeballsecurity.com/blog/clickfix-threat-campaigns.html" />
+    <meta property="og:image" content="https://eyeballsecurity.com/blue.png" />
+    <meta property="article:published_time" content="2026-06-18T08:00:00Z" />
+    <meta property="article:section" content="Threat Intel" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The Rise of ClickFix Campaigns: How Threat Actors Bypass Enterprise Sandbox Gateways" />
+    <meta name="twitter:description" content="Threat actors are shifting away from traditional attachments towards highly interactive browser social engineering, notably through fake update popups that exploit clipboard buffers." />
+    <meta name="twitter:image" content="https://eyeballsecurity.com/blue.png" />
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "@id": "https://eyeballsecurity.com/blog/clickfix-threat-campaigns.html#article",
+      "headline": "The Rise of ClickFix Campaigns: How Threat Actors Bypass Enterprise Sandbox Gateways",
+      "description": "Threat actors are shifting away from traditional attachments towards highly interactive browser social engineering, notably through fake update popups that exploit clipboard buffers.",
+      "datePublished": "2026-06-18T08:00:00+00:00",
+      "dateModified": "2026-10-24T10:00:00+00:00",
+      "author": {
+        "@type": "Organization",
+        "name": "EyeBall Threat Intelligence",
+        "url": "https://eyeballsecurity.com/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "EyeBall Security Inc.",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://eyeballsecurity.com/blue.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://eyeballsecurity.com/blog/clickfix-threat-campaigns.html"
+      },
+      "articleSection": "Threat Intel",
+      "keywords": "ClickFix, Social Engineering, Zero-Day"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "EYEBALL Security",
+          "item": "https://eyeballsecurity.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Threat Intel Blog",
+          "item": "https://eyeballsecurity.com/#blog"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "The Rise of ClickFix Campaigns: How Threat Actors Bypass Enterprise Sandbox Gateways",
+          "item": "https://eyeballsecurity.com/blog/clickfix-threat-campaigns.html"
+        }
+      ]
+    }
+  ]
+}
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'brand-dark': '#06090E',
+              'brand-dark-secondary': '#0D1117',
+              'brand-blue': '#00B4D8',
+              'brand-cyan': '#48CAE4',
+              'brand-purple': '#9D4EDD',
+              'brand-green': '#06D6A0',
+              'brand-light': '#F8F9FA',
+              'brand-light-secondary': '#ADB5BD',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      html { scroll-behavior: smooth; }
+      .bg-grid-pattern {
+        background-image: linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+                          linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+        background-size: 40px 40px;
+      }
+    </style>
+
+    <!-- Umami Cloud Analytics Integration -->
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="f4b2fa1b-2fcb-439e-b40d-99679f204792"></script>
+    <!-- Leadfeeder Analytics Integration -->
+    <script> (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('lAxoEaKjZxv4OYGd'); </script>
+  </head>
+  <body class="bg-brand-dark text-brand-light font-sans antialiased flex flex-col min-h-screen">
+    <header class="bg-brand-dark/90 backdrop-blur-xl fixed top-0 left-0 right-0 z-50 border-b border-white/5">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+          <a href="../#landing" class="flex items-center space-x-3 focus:outline-none group">
+            <img src="../blue.png" onerror="this.onerror=null; this.src='../logo.svg';" class="h-12 w-auto transition-transform duration-300 group-hover:scale-105" alt="EyeBall Logo" />
+            <span class="text-2xl font-bold text-white tracking-tight">EyeBall</span>
+          </a>
+          <div class="flex items-center space-x-4 md:space-x-6">
+            <nav class="hidden md:flex space-x-6 text-sm font-medium text-brand-light-secondary">
+              <a href="../#features" class="hover:text-white transition-colors">Features</a>
+              <a href="../#case-studies" class="hover:text-white transition-colors">Case Studies</a>
+              <a href="../#faq" class="hover:text-white transition-colors">FAQ</a>
+              <a href="../#blog" class="text-brand-blue font-bold border-b-2 border-brand-blue pb-1">Blog</a>
+            </nav>
+            <a href="../#freemium" class="bg-brand-blue hover:bg-brand-cyan text-brand-dark px-4 py-2 sm:px-6 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 shadow-lg shadow-brand-blue/20">
+              START NOW
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-grow pt-24">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 max-w-7xl">
+        <article class="max-w-4xl mx-auto py-4">
+          <a href="../#blog" class="inline-flex items-center space-x-2 text-sm font-mono text-brand-blue hover:text-brand-cyan mb-8 transition group pb-2">
+            <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            <span>BACK TO RESOURCE DIRECTORY</span>
+          </a>
+
+          <div style="background: linear-gradient(135deg, #0d1b2a 0%, #172554 100%)" class="h-64 sm:h-80 w-full rounded-3xl relative overflow-hidden flex flex-col justify-end p-6 sm:p-10 border border-white/15 shadow-2xl">
+            <div class="absolute inset-0 bg-brand-dark/30 backdrop-blur-[1px]"></div>
+            <div class="relative z-10">
+              <span class="inline-block px-3 py-1 mb-4 text-xs font-mono font-bold tracking-wider uppercase rounded border bg-brand-cyan/10 text-brand-cyan border-brand-cyan/25">
+                Threat Intel
+              </span>
+              <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight tracking-tight drop-shadow-md">
+                The Rise of ClickFix Campaigns: How Threat Actors Bypass Enterprise Sandbox Gateways
+              </h1>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between py-6 border-b border-white/10 mb-10 text-sm gap-4 text-brand-light-secondary font-mono">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-full bg-brand-blue/10 border border-brand-blue/30 flex items-center justify-center text-brand-blue font-bold">
+                E
+              </div>
+              <div>
+                <p class="text-white font-semibold">EyeBall Threat Intelligence</p>
+                <p class="text-xs text-brand-light-secondary">Research &amp; Analysis Group</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-6 text-xs text-brand-light-secondary font-mono">
+              <span>Published: <strong>June 18, 2026</strong></span>
+              <span>•</span>
+              <span>Read Time: <strong>5 min read</strong></span>
+            </div>
+          </div>
+
+          <div class="prose prose-invert prose-brand max-w-none text-brand-light-secondary leading-relaxed font-sans mb-16 space-y-4">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">The Evolution of Social Engineering: ClickFix Campaigns</h2>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">In recent months, cybersecurity research groups have observed a massive surge in a highly sophisticated browser-based cyberattack technique known as <strong class="text-white font-bold">ClickFix</strong> or <strong class="text-white font-bold">ClickHijacking</strong>.</p>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">Unlike conventional phishing campaigns that rely on social engineering to trick users into downloading malicious executables (<code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">.exe</code>), or supplying credentials on lookalike forms, ClickFix leverages the user's ultimate trust in their native browser interface.</p>
+<div class="h-4"></div>
+<h3 class="text-xl md:text-2xl font-bold text-brand-blue mt-8 mb-3">How Does it Work?</h3>
+<ol class="my-5 list-none">
+            <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+              <span class="text-brand-cyan font-mono font-bold mr-3 mt-0.5 text-sm">1.</span>
+              <span><strong class="text-white font-bold">Compromised Portals</strong>: Users landing on otherwise benign websites, which have been compromised by attackers, suddenly encounter a popup claiming a critical component is missing (e.g., "Google Chrome update failed," "Microsoft OneDrive certificate expired," or "PDF Viewer plugin missing").</span>
+            </li>
+          
+            <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+              <span class="text-brand-cyan font-mono font-bold mr-3 mt-0.5 text-sm">2.</span>
+              <span><strong class="text-white font-bold">The Paste Exploitation</strong>: The prompt instructs the user to copy a line of code and execute it using the Windows Command Prompt or PowerShell (via a keyboard shortcut such as <code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">Win + R</code>, copy-paste and Enter).</span>
+            </li>
+          
+            <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+              <span class="text-brand-cyan font-mono font-bold mr-3 mt-0.5 text-sm">3.</span>
+              <span><strong class="text-white font-bold">Sandbox Gateways Bypass</strong>: Because the actual file was not downloaded over HTTP, traditional Secure Web Gateways (SWG) and email security sandboxes see nothing suspicious in transit. The execution is driven entirely by human interaction within the local operating system, initiating malware deployment (like Lumma Stealer or RedLine).</span>
+            </li>
+          </ol>
+<div class="h-4"></div>
+<h3 class="text-xl md:text-2xl font-bold text-brand-blue mt-8 mb-3">The Rise of Imitation CAPTCHAs: Exploiting Trust in Google and Cloudflare</h3>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">An extremely dangerous and pervasive development in modern ClickFix campaigns is the <strong class="text-white font-bold">impersonation of security verification barriers</strong>, specifically spoofing trusted verification elements like <strong class="text-white font-bold">Google reCAPTCHA</strong> and <strong class="text-white font-bold">Cloudflare Turnstile</strong>.</p>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">Instead of displaying a missing plugin notification, the threat actor injects a highly convincing, high-fidelity replica of a standard anti-bot verification screen directly into the compromised web page to force the user's hand:</p>
+<div class="h-4"></div>
+<ul class="my-5 list-none">
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">The Fake Verification Prompt</strong>: The user is presented with a fake modal saying *"Verification Required: Please confirm you are not a robot to proceed."*</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">The Deceptive Actions Guideline</strong>: When the victim clicks the fake *"I am not a robot"* checkbox or tries to solve a mock puzzle overlay, the site generates a popup displaying instructions to allegedly *"verify your system capabilities."*</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">System Compromise under Security Guise</strong>: The instructions claim that to finalize the Google reCAPTCHA or Cloudflare verification, the user must press <code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">Win + R</code> to open the Run box, copy the automatically generated "verification key" (which is actually a base64-encoded PowerShell payload sitting in their clipboard buffer), paste it into the prompt, and press Enter.</span>
+          </li>
+        </ul>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">By framing the execution of a malicious file or script as a legitimate security verification step authorized by Google or Cloudflare, attackers successfully manipulate even tech-savvy enterprise employees, exploiting a lifetime of habits conditioned around solving CAPTCHAs.</p>
+<div class="h-4"></div>
+<hr class="border-t border-white/10 my-10" />
+<div class="h-4"></div>
+<h3 class="text-xl md:text-2xl font-bold text-brand-blue mt-8 mb-3">Mitigating ClickFix in the Modern Enterprise</h3>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">Securing the modern enterprise perimeter requires intercepting the attack chain *before* the user acts. Legacy secure web gateways cannot inspect the on-screen rendering structure to detect malicious instructions.</p>
+<div class="h-4"></div>
+<ul class="my-5 list-none">
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Context-Aware Content Analysis</strong>: Security systems must analyze real-time DOM elements to identify fraudulent prompts.</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">CAPTCHA Integrity Checks</strong>: Monitoring for localized DOM overlays that pretend to render official iFrames (like Google or Cloudflare hostnames) but operate entirely within malicious foreign scopes.</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Behavioral Clipboard Auditing</strong>: Restricting dynamic script copy-pasting from unauthorized websites prevents users from copying malicious operational scripts.</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Active Defense Hooks</strong>: Dynamic client-side extensions can immediately block overlay injection scripts on compromised SaaS portals and external URLs.</span>
+          </li>
+        </ul>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">With EyeBall, zero-day social engineering vectors like ClickFix and ClickHijacking are neutralized immediately. Code injections are rendered harmless before the browser even gets to execute them.</p>
+          </div>
+
+          
+            <div class="border-t border-white/10 pt-6 flex flex-wrap gap-2 items-center mb-16">
+              <span class="text-xs font-mono text-brand-light-secondary uppercase tracking-widest mr-2">Tags:</span>
+              
+                <span class="bg-white/5 border border-white/10 text-brand-light-secondary text-xs px-3 py-1 rounded-full font-mono">
+                  #ClickFix
+                </span>
+              
+                <span class="bg-white/5 border border-white/10 text-brand-light-secondary text-xs px-3 py-1 rounded-full font-mono">
+                  #Social Engineering
+                </span>
+              
+                <span class="bg-white/5 border border-white/10 text-brand-light-secondary text-xs px-3 py-1 rounded-full font-mono">
+                  #Zero-Day
+                </span>
+              
+            </div>
+          
+
+          <div class="bg-gradient-to-r from-brand-blue/10 via-brand-dark-secondary to-brand-dark border border-brand-blue/20 rounded-3xl p-8 text-center relative overflow-hidden mb-16">
+            <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+            <h3 class="text-2xl font-bold text-white mb-2 relative z-10">Deploy Zero-Blind-Spot Browser Security</h3>
+            <p class="text-brand-light-secondary text-sm max-w-xl mx-auto mb-6 relative z-10">
+              Neutralize session token theft, ClickFix campaigns, and GenAI data leaks natively in Chrome and Edge with EYEBALL Enterprise Suite.
+            </p>
+            <a href="../#contact" class="inline-block relative z-10 bg-brand-blue hover:bg-brand-cyan text-brand-dark font-bold px-8 py-3 rounded-xl transition shadow-lg shadow-brand-blue/25 text-sm uppercase tracking-wider">
+              START NOW
+            </a>
+          </div>
+
+          <section class="border-t border-white/10 pt-12">
+            <h2 class="text-2xl font-bold text-white mb-6">More Threat Intelligence Research</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              
+                <a href="prompt-analyzer-security-compliance.html" class="block bg-brand-dark-secondary border border-white/10 hover:border-brand-blue/40 rounded-2xl p-5 transition">
+                  <span class="text-[10px] font-mono uppercase text-brand-cyan block mb-2">Generative AI</span>
+                  <h3 class="text-base font-bold text-white mb-2 line-clamp-2">Prompt Analyzer: Total Security and Visibility for Enterprise Generative AI</h3>
+                  <p class="text-xs text-brand-light-secondary line-clamp-3">Enterprise usage of GenAI tools like ChatGPT, Claude, and Gemini has doubled, raising massive compliance and intellectual property leakage threats. Here is how EyeBall resolves it.</p>
+                </a>
+              
+                <a href="modern-browser-isolation-vs-swg.html" class="block bg-brand-dark-secondary border border-white/10 hover:border-brand-blue/40 rounded-2xl p-5 transition">
+                  <span class="text-[10px] font-mono uppercase text-brand-cyan block mb-2">Browser Security</span>
+                  <h3 class="text-base font-bold text-white mb-2 line-clamp-2">Why Modern Browser Isolation Outperforms Legacy Secure Web Gateways (SWG)</h3>
+                  <p class="text-xs text-brand-light-secondary line-clamp-3">Legacy network-level security proxies introduce crippling latency and break modern complex web applications. Endpoint browser security is the breakthrough alternative.</p>
+                </a>
+              
+                <a href="critical-need-browser-extension-management.html" class="block bg-brand-dark-secondary border border-white/10 hover:border-brand-blue/40 rounded-2xl p-5 transition">
+                  <span class="text-[10px] font-mono uppercase text-brand-cyan block mb-2">Browser Security</span>
+                  <h3 class="text-base font-bold text-white mb-2 line-clamp-2">The Critical Need for Browser Extension Management</h3>
+                  <p class="text-xs text-brand-light-secondary line-clamp-3">Browser extensions are the quietest threat vectors inside corporate environments. Learn how EyeBall handles blocklists, proactive whitelist controls, and auto-blocks malicious extensions.</p>
+                </a>
+              
+            </div>
+          </section>
+        </article>
+      </div>
+    </main>
+
+    <footer class="bg-brand-dark-secondary border-t border-white/5 mt-16">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
+        <p class="text-brand-light-secondary">EyeBall 2026. Secure the Web. All rights reserved.</p>
+        <div class="mt-6 flex justify-center space-x-8 text-sm text-brand-light-secondary font-mono">
+          <a href="../" class="hover:text-white transition">Home</a>
+          <a href="../#blog" class="hover:text-white transition">Blog</a>
+          <a href="../#privacy" class="hover:text-white transition">Privacy Policy</a>
+          <a href="../#terms" class="hover:text-white transition">Terms of Service</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

