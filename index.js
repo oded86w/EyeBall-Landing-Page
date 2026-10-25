@@ -2463,7 +2463,7 @@ const BlogView = () => {
                   </div>
                   
                   <h3 class="text-xl font-bold text-white mb-3 group-hover:text-brand-blue transition line-clamp-2 tracking-tight leading-snug">
-                    ${post.title}
+                    <a href="blog/${post.slug}.html" onClick=${(e) => { e.preventDefault(); }} class="focus:outline-none">${post.title}</a>
                   </h3>
                   
                   <p class="text-brand-light-secondary text-sm leading-relaxed mb-6 line-clamp-3">
@@ -2478,10 +2478,10 @@ const BlogView = () => {
                       <span class="text-xs font-semibold text-brand-light">${post.author}</span>
                     </div>
                     
-                    <span class="text-xs font-mono font-bold text-brand-blue group-hover:text-brand-cyan transition flex items-center">
+                    <a href="blog/${post.slug}.html" onClick=${(e) => { e.preventDefault(); }} class="text-xs font-mono font-bold text-brand-blue group-hover:text-brand-cyan transition flex items-center">
                       <span>READ BULLETIN</span>
                       <svg class="w-3.5 h-3.5 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </span>
+                    </a>
                   </div>
                 </div>
               </article>
@@ -2672,6 +2672,17 @@ const App = () => {
              <a href="#privacy" onClick=${(e) => { e.preventDefault(); handleNavigate('privacy'); }} class="hover:text-white transition">Privacy Policy</a>
              <a href="#terms" onClick=${(e) => { e.preventDefault(); handleNavigate('terms'); }} class="hover:text-white transition">Terms of Service</a>
           </div>
+          <nav aria-label="Threat Intelligence Research Articles" class="sr-only">
+            <h2>EYEBALL Security Threat Intelligence Research Bulletins</h2>
+            <ul>
+              ${DEFAULT_POSTS.map(post => html`
+                <li key=${post.id}>
+                  <a href="blog/${post.slug}.html">${post.title}</a>
+                  <p>${post.excerpt}</p>
+                </li>
+              `)}
+            </ul>
+          </nav>
         </div>
       </footer>
     </div>
