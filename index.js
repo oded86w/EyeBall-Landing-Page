@@ -1,7 +1,9 @@
 
-import { render } from 'preact';
+import { h, render } from 'preact';
 import { useState, useEffect } from 'preact/hooks';
-import { html } from 'htm/preact';
+import htm from 'htm';
+
+const html = htm.bind(h);
 
 const getFilename = (url) => {
   const match = url.match(/\/([^\/]+\.(gif|png|svg|jpg|jpeg|webp))$/i);
