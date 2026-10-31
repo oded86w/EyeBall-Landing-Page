@@ -3,6 +3,17 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script type="importmap">
+{
+  "imports": {
+    "preact": "https://esm.sh/preact@10.22.1",
+    "preact/hooks": "https://esm.sh/preact@10.22.1/hooks",
+    "htm/preact": "https://esm.sh/htm@3.1.1/preact",
+    "preact/": "https://esm.sh/preact@^10.28.2/",
+    "htm/": "https://esm.sh/htm@^3.1.1/"
+  }
+}
+    </script>
     <link rel="icon" type="image/svg+xml" href="logo.svg" id="favicon" />
     <script>
       // Automatically fallback if logo.svg is hosted with a public/ prefix
@@ -202,24 +213,13 @@
         background-size: 40px 40px;
       }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "preact": "https://esm.sh/preact@10.22.1",
-    "preact/hooks": "https://esm.sh/preact@10.22.1/hooks",
-    "htm/preact": "https://esm.sh/htm@3.1.1/preact",
-    "preact/": "https://esm.sh/preact@^10.28.2/",
-    "htm/": "https://esm.sh/htm@^3.1.1/"
-  }
-}
-</script>
     
     <!-- Umami Cloud Analytics Integration -->
     <script defer src="https://cloud.umami.is/script.js" data-website-id="f4b2fa1b-2fcb-439e-b40d-99679f204792" data-auto-track="false"></script>
     <!-- Leadfeeder Analytics Integration -->
-    <script> (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('lAxoEaKjZxv4OYGd'); </script>
-<link rel="stylesheet" href="index.css">
-</head>
+    <script> (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; (d.head||d.documentElement).appendChild(cs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('lAxoEaKjZxv4OYGd'); </script>
+    <link rel="stylesheet" href="index.css">
+  </head>
   <body class="bg-brand-dark text-brand-light font-sans antialiased">
     <div id="root">
       <!-- Semantic HTML5 pre-rendered fallback layout (enables SSR/SEO compatibility for plain crawlers and GitHub Pages) -->
